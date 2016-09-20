@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_err.c                                    :+:      :+:    :+:   */
+/*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 22:02:17 by glodenos          #+#    #+#             */
-/*   Updated: 2016/02/27 22:38:58 by glodenos         ###   ########.fr       */
+/*   Created: 2016/08/19 00:49:37 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/19 14:27:47 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rt.h"
 
-void	ft_putstr_err(char *str)
+void            light(t_spt *spt, t_obj obj, t_ray *ray)
 {
-	write(2, str, ft_strlen(str));
+    ray->rgb.blue = (ray->rgb.blue * spt[0].rgb.blue / 255) *
+        ((0.2 + diffused_light(obj, *ray)) / 2);
+    ray->rgb.green = (ray->rgb.green * spt[0].rgb.green / 255) *
+        ((0.2 + diffused_light(obj, *ray)) / 2);
+    ray->rgb.red = (ray->rgb.red * spt[0].rgb.red / 255) *
+        ((0.2 + diffused_light(obj, *ray)) / 2);
 }

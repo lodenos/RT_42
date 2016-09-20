@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strconc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 17:51:28 by anespoul          #+#    #+#             */
-/*   Updated: 2016/09/12 14:01:51 by anespoul         ###   ########.fr       */
+/*   Created: 2016/09/09 11:35:05 by anespoul          #+#    #+#             */
+/*   Updated: 2016/09/09 11:40:28 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(char const *str)
+char	*ft_strconc(char *str, char start, char end)
 {
 	int		i;
-	int		n;
-	int		is_negativ;
+	int		s;
+	char	*res;
 
+	s = 0;
 	i = 0;
-	n = 0;
-	is_negativ = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' ||
-			str[i] == '\v' || str[i] == '\r' || str[i] == '\f')
+	if (!str || !start || !end || start == end)
+		return (NULL);
+	while (str[s] && str[s] != start)
+		s++;
+	if (!str[s])
+		return (NULL);
+	while (str[s + i] && str[s + i] != end)
 		i++;
-	if (str[i] == '-')
-		is_negativ = 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		n *= 10;
-		n += (int)str[i] - '0';
-		i++;
-	}
-	if (is_negativ == 1)
-		return (-n);
-	return (n);
+	if (!str[s + i])
+		return (NULL);
+	res = ft_strsub(str, s + 1, i - 1);
+	return (res);
 }

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_err.c                                    :+:      :+:    :+:   */
+/*   torus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 22:02:17 by glodenos          #+#    #+#             */
-/*   Updated: 2016/02/27 22:38:58 by glodenos         ###   ########.fr       */
+/*   Created: 2016/08/16 22:00:10 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/08 12:43:03 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rt.h"
 
-void	ft_putstr_err(char *str)
+double	torus(t_obj obj, t_ray ray)
 {
-	write(2, str, ft_strlen(str));
+    (void)obj;
+    (void)ray;
+    return (-1);
 }

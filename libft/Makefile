@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,11 +6,11 @@
 #    By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/18 00:43:32 by glodenos         ###   ########.fr        #
+#    Updated: 2016/09/09 14:59:47 by anespoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS	=	-Wall -Werror -Wextra -O3 -ansi -pedantic #-Weverything 
+FLAGS	=	
 
 HEAD	=	-I ./head
 
@@ -81,17 +81,18 @@ SRC		=	src/ft_atoi.c			\
 			src/ft_toupper.c		\
 			src/get_next_line.c		\
 			src/matrix_sqrt.c		\
-			src/matrix_sqrt_free.c
+			src/matrix_sqrt_free.c	\
+			src/ft_strconc.c		\
+			src/ft_lstpushback.c
 
 all: $(NAME)
 
 $(NAME):
-	@echo "      libft @ glodenos project 42 - 2016     "
 	@echo ".____    .___________________________________"
 	@echo "|    |   |   \______   \_   _____/\__    ___/"
 	@echo "|    |   |   ||    |  _/|    __)    |    |   "
 	@echo "|    |___|   ||    |   \|     \     |    |   "
-	@echo "|________\___||________/\_____/     |____|   "         
+	@echo "|________\___||________/\_____/     |____|   "
 	@echo "                                             "
 	@gcc -c $(SRC) $(HEAD) $(FLAGS)
 	@ar rc $(NAME) $(OBJ)

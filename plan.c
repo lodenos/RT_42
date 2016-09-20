@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_err.c                                    :+:      :+:    :+:   */
+/*   plan.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/27 22:02:17 by glodenos          #+#    #+#             */
-/*   Updated: 2016/02/27 22:38:58 by glodenos         ###   ########.fr       */
+/*   Created: 2016/08/16 19:31:34 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/14 15:01:29 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rt.h"
 
-void	ft_putstr_err(char *str)
+double      plan(t_obj obj, t_ray ray)
 {
-	write(2, str, ft_strlen(str));
+    double  det;
+	(void)obj;
+
+	det = -((vecdot(&obj.rot, &ray.ro) - vecdot(&obj.rot, &obj.pos))\
+			/ vecdot(&obj.rot, &ray.rd));
+	if (det < 0)
+        return (-1);
+    return (det);
 }
