@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/18 01:17:37 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/20 16:40:39 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void                ft_putnbr_fd(int n, int fd);
 void                ft_putstr(char const *s);
 void                ft_putstr_err(const char *str, int quit);
 void                ft_putstr_fd(char const *s, int fd);
+void                ft_putstr_tab(char **str, char *cut);
 void                *ft_realloc(void *ptr, size_t size);
 char                *ft_strchr(char const *s, int c);
 char                *ft_strcat(char *dest, char const *src);

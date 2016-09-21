@@ -1,0 +1,45 @@
+scene
+{
+	cam_pos(0 0 -800)
+	cam_dir(0 0 1)
+	render(1280 960)
+}
+content
+{
+	spot
+	{
+		color(256 256 256)
+		pos(0 0 0)
+		power(50)
+	}
+	object(plan)
+	{
+		color(204 60 20)
+		pos(0 -1 0)
+		rot(0 1 0)
+	}
+	object(sphere)
+	{
+		color(255 0 255)
+		pos(-2 -2 50)
+		size(3)
+	}
+	object(sphere)
+	{
+		color(0 255 255)
+		pos(8 -2 50)
+		size(3)
+	}
+	object(sphere)
+	{
+		color(255 255 0)
+		pos(3 7 50)
+		size(3)
+	}
+	object(sphere)
+	{
+		color(255 0 0)
+		pos(3 3 50)
+		size(3)
+	}
+}

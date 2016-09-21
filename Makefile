@@ -6,14 +6,14 @@
 #    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/08 14:11:35 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/19 03:47:28 by glodenos         ###   ########.fr        #
+#    Updated: 2016/09/22 01:11:44 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OPENCL	=	-framework OpenCL
 
-FLAGS	=	-fsanitize=address -g3 -O3 -lm #-Weverything -Wall -Werror -Wextra -lm -O3	\
-			-g3   #
+FLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g3 -O3 -lm -Weverything  \
+			-Wno-padded
 
 HEAD	=	-I ./head
 
@@ -37,7 +37,23 @@ SRC		=	\
             src/sphere.c                \
             src/light.c                 \
             src/coordinates_collision.c \
-            src/diffused_light.c
+            src/diffused_light.c		\
+			src/lunch_opencl.c			\
+			src/err_cl.c				\
+			src/get_src_opencl.c		\
+			src/specular_light.c		\
+			src/vector_formula_1.c		\
+			src/vector_formula_2.c		\
+			src/get_camera.c			\
+			src/get_spot.c				\
+			src/cone.c					\
+			src/get_object.c			\
+			src/ft_strconc.c			\
+			src/parser.c				\
+			src/ft_lstpushback.c		\
+			src/plan.c					\
+			src/cylinder.c				\
+			src/torus.c
 
 all:
 	@make -C ./libft

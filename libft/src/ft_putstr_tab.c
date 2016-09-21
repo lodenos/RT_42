@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_tab.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/05 22:08:43 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/20 15:57:17 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/20 16:33:44 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/20 16:43:13 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlen_tab(char **tab)
+void    ft_putstr_tab(char **str, char *cut)
 {
-	int	i;
+    int i;
 
-	i = -1;
-    if (tab == NULL)
-        return (0);
-	while (tab[++i])
-		;
-	return (i);
+    i = -1;
+    while (str[++i])
+    {
+        ft_putstr(str[i]);
+        ft_putstr(cut);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 16:01:15 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/19 03:52:25 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/21 17:29:22 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int         main(int argc, char **argv)
 {
     t_env  e;
 
-    if (argc != 2)
-        ft_putstr_err("A single map in between", 1);
-    get_scene(argv[1], &e);
+    /*  lunch_opencl(&e.cl);    */
+    parser(&e, argc, argv);
     if (SDL_Init(SDL_INIT_EVERYTHING))
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);

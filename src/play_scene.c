@@ -6,16 +6,16 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 10:43:19 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/19 03:52:27 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/20 21:49:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static void pixel_put(SDL_Renderer *rend, unsigned int rgb, int x, int y)
+static void pixel_put(SDL_Renderer *rend, t_rgb rgb, int x, int y)
 {
-    SDL_SetRenderDrawColor(rend, (Uint8)(rgb >> 24), (Uint8)(rgb >> 16),
-            (Uint8)(rgb >> 8), (Uint8)rgb);
+    SDL_SetRenderDrawColor(rend, (Uint8)(rgb.red), (Uint8)(rgb.green),
+            (Uint8)(rgb.blue), 255);
     SDL_RenderDrawPoint(rend, x, y);
 }
 

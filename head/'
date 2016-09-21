@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 16:02:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/22 01:26:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/21 20:33:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ typedef struct          s_rgb
 
 typedef struct          s_ray
 {
-    int                 index;
-    int                 tmin;
     int                 max;
     struct s_vec3       a;
     struct s_vec3       b;
@@ -77,7 +75,6 @@ typedef struct          s_ray
 
 typedef struct          s_obj
 {
-    struct s_vec3       rot;
     double              det;        /*                          */
     int                 end;        /*  End obj                 */
     double              (*ft)(struct s_obj, struct s_ray);
@@ -142,17 +139,8 @@ char                    **get_src_opencl(char **file);
 void                    specular_light(t_ray *ray, t_spt spt, t_obj obj);
 void                    parser(t_env *e, int argc, char **argv);
 void                    get_scene(t_env *e, t_list *list);
-void                    get_camera(t_env *e, char *cam, int index);
-void                    get_spot(t_env *e, char *data, int s, int index);
-void                    get_object(t_env *e, t_list *list, int s, int o);
-double                  cone(t_obj obj, t_ray ray);
-char                    *ft_strconc(char *str, char start, char end);
-void                    ft_lstpushback(t_list **blist, void const *content,
-                                size_t content_size);
-double                  plan(t_obj obj, t_ray ray);
-double                  torus(t_obj obj, t_ray ray);
-double                  cylinder(t_obj obj, t_ray ray);
-void                    get_spotinfo(t_env *e, t_list *list, int s);
+
+
 
 t_vec3                  vector_add(t_vec3 a, t_vec3 b);
 double                  vector_mult(t_vec3 a, t_vec3 b);

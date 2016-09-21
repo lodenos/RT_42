@@ -6,7 +6,7 @@
 #    By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/18 00:43:32 by glodenos         ###   ########.fr        #
+#    Updated: 2016/09/20 16:43:34 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC		=	src/ft_atoi.c			\
 			src/ft_putstr.c			\
 			src/ft_putstr_err.c		\
 			src/ft_putstr_fd.c		\
+			src/ft_putstr_tab.c		\
 			src/ft_strchr.c			\
 			src/ft_strcat.c			\
 			src/ft_strclr.c			\
