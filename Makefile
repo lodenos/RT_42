@@ -6,7 +6,7 @@
 #    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/14 16:09:43 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/13 14:04:50 by anespoul         ###   ########.fr        #
+#    Updated: 2016/09/21 12:11:18 by anespoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC		=	\
 			cone.c					\
 			torus.c					\
 			cylinder.c				\
-			ft_vec.c
+			ft_vec.c				\
+			spec_light.c
 
 $(NAME): $(OBJ)
 

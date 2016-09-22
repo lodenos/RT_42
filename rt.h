@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 16:57:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/15 15:42:16 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/21 12:09:26 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void                run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray);
 void				get_scene(t_env *e, t_list *list);
 void				get_object(t_env *e, t_list *list, int s, int o);
 void				get_spotinfo(t_env *e, t_list *list, int s);
+void				spec_light(t_ray *ray, t_spt spt, t_obj);
 
 t_env				*parser(t_env *e, int ac, char **av);
 void				vecnorm(t_vec3d *v);
@@ -146,5 +147,7 @@ t_vec3d				vecsub(t_vec3d *a, t_vec3d *b);
 double				vecdot(t_vec3d *a, t_vec3d *b);
 t_vec3d				vecdot2(t_vec3d *v, double i);
 t_vec3d				vecadd(t_vec3d *v,  t_vec3d *u);
+double				power_nb(double x, int y);
+t_vec3d				reverse_vec(t_vec3d v);
 
 #endif

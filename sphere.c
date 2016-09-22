@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 22:10:12 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/15 16:01:10 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/21 14:17:56 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,3 @@ double		sphere(t_obj obj, t_ray ray)
 	}
 	return (-1);
 }
-
-/*
-	evo.a = vecdot(&ray.rd, &ray.rd);
-	evo.b = 2 * (vecdot(&ray.ro, &ray.rd) - vecdot(&ray.rd, &obj.pos));
-	evo.c = vecdot(&ray.ro, &ray.ro) - 2 * vecdot(&ray.ro, &obj.pos) +\
-			vecdot(&obj.pos, &obj.pos) - obj.r * obj.r;*/

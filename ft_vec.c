@@ -6,7 +6,7 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 14:17:51 by anespoul          #+#    #+#             */
-/*   Updated: 2016/09/19 13:45:43 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/21 12:05:56 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,29 @@ t_vec3d		veccopy(t_vec3d *v)
 	copy.y = v->y;
 	copy.z = v->z;
 	return (copy);
+}
+
+t_vec3d		reverse_vec(t_vec3d v)
+{
+	v.x = -v.x;
+	v.y = -v.y;
+	v.z = -v.z;
+	return (v);
+}
+
+double		power_nb(double x, int y)
+{
+	int i;
+	double res;
+
+	i = 1;
+	res = x;
+	while (i <= y)
+	{
+		res *= x;
+		i++;
+	}
+	return (res);
 }
 
 t_vec3d		vecsub(t_vec3d *a, t_vec3d *b)

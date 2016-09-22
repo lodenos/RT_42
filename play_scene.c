@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 22:07:36 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/15 17:46:03 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/20 11:56:55 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static void	play_color(t_env *e, int k, t_rgb rgb)
     e->img.tab[++k] = rgb.red;
 }
 
-static void play_objet(t_env *e)
+static void play_objet(t_env *e, double x, double y)
 {
+	e->pos.x = x;
+	e->pos.y = y;
     e->ray.rgb.blue = 0;
     e->ray.rgb.green = 0;
     e->ray.rgb.red = 0;
@@ -31,12 +33,15 @@ static void play_objet(t_env *e)
 
 void		play_scene(t_env *e)
 {
-    e->pos.y = -1;
-    while (++e->pos.y < e->hei)
+	double	x;
+	double	y;
+
+    y = -1;
+    while (++y < e->hei)
     {
-        e->pos.x = -1;
-        while (++e->pos.x < e->wid)
-            play_objet(e);
-    }
+        x = -1;
+        while (++x < e->wid)
+			play_objet(e, x, y);
+	}
     mlx_put_image_to_window(e->img.mlx, e->img.win, e->img.img, 0, 0);
 }

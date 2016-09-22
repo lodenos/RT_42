@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 21:53:16 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/19 11:39:33 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/21 14:38:10 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void        run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
 	while (obj[++i].end)
 	{
 		obj[i].det = obj[i].ft(obj[i], *ray);
-		coordinates_collision(&obj[i], *ray);
 		if (0 <= obj[i].det && obj[i].det <= ray->tmin)
 		{
 			ray->tmin = obj[i].det;
@@ -38,6 +37,7 @@ void        run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
 	}
 	if (obj[ray->index].det == -1)
 		return ;
+	coordinates_collision(&obj[ray->index], *ray);
 	fill_color(ray, &obj[ray->index]);
 	light(spt, obj[ray->index], ray);
 }
