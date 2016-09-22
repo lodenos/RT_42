@@ -6,16 +6,13 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 22:02:17 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/17 23:51:08 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/02/27 22:38:58 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_err(const char *str, int quit)
+void	ft_putstr_err(char *str)
 {
 	write(2, str, ft_strlen(str));
-	write(2, "\n", 1);
-	if (quit)
-		exit(0);
 }
