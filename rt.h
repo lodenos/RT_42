@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 16:57:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/21 12:09:26 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/22 12:48:43 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct      s_env       /*  Environment Program     */
 
 void                camera(t_env *e);
 void                coordinates_collision(t_obj *obj, t_ray ray);
-double              diffused_light(t_obj obj, t_ray ray);
+double              diffused_light(t_obj obj, t_ray ray, t_spt spt);
 int                 event_key_press(int k, t_env *e);
 int                 event_key_release(int k, t_env *e);
 void                light(t_spt *spt, t_obj obj, t_ray *ray);
