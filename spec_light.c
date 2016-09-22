@@ -6,7 +6,7 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 11:26:00 by anespoul          #+#    #+#             */
-/*   Updated: 2016/09/22 12:20:14 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/09/22 13:06:00 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	spec_light(t_ray *ray, t_spt spt, t_obj obj)
 	tmp = reverse_vec(l);
 	z = vecdot(&tmp, &r);
 	z = power_nb(z, 28);
-	ray->rgb.red = limit_rgb(ray->rgb.red + (spt.rgb.red * z));
-	ray->rgb.green = limit_rgb(ray->rgb.green + (spt.rgb.green * z));
-	ray->rgb.blue = limit_rgb(ray->rgb.blue + (spt.rgb.blue * z));
+	if (z > 0)
+	{
+		ray->rgb.red = limit_rgb(ray->rgb.red + (spt.rgb.red * z));
+		ray->rgb.green = limit_rgb(ray->rgb.green + (spt.rgb.green * z));
+		ray->rgb.blue = limit_rgb(ray->rgb.blue + (spt.rgb.blue * z));
+	}
 }
