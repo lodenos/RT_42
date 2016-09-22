@@ -9,7 +9,7 @@ content
 	spot
 	{
 		color(255 255 255)
-		pos(-50 50 0)
+		pos(-50 0 80)
 		power(50)
 	}
 	object(cylinder)

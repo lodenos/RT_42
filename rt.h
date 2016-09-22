@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/14 16:57:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/22 17:00:30 by nrandria         ###   ########.fr       */
+/*   Updated: 2016/09/22 18:51:33 by nrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ typedef struct      s_env       /*  Environment Program     */
 
 void                camera(t_env *e);
 void                coordinates_collision(t_obj *obj, t_ray ray);
-double              diffused_light(t_obj obj, t_ray ray, t_spt spt);
+/*double              diffused_light(t_obj obj, t_ray ray, t_spt spt);*/
+double              diffused_light(t_ray *ray, t_spt spt, t_obj obj);
 int                 event_key_press(int k, t_env *e);
 int                 event_key_release(int k, t_env *e);
 void                light(t_spt *spt, t_obj obj, t_ray *ray);
@@ -149,5 +150,13 @@ t_vec3d				vecdot2(t_vec3d *v, double i);
 t_vec3d				vecadd(t_vec3d *v,  t_vec3d *u);
 double				power_nb(double x, int y);
 t_vec3d				reverse_vec(t_vec3d v);
+
+
+/* DO NOT TOUCH ANESPOUL -> PROPERTY OF CDUCAFFY NRANDRIA*/
+
+double				vec_scal(t_vec3d a, t_vec3d b);
+t_vec3d				vec_mult(t_vec3d v, double i);
+t_vec3d				get_vect(t_vec3d a, t_vec3d b);
+int					limit_rgb(int x);
 
 #endif
