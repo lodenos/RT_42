@@ -5,38 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/29 21:53:16 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/19 03:52:47 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/23 06:42:20 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static int  first_object(t_obj *obj, int i, int j)
-{
-    if (obj[j].end == 0)
-        return (i);
-    if (obj[i].det > obj[j].det)
-        return (first_object(obj, i, j + 1));
-    else
-        return (first_object(obj, j, i + 1));
-}
+void    run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
+{                
+    /* TODO Algo MASTER DU RT FAITE PAS CHIER CODEZ PROPRE !!!   */
+    register int    i;
+    register int    index;
+    register double tmin;
 
-void        run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
-{
-    int     i;
 
+    ray->rgba = (t_rgba){0, 0, 0, 255};
     (void)spt;
-    i = -1;
-    ray->rgb = 0;
-    while (obj[++i].end)
+    i = 0;
+    tmin = 20000;
+    index = 0;
+    while (obj[i].end)
     {
-        obj[i].det = obj[i].ft(obj[i], *ray);
-        coordinates_collision(&obj[i], *ray);
+        obj[i].ft(&obj[i], *ray);
+        if (0 <= obj[i].det && obj[i].det <= tmin)
+        {
+            tmin = obj[i].det;
+            index = i;
+        }
+        ++i;
     }
-    i = first_object(obj, 0, 1);
-    if (obj[i].det == -1.0)
+    if ((int)obj[index].det == -1)
         return ;
-    ray->rgb = obj[i].rgb;
-    light(spt, obj[i], ray);
+    ray->rgba = obj[index].rgba;
+    light(spt, obj[index], ray);
 }

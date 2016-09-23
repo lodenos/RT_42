@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coordinates_collision.c                            :+:      :+:    :+:   */
+/*   play_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/17 07:23:45 by glodenos          #+#    #+#             */
-/*   Updated: 2016/08/22 20:02:28 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/23 00:39:44 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    coordinates_collision(t_obj *obj, t_ray ray)
+void    play_scene(t_env *e, SDL_Renderer* rend)
 {
-    obj->norm.x = ray.a.x + ray.b.x * obj->det;
-    obj->norm.y = ray.a.y + ray.b.y * obj->det;
-    obj->norm.z = ray.a.z + ray.b.z * obj->det;
+    register size_t x;
+    register size_t y;
+
+    x = 0;
+    while (x < e->img.w)
+    {
+        y = 0;
+        while (y < e->img.h)
+        {
+            camera(e->cam, &e->ray, x, y);
+            run_raytracing(e->spt, e->obj, &e->ray);
+            pixel_put(rend, e->ray.rgba, x, y);
+            ++y;
+        }
+        ++x;
+    }
+    SDL_RenderPresent(rend);
 }
