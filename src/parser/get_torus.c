@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 01:43:12 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 16:37:52 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 20:14:08 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void    get_torus(t_obj *obj, char **line)
 {
-    (void)obj;
     (void)line;
+    obj->end = 1;
 }

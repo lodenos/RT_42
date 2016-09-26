@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 01:26:13 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 17:23:51 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 19:57:26 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline int   get_radius(char *str)
     i = -1;
     while (str[++i])
         if (str[i] < '0' || str[i] > '9')
-           ft_putstr_err("ERROR: Init. Object.char.radius", 1);
+           ft_putstr_err("ERROR: Init. Object.sphere.char.radius", 1);
     return (atoi(str));
 }
 

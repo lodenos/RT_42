@@ -6,16 +6,17 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 19:54:12 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 15:15:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 20:20:09 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline char *get_file_raw(int fd)
+char    *get_file_raw(int fd)
 {
     char    *file;
     char    *tmp;
+    char    *swp;
 
     if (fd == -1)
         return (NULL);
@@ -28,7 +29,10 @@ inline char *get_file_raw(int fd)
     }
     while (read(fd, tmp, 100))
     {
-        file = ft_strjoin(file, tmp);
+        swp = ft_strjoin(file, tmp);
+        free(file);
+        file = ft_strdup(swp);
+        free(swp);
         ft_bzero(tmp, 101);
     }
     free(tmp);

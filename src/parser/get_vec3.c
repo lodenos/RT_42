@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 22:31:08 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 17:27:36 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 20:14:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vec3  get_vec3(char *str)
     i = -1;
     while (str[++i])
         if (str[i] < '0' || str[i] > '9')
-            if (str[i] != '/' && str[i] != '-') 
+            if (str[i] != '/' && str[i] != '-' && str[i] != '.') 
                 ft_putstr_err("ERROR: Init. vec3.char", 1); 
     tmp = ft_strsplit(str, '/');
     if (ft_strlen_tab(tmp) != 3)

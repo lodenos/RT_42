@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:50:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 14:38:41 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 20:28:56 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ void    get_scene(t_env *e, char *file)
         get_file_ortv1(e, file);
     else
         ft_putstr_err("unknown format", 1);
+    free_tab((void **)tmp);
 }
