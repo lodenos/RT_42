@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 05:42:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/23 07:26:17 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ inline void sphere(register t_obj *obj, register t_ray ray)
         if (evo.ta > evo.tb)
         {
             obj->det = evo.tb;
+            obj->collision = coordinates_collision(ray.a, ray.b, obj->det);
+            obj->normal = obj->collision;
             return ;
         }
         obj->det = evo.ta;
-        obj->collision = coordinates_collision(ray.a, obj->pos, obj->det);
+        obj->collision = coordinates_collision(ray.a, ray.b, obj->det);
         obj->normal = obj->collision;
         return ;
     }

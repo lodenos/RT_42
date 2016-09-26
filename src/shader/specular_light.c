@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 05:01:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 06:42:22 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/23 07:35:42 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void                    specular_light(t_ray *ray, t_spt spt, t_obj obj)
 
     l = vector_normalize(vector_sub(obj.normal, spt.pos));
     n = vector_normalize(vector_sub(obj.normal, obj.pos));
-    r = vector_add(l, vector_mult_x(vector_mult_x(n, 100),
+    r = vector_add(l, vector_mult_x(vector_mult_x(n, 2),
                 vector_scalar(vector_reverse(n), l)));
-    z = pow(vector_scalar(vector_reverse(l), r), 2);
+    z = pow(vector_scalar(vector_reverse(l), r), 28);
     ray->rgba = limit_rgba(ray->rgba, rgba_mult(spt.rgba, z));
 }

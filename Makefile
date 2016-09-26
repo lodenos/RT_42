@@ -6,14 +6,15 @@
 #    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/08 14:11:35 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/23 06:41:54 by glodenos         ###   ########.fr        #
+#    Updated: 2016/09/26 16:01:43 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OPENCL	=	-framework OpenCL
 
-FLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g3 -O3 -lm -Weverything  \
-			-Wno-padded
+FLAGS	=	-Wall -Werror -Wextra -O3 -lm -Weverything -Wno-padded
+
+SEG		=	-fsanitize=address -g3
 
 HEAD	=	-I ./head
 
@@ -36,7 +37,20 @@ SRC		=										\
 			src/opencl/get_src_opencl.c			\
 			src/opencl/lunch_opencl.c			\
 												\
+			src/parser/get_camera.c				\
+			src/parser/get_color.c				\
+			src/parser/get_cone.c				\
+			src/parser/get_cylinder.c			\
+			src/parser/get_file_mlt.c			\
+			src/parser/get_file_obj.c			\
+			src/parser/get_file_ortv1.c			\
+			src/parser/get_file_raw.c			\
+			src/parser/get_plan.c				\
 			src/parser/get_scene.c				\
+			src/parser/get_sphere.c				\
+			src/parser/get_spot.c				\
+			src/parser/get_torus.c				\
+			src/parser/get_vec3.c				\
 												\
 			src/ray_tracing/camera.c			\
 			src/ray_tracing/play_scene.c		\
@@ -59,11 +73,19 @@ SRC		=										\
 
 all:
 	@make -j -C ./libft
-	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL) $(FLAGS)
+	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL)
 
 unix: 
 	@make -C ./libft
 	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL_UNIX) $(FLAGS)
+
+norm:
+	@make -j -C ./libft
+	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL) $(FLAGS)
+
+debug:
+	@make -j -C ./libft
+	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL) $(SEG)
 
 clean:
 	@make -C ./libft

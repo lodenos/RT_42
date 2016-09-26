@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   play_scene.c                                       :+:      :+:    :+:   */
+/*   get_file_raw.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 17:18:02 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/25 19:54:12 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/26 15:15:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    play_scene(t_env *e, SDL_Renderer* rend)
+inline char *get_file_raw(int fd)
 {
-    register size_t x;
-    register size_t y;
+    char    *file;
+    char    *tmp;
 
-    x = 0;
-    while (x < e->img.w)
+    if (fd == -1)
+        return (NULL);
+    if (!(file = (char *)ft_memalloc(sizeof(char))))
+        return (file);
+    if (!(tmp = (char *)ft_memalloc(sizeof(char) * 101)))
     {
-        y = 0;
-        while (y < e->img.h)
-        {
-            camera(e->cam, &e->ray, x, y);
-            run_raytracing(e->spt, e->obj, &e->ray);
-            pixel_put(rend, e->ray.rgba, x, y);
-            ++y;
-        }
-        ++x;
+        free(file);
+        return (tmp);
     }
-    SDL_RenderPresent(rend);
+    while (read(fd, tmp, 100))
+    {
+        file = ft_strjoin(file, tmp);
+        ft_bzero(tmp, 101);
+    }
+    free(tmp);
+    return (file);
 }

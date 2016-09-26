@@ -6,7 +6,7 @@
 #    By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/18 00:43:32 by glodenos         ###   ########.fr        #
+#    Updated: 2016/09/26 13:05:14 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ NAME	=	libft.a
 
 OBJ		=	$(SRC:src/%.c=%.o)
 
-SRC		=	src/ft_atoi.c			\
+SRC		=							\
+			src/free_tab.c			\
+			src/ft_atoi.c			\
 			src/ft_bzero.c			\
 			src/ft_itoa.c			\
 			src/ft_isalnum.c		\
@@ -50,6 +52,7 @@ SRC		=	src/ft_atoi.c			\
 			src/ft_putstr.c			\
 			src/ft_putstr_err.c		\
 			src/ft_putstr_fd.c		\
+			src/ft_putstr_tab.c		\
 			src/ft_strchr.c			\
 			src/ft_strcat.c			\
 			src/ft_strclr.c			\
@@ -66,6 +69,7 @@ SRC		=	src/ft_atoi.c			\
 			src/ft_strlen_tab.c		\
 			src/ft_strmap.c			\
 			src/ft_strmapi.c		\
+			src/ft_strnbr_idtchar.c	\
 			src/ft_strncat.c		\
 			src/ft_strnequ.c		\
 			src/ft_strnew.c			\

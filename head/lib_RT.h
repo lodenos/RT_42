@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 06:41:43 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 17:26:22 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct          s_opcl      /**/
 
 typedef struct          s_spt       /**/
 {
+    char                ambient;    /**/
     char                end;        /**/
     size_t              id;         /**/
     char                light;      /**/
@@ -117,7 +118,7 @@ typedef struct          s_env       /* Variable Master          */
 {
     struct s_cam        cam;        /* Struct camera            */
     SDL_Event           event;      /* Event SDL                */
-    char                exit;       /* Var quit programme       */
+    _Bool               exit;       /* Var quit programme       */
     struct s_opcl       cl;         /* Struct OpenCl            */
     struct s_img        img;        /* Struct Image             */
     size_t              n_obj;      /* Number object            */
@@ -137,8 +138,21 @@ void                    cylinder(register t_obj *obj, register t_ray ray);
 double                  diffused_light(t_obj obj, t_ray ray);
 void                    err_cl(cl_int err);
 void                    event_everything(t_env *e);
+void                    get_camera(t_env *e, char **line);
+t_rgba                  get_color(char *str);
+void                    get_cone(t_obj *obj, char **line);
+void                    get_cylinder(t_obj *obj, char **line);
+void                    get_file_mlt(t_env *e, char *file);
+void                    get_file_obj(t_env *e, char *file);
+void                    get_file_ortv1(t_env *e, char *file);
+char                    *get_file_raw(int fd);
+void                    get_plan(t_obj *obj, char **line);
 void                    get_scene(t_env *e, char *file);
+void                    get_sphere(t_obj *obj, char **line);
+void                    get_spot(t_spt *spt, char **line);
 void                    get_src_opencl(t_opcl *cl);
+void                    get_torus(t_obj *obj, char **line);
+t_vec3                  get_vec3(char *str);
 void                    light(t_spt *spt, t_obj obj, t_ray *ray);
 t_rgba                  limit_rgba(register t_rgba a, register t_rgba b);
 void                    lunch_opencl(t_opcl *cl);

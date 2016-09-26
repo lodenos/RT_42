@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:06:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 03:49:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/23 07:55:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ inline void camera(register t_cam cam, t_ray *ray, register size_t x,
     ray->a.z = 0;
     ray->b.x = (int)x - (WIDTH / 2);
     ray->b.y = (int)y - (HEIGHT / 2);
-    ray->b.z = 3500;
+    ray->b.z = 4500;
 }

@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/18 01:17:37 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 13:52:02 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct      s_list
     struct s_list   *next;
 }                   t_list;
 
+void                free_tab(void **tab);
 int                 ft_atoi(char const *s);
 void                ft_bzero(void *s, size_t n);
 int                 ft_isalnum(int c);
@@ -62,6 +63,7 @@ void                ft_putnbr_fd(int n, int fd);
 void                ft_putstr(char const *s);
 void                ft_putstr_err(const char *str, int quit);
 void                ft_putstr_fd(char const *s, int fd);
+void                ft_putstr_tab(char **str, char *sep);
 void                *ft_realloc(void *ptr, size_t size);
 char                *ft_strchr(char const *s, int c);
 char                *ft_strcat(char *dest, char const *src);
@@ -79,6 +81,7 @@ size_t              ft_strlen(char const *s);
 int                 ft_strlen_tab(char **tab);
 char                *ft_strmap(char const *s, char (*f)(char));
 char                *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+size_t              ft_strnbr_idtchar(char *str, char c);
 char                *ft_strncat(char *dest, char const *src, size_t n);
 int                 ft_strnequ(char const *s1, char const *s2, size_t n);
 char                *ft_strnew(size_t size);

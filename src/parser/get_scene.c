@@ -6,40 +6,31 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:50:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 06:41:39 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/26 14:38:41 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
+/*  Format suport .obj .mlt .ortv1  */
+
 void    get_scene(t_env *e, char *file)
 {
-    /* TODO Parser a faire sans leaks et sans liste chaine */
-    int i;
+    char    **tmp;
 
-    (void)file;
-    i = -1;
-    e->n_obj = 4;
-    e->n_spt = 1;
-
-    e->obj = (t_obj*)malloc(sizeof(t_obj) * (e->n_obj + 1));
-    e->spt = (t_spt*)malloc(sizeof(t_spt) * (e->n_spt + 1));
-
-    e->spt[0].rgba = (t_rgba){255, 150, 255, 255};
-    e->spt[0].pos.x = 400;
-    e->spt[0].pos.y = 400;
-    e->spt[0].pos.z = -100;
-    e->spt[0].light = 100;
-    e->spt[0].end = 1;
-    e->spt[1].end = 0;
-    ++i;
-    e->obj[i].rgba = (t_rgba){255, 0, 255, 255};
-    e->obj[i].pos.x = -5;
-    e->obj[i].pos.y = 0;
-    e->obj[i].pos.z = 500;
-    e->obj[i].radius = 20;
-    e->obj[i].end = 1;
-    e->obj[i].ft = &(sphere);
-    ++i;
-    e->obj[i].end = 0;
+    if (file == NULL)
+        ft_putstr_err("A file must be as argument", 1);
+    if (ft_strnbr_idtchar(file, '.') != 1)
+        ft_putstr_err("unknown format", 1);
+    tmp = ft_strsplit(file, '.');
+    if (ft_strlen_tab(tmp) != 2)
+        ft_putstr_err("unknown format", 1);
+    if (!ft_strcmp(tmp[1], "obj"))
+        get_file_obj(e, file);
+    else if (!ft_strcmp(tmp[1], "mlt"))
+        get_file_mlt(e, file);
+    else if (!ft_strcmp(tmp[1], "ortv1"))
+        get_file_ortv1(e, file);
+    else
+        ft_putstr_err("unknown format", 1);
 }
