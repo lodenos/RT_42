@@ -6,16 +6,22 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 01:33:26 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/27 16:23:44 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    lunch_opencl(t_opcl *cl)
+static inline void  create_kernel(cl_program prog, t_krnl *krnl)
 {
-    if (cl->file == NULL)
-        ft_putstr_err("Missing source codes OpenCL", 1);
+    cl_int  err;
+
+    krnl->run_raytracing = clCreateKernel(prog, "run_raytracing", &err); 
+    err_cl(err);
+}
+
+void                lunch_opencl(t_opcl *cl)
+{
     get_src_opencl(cl);
     err_cl(clGetPlatformIDs(1, &cl->platf_id, &cl->num_platf));
     err_cl(clGetDeviceIDs(cl->platf_id, CL_DEVICE_TYPE_GPU, 1, &cl->device_id,
@@ -28,4 +34,5 @@ void    lunch_opencl(t_opcl *cl)
             cl->size_src, &cl->err);
     err_cl(cl->err);
     err_cl(clBuildProgram(cl->prog, 1, &cl->device_id, cl->flags, NULL, NULL));
+    create_kernel(cl->prog, &cl->krnl);
 }

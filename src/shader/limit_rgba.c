@@ -5,25 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/23 06:01:31 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/23 06:38:58 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/28 01:09:13 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/28 01:48:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline t_rgba   limit_rgba(register t_rgba a, register t_rgba b)
+inline unsigned char    limit_rgba(register double x)
 {
-    register size_t max;
-    register t_rgba color;
-
-    max = (size_t)(a.red + b.red);
-    color.red = (max > 255) ? 0xFF : (unsigned char)max;
-    max = (size_t)(a.green + b.green);
-    color.green = (max > 255) ? 0xFF : (unsigned char)max;
-    max = (size_t)(a.blue + b.blue);
-    color.blue = (max > 255) ? 0xFF : (unsigned char)max;
-    max = (size_t)(a.alpha + b.alpha);
-    color.alpha = (max > 255) ? 0xFF : (unsigned char)max;
-    return (color);
+    if (x > 255)
+        return (0xFF);
+    else if (x < 0)
+        return (0xFF);
+    return ((unsigned char)x);
 }

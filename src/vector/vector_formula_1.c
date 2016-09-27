@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:49 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/22 23:29:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/27 21:49:01 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ inline t_vec3   vector_normalize(register t_vec3 vect)
     register t_vec3 norm;
     register double value;
 
-    value = 1 / sqrt((vect.x * vect.x) + (vect.y * vect.y) +
-            (vect.z * vect.z));
+    value = 1 / sqrt(vector_scalar(vect, vect));
     norm.x = vect.x * value;
     norm.y = vect.y * value;
     norm.z = vect.z * value;

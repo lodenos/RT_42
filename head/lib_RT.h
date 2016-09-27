@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 19:34:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/28 01:49:31 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ typedef struct          s_obj       /* Object                   */
     struct s_vec3       rotate;     /* Angle of rotation        */
 }                       t_obj;
 
+typedef struct          s_krnl
+{
+    cl_kernel           run_raytracing;
+}                       t_krnl;
+
 typedef struct          s_opcl      /**/
 {
     char                **file;     /**/
@@ -96,6 +101,7 @@ typedef struct          s_opcl      /**/
     cl_device_id        device_id;  /**/
     cl_context          contx;      /**/
     cl_command_queue    cmd_que;    /**/
+    struct s_krnl       krnl;       /**/
     cl_program          prog;       /**/
     cl_platform_id      platf_id;   /**/
     cl_uint             num_device; /**/
@@ -135,7 +141,7 @@ t_vec3                  coordinates_collision(register t_vec3 a,               \
                                 register t_vec3 b, register double det);
 void                    create_window(t_env *e, Uint32 flags);
 void                    cylinder(register t_obj *obj, register t_ray ray);
-double                  diffused_light(t_obj obj, t_ray ray);
+double                  diffused_light(t_obj obj, t_spt spt);
 void                    err_cl(cl_int err);
 void                    event_everything(t_env *e);
 void                    get_camera(t_env *e, char **line);
@@ -154,14 +160,15 @@ void                    get_src_opencl(t_opcl *cl);
 void                    get_torus(t_obj *obj, char **line);
 t_vec3                  get_vec3(char *str);
 void                    light(t_spt *spt, t_obj obj, t_ray *ray);
-t_rgba                  limit_rgba(register t_rgba a, register t_rgba b);
+unsigned char           limit_rgba(register double x);
 void                    lunch_opencl(t_opcl *cl);
 void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,   \
                                 size_t y);
 void                    plan(register t_obj *obj, register t_ray ray);
 void                    play_scene(t_env *e, SDL_Renderer *rend);
 void                    run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray);
-void                    specular_light(t_ray *ray, t_spt spt, t_obj obj);
+void                    specular_light(t_ray *ray, register t_spt spt,
+                                register t_obj obj);
 void                    sphere(register t_obj *obj, register t_ray ray);
 void                    torus(register t_obj *obj, register t_ray ray);
 t_vec3                  vector_add(register t_vec3 a, register t_vec3 b);

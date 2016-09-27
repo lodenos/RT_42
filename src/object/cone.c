@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:26 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 19:52:55 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/27 21:20:52 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,8 @@ inline void cone(register t_obj *obj, register t_ray ray)
     {
         evo.ta = (-evo.b + sqrt(evo.det)) / (2 * evo.a);
         evo.tb = (-evo.b - sqrt(evo.det)) / (2 * evo.a);
-        if (evo.ta > evo.tb) 
-            obj->det = evo.tb;
-        else
-            obj->det = evo.ta;
-        obj->collision = coordinates_collision(ray.a, ray.b, obj->det);
-        obj->normal = obj->collision;
-        return ;
+        obj->det = (evo.ta > evo.tb) ? evo.tb : evo.ta;
     }
-    obj->det = -1;
+    else
+        obj->det = -1;
 }

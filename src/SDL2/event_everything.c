@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:28:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/22 23:56:20 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/28 01:50:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void                event_everything(t_env *e)
         SDL_SetRenderDrawColor(e->img.rend, 0, 0, 0, 255);
         if (SDL_RenderClear(e->img.rend) != 0)
             ft_putstr_err(SDL_GetError(), 1);
+        e->cam.w = e->img.x;
+        e->cam.h = e->img.y;
         play_scene(e, e->img.rend);
     }
 }
