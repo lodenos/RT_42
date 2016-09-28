@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_sqrt_free.c                                 :+:      :+:    :+:   */
+/*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/28 10:08:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 12:43:02 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/22 23:56:41 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/28 01:52:16 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_RT.h"
 
-void	matrix_sqrt_free(char **map, size_t n)
+inline void pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x, size_t y)
 {
-	while (n)
-		free(map[--n]);
-	free(map);
+    SDL_SetRenderDrawColor(rend, (Uint8)rgba.red, (Uint8)rgba.green,
+            (Uint8)(rgba.blue), (Uint8)rgba.alpha);
+    SDL_RenderDrawPoint(rend, (int)x, (int)y);
 }

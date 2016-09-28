@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/25 20:25:07 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/25 20:09:13 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/25 21:07:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "libft.h"
+
+void    ft_putstr_tab(char **str, char *sep)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+    size_t  i;
+
+    i = 0;
+    while (str[i])
+    {
+        ft_putstr(str[i]);
+        ft_putstr(sep);
+        ++i;
+    }
 }

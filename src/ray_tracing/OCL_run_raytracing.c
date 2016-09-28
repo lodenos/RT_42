@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   OCL_run_raytracing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/25 20:25:07 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/27 13:05:23 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/27 17:17:16 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "lib_RT.h"
+
+void    OCL_run_raytracing()
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
 }

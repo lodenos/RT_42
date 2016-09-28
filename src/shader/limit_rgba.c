@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   limit_rgba.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/25 20:25:07 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/28 01:09:13 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/28 01:48:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "lib_RT.h"
+
+inline unsigned char    limit_rgba(register double x)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+	printf("x = %lf", x);
+    if (x > 255)
+        return (255);
+    else if (x < 0)
+        return (0);
+    return ((unsigned char)x);
 }

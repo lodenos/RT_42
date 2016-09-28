@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   get_file_mlt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/25 20:25:07 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/25 17:58:41 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/25 18:01:07 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "lib_RT.h"
+
+void    get_file_mlt(t_env *e, char *file)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+    (void)e;
+    (void)file;
+
+    ft_putstr_err("The format is not yet supported", 1);
 }

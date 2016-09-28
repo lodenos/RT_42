@@ -5,22 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/16 14:50:34 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/19 03:52:29 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/23 00:06:30 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/28 01:53:07 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void	camera(t_cam *cam, t_ray *ray, int x, int y)
+inline void camera(register t_cam cam, t_ray *ray, register size_t x,
+        register size_t y)
 {
-	(void)cam;
- 
-    ray->max = 0;
-    ray->a.x = cam->w / 2;
-    ray->a.y = cam->h / 2;
-    ray->a.z = 5000;
-    ray->b.x = x - cam->w / 2;
-    ray->b.y = y - cam->h / 2;
-    ray->b.z = -800;
+    /* TODO refaire la camera   */
+
+    ray->a.x = cam.pos.x;
+    ray->a.y = cam.pos.y;
+    ray->a.z = cam.pos.z;
+    ray->b.x = (int)x - ((int)cam.w / 2) - cam.view.x;
+    ray->b.y = (int)y - ((int)cam.h / 2) - cam.view.y;
+    ray->b.z = cam.view.z;
 }

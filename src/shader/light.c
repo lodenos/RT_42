@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/19 00:49:37 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/19 20:35:51 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/28 01:48:27 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void    light(t_spt *spt, t_obj obj, t_ray *ray)
 {
-    ray->rgb = obj.rgb;;
+    diffused_light(ray, spt[0], obj);
+    specular_light(ray, spt[0], obj);
 }

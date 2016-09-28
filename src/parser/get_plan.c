@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_sqrt_free.c                                 :+:      :+:    :+:   */
+/*   get_plan.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/28 10:08:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 12:43:02 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/26 01:24:40 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/26 20:12:39 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_RT.h"
 
-void	matrix_sqrt_free(char **map, size_t n)
+void    get_plan(t_obj *obj, char **line)
 {
-	while (n)
-		free(map[--n]);
-	free(map);
+    if (ft_strlen_tab(line) != 4)
+        ft_putstr_err("ERROR: Init. Object.plan.nbr.argument", 1);
+    obj->pos = get_vec3(line[1]);
+    obj->rotate = get_vec3(line[2]);
+    obj->rgba = get_color(line[3]);
+    obj->ft = &(plan);
+    obj->end = 1;
 }

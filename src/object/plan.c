@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_sqrt_free.c                                 :+:      :+:    :+:   */
+/*   plan.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/28 10:08:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 12:43:02 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/22 21:51:55 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/27 21:21:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_RT.h"
 
-void	matrix_sqrt_free(char **map, size_t n)
+inline void plan(register t_obj *obj, register t_ray ray)
 {
-	while (n)
-		free(map[--n]);
-	free(map);
+    register double det;
+
+    det = -((vector_scalar(obj->rotate, ray.a) -                               \
+            vector_scalar(obj->rotate, obj->pos)) /                            \
+            vector_scalar(obj->rotate, ray.b));
+    obj->det = (det < 0) ? -1 : det;    
 }

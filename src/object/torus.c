@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   torus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/25 20:25:07 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/22 21:51:33 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/23 01:07:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+#include "lib_RT.h"
+
+inline void torus(register t_obj *obj, register t_ray ray)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    return (0);
+    register t_evo  evo;
+
+    (void)evo;
+    (void)ray;
+    obj->det = -1;
 }

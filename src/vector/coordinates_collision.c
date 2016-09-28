@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_sqrt_free.c                                 :+:      :+:    :+:   */
+/*   coordinates_collision.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/28 10:08:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 12:43:02 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/23 03:56:23 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/23 07:13:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_RT.h"
 
-void	matrix_sqrt_free(char **map, size_t n)
+inline t_vec3   coordinates_collision(register t_vec3 a, register t_vec3 b,
+        register double det)
 {
-	while (n)
-		free(map[--n]);
-	free(map);
+    t_vec3  vect;
+
+    vect.x = a.x + b.x * det;
+    vect.y = a.y + b.y * det;
+    vect.z = a.z + b.z * det;
+
+
+    return (vect);
 }
