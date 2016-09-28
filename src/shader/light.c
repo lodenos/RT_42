@@ -14,6 +14,6 @@
 
 void    light(t_spt *spt, t_obj obj, t_ray *ray)
 {
-    diffused_light(ray, spt[0], obj);
+	diffused_light(ray, spt[0], obj);
     specular_light(ray, spt[0], obj);
 }
