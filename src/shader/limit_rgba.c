@@ -14,7 +14,6 @@
 
 inline unsigned char    limit_rgba(register double x)
 {
-	printf("x = %lf", x);
     if (x > 255)
         return (255);
     else if (x < 0)
