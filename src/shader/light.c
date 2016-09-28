@@ -12,8 +12,33 @@
 
 #include "lib_RT.h"
 
-void    light(t_spt *spt, t_obj obj, t_ray *ray)
+void    light(t_spt *spt, t_obj *obj, int tmp, t_ray *ray)
 {
-	diffused_light(ray, spt[0], obj);
-    specular_light(ray, spt[0], obj);
+
+	int 	index;
+	t_obj   tmp_obj;
+
+	t_ray	ray_shadow;
+
+	tmp_obj = obj[tmp];
+
+
+	ray_shadow.b = tmp_obj.collision;
+	ray_shadow.a = spt[0].pos;
+
+	ray_shadow.b = vector_normalize(vector_sub(ray_shadow.b, ray_shadow.a));
+
+	index = intersect(obj, &ray_shadow);
+
+	if ((obj[index].det == -1) || (tmp == index))
+	{
+		diffused_light(ray, spt[0], tmp_obj);
+    	specular_light(ray, spt[0], tmp_obj);
+	}
+	else
+	{
+		diffused_light(ray, spt[0], tmp_obj);
+		ray->rgba = (t_rgba){ray->rgba.red * 0.1, ray->rgba.green * 0.1, ray->rgba.blue * 0.1, 255};
+	}
+	
 }

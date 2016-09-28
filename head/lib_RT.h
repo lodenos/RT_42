@@ -159,7 +159,7 @@ void                    get_spot(t_spt *spt, char **line);
 void                    get_src_opencl(t_opcl *cl);
 void                    get_torus(t_obj *obj, char **line);
 t_vec3                  get_vec3(char *str);
-void                    light(t_spt *spt, t_obj obj, t_ray *ray);
+void                    light(t_spt *spt, t_obj *obj, int tmp, t_ray *ray);
 unsigned char           limit_rgba(register double x);
 void                    lunch_opencl(t_opcl *cl);
 void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,   \
@@ -177,5 +177,7 @@ t_vec3                  vector_normalize(register t_vec3 vect);
 t_vec3                  vector_reverse(register t_vec3 vect);
 double                  vector_scalar(register t_vec3 a, register t_vec3 b);
 t_vec3                  vector_sub(register t_vec3 a, register t_vec3 b);
+
+int  intersect(t_obj *obj, t_ray *ray);
 
 #endif

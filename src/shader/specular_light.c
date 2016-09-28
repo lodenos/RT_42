@@ -36,7 +36,7 @@ void                    specular_light(t_ray *ray, register t_spt spt,
     z = power(vector_scalar(vector_reverse(l), vector_add(l,
             vector_mult_x(vector_mult_x(n, 2), vector_scalar(
             vector_reverse(n), l)))), 20);
-    z = z * 0.1; /*coef speculaire*/
+    z = z * 0.5; /*coef speculaire*/
     if (z > 0)
     {
         ray->rgba.red = limit_rgba(ray->rgba.red + spt.rgba.red * z);

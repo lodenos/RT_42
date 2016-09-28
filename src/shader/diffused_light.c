@@ -23,7 +23,7 @@ void   diffused_light(t_ray *ray, register t_spt spt, register t_obj obj)
     z = vector_scalar(l,n);
     z = 0.5 * z;         /*lumiere diffuse * coef lumiere diffuse*/
     z = z * -1;          /* pour regler probleme d'inversion */
-    z = z + 0.9;         /* diffuse + coef ambiant */
+    z = z + 0.2;         /* diffuse + coef ambiant */
 
     ray->rgba.red = limit_rgba(((ray->rgba.red + spt.rgba.red) / 2) * z);
     ray->rgba.green = limit_rgba(((ray->rgba.green + spt.rgba.green) / 2) * z);

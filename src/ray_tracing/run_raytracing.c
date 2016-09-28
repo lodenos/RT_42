@@ -13,7 +13,8 @@
 #include "lib_RT.h"
 
 /* TODO Algo MASTER DU RT FAITE PAS CHIER CODEZ PROPRE !!!   */
-void    run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
+
+inline int  intersect(t_obj *obj, t_ray *ray)
 {
     register int    i;
     register int    index;
@@ -32,10 +33,20 @@ void    run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
             index = i;
         }
     }
+    return (index);
+}
+
+void    run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray)
+{
+    register int index;
+
+    
+    index = intersect(obj, ray);
     if ((int)obj[index].det == -1)
         return ;
+
     ray->rgba = obj[index].rgba;
     obj[index].collision = coordinates_collision(ray->a, ray->b, obj[index].det);
     obj[index].normal = coordinates_collision(ray->a, ray->b, obj[index].det);
-    light(spt, obj[index], ray);
+    light(spt, obj, index, ray);
 }
