@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/28 01:49:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/28 15:33:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ t_vec3                  coordinates_collision(register t_vec3 a,               \
                                 register t_vec3 b, register double det);
 void                    create_window(t_env *e, Uint32 flags);
 void                    cylinder(register t_obj *obj, register t_ray ray);
-double                  diffused_light(t_obj obj, t_spt spt);
+void                    diffused_light(t_ray *ray, register t_spt spt,
+                                register t_obj obj);
 void                    err_cl(cl_int err);
 void                    event_everything(t_env *e);
 void                    get_camera(t_env *e, char **line);
