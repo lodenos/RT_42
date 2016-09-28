@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/28 16:10:48 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/28 22:32:11 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct          s_env       /* Variable Master          */
 
 void                    camera(register t_cam cam, t_ray *ray,                 \
                                 register size_t x, register size_t y);
+size_t                  check_object(t_obj *obj, t_ray *ray);
 void                    cone(register t_obj *obj, register t_ray ray);
 t_vec3                  coordinates_collision(register t_vec3 a,               \
                                 register t_vec3 b, register double det);
@@ -160,7 +161,7 @@ void                    get_spot(t_spt *spt, char **line);
 void                    get_src_opencl(t_opcl *cl);
 void                    get_torus(t_obj *obj, char **line);
 t_vec3                  get_vec3(char *str);
-void                    light(t_spt *spt, t_obj obj, t_ray *ray);
+void                    light(t_spt *spt, t_obj *obj, size_t id, t_ray *ray);
 unsigned char           limit_rgba(register double x);
 void                    lunch_opencl(t_opcl *cl);
 void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,   \

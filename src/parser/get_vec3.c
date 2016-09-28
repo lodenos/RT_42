@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 22:31:08 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 20:14:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/28 16:46:18 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_vec3  get_vec3(char *str)
     if (ft_strlen_tab(tmp) != 3)
         ft_putstr_err("ERROR: Init. vec3.argument", 1);
     vect.x = atof(tmp[0]);
-    vect.y = atof(tmp[1]);
+    vect.y = -atof(tmp[1]);
     vect.z = atof(tmp[2]);
     free_tab((void **)tmp);
     return (vect);

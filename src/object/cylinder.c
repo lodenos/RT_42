@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/28 13:12:25 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/28 20:54:46 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ inline void cylinder(register t_obj *obj, register t_ray ray)
         evo.tb = (-evo.b - sqrt(evo.det)) / (2 * evo.a);
         obj->det = (evo.ta > evo.tb) ? evo.tb : evo.ta;
     }
-    obj->det = -1;
+    else
+        obj->det = -1;
 }
