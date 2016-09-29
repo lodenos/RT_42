@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:06:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/28 01:53:07 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/29 12:49:39 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ inline void camera(register t_cam cam, t_ray *ray, register size_t x,
     ray->b.x = (int)x - ((int)cam.w / 2) - cam.view.x;
     ray->b.y = (int)y - ((int)cam.h / 2) - cam.view.y;
     ray->b.z = cam.view.z;
+
+    ray->b = vector_normalize(vector_sub(ray->b, ray->a));
 }

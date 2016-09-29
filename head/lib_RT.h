@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/28 22:32:11 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/29 12:55:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,13 @@ typedef struct          s_opcl      /**/
 
 typedef struct          s_spt       /**/
 {
-    char                ambient;    /**/
+    double              ambient;    /**/
     char                end;        /**/
     size_t              id;         /**/
-    char                light;      /**/
+    double              light;      /**/
     struct s_vec3       pos;        /**/
     struct s_rgba       rgba;       /**/
+    double              specular;   /**/
 }                       t_spt;
 
 
