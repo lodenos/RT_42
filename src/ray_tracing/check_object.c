@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   check_object.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/23 00:06:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 12:49:39 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/28 21:01:21 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/28 22:32:15 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline void camera(register t_cam cam, t_ray *ray, register size_t x,
-        register size_t y)
+inline size_t   check_object(t_obj *obj, t_ray *ray)
 {
-    /* TODO refaire la camera   */
+    register int    i;
+    register size_t id;
+    register double tmp_det;
 
-    ray->a.x = cam.pos.x;
-    ray->a.y = cam.pos.y;
-    ray->a.z = cam.pos.z;
-    ray->b.x = (int)x - ((int)cam.w / 2) - cam.view.x;
-    ray->b.y = (int)y - ((int)cam.h / 2) - cam.view.y;
-    ray->b.z = cam.view.z;
-
-    ray->b = vector_normalize(vector_sub(ray->b, ray->a));
+    i = -1;
+    id = 0;
+    tmp_det = 20000;
+    ray->rgba = (t_rgba){0, 0, 0, 255};
+    while (obj[++i].end)
+    {
+        obj[i].ft(&obj[i], *ray);
+        if (0 <= obj[i].det && obj[i].det <= tmp_det)
+            tmp_det = obj[(id = (size_t)i)].det;
+    }
+    return (id);
 }

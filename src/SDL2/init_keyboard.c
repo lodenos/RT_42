@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   camera.c                                           :+:      :+:    :+:   */
+/*   init_keyboard.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/23 00:06:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 12:49:39 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/29 16:38:34 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/29 16:50:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline void camera(register t_cam cam, t_ray *ray, register size_t x,
-        register size_t y)
+void    init_keyboard(t_key *key)
 {
-    /* TODO refaire la camera   */
-
-    ray->a.x = cam.pos.x;
-    ray->a.y = cam.pos.y;
-    ray->a.z = cam.pos.z;
-    ray->b.x = (int)x - ((int)cam.w / 2) - cam.view.x;
-    ray->b.y = (int)y - ((int)cam.h / 2) - cam.view.y;
-    ray->b.z = cam.view.z;
-
-    ray->b = vector_normalize(vector_sub(ray->b, ray->a));
+    key->key_a = 0;
+    key->key_comma = 0;
+    key->key_d = 0;
+    key->key_down = 0;
+    key->key_left = 0;
+    key->key_lshift = 0;
+    key->key_point = 0;
+    key->key_right = 0;
+    key->key_s = 0;
+    key->key_space = 0;
+    key->key_up = 0;
+    key->key_w = 0;
 }
