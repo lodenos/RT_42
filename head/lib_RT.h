@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 04:21:21 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/30 16:40:41 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <OpenCL/cl.h>
 #include <SDL2/SDL.h>
 #define TITLE "RT"
-#define WIDTH 1280
-#define HEIGHT 720
+#define WIDTH 1920
+#define HEIGHT 1080
 
 typedef struct          s_evo       /**/
 {
@@ -80,7 +80,7 @@ typedef struct          s_obj       /* Object                   */
     char                end;        /* 1 -> next ; 0 -x end     */
     void                (*ft)(struct s_obj *, struct s_ray);
     size_t              id;         /* Id Group                 */
-    struct s_vec3       normal;     /* the normal of the object */
+    struct s_vec3       normal;     /* Vector Normal            */
     struct s_vec3       pos;        /* Position Object          */
     double              radius;     /* radius of the object     */
     struct s_rgba       rgba;       /* Calors of the object     */
@@ -134,6 +134,7 @@ typedef struct          s_spt       /**/
     struct s_vec3       pos;        /**/
     struct s_rgba       rgba;       /**/
     double              specular;   /**/
+    double              diffuse;    /**/
 }                       t_spt;
 
 
@@ -201,5 +202,9 @@ t_vec3                  vector_reverse(register t_vec3 vect);
 double                  vector_scalar(register t_vec3 a, register t_vec3 b);
 t_vec3                  vector_sub(register t_vec3 a, register t_vec3 b);
 void                    window_resize(t_env *e);
+
+void get_normal_object(t_obj *obj, t_ray *ray);
+
+
 
 #endif

@@ -6,23 +6,23 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 04:21:29 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/30 15:51:33 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void  get_normal_object(t_obj *obj, t_ray *ray)
+inline void  get_normal_object(t_obj *obj, t_ray *ray)
 {
     (void)ray;
     if (obj->ft == &cone)
-        ;
+         obj->normal = vector_normalize(vector_sub(obj->collision, obj->pos));
     else if (obj->ft == &cylinder)
-        ;
+         obj->normal = vector_normalize(vector_sub(obj->collision, obj->pos));
     else if (obj->ft == &plan)
-        ;
+        obj->normal = vector_normalize(obj->rotate);
     else if (obj->ft == &sphere)
-       obj->normal = obj->collision;
+         obj->normal = vector_normalize(vector_sub(obj->collision, obj->pos));
     else if (obj->ft == &torus)
         ;
 }

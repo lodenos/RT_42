@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 04:21:25 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/30 16:41:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void                    light(t_env *e, t_rgba *c_diff, size_t id)
     t_rgba          color;
     color = (t_rgba){0, 0, 0, 255};
     register double z;
+    register double tmp;
+    int             np;
+    np = 0;
     z = 0.0;
 //-------------------------------------
 
@@ -65,15 +68,24 @@ void                    light(t_env *e, t_rgba *c_diff, size_t id)
         if (((int)e->obj[index].det == -1) || (id == index))
         {
             diffused_light(&e->ray, e->spt[i], tmp_obj);
-            z += specular_light(e->spt[i], e->obj[id]);
+            tmp = specular_light(e->spt[i], e->obj[id]);
+            if (tmp >= z)
+            {
+                z = tmp;
+                np = i;
+            }
+
+    if (e->spt[i].rgba.red > color.red)
+        color.red = limit_rgba(e->spt[i].rgba.red);
+    if (e->spt[i].rgba.green > color.green)
+        color.green = limit_rgba(e->spt[i].rgba.green);
+    if (e->spt[i].rgba.blue > color.blue)
+        color.blue = limit_rgba(e->spt[i].rgba.blue);
+
+
 //-----------------------------------------------------
-            if (e->spt[i].rgba.red > color.red)
-                color.red = e->spt[i].rgba.red;
-            if (e->spt[i].rgba.green > color.green)
-                color.green = e->spt[i].rgba.green;
-            if (e->spt[i].rgba.blue > color.blue)
-                color.blue = e->spt[i].rgba.blue;
-//-----------------------------------------------------
+      
+        //-----------------------------------------------------
         }
         else
         {
@@ -83,6 +95,14 @@ void                    light(t_env *e, t_rgba *c_diff, size_t id)
         c_diff[i] = e->ray.rgba;
     }
     e->ray.rgba = merge_diffuse(c_diff, e->n_spt);
+/*
+    if (e->spt[np].rgba.red > color.red)
+        color.red = e->spt[np].rgba.red;
+    if (e->spt[np].rgba.green > color.green)
+        color.green = e->spt[np].rgba.green;
+    if (e->spt[np].rgba.blue > color.blue)
+        color.blue = e->spt[np].rgba.blue;
+*/
     if (z > 0)
     {
         e->ray.rgba.red = limit_rgba(e->ray.rgba.red + color.red * z);
