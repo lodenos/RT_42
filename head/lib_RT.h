@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 12:55:21 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/30 04:21:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,22 @@ typedef struct          s_obj       /* Object                   */
     struct s_vec3       rotate;     /* Angle of rotation        */
 }                       t_obj;
 
+typedef struct          s_key       /* Keyboard for key repet   */
+{
+    _Bool               key_a;      /**/
+    _Bool               key_comma;  /**/
+    _Bool               key_d;      /**/
+    _Bool               key_down;   /**/
+    _Bool               key_left;   /**/
+    _Bool               key_lshift; /**/
+    _Bool               key_point;  /**/
+    _Bool               key_right;  /**/
+    _Bool               key_s;      /**/
+    _Bool               key_space;  /**/
+    _Bool               key_up;     /**/
+    _Bool               key_w;      /**/
+}                       t_key;
+
 typedef struct          s_krnl
 {
     cl_kernel           run_raytracing;
@@ -123,11 +139,13 @@ typedef struct          s_spt       /**/
 
 typedef struct          s_env       /* Variable Master          */
 {
+    struct s_rgba       *c_diff;    /* Struct *color diffuse    */
     struct s_cam        cam;        /* Struct camera            */
     SDL_Event           event;      /* Event SDL                */
     _Bool               exit;       /* Var quit programme       */
     struct s_opcl       cl;         /* Struct OpenCl            */
     struct s_img        img;        /* Struct Image             */
+    struct s_key        key;        /* Struct Keyboard          */
     size_t              n_obj;      /* Number object            */
     size_t              n_spt;      /* Number spotlight         */
     struct s_obj        *obj;       /* Struct Object            */
@@ -143,7 +161,7 @@ t_vec3                  coordinates_collision(register t_vec3 a,               \
                                 register t_vec3 b, register double det);
 void                    create_window(t_env *e, Uint32 flags);
 void                    cylinder(register t_obj *obj, register t_ray ray);
-void                    diffused_light(t_ray *ray, register t_spt spt,
+void                    diffused_light(t_ray *ray, register t_spt spt,         \
                                 register t_obj obj);
 void                    err_cl(cl_int err);
 void                    event_everything(t_env *e);
@@ -162,16 +180,18 @@ void                    get_spot(t_spt *spt, char **line);
 void                    get_src_opencl(t_opcl *cl);
 void                    get_torus(t_obj *obj, char **line);
 t_vec3                  get_vec3(char *str);
-void                    light(t_spt *spt, t_obj *obj, size_t id, t_ray *ray);
+void                    init_keyboard(t_key *key);
+void                    key_press(t_env *e);
+void                    key_release(t_env *e);
+void                    light(t_env *e, t_rgba *c_diff, register size_t id);
 unsigned char           limit_rgba(register double x);
 void                    lunch_opencl(t_opcl *cl);
 void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,   \
                                 size_t y);
 void                    plan(register t_obj *obj, register t_ray ray);
 void                    play_scene(t_env *e, SDL_Renderer *rend);
-void                    run_raytracing(t_spt *spt, t_obj *obj, t_ray *ray);
-void                    specular_light(t_ray *ray, register t_spt spt,
-                                register t_obj obj);
+void                    run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
+double                  specular_light(register t_spt spt, register t_obj obj);
 void                    sphere(register t_obj *obj, register t_ray ray);
 void                    torus(register t_obj *obj, register t_ray ray);
 t_vec3                  vector_add(register t_vec3 a, register t_vec3 b);
@@ -180,5 +200,6 @@ t_vec3                  vector_normalize(register t_vec3 vect);
 t_vec3                  vector_reverse(register t_vec3 vect);
 double                  vector_scalar(register t_vec3 a, register t_vec3 b);
 t_vec3                  vector_sub(register t_vec3 a, register t_vec3 b);
+void                    window_resize(t_env *e);
 
 #endif

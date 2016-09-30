@@ -6,7 +6,7 @@
 #    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/08 14:11:35 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/28 21:15:19 by glodenos         ###   ########.fr        #
+#    Updated: 2016/09/29 17:29:48 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,11 @@ SRC		=										\
 												\
 			src/SDL2/create_window.c			\
 			src/SDL2/event_everything.c			\
+			src/SDL2/init_keyboard.c			\
+			src/SDL2/key_press.c				\
+			src/SDL2/key_release.c				\
 			src/SDL2/pixel_put.c				\
+			src/SDL2/window_resize.c			\
 												\
 			src/shader/diffused_light.c			\
 			src/shader/light.c					\

@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 23:02:35 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/09/29 16:39:40 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static inline void  init_RT(t_env *e)
 {
+    init_keyboard(&e->key);
     e->img.h = HEIGHT;
     e->img.w = WIDTH;
     e->img.x = SDL_WINDOWPOS_CENTERED;
