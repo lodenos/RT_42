@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/03 12:05:16 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/03 16:35:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ static inline void  init_RT(t_env *e)
 
 static inline void  init_file_opencl(t_opcl *cl)
 {
-    if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * 2)))
+    cl->nbr_src = 2;
+    if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * cl->nbr_src + 1)))
         ft_putstr_err("ERROR: malloc", 1);
-    cl->file[0] = ft_strdup("src_cl/run_raytracing.cl");
-    cl->file[1] = NULL;
-    cl->flags = NULL;
+    cl->file[0] = ft_strdup("src_cl/ray_tracing/run_raytracing.cl");
+    cl->file[1] = ft_strdup("src_cl/object/sphere.cl");
+    cl->file[2] = NULL;
+    cl->flags = ft_strdup("-I ./head_cl");
     if (!(cl->size_src = (size_t *)ft_memalloc(sizeof(size_t) * 2)))
         ft_putstr_err("ERROR: malloc", 1);
     if (!(cl->src = (char **)ft_memalloc(sizeof(char *) * 2)))

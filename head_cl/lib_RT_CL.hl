@@ -1,0 +1,47 @@
+#ifndef LIB_RT_CL_HL
+#define LIB_RT_CL_HL
+
+typedef struct      s_cam
+{
+    float           fov;
+    size_t          h;
+    float3          pos;
+    float3          rotate;
+    float3          view;
+    size_t          w;
+}                   t_cam;
+
+typedef struct      s_evo
+{
+    float           a;
+    float           b;
+    float           c;
+    float           det;
+    float           ta;
+    float           tb;
+}                   t_evo;
+
+typedef struct      s_ray
+{
+    float3          a;
+    float3          b;
+    int             rgba;
+}                   t_ray;
+
+typedef struct      s_obj
+{
+    size_t          id;
+    float3          pos;
+    float           radius;
+    float3          rotate;
+
+}                   t_obj;
+
+typedef struct      s_env
+{
+    struct s_obj    *obj;
+}                   t_env;
+
+float   sphere(t_obj obj, t_ray ray);
+
+#endif

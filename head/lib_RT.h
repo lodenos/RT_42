@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/03 12:05:58 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/03 17:25:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct          s_opcl      /**/
     cl_context          contx;      /**/
     cl_command_queue    cmd_que;    /**/
     struct s_krnl       krnl;       /**/
+    cl_uint             nbr_src;    /**/
     cl_program          prog;       /**/
     cl_platform_id      platf_id;   /**/
     cl_uint             num_device; /**/

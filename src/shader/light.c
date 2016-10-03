@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 16:41:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/03 17:25:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,12 @@ void                    light(t_env *e, t_rgba *c_diff, size_t id)
                 z = tmp;
                 np = i;
             }
-
-    if (e->spt[i].rgba.red > color.red)
-        color.red = limit_rgba(e->spt[i].rgba.red);
-    if (e->spt[i].rgba.green > color.green)
-        color.green = limit_rgba(e->spt[i].rgba.green);
-    if (e->spt[i].rgba.blue > color.blue)
-        color.blue = limit_rgba(e->spt[i].rgba.blue);
-
-
-//-----------------------------------------------------
-      
-        //-----------------------------------------------------
+            if (e->spt[i].rgba.red > color.red)
+                color.red = limit_rgba(e->spt[i].rgba.red);
+            if (e->spt[i].rgba.green > color.green)
+                color.green = limit_rgba(e->spt[i].rgba.green);
+            if (e->spt[i].rgba.blue > color.blue)
+                color.blue = limit_rgba(e->spt[i].rgba.blue);
         }
         else
         {
@@ -95,14 +89,6 @@ void                    light(t_env *e, t_rgba *c_diff, size_t id)
         c_diff[i] = e->ray.rgba;
     }
     e->ray.rgba = merge_diffuse(c_diff, e->n_spt);
-/*
-    if (e->spt[np].rgba.red > color.red)
-        color.red = e->spt[np].rgba.red;
-    if (e->spt[np].rgba.green > color.green)
-        color.green = e->spt[np].rgba.green;
-    if (e->spt[np].rgba.blue > color.blue)
-        color.blue = e->spt[np].rgba.blue;
-*/
     if (z > 0)
     {
         e->ray.rgba.red = limit_rgba(e->ray.rgba.red + color.red * z);
