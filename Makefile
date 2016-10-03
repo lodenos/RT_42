@@ -6,7 +6,7 @@
 #    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/08 14:11:35 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/29 17:29:48 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/02 15:06:48 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SDL     =   -framework Opengl -framework SDL2
 SDL_UNIX	=   -lSDL2
 
 SRC		=										\
+			src/mouve/matrix_rotate.c			\
+												\
 			src/object/sphere.c					\
 			src/object/cone.c					\
 			src/object/torus.c					\
@@ -54,6 +56,7 @@ SRC		=										\
 												\
 			src/ray_tracing/camera.c			\
 			src/ray_tracing/check_object.c		\
+			src/ray_tracing/OCL_run_raytracing.c\
 			src/ray_tracing/play_scene.c		\
 			src/ray_tracing/run_raytracing.c	\
 												\
@@ -73,6 +76,7 @@ SRC		=										\
 			src/vector/coordinates_collision.c	\
 			src/vector/vector_formula_1.c		\
 			src/vector/vector_formula_2.c		\
+			src/vector/vector_rotate.c			\
 												\
 			src/main.c
 

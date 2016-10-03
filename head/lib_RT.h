@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 16:40:41 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/03 12:05:58 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct          s_ray       /* Ray                      */
 
 typedef struct          s_obj       /* Object                   */
 {
+    double              angle;      /* Angle                    */
     struct s_vec3       collision;  /* Point collision ray      */
     double              det;        /* Determinant matrice      */
     char                end;        /* 1 -> next ; 0 -x end     */
@@ -152,6 +153,7 @@ typedef struct          s_env       /* Variable Master          */
     struct s_obj        *obj;       /* Struct Object            */
     struct s_ray        ray;        /* Struct Ray               */
     struct s_spt        *spt;       /* Struct Spotlight         */
+    int                 GPU;        /* Use GPU 1 yes 0 no       */
 }                       t_env;
 
 void                    camera(register t_cam cam, t_ray *ray,                 \
@@ -174,6 +176,7 @@ void                    get_file_mlt(t_env *e, char *file);
 void                    get_file_obj(t_env *e, char *file);
 void                    get_file_ortv1(t_env *e, char *file);
 char                    *get_file_raw(int fd);
+void                    get_normal_object(t_obj *obj, t_ray *ray);
 void                    get_plan(t_obj *obj, char **line);
 void                    get_scene(t_env *e, char *file);
 void                    get_sphere(t_obj *obj, char **line);
@@ -187,6 +190,9 @@ void                    key_release(t_env *e);
 void                    light(t_env *e, t_rgba *c_diff, register size_t id);
 unsigned char           limit_rgba(register double x);
 void                    lunch_opencl(t_opcl *cl);
+t_vec3                  matrix_rotate(t_vec3 register point, t_vec3            \
+                                register rot);
+void                    OCL_run_raytracing(t_env *e, SDL_Renderer *rend);
 void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,   \
                                 size_t y);
 void                    plan(register t_obj *obj, register t_ray ray);
@@ -199,12 +205,9 @@ t_vec3                  vector_add(register t_vec3 a, register t_vec3 b);
 t_vec3                  vector_mult_x(register t_vec3 vect, register double x);
 t_vec3                  vector_normalize(register t_vec3 vect);
 t_vec3                  vector_reverse(register t_vec3 vect);
+t_vec3                  vector_rotate(t_vec3 vec, double angle);
 double                  vector_scalar(register t_vec3 a, register t_vec3 b);
 t_vec3                  vector_sub(register t_vec3 a, register t_vec3 b);
 void                    window_resize(t_env *e);
-
-void get_normal_object(t_obj *obj, t_ray *ray);
-
-
 
 #endif

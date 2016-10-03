@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 16:39:40 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/03 12:05:16 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ int                 main(int argc, char **argv)
 {
     t_env   e;
 
-    if (argc != 2)
+    e.GPU = 0;
+    if (argc < 2 || argc > 3)
         ft_putstr_err("RT: a single scene must be passed as argument", 1);
+    if (argc == 3)
+        if ((e.GPU = ft_atoi(argv[2])) < 0 || e.GPU > 1)
+            ft_putstr_err("ERROR: main.argument GPU: 1 == on ; 2 == off", 1);
     get_scene(&e, argv[1]);
     init_file_opencl(&e.cl);
     lunch_opencl(&e.cl);
