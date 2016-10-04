@@ -6,13 +6,13 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 13:05:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 20:51:34 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:35:11 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void  push_to_window(SDL_Renderer *rend, int *img, size_t w,
+static inline void  push_to_window(SDL_Renderer *rend, size_t *img, size_t w,
         size_t h)
 {
     size_t  k;
@@ -45,7 +45,7 @@ void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
 //----------
 
     buff_img = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
-            sizeof(int) * wk, NULL, &err);
+            sizeof(size_t) * wk, NULL, &err);
     err_cl(err);
 
 //----------
@@ -56,7 +56,7 @@ void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
 //----------
 
     err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_img, CL_TRUE, 0,
-            sizeof(int) * wk, e->img.img, 0, NULL, NULL));
+            sizeof(size_t) * wk, e->img.img, 0, NULL, NULL));
 
 //-----------
 
@@ -66,6 +66,6 @@ void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
 //-----------
 
     err_cl(clEnqueueReadBuffer(e->cl.cmd_que, buff_img, CL_TRUE, 0,
-            sizeof(int) * wk, e->img.img, 0, NULL, NULL));
+            sizeof(size_t) * wk, e->img.img, 0, NULL, NULL));
     push_to_window(rend, e->img.img, e->img.w, e->img.h);
 }

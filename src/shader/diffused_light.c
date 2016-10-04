@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 04:50:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 03:55:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:35:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 inline void diffused_light(t_ray *ray, register t_spt spt, register t_obj obj)
 {
-    register t_vec3 l;
-    register double z;
+    register cl_float3  l;
+    register double     z;
 
     l = vector_normalize(vector_sub(obj.collision, spt.pos));
     z = -(vector_scalar(l, obj.normal) * spt.diffuse);

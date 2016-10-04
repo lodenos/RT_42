@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 01:21:27 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 20:01:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:41:03 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void    get_cylinder(t_obj *obj, char **line)
     obj->rotate = get_vec3(line[2]);
     obj->rgba = get_color(line[3]);
     obj->radius = get_radius(line[4]);
-    obj->ft = &(cylinder);
+    obj->type = 2;
     obj->end = 1;
 }

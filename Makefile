@@ -6,7 +6,7 @@
 #    By: nrandria <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/04 21:08:23 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/04 23:20:11 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,79 +15,80 @@
 SRC_PATH = src
 
 SRC_NAME = 									\
-											move/matrix_rotate.c			\
+			move/matrix_rotate.c			\
 											\
-											object/sphere.c					\
-											object/cone.c					\
-											object/torus.c					\
-											object/cylinder.c				\
-											object/plan.c					\
+			object/sphere.c					\
+			object/cone.c					\
+			object/torus.c					\
+			object/cylinder.c				\
+			object/plan.c					\
 											\
-											opencl/err_cl.c					\
-											opencl/get_src_opencl.c			\
-											opencl/lunch_opencl.c			\
+			opencl/err_cl.c					\
+			opencl/get_src_opencl.c			\
+			opencl/lunch_opencl.c			\
 											\
-											parser/get_camera.c				\
-											parser/get_color.c				\
-											parser/get_cone.c				\
-											parser/get_cylinder.c			\
-											parser/get_file_mlt.c			\
-											parser/get_file_obj.c			\
-											parser/get_file_ortv1.c			\
-											parser/get_file_raw.c			\
-											parser/get_plan.c				\
-											parser/get_scene.c				\
-											parser/get_sphere.c				\
-											parser/get_spot.c				\
-											parser/get_torus.c				\
-											parser/get_vec3.c				\
+			parser/get_camera.c				\
+			parser/get_color.c				\
+			parser/get_cone.c				\
+			parser/get_cylinder.c			\
+			parser/get_file_mlt.c			\
+			parser/get_file_obj.c			\
+			parser/get_file_ortv1.c			\
+			parser/get_file_raw.c			\
+			parser/get_plan.c				\
+			parser/get_scene.c				\
+			parser/get_sphere.c				\
+			parser/get_spot.c				\
+			parser/get_torus.c				\
+			parser/get_vec3.c				\
 											\
-											ray_tracing/camera.c			\
-											ray_tracing/check_object.c		\
-											ray_tracing/OCL_run_raytracing.c\
-											ray_tracing/play_scene.c		\
-											ray_tracing/run_raytracing.c	\
+			ray_tracing/camera.c			\
+			ray_tracing/check_object.c		\
+			ray_tracing/OCL_run_raytracing.c\
+			ray_tracing/play_scene.c		\
+			ray_tracing/run_object.c		\
+			ray_tracing/run_raytracing.c	\
 											\
-											SDL2/create_window.c			\
-											SDL2/event_everything.c			\
-											SDL2/init_keyboard.c			\
-											SDL2/key_press.c				\
-											SDL2/key_release.c				\
-											SDL2/pixel_put.c				\
-											SDL2/window_resize.c			\
+			SDL2/create_window.c			\
+			SDL2/event_everything.c			\
+			SDL2/init_keyboard.c			\
+			SDL2/key_press.c				\
+			SDL2/key_release.c				\
+			SDL2/pixel_put.c				\
+			SDL2/window_resize.c			\
 											\
-											shader/diffused_light.c			\
-											shader/light.c					\
-											shader/limit_rgba.c				\
-											shader/specular_light.c			\
+			shader/diffused_light.c			\
+			shader/light.c					\
+			shader/limit_rgba.c				\
+			shader/specular_light.c			\
 											\
-											vector/coordinates_collision.c	\
-											vector/vector_formula_1.c		\
-											vector/vector_formula_2.c		\
-											vector/vector_rotate.c			\
+			vector/coordinates_collision.c	\
+			vector/vector_formula_1.c		\
+			vector/vector_formula_2.c		\
+			vector/vector_rotate.c			\
 											\
-											main.c							\
+			main.c
 
-OBJ_PATH = obj/
+OBJ_PATH	=	obj/
 
-INCLUDE = -Ihead -Ilibft/head
+INCLUDE 	= 	-Ihead -Ilibft/head
 
-LDFLAGS = -Llibft
-LDLIBS = -lft
+LDFLAGS		=	-Llibft
+LDLIBS 		= 	-lft
 
-NAME = RT
+NAME 		=	RT
 
-CC = clang
+CC 			=	clang
 
-CFLAGS = -Wall -Wextra -Werror -O3
-LIBGRPH = -lm -framework OpenGL -framework SDL2 -framework OpenCL
+CFLAGS 		=	-Wall -Wextra -Werror -O3
+LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL
 
-OBJ_NAME = $(addsuffix .o, $(basename $(SRC_NAME)))
+OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
 
-SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
-OBJ = $(addprefix $(OBJ_PATH),$(notdir $(OBJ_NAME)))
+SRC 		=	$(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ 		=	$(addprefix $(OBJ_PATH),$(notdir $(OBJ_NAME)))
 
-VPATH = $(shell find $(SRC_PATH) -type d)
+VPATH		=	$(shell find $(SRC_PATH) -type d)
 
 all: $(NAME)
 
@@ -97,7 +98,6 @@ $(NAME): $(OBJ)
 	@$(CC) $(LDFLAGS) $(LDLIBS) $(LIBGRPH) $^ -o $@
 	@sh ProgressBar.sh 0.005
 	@echo "\033[32mCompilation SUCCESS\033[0m"
-
 
 $(OBJ_PATH)%.o: %.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true

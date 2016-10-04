@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 05:01:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:15:53 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:36:28 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static inline double    power(register double x, register int y)
 {
     register int    i;
-    register double val;
+    register float  val;
 
     i = 0;
     val = x;
@@ -24,9 +24,9 @@ static inline double    power(register double x, register int y)
     return (val);
 }
 
-double                  specular_light(register t_spt spt, register t_obj obj)
+inline double           specular_light(register t_spt spt, register t_obj obj)
 {
-    register t_vec3 l;
+    register cl_float3  l;
 
     l = vector_normalize(vector_sub(spt.pos, obj.collision));
     return (power(vector_scalar(vector_reverse(l), vector_add(l,

@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 01:24:40 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 20:12:39 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:42:22 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void    get_plan(t_obj *obj, char **line)
     obj->pos = get_vec3(line[1]);
     obj->rotate = get_vec3(line[2]);
     obj->rgba = get_color(line[3]);
-    obj->ft = &(plan);
+    obj->type = 3;
     obj->end = 1;
 }

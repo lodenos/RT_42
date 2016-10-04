@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:09:49 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:29:59 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 inline void plan(register t_obj *obj, register t_ray ray)
 {
-    t_vec3  tmp_v;
-    t_vec3  origine;
-    double  det;
-    double  d;
-    t_vec3  normal;
+    cl_float3   tmp_v;
+    cl_float3   origine;
+    float       det;
+    float       d;
+    cl_float3   normal;
 
     origine.x = 0;
     origine.y = 0;

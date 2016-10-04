@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/27 23:24:52 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:28:56 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 inline void sphere(register t_obj *obj, register t_ray ray)
 {
-    register t_evo  evo;
-    register t_vec3 tmp;
+    register t_evo      evo;
+    register cl_float3  tmp;
 
     evo.a = vector_scalar(ray.b, ray.b);
     tmp = vector_sub(ray.a, obj->pos);

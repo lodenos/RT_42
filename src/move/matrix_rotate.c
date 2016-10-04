@@ -6,13 +6,14 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 18:24:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/01 18:58:59 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 23:19:35 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline t_vec3   matrix_rotate(t_vec3 register point, t_vec3 register rot)
+inline cl_float3    matrix_rotate(register cl_float3 point,
+        register cl_float3 rot)
 {
     /* Rotate Axe x */
     point.y = point.y * cos(rot.x) - point.z * sin(rot.x);

@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:26 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:19:38 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:28:16 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ inline void cone(register t_obj *obj, register t_ray ray)
     evo.b = 2 * ((ray.a.x - obj->pos.x) * ray.b.x +
             (ray.a.z - obj->pos.z) * ray.b.z -
             (ray.a.y - obj->pos.y) * ray.b.y * obj->angle);
-
     evo.c = ((ray.a.x - obj->pos.x) * (ray.a.x - obj->pos.x)) +                \
             ((ray.a.z - obj->pos.z) * (ray.a.z - obj->pos.z)) -                \
             ((ray.a.y - obj->pos.y) * (ray.a.y - obj->pos.y)) * obj->angle  - 

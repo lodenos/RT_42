@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 01:19:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/01 16:06:23 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:40:42 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void                    get_cone(t_obj *obj, char **line)
     obj->rgba = get_color(line[3]);
     obj->radius = get_radius(line[4]);
     obj->angle = tan((get_value_double(line[5]) * (M_PI / 180)));
-    obj->ft = &(cone);
+    obj->type = 1;
     obj->end = 1;
 }

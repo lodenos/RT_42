@@ -6,36 +6,29 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:18:49 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 23:18:12 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline void get_normal_object(t_obj *obj, t_ray *ray)
+inline void get_normal_object(t_obj *obj, t_ray ray)
 {
-    t_vec3  vec;
-
-    vec = ray->b;
-
-    if (obj->ft == &cone)
+    if (obj->type == 1)
         obj->normal = vector_reverse(vector_normalize(vector_sub(obj->pos,
                 vector_sub(obj->collision, vector_mult_x(vector_mult_x(
-                obj->rotate, vector_scalar(ray->b, obj->rotate) * obj->det +
-                vector_scalar(ray->a, obj->rotate)), (1 + tan(obj->angle / 2) *
+                obj->rotate, vector_scalar(ray.b, obj->rotate) * obj->det +
+                vector_scalar(ray.a, obj->rotate)), (1 + tan(obj->angle / 2) *
                 tan(obj->angle / 2)))))));
-    else if (obj->ft == &cylinder)
+    else if (obj->type == 2)
         obj->normal = vector_reverse(vector_normalize(vector_sub(obj->pos,
                 vector_sub(obj->collision, vector_mult_x(obj->rotate,
-                vector_scalar(ray->b, obj->rotate) * obj->det +
-                vector_scalar(ray->a, obj->rotate))))));
-    else if (obj->ft == &plan)
+                vector_scalar(ray.b, obj->rotate) * obj->det +
+                vector_scalar(ray.a, obj->rotate))))));
+    else if (obj->type == 3)
         obj->normal = vector_normalize(obj->rotate);
-    else if (obj->ft == &sphere)
+    else if (obj->type == 4)
         obj->normal = vector_normalize(vector_sub(obj->collision, obj->pos));
-    else if (obj->ft == &torus)
-        ;
-    ray->b = vec;
 }
 
 void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
@@ -47,6 +40,6 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     if ((int)obj[id].det == -1)
         return ;
     obj[id].collision = coordinates_collision(ray->a, ray->b, obj[id].det);
-    get_normal_object(&e->obj[id], ray);
-    light(e, e->c_diff, id);
+    get_normal_object(&obj[id], *ray);
+    light(e, ray, e->scn.c_diff, id);
 }

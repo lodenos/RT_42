@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_object.c                                     :+:      :+:    :+:   */
+/*   run_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/28 21:01:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:00:45 by glodenos         ###   ########.fr       */
+/*   Created: 2016/10/04 21:43:14 by glodenos          #+#    #+#             */
+/*   Updated: 2016/10/04 21:58:31 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline size_t   check_object(t_obj *obj, t_ray *ray)
+void    run_object(t_obj *obj, t_ray ray)
 {
-    register int    i;
-    register size_t id;
-    register double tmp_det;
-
-    i = -1;
-    id = 0;
-    tmp_det = 20000;
-    ray->rgba = (t_rgba){0, 0, 0, 255};
-    while (obj[++i].end)
-    {
-        run_object(&obj[i], *ray);
-        if (0 <= obj[i].det && obj[i].det <= tmp_det)
-            tmp_det = obj[(id = (size_t)i)].det;
-    }
-    return (id);
+    if (obj->type == 1)
+        cone(obj, ray);
+    else if (obj->type == 2)
+        cylinder(obj, ray);
+    else if (obj->type == 3)
+        plan(obj, ray);
+    else if (obj->type == 4)
+        sphere(obj, ray);
 }

@@ -6,17 +6,17 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 22:31:08 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 12:49:55 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:31:30 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-t_vec3  get_vec3(char *str)
+inline cl_float3    get_vec3(char *str)
 {
-    register int    i;
-    char            **tmp;
-    register t_vec3 vect;
+    register int        i;
+    char                **tmp;
+    register cl_float3  vect;
 
     i = -1;
     while (str[++i])
@@ -26,9 +26,9 @@ t_vec3  get_vec3(char *str)
     tmp = ft_strsplit(str, '/');
     if (ft_strlen_tab(tmp) != 3)
         ft_putstr_err("ERROR: Init. vec3.argument", 1);
-    vect.x = atof(tmp[0]);
-    vect.y = atof(tmp[1]);
-    vect.z = atof(tmp[2]);
+    vect.x = (float)atof(tmp[0]);
+    vect.y = (float)atof(tmp[1]);
+    vect.z = (float)atof(tmp[2]);
     free_tab((void **)tmp);
     return (vect);
 }
