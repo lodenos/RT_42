@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:48:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 17:35:34 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 01:17:20 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void    key_press(t_env *e)
         e->key.key_down = 1;
     else if ((e->event.key.keysym.sym == SDLK_RIGHT) &&
             (e->event.key.state == SDL_PRESSED))
-    {
-        ft_putstr("right ->\n");
         e->key.key_right = 1;
-    }
     else if ((e->event.key.keysym.sym == SDLK_LEFT) &&
             (e->event.key.state == SDL_PRESSED))
         e->key.key_left = 1;

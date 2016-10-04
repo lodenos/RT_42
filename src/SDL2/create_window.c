@@ -6,11 +6,13 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:22:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:58:34 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 01:17:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
+
+/*  TODO Leak   */
 
 void    create_window(t_env *e, Uint32 flags)
 {
@@ -21,9 +23,10 @@ void    create_window(t_env *e, Uint32 flags)
     if (e->img.img != NULL)
         free(e->img.img);
     if (!(e->img.win = SDL_CreateWindow(TITLE, (int)e->img.x, (int)e->img.y,
-                (int)e->img.w, (int)e->img.h, flags)))
+            (int)e->img.w, (int)e->img.h, flags)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (size_t *)ft_memalloc(sizeof(size_t) * e->img.w * e->img.h)))
+    if (!(e->img.img = (size_t *)ft_memalloc(sizeof(size_t) * e->img.w *
+            e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     e->scn.cam.w = e->img.w;
     e->scn.cam.h = e->img.h;
@@ -33,5 +36,6 @@ void    create_window(t_env *e, Uint32 flags)
     SDL_SetRenderDrawColor(e->img.rend, 0, 0, 0, 255);
     if (SDL_RenderClear(e->img.rend))
         ft_putstr_err(SDL_GetError(), 1);
+    SDL_RenderPresent(e->img.rend);
     play_scene(e, e->img.rend);
 }

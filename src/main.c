@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:10:50 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 01:11:50 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ int                 main(int argc, char **argv)
         if ((e.GPU = ft_atoi(argv[2])) < 0 || e.GPU > 1)
             ft_putstr_err("ERROR: main.argument GPU: 1 == on ; 2 == off", 1);
     get_scene(&e, argv[1]);
-    init_file_opencl(&e.cl);
-/*    lunch_opencl(&e.cl);*/
+    if (e.GPU)
+    {
+        init_file_opencl(&e.cl);
+        lunch_opencl(&e.cl);
+    }
     if (SDL_Init(SDL_INIT_EVERYTHING))
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);

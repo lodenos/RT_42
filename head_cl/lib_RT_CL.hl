@@ -1,77 +1,82 @@
 #ifndef LIB_RT_CL_HL
 #define LIB_RT_CL_HL
 
-typedef struct      s_cam
+typedef struct      s_evo       /**/
 {
-    float           fov;
-    size_t          h;
-    float3          pos;
-    float3          rotate;
-    float3          view;
-    size_t          w;
-}                   t_cam;
+    float           a;          /**/
+    float           b;          /**/
+    float           c;          /**/
+    float           det;        /**/
+    float           ta;         /**/
+    float           tb;         /**/
+}                   t_evo;      /**/
 
-typedef struct      s_evo
+typedef struct      s_rgba      /* Color                    */
 {
-    float           a;
-    float           b;
-    float           c;
-    float           det;
-    float           ta;
-    float           tb;
-}                   t_evo;
-
-typedef struct      s_rgba
-{
-    unsigned char   red;
-    unsigned char   green;
-    unsigned char   blue;
-    unsigned char   alpha;
+    unsigned char   red;        /* Red   0 - 255            */
+    unsigned char   green;      /* Green 0 - 255            */
+    unsigned char   blue;       /* Blue  0 - 255            */
+    unsigned char   alpha;      /* Alpha 0 - 255            */
 }                   t_rgba;
 
-typedef struct      s_obj
+typedef struct      s_cam       /* Camera                   */
 {
-    float3          collision;
-    float           det;
-    size_t          id;
-    float3          normal;
-    float3          pos;
-    float           radius;
-    struct s_rgba   rgba;
-    float3          rotate;
-    size_t          type;
-}                   t_obj;
+    float           fov;        /* FOV                      */
+    size_t          h;          /* Resolution screen view x */
+    float3          pos;        /* Position canera          */
+    float3          rotate;     /* Angle of rotation        */
+    float3          view;       /* Positon view scren {0, 0}*/
+    size_t          w;          /* Resolution screen view y */
+}                   t_cam;
 
-typedef struct      s_ray
+typedef struct      s_ray       /* Ray                      */
 {
-    float3          a;
-    float3          b;
-    struct s_rgba   rgba;
+    float3          a;          /* Point Start              */
+    float3          b;          /* Point reach              */
+    size_t          max;        /* Maximun reflexion        */
+    struct s_rgba   rgba;       /* Calor of the ray         */
 }                   t_ray;
 
-typedef struct      s_spt
+typedef struct      s_obj       /* Object                   */
 {
-    float           ambient;
-    float           diffuse;
-    char            end;
-    size_t          id;
-    float           light;
-    float3          pos;
-    struct s_rgba   rgba;
-    float           specular;
+    float           angle;      /* Angle                    */
+    float3          collision;  /* Point collision ray      */
+    float           det;        /* Determinant matrice      */
+    char            end;        /* 1 -> next ; 0 -x end     */
+    size_t          id;         /* Id Group                 */
+    float3          normal;     /* Vector Normal            */
+    float3          pos;        /* Position Object          */
+    float           radius;     /* radius of the object     */
+    struct s_rgba   rgba;       /* Calors of the object     */
+    float3          rotate;     /* Angle of rotation        */
+    size_t          type;       /* Type Object              */
+}                   t_obj;
+
+typedef struct      s_spt       /**/
+{
+    float           ambient;    /**/
+    float           diffuse;    /**/
+    char            end;        /**/
+    size_t          id;         /**/
+    float           light;      /**/
+    float3          pos;        /**/
+    struct s_rgba   rgba;       /**/
+    float           specular;   /**/
 }                   t_spt;
 
-typedef struct      s_env_cl
+typedef struct      s_scn
 {
-    struct s_rgba   *c_diff;
-    struct s_cam    cam;
-    struct s_obj    *obj;
-    struct s_spt    *spt;
-}                   t_env_cl;
+    struct s_rgba   *c_diff;    /* Struct *color diffuse    */
+    struct s_cam    cam;        /* Struct camera            */
+    size_t          n_obj;      /* Number object            */
+    size_t          n_spt;      /* Number spotlight         */
+    struct s_obj    *obj;       /* Struct Object            */
+    struct s_spt    *spt;       /* Struct Spotlight         */
+}                   t_scn;
 
 void                camera(t_cam cam, t_ray *ray, size_t id);
 void                diffused_light(t_ray *ray, t_spt spt, t_obj obj);
-void                light(t_env_cl *e, t_ray *ray, t_rgba *c_diff, size_t id_obj);
+void                light(t_scn scn, t_ray *ray, t_rgba *c_diff, size_t id_obj);
 unsigned char       limit_rgba(float x);
 float               sphere(t_obj obj, t_ray ray);
 
