@@ -5,6 +5,7 @@ Ce qu'il reste à faire cette semaine "Week 1"
             -   Fichier de scene propre à RT
             -   Fichier à gere ".obj" & ".mtl"
             -   Mettre OpenCL operationnel comme le code en c                           |   impératif
+            -   Intégrer le VBO "Vertex Buffer Object"                                  |   impératif suite OpenCL
 
 Les différents problèmes & bug
 
