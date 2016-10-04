@@ -12,14 +12,14 @@
 
 #include "lib_RT.h"
 
-static double norm(t_vec3 vect)
+/*static double norm(t_vec3 vect)
 {
 
     register double value;
 
     value = sqrt(vect.x * vect.x + vect.y * vect.y + vect.z * vect.z);
     return (value);
-}
+}*/
 
 inline void plan(register t_obj *obj, register t_ray ray)
 {

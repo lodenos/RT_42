@@ -27,7 +27,6 @@ static inline double    power(register double x, register int y)
 double                  specular_light(register t_spt spt, register t_obj obj)
   {
   register t_vec3 l;
-  register t_vec3 n;
 
   l = vector_normalize(vector_sub(spt.pos, obj.collision));
   return (power(vector_scalar(vector_reverse(l), vector_add(l,
