@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/27 16:23:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/02 17:34:45 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ static inline void  create_kernel(cl_program prog, t_krnl *krnl)
 
     krnl->run_raytracing = clCreateKernel(prog, "run_raytracing", &err); 
     err_cl(err);
+}
+
+static inline void  console_log_compilation(cl_program prog, cl_device_id
+        device_id, cl_program_build_info type)
+{
+    size_t  size;
+    char    *str;
+
+    err_cl(clGetProgramBuildInfo(prog, device_id, type, 0, NULL, &size));
+    if (!(str = ft_memalloc(sizeof(char) * size + 1)))
+        ft_putstr_err("ERROR: malloc error", 1);
+    err_cl(clGetProgramBuildInfo(prog, device_id, type, size, str, NULL));
+    ft_putstr_err(str, 1);
 }
 
 void                lunch_opencl(t_opcl *cl)
@@ -33,6 +46,7 @@ void                lunch_opencl(t_opcl *cl)
     cl->prog = clCreateProgramWithSource(cl->contx, 1, (const char **)cl->src,
             cl->size_src, &cl->err);
     err_cl(cl->err);
-    err_cl(clBuildProgram(cl->prog, 1, &cl->device_id, cl->flags, NULL, NULL));
+    if (clBuildProgram(cl->prog, 1, &cl->device_id, cl->flags, NULL, NULL) != 0)
+        console_log_compilation(cl->prog, cl->device_id, CL_PROGRAM_BUILD_LOG);
     create_kernel(cl->prog, &cl->krnl);
 }
