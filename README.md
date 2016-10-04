@@ -1,10 +1,10 @@
 Ce qu'il reste à faire cette semaine "Week 1"
 
-    -   La rotation de tout les objets.                                         |   impératif
-    -   REM à faire "Les mouvements de la camera et position dans l'espace"     |   impératif
+    -   La rotation de tout les objets.                                         |   impératif Master
+    -   REM à faire "Les mouvements de la camera et position dans l'espace"     |   impératif Master
     -   Fichier de scene propre à RT
     -   Fichier à gere ".obj" & ".mtl"
-    -   Mettre OpenCL operationnel comme le code en c                           |   impératif
+    -   Mettre OpenCL operationnel comme le code en c                           |   impératif OpenCL
     -   Intégrer le VBO "Vertex Buffer Object"                                  |   impératif OpenCL
 
 Les différents problèmes & bug
