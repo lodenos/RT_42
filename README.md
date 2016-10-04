@@ -9,6 +9,7 @@ Ce qu'il reste à faire cette semaine "Week 1"
 
 Les différents problèmes & bug
 
+    -   Leaks    : 1 leak par resize de la fenêtre                              |   impératif Leaks
     -   Problème : La fusion des lumieres speculaire
     -   Problème : La fusion des couleurs des spots sur la lumiere speculaire
     -   Problème : Mauvaise valeur attribué pour la lumiere speculaire
@@ -16,3 +17,4 @@ Les différents problèmes & bug
     -   Problème : La lumiere ambiant est mal gérée
     -   Problème : La lumiere speculaire apparait aussi quand on est derrière l'objet
     -   Problème : Un objet noir apparaît comme gris
+    -   Problème : Problème aux changements de type de fenêtrage
