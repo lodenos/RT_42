@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 05:01:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 16:40:52 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:15:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,11 @@ static inline double    power(register double x, register int y)
 }
 
 double                  specular_light(register t_spt spt, register t_obj obj)
-  {
-  register t_vec3 l;
-  register t_vec3 n;
+{
+    register t_vec3 l;
 
-  l = vector_normalize(vector_sub(spt.pos, obj.collision));
-  return (power(vector_scalar(vector_reverse(l), vector_add(l,
-  vector_mult_x(vector_mult_x(obj.normal, 2), vector_scalar(
-  vector_reverse(obj.normal), l)))), 28) * spt.specular);
-  }
-
-
+    l = vector_normalize(vector_sub(spt.pos, obj.collision));
+    return (power(vector_scalar(vector_reverse(l), vector_add(l,
+    vector_mult_x(vector_mult_x(obj.normal, 2), vector_scalar(
+    vector_reverse(obj.normal), l)))), 28) * spt.specular);
+}

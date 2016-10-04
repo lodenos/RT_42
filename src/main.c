@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/03 16:35:53 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:10:50 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static inline void  init_RT(t_env *e)
 {
     init_keyboard(&e->key);
+    e->img.img = NULL;
     e->img.h = HEIGHT;
     e->img.w = WIDTH;
     e->img.x = SDL_WINDOWPOS_CENTERED;
@@ -27,16 +28,21 @@ static inline void  init_RT(t_env *e)
 
 static inline void  init_file_opencl(t_opcl *cl)
 {
-    cl->nbr_src = 2;
-    if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * cl->nbr_src + 1)))
+    cl->nbr_src = 6;
+    if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
     cl->file[0] = ft_strdup("src_cl/ray_tracing/run_raytracing.cl");
-    cl->file[1] = ft_strdup("src_cl/object/sphere.cl");
-    cl->file[2] = NULL;
+    cl->file[1] = ft_strdup("src_cl/ray_tracing/camera.cl");
+    cl->file[2] = ft_strdup("src_cl/shader/light.cl");
+    cl->file[3] = ft_strdup("src_cl/shader/limit_rgba.cl");
+    cl->file[4] = ft_strdup("src_cl/shader/diffused_light.cl");
+    cl->file[5] = ft_strdup("src_cl/object/sphere.cl");
+    cl->file[6] = NULL;
     cl->flags = ft_strdup("-I ./head_cl");
-    if (!(cl->size_src = (size_t *)ft_memalloc(sizeof(size_t) * 2)))
+    if (!(cl->size_src = (size_t *)ft_memalloc(sizeof(size_t) *
+                (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
-    if (!(cl->src = (char **)ft_memalloc(sizeof(char *) * 2)))
+    if (!(cl->src = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
 }
 
@@ -52,7 +58,7 @@ int                 main(int argc, char **argv)
             ft_putstr_err("ERROR: main.argument GPU: 1 == on ; 2 == off", 1);
     get_scene(&e, argv[1]);
     init_file_opencl(&e.cl);
-    lunch_opencl(&e.cl);
+/*    lunch_opencl(&e.cl);*/
     if (SDL_Init(SDL_INIT_EVERYTHING))
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);

@@ -3,104 +3,115 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: nrandria <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/09/08 14:11:35 by glodenos          #+#    #+#              #
-#    Updated: 2016/10/02 15:06:48 by glodenos         ###   ########.fr        #
+#    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
+#    Updated: 2016/10/04 21:08:23 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OPENCL	=	-framework OpenCL
+.PHONY: all, fclean, clean, re
 
-FLAGS	=	-Wall -Werror -Wextra -O3 -lm -Weverything -Wno-padded
+SRC_PATH = src
 
-SEG		=	-fsanitize=address -g3
+SRC_NAME = 									\
+											move/matrix_rotate.c			\
+											\
+											object/sphere.c					\
+											object/cone.c					\
+											object/torus.c					\
+											object/cylinder.c				\
+											object/plan.c					\
+											\
+											opencl/err_cl.c					\
+											opencl/get_src_opencl.c			\
+											opencl/lunch_opencl.c			\
+											\
+											parser/get_camera.c				\
+											parser/get_color.c				\
+											parser/get_cone.c				\
+											parser/get_cylinder.c			\
+											parser/get_file_mlt.c			\
+											parser/get_file_obj.c			\
+											parser/get_file_ortv1.c			\
+											parser/get_file_raw.c			\
+											parser/get_plan.c				\
+											parser/get_scene.c				\
+											parser/get_sphere.c				\
+											parser/get_spot.c				\
+											parser/get_torus.c				\
+											parser/get_vec3.c				\
+											\
+											ray_tracing/camera.c			\
+											ray_tracing/check_object.c		\
+											ray_tracing/OCL_run_raytracing.c\
+											ray_tracing/play_scene.c		\
+											ray_tracing/run_raytracing.c	\
+											\
+											SDL2/create_window.c			\
+											SDL2/event_everything.c			\
+											SDL2/init_keyboard.c			\
+											SDL2/key_press.c				\
+											SDL2/key_release.c				\
+											SDL2/pixel_put.c				\
+											SDL2/window_resize.c			\
+											\
+											shader/diffused_light.c			\
+											shader/light.c					\
+											shader/limit_rgba.c				\
+											shader/specular_light.c			\
+											\
+											vector/coordinates_collision.c	\
+											vector/vector_formula_1.c		\
+											vector/vector_formula_2.c		\
+											vector/vector_rotate.c			\
+											\
+											main.c							\
 
-HEAD	=	-I ./head
+OBJ_PATH = obj/
 
-LIBFT	=	-I ./libft/head -L ./libft -lft
+INCLUDE = -Ihead -Ilibft/head
 
-NAME	=	RT
+LDFLAGS = -Llibft
+LDLIBS = -lft
 
-SDL     =   -framework Opengl -framework SDL2
+NAME = RT
 
-SDL_UNIX	=   -lSDL2
+CC = clang
 
-SRC		=										\
-			src/mouve/matrix_rotate.c			\
-												\
-			src/object/sphere.c					\
-			src/object/cone.c					\
-			src/object/torus.c					\
-			src/object/cylinder.c				\
-			src/object/plan.c					\
-												\
-			src/opencl/err_cl.c					\
-			src/opencl/get_src_opencl.c			\
-			src/opencl/lunch_opencl.c			\
-												\
-			src/parser/get_camera.c				\
-			src/parser/get_color.c				\
-			src/parser/get_cone.c				\
-			src/parser/get_cylinder.c			\
-			src/parser/get_file_mlt.c			\
-			src/parser/get_file_obj.c			\
-			src/parser/get_file_ortv1.c			\
-			src/parser/get_file_raw.c			\
-			src/parser/get_plan.c				\
-			src/parser/get_scene.c				\
-			src/parser/get_sphere.c				\
-			src/parser/get_spot.c				\
-			src/parser/get_torus.c				\
-			src/parser/get_vec3.c				\
-												\
-			src/ray_tracing/camera.c			\
-			src/ray_tracing/check_object.c		\
-			src/ray_tracing/OCL_run_raytracing.c\
-			src/ray_tracing/play_scene.c		\
-			src/ray_tracing/run_raytracing.c	\
-												\
-			src/SDL2/create_window.c			\
-			src/SDL2/event_everything.c			\
-			src/SDL2/init_keyboard.c			\
-			src/SDL2/key_press.c				\
-			src/SDL2/key_release.c				\
-			src/SDL2/pixel_put.c				\
-			src/SDL2/window_resize.c			\
-												\
-			src/shader/diffused_light.c			\
-			src/shader/light.c					\
-			src/shader/limit_rgba.c				\
-			src/shader/specular_light.c			\
-												\
-			src/vector/coordinates_collision.c	\
-			src/vector/vector_formula_1.c		\
-			src/vector/vector_formula_2.c		\
-			src/vector/vector_rotate.c			\
-												\
-			src/main.c
+CFLAGS = -Wall -Wextra -Werror -O3
+LIBGRPH = -lm -framework OpenGL -framework SDL2 -framework OpenCL
 
-all:
-	@make -j -C ./libft
-	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL)
+OBJ_NAME = $(addsuffix .o, $(basename $(SRC_NAME)))
 
-unix: 
-	@make -C ./libft
-	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL_UNIX) $(FLAGS)
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(notdir $(OBJ_NAME)))
 
-norm:
-	@make -j -C ./libft
-	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL) $(FLAGS)
+VPATH = $(shell find $(SRC_PATH) -type d)
 
-debug:
-	@make -j -C ./libft
-	@gcc -o $(NAME) $(SRC) $(HEAD) $(LIBFT) $(SDL) $(OPENCL) $(SEG)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@make -C libft
+	@echo "\033[33mProject compilation\033[0m"
+	@$(CC) $(LDFLAGS) $(LDLIBS) $(LIBGRPH) $^ -o $@
+	@sh ProgressBar.sh 0.005
+	@echo "\033[32mCompilation SUCCESS\033[0m"
+
+
+$(OBJ_PATH)%.o: %.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 clean:
-	@make -C ./libft
+	@echo "\033[33m.o's cleaning\033[0m"
+	@rm -rf $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
-	@make fclean -C ./libft
+	@make fclean -C libft/
 	@rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all, clean, fclean, re

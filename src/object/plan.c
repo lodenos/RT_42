@@ -6,20 +6,11 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/01 16:25:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:09:49 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
-
-static double norm(t_vec3 vect)
-{
-
-    register double value;
-
-    value = sqrt(vect.x * vect.x + vect.y * vect.y + vect.z * vect.z);
-    return (value);
-}
 
 inline void plan(register t_obj *obj, register t_ray ray)
 {

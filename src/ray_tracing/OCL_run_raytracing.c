@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 13:05:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/03 17:25:18 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 20:51:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,36 @@ static inline void  push_to_window(SDL_Renderer *rend, int *img, size_t w,
 
 void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
 {
-    cl_mem  buff_cl;
     cl_int  err;
-    int     *img;
+    cl_mem  buff_img;
     size_t  wk;
 
     wk = e->img.w * e->img.h;
-    if (!(img = (int *)ft_memalloc(sizeof(int) * wk)))
-        ft_putstr_err("ERROR: malloc error", 1);
-    buff_cl = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
+
+//----------
+
+    buff_img = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
             sizeof(int) * wk, NULL, &err);
     err_cl(err);
-    err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 0, sizeof(buff_cl), &buff_cl));
-    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_cl, CL_TRUE, 0,
-            sizeof(int) * wk, img, 0, NULL, NULL));
+
+//----------
+
+    err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 1,
+                sizeof(buff_img), &buff_img));
+
+//----------
+
+    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_img, CL_TRUE, 0,
+            sizeof(int) * wk, e->img.img, 0, NULL, NULL));
+
+//-----------
+
     err_cl(clEnqueueNDRangeKernel(e->cl.cmd_que, e->cl.krnl.run_raytracing, 1,
             NULL, &wk, NULL, 0, NULL, NULL));
-    err_cl(clEnqueueReadBuffer(e->cl.cmd_que, buff_cl, CL_TRUE, 0,
-            sizeof(int) * wk, img, 0, NULL, NULL));
-    push_to_window(rend, img, e->img.w, e->img.h);
-    free(img);
+
+//-----------
+
+    err_cl(clEnqueueReadBuffer(e->cl.cmd_que, buff_img, CL_TRUE, 0,
+            sizeof(int) * wk, e->img.img, 0, NULL, NULL));
+    push_to_window(rend, e->img.img, e->img.w, e->img.h);
 }

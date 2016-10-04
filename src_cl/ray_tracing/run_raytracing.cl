@@ -1,28 +1,25 @@
 #include "lib_RT_CL.hl"
 
-kernel void         run_raytracing(global int *img)
+kernel void run_raytracing(global env e, global int *img)
 {
     size_t  id;
-    t_obj   obj;
     t_ray   ray;
-      x;
-    int  y;
     
     id = get_global_id(0);
+    camera(e.cam, &ray, id);
 
-    obj.pos = (float3)(0.0f, 0.0f, -500.0f);
-    obj.radius = 100;
-    ray.a = (float3)(0.0f, 0.0f, 0.0f);
+    if ((e.obj.det = sphere(e.obj, ray)) != -1)
+    {
 
-    x = (id + 1) % 1920;
-    y = (id + 1) / 1920;
+        ray.b.x *= e.obj.det;
+        ray.b.y *= e.obj.det;
+        ray.b.z *= e.obj.det;
 
-    ray.b.x = x - 1920 / 2;
-    ray.b.y = y - 1080 / 2;
-    ray.b.z = 1000;
-
-    ray.b = normalize(ray.b - ray.a);
-
-    if (sphere(obj, ray) != -1)
-        img[id] = 0xFFFF;
+        e.obj.collision = ray.a + ray.b;
+        e.obj.normal = e.obj.collision;
+        light(&e, &ray, e.c_diff, 1);
+        img[id] = ray.rgba.red * 255;
+    }
+    else
+        img[id] = 0x00001AFF;
 }

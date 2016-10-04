@@ -21,27 +21,58 @@ typedef struct      s_evo
     float           tb;
 }                   t_evo;
 
+typedef struct      s_rgba
+{
+    unsigned char   red;
+    unsigned char   green;
+    unsigned char   blue;
+    unsigned char   alpha;
+}                   t_rgba;
+
+typedef struct      s_obj
+{
+    float3          collision;
+    float           det;
+    size_t          id;
+    float3          normal;
+    float3          pos;
+    float           radius;
+    struct s_rgba   rgba;
+    float3          rotate;
+    size_t          type;
+}                   t_obj;
+
 typedef struct      s_ray
 {
     float3          a;
     float3          b;
-    int             rgba;
+    struct s_rgba   rgba;
 }                   t_ray;
 
-typedef struct      s_obj
+typedef struct      s_spt
 {
+    float           ambient;
+    float           diffuse;
+    char            end;
     size_t          id;
+    float           light;
     float3          pos;
-    float           radius;
-    float3          rotate;
+    struct s_rgba   rgba;
+    float           specular;
+}                   t_spt;
 
-}                   t_obj;
-
-typedef struct      s_env
+typedef struct      s_env_cl
 {
+    struct s_rgba   *c_diff;
+    struct s_cam    cam;
     struct s_obj    *obj;
-}                   t_env;
+    struct s_spt    *spt;
+}                   t_env_cl;
 
-float   sphere(t_obj obj, t_ray ray);
+void                camera(t_cam cam, t_ray *ray, size_t id);
+void                diffused_light(t_ray *ray, t_spt spt, t_obj obj);
+void                light(t_env_cl *e, t_ray *ray, t_rgba *c_diff, size_t id_obj);
+unsigned char       limit_rgba(float x);
+float               sphere(t_obj obj, t_ray ray);
 
 #endif

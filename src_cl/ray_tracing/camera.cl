@@ -1,4 +1,4 @@
-#include "lib_RT_CL.cl"
+#include "lib_RT_CL.hl"
 
 void    camera(t_cam cam, t_ray *ray, size_t id)
 {
@@ -8,8 +8,8 @@ void    camera(t_cam cam, t_ray *ray, size_t id)
     x = (id + 1) % cam.w;
     y = (id + 1) / cam.w;
     ray->a = cam.pos;
-    ray->b.x = (int)x - cam.w / 2;
-    ray->b.y = (int)y - cam.h / 2;
+    ray->b.x = (float)x - cam.w / 2;
+    ray->b.y = (float)y - cam.h / 2;
     ray->b.z = cam.view.z;
-    ray.b = normalize(ray->b - ray->a);
+    ray->b = normalize(ray->b - ray->a);
 }

@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/03 17:25:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/04 20:43:25 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct          s_img       /* Window & Image SDL       */
 {
     Uint32              flags;      /* Flag Window              */
     size_t              h;          /* Resolution height y      */
+    int                 *img;       /* Image buffer OpenCL      */
     SDL_Renderer        *rend;      /* Renderer Image           */
     SDL_Window          *win;       /* Window                   */
     size_t              w;          /* Resolution width x       */
@@ -104,9 +105,9 @@ typedef struct          s_key       /* Keyboard for key repet   */
     _Bool               key_w;      /**/
 }                       t_key;
 
-typedef struct          s_krnl
+typedef struct          s_krnl          /* Struct Kernel OpenCL             */
 {
-    cl_kernel           run_raytracing;
+    cl_kernel           run_raytracing; /* Function Kernel run_raytracing   */
 }                       t_krnl;
 
 typedef struct          s_opcl      /**/
@@ -130,13 +131,13 @@ typedef struct          s_opcl      /**/
 typedef struct          s_spt       /**/
 {
     double              ambient;    /**/
+    double              diffuse;    /**/
     char                end;        /**/
     size_t              id;         /**/
     double              light;      /**/
     struct s_vec3       pos;        /**/
     struct s_rgba       rgba;       /**/
     double              specular;   /**/
-    double              diffuse;    /**/
 }                       t_spt;
 
 
@@ -157,15 +158,15 @@ typedef struct          s_env       /* Variable Master          */
     int                 GPU;        /* Use GPU 1 yes 0 no       */
 }                       t_env;
 
-void                    camera(register t_cam cam, t_ray *ray,                 \
+void                    camera(register t_cam cam, t_ray *ray,
                                 register size_t x, register size_t y);
 size_t                  check_object(t_obj *obj, t_ray *ray);
 void                    cone(register t_obj *obj, register t_ray ray);
-t_vec3                  coordinates_collision(register t_vec3 a,               \
+t_vec3                  coordinates_collision(register t_vec3 a,
                                 register t_vec3 b, register double det);
 void                    create_window(t_env *e, Uint32 flags);
 void                    cylinder(register t_obj *obj, register t_ray ray);
-void                    diffused_light(t_ray *ray, register t_spt spt,         \
+void                    diffused_light(t_ray *ray, register t_spt spt,
                                 register t_obj obj);
 void                    err_cl(cl_int err);
 void                    event_everything(t_env *e);
@@ -191,10 +192,10 @@ void                    key_release(t_env *e);
 void                    light(t_env *e, t_rgba *c_diff, register size_t id);
 unsigned char           limit_rgba(register double x);
 void                    lunch_opencl(t_opcl *cl);
-t_vec3                  matrix_rotate(t_vec3 register point, t_vec3            \
+t_vec3                  matrix_rotate(t_vec3 register point, t_vec3
                                 register rot);
 void                    OCL_run_raytracing(t_env *e, SDL_Renderer *rend);
-void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,   \
+void                    pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,
                                 size_t y);
 void                    plan(register t_obj *obj, register t_ray ray);
 void                    play_scene(t_env *e, SDL_Renderer *rend);
