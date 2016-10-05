@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:28:56 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:23:28 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ inline void sphere(register t_obj *obj, register t_ray ray)
     evo.det = evo.b * evo.b - 4 * evo.a * evo.c;
     if (evo.det >= 0)
     {
-        evo.ta = (-evo.b + sqrt(evo.det)) / (2 * evo.a);
-        evo.tb = (-evo.b - sqrt(evo.det)) / (2 * evo.a);
+        evo.ta = (-evo.b + sqrtf(evo.det)) / (2 * evo.a);
+        evo.tb = (-evo.b - sqrtf(evo.det)) / (2 * evo.a);
         obj->det = (evo.ta > evo.tb) ? evo.tb : evo.ta;
     }
     else

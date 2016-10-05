@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:17:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 19:10:40 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,12 +159,13 @@ void                    camera(register t_cam cam, t_ray *ray,
 size_t                  check_object(t_obj *obj, t_ray *ray);
 void                    cone(register t_obj *obj, register t_ray ray);
 cl_float3               coordinates_collision(register cl_float3 a,
-                                register cl_float3 b, register double det);
+                                register cl_float3 b, register float det);
 void                    create_window(t_env *e, Uint32 flags);
 void                    cylinder(register t_obj *obj, register t_ray ray);
 void                    diffused_light(t_ray *ray, register t_spt spt,
                                 register t_obj obj);
 void                    err_cl(cl_int err);
+void                    err_cl_sub(cl_int err);
 void                    event_everything(t_env *e);
 void                    get_camera(t_env *e, char **line);
 t_rgba                  get_color(char *str);
@@ -207,7 +208,7 @@ cl_float3               vector_mult_x(register cl_float3 vect,
 cl_float3               vector_normalize(register cl_float3 vect);
 cl_float3               vector_reverse(register cl_float3 vect);
 cl_float3               vector_rotate(register cl_float3 vec, double angle);
-double                  vector_scalar(register cl_float3 a,
+float                   vector_scalar(register cl_float3 a,
                                 register cl_float3 b);
 cl_float3               vector_sub(register cl_float3 a, register cl_float3 b);
 void                    window_resize(t_env *e);

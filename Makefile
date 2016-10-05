@@ -6,13 +6,13 @@
 #    By: nrandria <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/04 23:20:11 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/05 19:02:22 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, fclean, clean, re
 
-SRC_PATH = src
+SRC_PATH = src/
 
 SRC_NAME = 									\
 			move/matrix_rotate.c			\
@@ -24,6 +24,7 @@ SRC_NAME = 									\
 			object/plan.c					\
 											\
 			opencl/err_cl.c					\
+			opencl/err_cl_sub.c				\
 			opencl/get_src_opencl.c			\
 			opencl/lunch_opencl.c			\
 											\
@@ -80,7 +81,7 @@ NAME 		=	RT
 
 CC 			=	clang
 
-CFLAGS 		=	-Wall -Wextra -Werror -O3
+CFLAGS 		=	-Wall -Wextra -Werror -Ofast #-Weverything -Wno-padded
 LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
@@ -102,6 +103,9 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)%.o: %.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+
+debug:
+	@gcc -g3 -fsanitize=address $(SRC) $(LIBGRPH) $(INCLUDE) $(LDLIBS) $(LDFLAGS)
 
 clean:
 	@echo "\033[33m.o's cleaning\033[0m"

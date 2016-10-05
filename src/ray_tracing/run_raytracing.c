@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:01:00 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 16:25:42 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ inline void get_normal_object(t_obj *obj, t_ray ray)
         obj->normal = vector_reverse(vector_normalize(vector_sub(obj->pos,
                 vector_sub(obj->collision, vector_mult_x(vector_mult_x(
                 obj->rotate, vector_scalar(ray.b, obj->rotate) * obj->det +
-                vector_scalar(ray.a, obj->rotate)), (1 + tan(obj->angle / 2) *
-                tan(obj->angle / 2)))))));
+                vector_scalar(ray.a, obj->rotate)), (1.0 + tanf(obj->angle / 2)
+                * tanf(obj->angle / 2)))))));
     else if (obj->type == 2)
         obj->normal = vector_reverse(vector_normalize(vector_sub(obj->pos,
                 vector_sub(obj->collision, vector_mult_x(obj->rotate,

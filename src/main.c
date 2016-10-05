@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:11:50 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 19:06:31 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,21 @@ static inline void  init_RT(t_env *e)
 
 static inline void  init_file_opencl(t_opcl *cl)
 {
-    cl->nbr_src = 6;
+    cl->nbr_src = 11;
     if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
     cl->file[0] = ft_strdup("src_cl/ray_tracing/run_raytracing.cl");
-    cl->file[1] = ft_strdup("src_cl/ray_tracing/camera.cl");
-    cl->file[2] = ft_strdup("src_cl/shader/light.cl");
-    cl->file[3] = ft_strdup("src_cl/shader/limit_rgba.cl");
-    cl->file[4] = ft_strdup("src_cl/shader/diffused_light.cl");
-    cl->file[5] = ft_strdup("src_cl/object/sphere.cl");
-    cl->file[6] = NULL;
+    cl->file[1] = ft_strdup("src_cl/ray_tracing/run_object.cl");
+    cl->file[2] = ft_strdup("src_cl/ray_tracing/camera.cl");
+    cl->file[3] = ft_strdup("src_cl/ray_tracing/check_object.cl");
+    cl->file[4] = ft_strdup("src_cl/shader/light.cl");
+    cl->file[5] = ft_strdup("src_cl/shader/limit_rgba.cl");
+    cl->file[6] = ft_strdup("src_cl/shader/diffused_light.cl");
+    cl->file[7] = ft_strdup("src_cl/object/cone.cl");
+    cl->file[8] = ft_strdup("src_cl/object/cylinder.cl");
+    cl->file[9] = ft_strdup("src_cl/object/plan.cl");
+    cl->file[10] = ft_strdup("src_cl/object/sphere.cl");
+    cl->file[11] = NULL;
     cl->flags = ft_strdup("-I ./head_cl");
     if (!(cl->size_src = (size_t *)ft_memalloc(sizeof(size_t) *
                 (cl->nbr_src + 1))))

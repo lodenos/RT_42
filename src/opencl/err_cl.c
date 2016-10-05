@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:34:49 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/22 20:37:32 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 14:51:54 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static inline void  err_cl_ex_d(cl_int err)
         ft_putstr_err("opencl -61 : CL_INVALID_BUFFER_SIZE", 1);
     else if (err == -62)
         ft_putstr_err("opencl -62 : CL_INVALID_MIP_LEVEL", 1);
+    else
+        err_cl_sub(err);
 }
 
 static inline void  err_cl_ex_c(cl_int err)
@@ -95,23 +97,23 @@ static inline void  err_cl_ex_b(cl_int err)
 static inline void  err_cl_ex_a(cl_int err)
 {
     if (err == -11)
-        ft_putstr_err("opencl -11 : CL_DEVICE_NOT_FOUND", 1);
-    else if (err == -1)
+        ft_putstr_err("opencl -11 : CL_BUILD_PROGRAM_FAILURE", 1);
+    else if (err == -12)
         ft_putstr_err("opencl -12 : CL_MAP_FAILURE", 1);
-    else if (err == -1)
+    else if (err == -13)
         ft_putstr_err("opencl -13 : CL_MISALIGNED_SUB_BUFFER_OFFSET", 1);
-    else if (err == -1)
+    else if (err == -14)
         ft_putstr_err("opencl -14 : CL_EXEC_STATUS_ERROR_FOR_EVENTS_IN_WAIT\
                 _LIST", 1);
-    else if (err == -1)
+    else if (err == -15)
         ft_putstr_err("opencl -15 : CL_COMPILE_PROGRAM_FAILURE", 1);
-    else if (err == -1)
+    else if (err == -16)
         ft_putstr_err("opencl -16 : CL_LINKER_NOT_AVAILABLE", 1);
-    else if (err == -1)
+    else if (err == -17)
         ft_putstr_err("opencl -17 : CL_LINK_PROGRAM_FAILURE", 1);
-    else if (err == -1)
+    else if (err == -18)
         ft_putstr_err("opencl -18 : CL_DEVICE_PARTITION_FAILED", 1);
-    else if (err == -1)
+    else if (err == -19)
         ft_putstr_err("opencl -19 : CL_KERNEL_ARG_INFO_NOT_AVAILABLE", 1);
     err_cl_ex_b(err);
 }

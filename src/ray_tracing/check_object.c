@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 21:01:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:00:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:36:28 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ inline size_t   check_object(t_obj *obj, t_ray *ray)
 {
     register int    i;
     register size_t id;
-    register double tmp_det;
+    register float  tmp_det;
 
     i = -1;
     id = 0;

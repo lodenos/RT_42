@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:49 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:44:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:39:22 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ inline cl_float3    vector_reverse(register cl_float3 vect)
     return (rev);
 }
 
-inline double       vector_scalar(register cl_float3 a, register cl_float3 b)
+inline float        vector_scalar(register cl_float3 a, register cl_float3 b)
 {
     return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z));
 }

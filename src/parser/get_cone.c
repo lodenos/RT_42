@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 01:19:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:40:42 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:34:08 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ static inline int       get_radius(char *str)
     return (atoi(str));
 }
 
-inline static double    get_value_double(char *str)
+inline static float     get_value_float(char *str)
 {
     register int    i;
-    register double val;
+    register float  val;
 
     i = -1;
     while (str[++i])
         if (str[i] < '0' || str[i] > '9')
             if (str[i] != '.')
                 ft_putstr_err("ERROR: Init. cone.double", 1);
-    if ((int)(val = atof(str)) > 180)
+    if ((int)(val = (float)atof(str)) > 180)
         ft_putstr_err("ERROR: Init. cone.max > 180", 1);
     return (val);
 }
@@ -46,7 +46,7 @@ void                    get_cone(t_obj *obj, char **line)
     obj->rotate = get_vec3(line[2]);
     obj->rgba = get_color(line[3]);
     obj->radius = get_radius(line[4]);
-    obj->angle = tan((get_value_double(line[5]) * (M_PI / 180)));
+    obj->angle = tanf((get_value_float(line[5]) * (float)(M_PI / 180)));
     obj->type = 1;
     obj->end = 1;
 }

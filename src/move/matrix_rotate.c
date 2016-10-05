@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 18:24:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 23:19:35 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:21:40 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ inline cl_float3    matrix_rotate(register cl_float3 point,
         register cl_float3 rot)
 {
     /* Rotate Axe x */
-    point.y = point.y * cos(rot.x) - point.z * sin(rot.x);
-    point.z = point.y * sin(rot.x) + point.z * cos(rot.x);
+    point.y = point.y * cosf(rot.x) - point.z * sinf(rot.x);
+    point.z = point.y * sinf(rot.x) + point.z * cosf(rot.x);
     /* Rotate Axe y */
-    point.x = point.x * cos(rot.y) + point.z * sin(rot.y);
-    point.z = point.x * -sin(rot.y) + point.z * cos(rot.y);
+    point.x = point.x * cosf(rot.y) + point.z * sinf(rot.y);
+    point.z = point.x * -sinf(rot.y) + point.z * cosf(rot.y);
     /* Rotate Axe z */
-    point.x = point.x * cos(rot.z) - point.y * sin(rot.z);
-    point.y = point.x * sin(rot.z) + point.y * cos(rot.z);
+    point.x = point.x * cosf(rot.z) - point.y * sinf(rot.z);
+    point.y = point.x * sinf(rot.z) + point.y * cosf(rot.z);
     return (point);
 }

@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/03 17:25:16 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:28:03 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void                lunch_opencl(t_opcl *cl)
     cl->cmd_que = clCreateCommandQueue(cl->contx, cl->device_id, 0, &cl->err);
     err_cl(cl->err);
     cl->prog = clCreateProgramWithSource(cl->contx, cl->nbr_src,
-            (const char **)cl->src, cl->size_src, &cl->err);
+            (const char **)((size_t)(cl->src)), cl->size_src, &cl->err);
     err_cl(cl->err);
     if (clBuildProgram(cl->prog, 1, &cl->device_id, cl->flags, NULL, NULL) != 0)
         console_log_compilation(cl->prog, cl->device_id, CL_PROGRAM_BUILD_LOG);

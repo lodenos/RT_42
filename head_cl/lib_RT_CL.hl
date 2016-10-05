@@ -76,8 +76,13 @@ typedef struct      s_scn
 
 void                camera(t_cam cam, t_ray *ray, size_t id);
 void                diffused_light(t_ray *ray, t_spt spt, t_obj obj);
-void                light(t_scn scn, t_ray *ray, t_rgba *c_diff, size_t id_obj);
+void                light(t_scn *scn, t_ray *ray, t_rgba *c_diff, size_t id_obj);
 unsigned char       limit_rgba(float x);
-float               sphere(t_obj obj, t_ray ray);
+void                run_object(t_obj *obj, t_ray ray);
+size_t              check_object(t_obj *obj, t_ray *ray);
+void                cone(t_obj *obj, t_ray ray);
+void                cylinder(t_obj *obj, t_ray ray);
+void                plan(t_obj *obj, t_ray ray);
+void                sphere(t_obj *obj, t_ray ray);
 
 #endif
