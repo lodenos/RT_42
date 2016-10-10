@@ -1,6 +1,6 @@
 #include "lib_RT_CL.hl"
 
-void    sphere(t_obj *obj, t_ray ray)
+float   sphere(__global t_obj *obj, t_ray ray)
 {
     t_evo   evo;
     float3  tmp;
@@ -14,7 +14,7 @@ void    sphere(t_obj *obj, t_ray ray)
     {
         evo.ta = (-evo.b + sqrt(evo.det)) / (2.0 * evo.a);
         evo.tb = (-evo.b - sqrt(evo.det)) / (2.0 * evo.a);
-        obj->det = (evo.ta > evo.tb) ? evo.tb : evo.ta;
+        return (evo.ta > evo.tb) ? evo.tb : evo.ta;
     }
-    obj->det = -1;
+    return -1;
 }

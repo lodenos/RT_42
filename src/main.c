@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 19:06:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/08 19:26:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,45 +28,72 @@ static inline void  init_RT(t_env *e)
 
 static inline void  init_file_opencl(t_opcl *cl)
 {
-    cl->nbr_src = 11;
+    int     fd;
+    char    *tmp;
+    char    **src;
+
+    if ((fd = open("Make_CL", O_RDONLY)) == -1)
+        ft_putstr_err("ERROR: Make_CL not found", 1);
+    tmp = get_file_raw(fd);
+    src = ft_strsplit(tmp, '\n');
+    cl->flags = src[0];
+    cl->nbr_src = ft_strlen_tab(src) - 1;
     if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
-    cl->file[0] = ft_strdup("src_cl/ray_tracing/run_raytracing.cl");
-    cl->file[1] = ft_strdup("src_cl/ray_tracing/run_object.cl");
-    cl->file[2] = ft_strdup("src_cl/ray_tracing/camera.cl");
-    cl->file[3] = ft_strdup("src_cl/ray_tracing/check_object.cl");
-    cl->file[4] = ft_strdup("src_cl/shader/light.cl");
-    cl->file[5] = ft_strdup("src_cl/shader/limit_rgba.cl");
-    cl->file[6] = ft_strdup("src_cl/shader/diffused_light.cl");
-    cl->file[7] = ft_strdup("src_cl/object/cone.cl");
-    cl->file[8] = ft_strdup("src_cl/object/cylinder.cl");
-    cl->file[9] = ft_strdup("src_cl/object/plan.cl");
-    cl->file[10] = ft_strdup("src_cl/object/sphere.cl");
-    cl->file[11] = NULL;
-    cl->flags = ft_strdup("-I ./head_cl");
     if (!(cl->size_src = (size_t *)ft_memalloc(sizeof(size_t) *
                 (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
     if (!(cl->src = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
+    free(tmp);
+    free_tab((void **)src);
+}
+
+void    get_arg_main(t_env *e, int argc, char **argv)
+{
+    int     i;
+
+    i = 0;
+    e->gpu = 0;
+    e->host = 0;
+    e->slave = 0;
+    if (argc < 2)
+        ft_putstr_err("", 1);
+    while (++i < argc)
+    {
+        if (strcmp(argv[i], "-gpu") == 0)
+            e->gpu = 1;
+        else if (strcmp(argv[i], "-host") == 0)
+        {
+            e->host = 1;
+            e->slave = 0;
+        }
+        else if (strcmp(argv[i], "-slave") == 0)
+        {
+            e->host = 0;
+            e->slave = 1;
+        }
+    }
 }
 
 int                 main(int argc, char **argv)
 {
-    t_env   e;
+    t_env           e;
+    pthread_t       pt_host;
 
-    e.GPU = 0;
-    if (argc < 2 || argc > 3)
-        ft_putstr_err("RT: a single scene must be passed as argument", 1);
-    if (argc == 3)
-        if ((e.GPU = ft_atoi(argv[2])) < 0 || e.GPU > 1)
-            ft_putstr_err("ERROR: main.argument GPU: 1 == on ; 2 == off", 1);
+    get_arg_main(&e, argc, argv);
     get_scene(&e, argv[1]);
-    if (e.GPU)
+    if (e.gpu)
     {
         init_file_opencl(&e.cl);
         lunch_opencl(&e.cl);
     }
+    if (e.host)
+        if (pthread_create(&pt_host, NULL, &host, NULL) == -1)
+            ft_putstr_err("ERROR: thread", 1);
+    if (e.slave)
+        if (pthread_create(&pt_host, NULL, &host, NULL) == -1)
+            ft_putstr_err("ERROR: thread", 1);
     if (SDL_Init(SDL_INIT_EVERYTHING))
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);

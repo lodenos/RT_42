@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   play_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 19:10:39 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/08 19:09:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    play_scene(t_env *e, SDL_Renderer *rend)
     register size_t y;
     t_ray           ray;
 
-    if (e->GPU)
+    if (e->gpu)
         OCL_run_raytracing(e, rend);
     else
     {

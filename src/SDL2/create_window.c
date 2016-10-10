@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:22:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 17:03:37 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/07 14:11:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    create_window(t_env *e, Uint32 flags)
     if (!(e->img.win = SDL_CreateWindow(TITLE, (int)e->img.x, (int)e->img.y,
             (int)e->img.w, (int)e->img.h, flags)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (size_t *)ft_memalloc(sizeof(size_t) * e->img.w *
+    if (!(e->img.img = (int *)ft_memalloc(sizeof(int) * e->img.w *
             e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     e->scn.cam.w = e->img.w;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nrandria <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/05 19:02:22 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/08 05:22:18 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@
 SRC_PATH = src/
 
 SRC_NAME = 									\
+			clustering/host.c				\
+											\
 			move/matrix_rotate.c			\
 											\
 			object/sphere.c					\
@@ -81,8 +83,8 @@ NAME 		=	RT
 
 CC 			=	clang
 
-CFLAGS 		=	-Wall -Wextra -Werror -Ofast #-Weverything -Wno-padded
-LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL
+CFLAGS 		=	#-Wall -Wextra -Werror -Ofast #-Weverything -Wno-padded
+LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
 

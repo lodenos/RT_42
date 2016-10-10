@@ -1,12 +1,8 @@
+
 #include "lib_RT_CL.hl"
 
-void    camera(t_cam cam, t_ray *ray, size_t id)
+void    camera(t_cam cam, t_ray *ray, size_t x, size_t y)
 {
-    int x;
-    int y;
-
-    x = (id + 1) % cam.w;
-    y = (id + 1) / cam.w;
     ray->a = cam.pos;
     ray->b.x = (float)x - cam.w / 2;
     ray->b.y = (float)y - cam.h / 2;

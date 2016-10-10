@@ -6,32 +6,19 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 22:36:44 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:25:27 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/06 16:23:45 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline cl_float3    vector_rotate(register cl_float3 vec, register double angle)
+inline t_ray    vector_rotate_ray(register t_ray ray, register cl_float3 pos,
+        register cl_float3 rotate)
 {
-    float   v_cos;  // cos angle
-    float   i_cos;  // 1 / cos angle
-    float   v_sin;  // sin angle
-
-    v_cos = cos(angle);
-    i_cos = 1 / v_cos;
-    v_sin = sin(angle);
-    vec.x = vec.x * vec.x * i_cos + v_cos +
-            vec.x * vec.y * i_cos - vec.z * v_sin +
-            vec.x * vec.z * i_cos + vec.y * v_sin;
-
-    vec.y = vec.x * vec.y * i_cos + vec.z * v_sin +
-            vec.y * vec.y * i_cos + v_cos +
-            vec.y * vec.z * i_cos - vec.x * v_sin;
-
-    vec.z = vec.x * vec.z * i_cos - vec.y * v_sin +
-            vec.y * vec.z * i_cos + vec.x * v_sin +
-            vec.z * vec.z * i_cos + v_cos;
-
-    return (vec);
+    ray.a = vector_sub(ray.a, pos);
+    ray.b = vector_sub(ray.b, pos);
+    ray.a = matrix_rotate(ray.a, rotate);
+    ray.b = matrix_rotate(ray.b, rotate);
+    ray.b = vector_normalize(vector_sub(ray.b, ray.a));
+    return (ray);
 }

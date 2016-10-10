@@ -1,6 +1,8 @@
 #ifndef LIB_RT_CL_HL
 #define LIB_RT_CL_HL
 
+#pragma OPENCL EXTENSION cl_khr_byte_addressable_store : enable
+
 typedef struct      s_evo       /**/
 {
     float           a;          /**/
@@ -74,15 +76,19 @@ typedef struct      s_scn
     struct s_spt    *spt;       /* Struct Spotlight         */
 }                   t_scn;
 
-void                camera(t_cam cam, t_ray *ray, size_t id);
-void                diffused_light(t_ray *ray, t_spt spt, t_obj obj);
-void                light(t_scn *scn, t_ray *ray, t_rgba *c_diff, size_t id_obj);
+void                camera(t_cam cam, t_ray *ray, size_t x, size_t y);
+void                diffused_light(t_ray *ray, __global t_spt *spt,
+                            t_obj *obj);
+void                light(__global t_scn *scn, t_ray *ray, __global t_rgba *c_diff,
+                        size_t id);
 unsigned char       limit_rgba(float x);
-void                run_object(t_obj *obj, t_ray ray);
-size_t              check_object(t_obj *obj, t_ray *ray);
-void                cone(t_obj *obj, t_ray ray);
-void                cylinder(t_obj *obj, t_ray ray);
-void                plan(t_obj *obj, t_ray ray);
-void                sphere(t_obj *obj, t_ray ray);
+float               run_object(__global t_obj *obj, t_ray ray);
+float               check_object(__global t_obj *obj, t_ray *ray, size_t *id);
+
+
+float               cone(__global t_obj *obj, t_ray ray);
+float               cylinder(__global t_obj *obj, t_ray ray);
+float               plan(__global t_obj *obj, t_ray ray);
+float               sphere(__global t_obj *obj, t_ray ray);
 
 #endif

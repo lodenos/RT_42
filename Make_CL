@@ -1,0 +1,15 @@
+-I ./head_cl
+
+src_cl/ray_tracing/run_raytracing.cl
+src_cl/ray_tracing/run_object.cl
+src_cl/ray_tracing/camera.cl
+src_cl/ray_tracing/check_object.cl
+
+src_cl/shader/light.cl
+src_cl/shader/limit_rgba.cl
+src_cl/shader/diffused_light.cl
+
+src_cl/object/cone.cl
+src_cl/object/cylinder.cl
+src_cl/object/plan.cl
+src_cl/object/sphere.cl

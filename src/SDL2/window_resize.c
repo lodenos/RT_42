@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:54:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:17:23 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/08 02:41:42 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    window_resize(t_env *e)
     if (!(e->img.rend = SDL_CreateRenderer(e->img.win, -1,
                 SDL_RENDERER_SOFTWARE)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (size_t *)ft_memalloc(sizeof(size_t) * e->img.w *
+    if (!(e->img.img = (int *)ft_memalloc(sizeof(int) * e->img.w *
                 e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     SDL_SetRenderDrawColor(e->img.rend, 0, 0, 0, 255);
