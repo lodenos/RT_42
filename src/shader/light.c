@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/08 03:54:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/11 15:06:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void                    light(t_env *e, t_ray *ray, t_rgba *c_diff,
 {
     // TODO Exeprimental -- Teste, NO Exactly
     // TODO Oui je sais ca fais plus de 25 lignes 'glodenos'->all
+
     int             i;
     size_t          index;
     t_ray           ray_spot;
     t_obj           tmp_obj;
 
 //-------------------------------------
+
     t_rgba          color;
     color = (t_rgba){0, 0, 0, 255};
     register double z;
@@ -55,6 +57,7 @@ void                    light(t_env *e, t_ray *ray, t_rgba *c_diff,
     int             np;
     np = 0;
     z = 0.0;
+
 //-------------------------------------
 
     i = -1;

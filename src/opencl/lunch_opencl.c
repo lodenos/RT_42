@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lunch_opencl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 15:28:03 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/11 17:27:31 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static inline void  create_kernel(cl_program prog, t_krnl *krnl)
 {
     cl_int  err;
 
-    krnl->run_raytracing = clCreateKernel(prog, "run_raytracing", &err); 
+    krnl->run_raytracing = clCreateKernel(prog, "run_raytracing", &err);
     err_cl(err);
 }
 

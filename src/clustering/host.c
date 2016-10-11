@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 04:50:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/09 02:43:32 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/10 23:21:00 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ static void *slave_connection(int *fds)
 
     fd = *fds;
     tmp = ft_memalloc(sizeof(char) * 257);
+
     while (1)
     {
-        if (read(fd, tmp, 256) == -1)
-            break;
-        write(fd, "Test server :)  -> \n", 20);
-        ft_putstr(tmp);
-        ft_putstr("--------------------------------\n");
+        read(fd, tmp, 256);
+    //    write(fd, "Test server :)  -> \n", 20);
     }
     ft_putstr("Client quit\n");
     free(tmp);
@@ -53,14 +51,15 @@ void        *host(void *arg)
     sck.sin_port = htons(4297);
     if (bind(fds, (sockaddr *)&sck, sizeof(sck)))
         ft_putstr_err("ERROR: bind", 1);
-    if (listen(fds, 5))
+    if (listen(fds, 15))
         ft_putstr_err("ERROR: listen", 1);
     size = sizeof(sck_slv);
     while (1)
     {
         fds_slv = accept(fds, (sockaddr*)&slv.sck, (socklen_t *)&size);
+        printf("FD = %d \n", fds_slv);
         pthread_create(&pthr, NULL, &slave_connection, (void *)&fds_slv);
     }
     close(fds);
-    return (NULL);
+    pthread_exit(NULL);
 }

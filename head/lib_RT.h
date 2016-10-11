@@ -6,25 +6,29 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/09 01:17:24 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/11 17:07:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_RT_H
 #define LIB_RT_H
+#include <arpa/inet.h>
 #include <libft.h>
 #include <OpenCL/cl.h>
+#include <netdb.h>
+#include <netinet/in.h>
 #include <pthread.h>
 #include <SDL2/SDL.h>
-#include <sys/types.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h> /* close */
-#include <netdb.h> /* gethostbyname */
-#define TITLE "RT"
-#define WIDTH 1920
-#define HEIGHT 1080
+#include <sys/types.h>
+#include <unistd.h>
+#define TITLE       "RT"
+#define WIDTH       1920
+#define HEIGHT      1080
+#define CONE        1
+#define CYLINDER    2
+#define PLAN        3
+#define SPHERE      4
 
 typedef struct sockaddr_in  sockaddr_in;
 typedef struct sockaddr     sockaddr;

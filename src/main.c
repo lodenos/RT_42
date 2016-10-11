@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/08 19:26:53 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/11 17:08:30 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,31 @@ static inline void  init_RT(t_env *e)
 
 static inline void  init_file_opencl(t_opcl *cl)
 {
+    int     i;
     int     fd;
     char    *tmp;
     char    **src;
 
+    i = 0;
     if ((fd = open("Make_CL", O_RDONLY)) == -1)
         ft_putstr_err("ERROR: Make_CL not found", 1);
     tmp = get_file_raw(fd);
+    close(fd);
     src = ft_strsplit(tmp, '\n');
-    cl->flags = src[0];
-    cl->nbr_src = ft_strlen_tab(src) - 1;
+    if ((cl->nbr_src = ft_strlen_tab(src) - 1) < 2)
+        ft_putstr_err("ERROR: src Make_CL < 2 args", 1);
+    if (!(cl->flags = ft_strdup(src[0])))
+        ft_putstr_err("ERROR: malloc", 1);
     if (!(cl->file = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
     if (!(cl->size_src = (size_t *)ft_memalloc(sizeof(size_t) *
-                (cl->nbr_src + 1))))
+            (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
     if (!(cl->src = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
         ft_putstr_err("ERROR: malloc", 1);
+    while (src[++i] != NULL)
+        if (!(cl->file[i - 1] = ft_strdup(src[i])))
+            ft_putstr_err("ERROR: malloc", 1);
     free(tmp);
     free_tab((void **)src);
 }

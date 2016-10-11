@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   OCL_run_raytracing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 13:05:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/08 02:27:15 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/11 15:07:50 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,17 @@ void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
     wk[0] = e->img.w;
     wk[1] = e->img.h;
 
-    printf("W = %lu ;  H = %lu\n", e->scn.cam.w, e->scn.cam.h);
-
-
-
 //------    Create Buffer
 
     buff_img = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
             sizeof(int) * e->img.w * e->img.h, NULL, &err);
     err_cl(err);
-
     buff_obj = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
             sizeof(t_obj) * e->scn.n_obj, NULL, &err);
     err_cl(err);
-
     buff_scn = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
             sizeof(t_scn), NULL, &err);
     err_cl(err);
-
     buff_spt = clCreateBuffer(e->cl.contx, CL_MEM_READ_WRITE,
             sizeof(t_spt) * e->scn.n_spt, NULL, &err);
     err_cl(err);
@@ -74,28 +67,21 @@ void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
 
     err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 0,
                 sizeof(buff_img), &buff_img));
-
     err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 1,
                 sizeof(buff_obj), &buff_obj));
-
     err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 2,
                 sizeof(buff_scn), &buff_scn));
-
     err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 3,
                 sizeof(buff_spt), &buff_spt));
-
 
 //------    Write Buffer
 
     err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_img, CL_TRUE, 0,
             sizeof(int) * e->img.w * e->img.h, e->img.img, 0, NULL, NULL));
-
     err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_obj, CL_TRUE, 0,
             sizeof(t_obj) * e->scn.n_obj, e->scn.obj, 0, NULL, NULL));
-
     err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_scn, CL_TRUE, 0,
             sizeof(t_scn), &e->scn, 0, NULL, NULL));
-
     err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, buff_spt, CL_TRUE, 0,
             sizeof(t_spt) * e->scn.n_spt, e->scn.spt, 0, NULL, NULL));
 
@@ -110,10 +96,6 @@ void    OCL_run_raytracing(t_env *e, SDL_Renderer *rend)
             sizeof(int) * e->img.w * e->img.h, e->img.img, 0, NULL, NULL));
 
 //------    Push Image to window
-
-
-    printf("red = %d ; green = %d ; blue = %d\n", e->scn.spt[0].rgba.red,
-            e->scn.spt[0].rgba.green, e->scn.spt[0].rgba.blue);
 
     push_to_window(rend, e->img.img, e->img.w, e->img.h);
 }
