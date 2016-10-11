@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/08 05:22:18 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/11 21:47:40 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ SRC_NAME = 									\
 			shader/light.c					\
 			shader/limit_rgba.c				\
 			shader/specular_light.c			\
-											\
+			shader/super_sampling.c 		\
 			vector/coordinates_collision.c	\
 			vector/vector_formula_1.c		\
 			vector/vector_formula_2.c		\

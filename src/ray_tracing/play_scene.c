@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/11 17:27:18 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/12 01:34:20 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void    play_scene(t_env *e, SDL_Renderer *rend)
             y = 0;
             while (y < e->img.h)
             {
-                camera(e->scn.cam, &ray, x, y);
-                run_raytracing(e, e->scn.obj, &ray);
+                super_sampling(e, &ray, (cl_float2){(float)x, (float)y}, 1);
                 pixel_put(rend, ray.rgba, x, y);
                 ++y;
             }
             ++x;
         }
     }
+    /* TODO Add filter  */
     SDL_RenderPresent(rend);
 }

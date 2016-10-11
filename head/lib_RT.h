@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/11 17:07:51 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/12 00:17:19 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 #define CYLINDER    2
 #define PLAN        3
 #define SPHERE      4
+#define TORUS       5
 
 typedef struct sockaddr_in  sockaddr_in;
 typedef struct sockaddr     sockaddr;
@@ -177,7 +178,7 @@ typedef struct              s_slv       /* struct connexion fd -> socket    */
 }                           t_slv;
 
 void                        camera(register t_cam cam, t_ray *ray,
-                                    register size_t x, register size_t y);
+                                    register float x, register float y);
 size_t                              check_object(t_obj *obj, t_ray *ray);
 void                        cone(register t_obj *obj, register t_ray ray);
 cl_float3                   coordinates_collision(register cl_float3 a,
@@ -225,6 +226,8 @@ void                        run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 double                      specular_light(register t_spt spt,
                                     register t_obj obj);
 void                        sphere(register t_obj *obj, register t_ray ray);
+void                        super_sampling(t_env *e, t_ray *ray, cl_float2 pos,
+                                    size_t resolution);
 void                        torus(register t_obj *obj, register t_ray ray);
 cl_float3                   vector_add(register cl_float3 a,
                                     register cl_float3 b);
