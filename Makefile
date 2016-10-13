@@ -3,62 +3,122 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: glodenos <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/04/14 16:09:43 by glodenos          #+#    #+#              #
-#    Updated: 2016/09/21 12:11:18 by anespoul         ###   ########.fr        #
+#    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
+#    Updated: 2016/10/13 15:03:26 by nrandria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS	=	-Wall -Werror -Wextra -lm -g3 -O3
+.PHONY: all, fclean, clean, re
 
-HEAD	=	-I./head
+SRC_PATH = src/
 
-LIBFT	=	-I./libft/head -L./libft -lft
+SRC_NAME = 									\
+			clustering/host.c				\
+											\
+			move/matrix_rotate.c			\
+											\
+			object/sphere.c					\
+			object/cone.c					\
+			object/torus.c					\
+			object/cylinder.c				\
+			object/plan.c					\
+											\
+			opencl/err_cl.c					\
+			opencl/err_cl_sub.c				\
+			opencl/get_src_opencl.c			\
+			opencl/lunch_opencl.c			\
+											\
+			parser/get_camera.c				\
+			parser/get_color.c				\
+			parser/get_cone.c				\
+			parser/get_cylinder.c			\
+			parser/get_file_mlt.c			\
+			parser/get_file_obj.c			\
+			parser/get_file_ortv1.c			\
+			parser/get_file_raw.c			\
+			parser/get_plan.c				\
+			parser/get_scene.c				\
+			parser/get_sphere.c				\
+			parser/get_spot.c				\
+			parser/get_torus.c				\
+			parser/get_vec3.c				\
+											\
+			ray_tracing/camera.c			\
+			ray_tracing/check_object.c		\
+			ray_tracing/OCL_run_raytracing.c\
+			ray_tracing/play_scene.c		\
+			ray_tracing/run_object.c		\
+			ray_tracing/run_raytracing.c	\
+											\
+			SDL2/create_window.c			\
+			SDL2/event_everything.c			\
+			SDL2/init_keyboard.c			\
+			SDL2/key_press.c				\
+			SDL2/key_release.c				\
+			SDL2/pixel_put.c				\
+			SDL2/window_resize.c			\
+			SDL2/debug_move.c				\
+											\
+			shader/diffused_light.c			\
+			shader/light.c					\
+			shader/limit_rgba.c				\
+			shader/specular_light.c			\
+			shader/super_sampling.c 		\
+			vector/coordinates_collision.c	\
+			vector/vector_formula_1.c		\
+			vector/vector_formula_2.c		\
+			vector/vector_rotate.c			\
+											\
+			main.c
 
-MLX		= 	-L./minilibx_macos -I./minilibx_macos -lmlx -framework OpenGL	\
-			-framework AppKit
+OBJ_PATH	=	obj/
 
-NAME	=	RTv1
+INCLUDE 	= 	-Ihead -Ilibft/head
 
-SRC		=	\
-			get_scene.c				\
-			main.c					\
-			get_camera.c			\
-			get_object.c			\
-			get_spot.c				\
-			sphere.c				\
-			play_scene.c			\
-			coordinates_collision.c	\
-			diffused_light.c		\
-			light.c					\
-			event_keyboard.c		\
-			run_raytracing.c		\
-			plan.c					\
-			cone.c					\
-			torus.c					\
-			cylinder.c				\
-			ft_vec.c				\
-			spec_light.c
+LDFLAGS		=	-Llibft
+LDLIBS 		= 	-lft
 
-$(NAME): $(OBJ)
+NAME 		=	RT
+
+CC 			=	clang
+
+CFLAGS 		=	#-Wall -Wextra -Werror -Ofast #-Weverything -Wno-padded
+LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
+
+OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
+
+SRC 		=	$(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ 		=	$(addprefix $(OBJ_PATH),$(notdir $(OBJ_NAME)))
+
+VPATH		=	$(shell find $(SRC_PATH) -type d)
 
 all: $(NAME)
 
-$(NAME):
-	@make -C ./libft
-	@make -C ./minilibx_macos
-	@gcc -o $(NAME) $(SRC) $(HEAD) $(MLX) $(LIBFT) $(FLAGS)
+$(NAME): $(OBJ)
+	@make -C libft
+	@echo "\033[33mProject compilation\033[0m"
+	@$(CC) $(LDFLAGS) $(LDLIBS) $(LIBGRPH) $^ -o $@
+	@sh ProgressBar.sh 0.005
+	@echo "\033[32mCompilation SUCCESS\033[0m"
+
+$(OBJ_PATH)%.o: %.c
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
+	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+
+debug:
+	@gcc -g3 -fsanitize=address $(SRC) $(LIBGRPH) $(INCLUDE) $(LDLIBS) $(LDFLAGS)
 
 clean:
+	@echo "\033[33m.o's cleaning\033[0m"
 	@rm -rf $(OBJ)
-	@make clean -C ./libft
-	@make clean -C ./minilibx_macos
+	@rmdir $(OBJ_PATH) 2> /dev/null || true
 
 fclean: clean
+	@make fclean -C libft/
 	@rm -rf $(NAME)
-	@rm -rf $(OBJ)
-	@make fclean -C ./libft
-	@make clean -C ./minilibx_macos
 
-make re: fclean all
+re: fclean all
+
+.PHONY: all, clean, fclean, re
