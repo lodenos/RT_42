@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/11 17:27:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 14:42:27 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ static inline void  console_log_compilation(cl_program prog, cl_device_id
 
 void                lunch_opencl(t_opcl *cl)
 {
+    cl_int  err;
+
     get_src_opencl(cl);
     err_cl(clGetPlatformIDs(1, &cl->platf_id, &cl->num_platf));
     err_cl(clGetDeviceIDs(cl->platf_id, CL_DEVICE_TYPE_GPU, 1, &cl->device_id,
                 &cl->num_device));
-    cl->contx = clCreateContext(NULL, 1, &cl->device_id, NULL, NULL, &cl->err);
-    err_cl(cl->err);
-    cl->cmd_que = clCreateCommandQueue(cl->contx, cl->device_id, 0, &cl->err);
-    err_cl(cl->err);
+    cl->contx = clCreateContext(NULL, 1, &cl->device_id, NULL, NULL, &err);
+    err_cl(err);
+    cl->cmd_que = clCreateCommandQueue(cl->contx, cl->device_id, 0, &err);
+    err_cl(err);
     cl->prog = clCreateProgramWithSource(cl->contx, cl->nbr_src,
-            (const char **)((size_t)(cl->src)), cl->size_src, &cl->err);
-    err_cl(cl->err);
+            (const char **)((size_t)(cl->src)), cl->size_src, &err);
+    err_cl(err);
     if (clBuildProgram(cl->prog, 1, &cl->device_id, cl->flags, NULL, NULL) != 0)
         console_log_compilation(cl->prog, cl->device_id, CL_PROGRAM_BUILD_LOG);
     create_kernel(cl->prog, &cl->krnl);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_release.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:50:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 04:21:23 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/14 16:08:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ void    key_release(t_env *e)
         e->key.key_comma = 0;
     else if (e->event.key.keysym.sym == SDLK_w)
         e->key.key_w = 0;
+    else if (e->event.key.keysym.sym == SDLK_s)
+        e->key.key_s = 0;
+    else if (e->event.key.keysym.sym == SDLK_SPACE)
+        e->key.key_space = 0;
+    else if (e->event.key.keysym.sym == SDLK_LSHIFT)
+            ft_putstr("Key : left shift\n");
 }

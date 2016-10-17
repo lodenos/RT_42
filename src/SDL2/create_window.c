@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:22:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/07 14:11:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/14 13:28:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ void    create_window(t_env *e, Uint32 flags)
     if (SDL_RenderClear(e->img.rend))
         ft_putstr_err(SDL_GetError(), 1);
     SDL_RenderPresent(e->img.rend);
-    play_scene(e, e->img.rend);
 }

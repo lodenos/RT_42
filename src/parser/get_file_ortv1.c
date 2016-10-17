@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file_ortv1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 18:03:45 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:53:58 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/12 13:54:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void                get_file_ortv1(t_env *e, char *file)
         ft_putstr_err("The file can not be opened, or no", 1);
     if ((tmp = get_file_raw(fd)) == NULL)
         ft_putstr_err("ERROR File", 1);
+    close(fd);
     swp = ft_strsplit(tmp, '\n');
     get_nbr_obj(e, swp);
     if (!(e->scn.obj = (t_obj *)ft_memalloc(sizeof(t_obj) * (e->scn.n_obj + 1))))

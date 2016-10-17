@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event_everything.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:28:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:17:52 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/15 13:49:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,33 @@ void    event_everything(t_env *e)
         SDL_GetWindowPosition(e->img.win, (int *)&e->img.x, (int *)&e->img.y);
     if (e->event.window.event == SDL_WINDOWEVENT_RESIZED)
         window_resize(e);
+
+//------
+
+    if (e->event.motion.type == SDL_MOUSEMOTION)
+    {
+        SDL_GetMouseState(&e->mouse.x, &e->mouse.y);
+        printf("Mouse = x = %d ; y = %d \n", e->mouse.x, e->mouse.y);
+    }
+    if (e->event.motion.type == SDL_MOUSEBUTTONDOWN)
+    {
+        if (e->event.button.button == SDL_BUTTON_LEFT)
+            e->mouse.left = 1;
+        else if (e->event.button.button == SDL_BUTTON_RIGHT)
+            e->mouse.right = 1;
+    }
+    if (e->event.motion.type == SDL_MOUSEBUTTONUP)
+    {
+        if (e->event.button.button == SDL_BUTTON_LEFT)
+            e->mouse.left = 0;
+        else if (e->event.button.button == SDL_BUTTON_RIGHT)
+            e->mouse.right = 0;
+    }
+
+
+
+
+
+
+    play_scene(e, e->img.rend);
 }

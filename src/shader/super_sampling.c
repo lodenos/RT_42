@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 21:08:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/11 22:58:01 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/12 13:46:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
     long double div;
     int     max;
     t_ray   tmp_ray[resolution * resolution];
-
     long double red = 0;
     long double green = 0;
     long double blue = 0;
-
-
 
     i = -1;
     x = pos.x;
@@ -45,9 +42,7 @@ void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
         pos.x = x;
         pos.y += div;
     }
-
     i = -1;
-
     while (++i < max)
     {
         red += tmp_ray[i].rgba.red;

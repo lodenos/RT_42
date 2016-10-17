@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_keyboard.c                                    :+:      :+:    :+:   */
+/*   init_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/29 16:38:34 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/14 13:30:01 by glodenos         ###   ########.fr       */
+/*   Created: 2016/10/14 13:35:07 by glodenos          #+#    #+#             */
+/*   Updated: 2016/10/14 14:04:45 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    init_keyboard(t_key *key)
+void    init_mouse(t_mouse *mouse)
 {
-    key->key_a = 0;
-    key->key_comma = 0;
-    key->key_d = 0;
-    key->key_down = 0;
-    key->key_left = 0;
-    key->key_lshift = 0;
-    key->key_point = 0;
-    key->key_right = 0;
-    key->key_s = 0;
-    key->key_space = 0;
-    key->key_up = 0;
-    key->key_w = 0;
+    mouse->left = 0;
+    mouse->right = 0;
+    mouse->x = 0;
+    mouse->y = 0;
+    mouse->id = -1;
 }

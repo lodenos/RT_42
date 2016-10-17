@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:48:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:17:20 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/14 16:07:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static inline void  key_press_sub(t_env *e)
 {
     if (e->event.key.keysym.sym == SDLK_s)
-        ft_putstr("Key : s\n");
+        e->key.key_s = 1;
     else if (e->event.key.keysym.sym == SDLK_d)
         ft_putstr("Key : d\n");
     else if (e->event.key.keysym.sym == SDLK_a)
@@ -23,7 +23,7 @@ static inline void  key_press_sub(t_env *e)
     else if (e->event.key.keysym.sym == SDLK_LSHIFT)
         ft_putstr("Key : left shift\n");
     else if (e->event.key.keysym.sym == SDLK_SPACE)
-        ft_putstr("Key : space\n");
+        e->key.key_space = 1;
 }
 
 void    key_press(t_env *e)

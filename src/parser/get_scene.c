@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:50:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 20:28:56 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/12 13:52:13 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-/*  Format suport .obj .mlt .ortv1  */
+/*  Format suport .obj .mlt .ortv1 .ort  */
 
 void    get_scene(t_env *e, char *file)
 {
@@ -31,6 +31,8 @@ void    get_scene(t_env *e, char *file)
         get_file_mlt(e, file);
     else if (!ft_strcmp(tmp[1], "ortv1"))
         get_file_ortv1(e, file);
+    else if (!ft_strcmp(tmp[1], "ort"))
+        get_file_ort(e, file);
     else
         ft_putstr_err("unknown format", 1);
     free_tab((void **)tmp);

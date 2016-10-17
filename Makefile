@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/11 21:47:40 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/17 14:58:12 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRC_PATH = src/
 
 SRC_NAME = 									\
 			clustering/host.c				\
+											\
+			event_RT/event_RT.c				\
 											\
 			move/matrix_rotate.c			\
 											\
@@ -36,8 +38,10 @@ SRC_NAME = 									\
 			parser/get_cylinder.c			\
 			parser/get_file_mlt.c			\
 			parser/get_file_obj.c			\
+			parser/get_file_ort.c			\
 			parser/get_file_ortv1.c			\
 			parser/get_file_raw.c			\
+			parser/get_ort.c				\
 			parser/get_plan.c				\
 			parser/get_scene.c				\
 			parser/get_sphere.c				\
@@ -55,9 +59,11 @@ SRC_NAME = 									\
 			SDL2/create_window.c			\
 			SDL2/event_everything.c			\
 			SDL2/init_keyboard.c			\
+			SDL2/init_mouse.c				\
 			SDL2/key_press.c				\
 			SDL2/key_release.c				\
 			SDL2/pixel_put.c				\
+			SDL2/push_to_window.c			\
 			SDL2/window_resize.c			\
 											\
 			shader/diffused_light.c			\
