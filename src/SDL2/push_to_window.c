@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 11:47:37 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 12:35:42 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/18 16:38:16 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 
 inline void push_to_window(SDL_Renderer *rend, int *img, size_t w, size_t h)
 {
-    size_t  k;
-    size_t  x;
-    size_t  y;
+    register int    k;
+    register int    x;
+    register int    y;
 
-    x = 0;
-    while (x < w)
+    x = -1;
+    while (++x < w)
     {
-        y = 0;
-        while (y < h)
+        y = -1;
+        while (++y < h)
         {
             k = x + y * w;
-            pixel_put(rend, (t_rgba){(unsigned char)(img[k] >> 24),
+            SDL_SetRenderDrawColor(rend, (unsigned char)(img[k] >> 24),
                     (unsigned char)(img[k] >> 16), (unsigned char)(img[k] >> 8),
-                    (unsigned char)(img[k])}, x, y);
-            ++y;
+                    (unsigned char)(img[k]));
+            SDL_RenderDrawPoint(rend, x, y);
         }
-        ++x;
     }
 }

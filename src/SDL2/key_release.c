@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:50:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/14 16:08:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:40:13 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ void    key_release(t_env *e)
     else if (e->event.key.keysym.sym == SDLK_SPACE)
         e->key.key_space = 0;
     else if (e->event.key.keysym.sym == SDLK_LSHIFT)
-            ft_putstr("Key : left shift\n");
+        e->key.key_lshift = 0;
+    else if (e->event.key.keysym.sym == SDLK_d)
+        e->key.key_d = 0;
+    else if (e->event.key.keysym.sym == SDLK_a)
+        e->key.key_a = 0;
 }

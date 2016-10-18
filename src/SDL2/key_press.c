@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:48:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/14 16:07:43 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:40:15 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static inline void  key_press_sub(t_env *e)
     if (e->event.key.keysym.sym == SDLK_s)
         e->key.key_s = 1;
     else if (e->event.key.keysym.sym == SDLK_d)
-        ft_putstr("Key : d\n");
+        e->key.key_d = 1;
     else if (e->event.key.keysym.sym == SDLK_a)
-        ft_putstr("Key : a\n");
+        e->key.key_a = 1;
     else if (e->event.key.keysym.sym == SDLK_LSHIFT)
-        ft_putstr("Key : left shift\n");
+        e->key.key_lshift = 1;
     else if (e->event.key.keysym.sym == SDLK_SPACE)
         e->key.key_space = 1;
 }

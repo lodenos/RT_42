@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/17 14:58:12 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/18 15:59:48 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC_NAME = 									\
 			clustering/host.c				\
 											\
 			event_RT/event_RT.c				\
+			event_RT/fps_info.c				\
 											\
 			move/matrix_rotate.c			\
 											\

@@ -1,20 +1,16 @@
 #include "lib_RT_CL.hl"
 
-float   sphere(__global t_obj *obj, t_ray ray)
+float   sphere(__constant t_obj *obj, t_ray ray)
 {
-    t_evo   evo;
-    float3  tmp;
+    float   b;
+    float   c;
 
-    evo.a = dot(ray.b, ray.b);
-    tmp = ray.a - obj->pos;
-    evo.b = 2.0 * dot(ray.b, tmp);
-    evo.c = dot(tmp, tmp) - obj->radius * obj->radius;
-    evo.det = evo.b * evo.b - 4.0 * evo.a * evo.c;
-    if (evo.det > 0)
-    {
-        evo.ta = (-evo.b + sqrt(evo.det)) / (2.0 * evo.a);
-        evo.tb = (-evo.b - sqrt(evo.det)) / (2.0 * evo.a);
-        return (evo.ta > evo.tb) ? evo.tb : evo.ta;
-    }
-    return -1;
+    ray.a -= obj->pos;
+    b = dot(ray.a, ray.b);
+    c = dot(ray.a, ray.a) - obj->radius * obj->radius;
+    c = b * b - c;
+    if (c < 0.0f)
+		return -1;
+    c = sqrt(c);
+    return (-b - c > 0) ? -b - c : -b + c;
 }

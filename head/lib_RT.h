@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 12:17:03 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/18 16:34:15 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #define TITLE       "RT"
-#define WIDTH       1920
-#define HEIGHT      1080
+#define WIDTH       960
+#define HEIGHT      540
 #define CONE        1
 #define CYLINDER    2
 #define PLAN        3
@@ -206,6 +206,7 @@ void                        err_cl(cl_int err);
 void                        err_cl_sub(cl_int err);
 void                        event_everything(t_env *e);
 int                         event_RT(t_env *e);
+void                        fps_info(void);
 void                        get_camera(t_env *e, char **line);
 t_rgba                      get_color(char *str);
 void                        get_cone(t_obj *obj, char **line);
@@ -239,7 +240,7 @@ void                        OCL_run_raytracing(t_env *e, SDL_Renderer *rend);
 void                        pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x,
                                     size_t y);
 void                        plan(register t_obj *obj, register t_ray ray);
-void                        play_scene(t_env *e, SDL_Renderer *rend);
+void                        *play_scene(t_env *e);
 void                        push_to_window(SDL_Renderer *rend, int *img,
                                     size_t w, size_t h);
 void                        run_object(t_obj *obj, t_ray ray);

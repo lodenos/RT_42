@@ -1,6 +1,6 @@
 #include "lib_RT_CL.hl"
 
-float   cylinder(__global t_obj *obj, t_ray ray)
+float   cylinder(__constant t_obj *obj, t_ray ray)
 {
     t_evo   evo;
 

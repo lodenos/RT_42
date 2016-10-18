@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:05:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/14 16:19:19 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:41:02 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,18 @@ int     event_RT(t_env *e)
     if (e->key.key_space)
     {
         ev = 1;
-        e->scn.cam.pos.y -= 10;
-        e->scn.cam.view.y -= 10;
+        e->scn.cam.pos.y -= 50;
+        e->scn.cam.view.y -= 50;
     }
+    if (e->key.key_lshift)
+    {
+        ev = 1;
+        e->scn.cam.pos.y += 50;
+        e->scn.cam.view.y += 50;
+    }
+
+
+//------------------    Move camera
 
     if (e->key.key_w)
     {
@@ -41,9 +50,18 @@ int     event_RT(t_env *e)
         e->scn.cam.pos.z -= 50;
         e->scn.cam.view.z -= 50;
     }
-
-
-
+    if (e->key.key_a)
+    {
+        ev = 1;
+        e->scn.cam.pos.x -= 50;
+        e->scn.cam.view.x -= 50;
+    }
+    if (e->key.key_d)
+    {
+        ev = 1;
+        e->scn.cam.pos.x += 50;
+        e->scn.cam.view.x += 50;
+    }
 
 
     if (e->mouse.left)
