@@ -2,16 +2,12 @@
 
 float   plan(__constant t_obj *obj, t_ray ray)
 {
-    float3  tmp_v;
-    float3  origine;
-    float   det;
-    float   d;
-    float3  normal;
+    float   a;
+    float   b;
 
-    origine = (float3)(0.0, 0.0, 0.0);
-    tmp_v = obj->pos - origine;
-    normal = normalize(obj->rotate);
-
-    det = -(dot(normal, ray.a) + sqrt(dot(tmp_v, tmp_v))) / dot(normal, ray.b);
-    return (det < 0) ? -1 : det;
+    if ((a = dot(ray.b, obj->rotate)) <= 0.0f)
+        return -1;
+    if ((b = -(dot(obj->rotate, ray.a - obj->pos) / a)) <= 0.0f)
+        return -1;
+    return b;
 }

@@ -23,8 +23,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #define TITLE       "RT"
-#define WIDTH       960
-#define HEIGHT      540
+#define WIDTH       1920
+#define HEIGHT      1080
 #define CONE        1
 #define CYLINDER    2
 #define PLAN        3
