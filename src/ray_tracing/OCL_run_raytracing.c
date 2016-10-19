@@ -46,7 +46,7 @@ static inline void  set_kernel_arg_opencl(t_env *e)
 
     static int  bool = 1;
 
-    if (bool)
+   if (bool)
 {
 
     bool  = 0;

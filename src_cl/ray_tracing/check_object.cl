@@ -2,7 +2,7 @@
 
 /*  TODO add worker */
 
-inline float    check_object(__constant t_obj *obj, t_ray *ray, size_t *id)
+inline float    check_object(constant t_obj *obj, t_ray *ray, size_t *id)
 {
     int     i;
     float   tmp_det;

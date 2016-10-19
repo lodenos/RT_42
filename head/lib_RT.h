@@ -23,8 +23,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 #define TITLE       "RT"
-#define WIDTH       1920
-#define HEIGHT      1080
+#define WIDTH       960
+#define HEIGHT      540
 #define CONE        1
 #define CYLINDER    2
 #define PLAN        3
@@ -80,6 +80,9 @@ typedef struct              s_ray           /* Ray                            */
     cl_float3               b;              /* Point reach                    */
     size_t                  max;            /* Maximun reflexion              */
     struct s_rgba           rgba;           /* Calor of the ray               */
+    double                  red;
+    double                  green;
+    double                  blue;
 }                           t_ray;
 
 typedef struct              s_obj           /* Object                         */

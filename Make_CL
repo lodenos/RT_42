@@ -1,9 +1,6 @@
 -I ./head_cl
 
 src_cl/object/cone.cl
-src_cl/object/cylinder.cl
-src_cl/object/plan.cl
-src_cl/object/sphere.cl
 
 src_cl/ray_tracing/run_raytracing.cl
 src_cl/ray_tracing/run_object.cl

@@ -9,16 +9,6 @@
 
 #pragma OPENCL EXTENSION cl_khr_byte_addressable_store : enable
 
-typedef struct      s_evo       /**/
-{
-    float           a;          /**/
-    float           b;          /**/
-    float           c;          /**/
-    float           det;        /**/
-    float           ta;         /**/
-    float           tb;         /**/
-}                   t_evo;      /**/
-
 typedef struct      s_rgba      /* Color                    */
 {
     unsigned char   red;        /* Red   0 - 255            */
@@ -43,6 +33,9 @@ typedef struct      s_ray       /* Ray                      */
     float3          b;          /* Point reach              */
     size_t          max;        /* Maximun reflexion        */
     struct s_rgba   rgba;       /* Calor of the ray         */
+    double          red;        /* */
+    double          green;      /* */
+    double          blue;       /* */
 }                   t_ray;
 
 typedef struct      s_obj       /* Object                   */
@@ -83,18 +76,20 @@ typedef struct      s_scn
 }                   t_scn;
 
 void                camera(t_cam cam, t_ray *ray, size_t x, size_t y);
-void                diffused_light(t_ray *ray, __global t_spt *spt,
-                            t_obj *obj);
+
 void                light(__global t_scn *scn, t_ray *ray, __global t_rgba *c_diff,
                         size_t id);
 unsigned char       limit_rgba(float x);
-float               run_object(__constant t_obj *obj, t_ray ray);
-float               check_object(__constant t_obj *obj, t_ray *ray, size_t *id);
 
 
-float               cone(__constant t_obj *obj, t_ray ray);
-float               cylinder(__constant t_obj *obj, t_ray ray);
-float               plan(__constant t_obj *obj, t_ray ray);
-float               sphere(__constant t_obj *obj, t_ray ray);
+t_ray               diffused_light(t_ray ray, __global t_spt *spt,
+                            t_obj obj);
+
+
+float               check_object(constant t_obj *obj, t_ray *ray, size_t *id);
+float               cone(constant t_obj *obj, t_ray ray);
+float               run_object(constant t_obj *obj, t_ray ray);
+
+
 
 #endif

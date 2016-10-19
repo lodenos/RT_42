@@ -31,5 +31,5 @@ inline double           specular_light(register t_spt spt, register t_obj obj)
     l = vector_normalize(vector_sub(spt.pos, obj.collision));
     return (power(vector_scalar(vector_reverse(l), vector_add(l,
     vector_mult_x(vector_mult_x(obj.normal, 2), vector_scalar(
-    vector_reverse(obj.normal), l)))), 28) * spt.specular);
+    vector_reverse(obj.normal), l)))), 50) * spt.specular);
 }
