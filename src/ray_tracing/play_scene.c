@@ -14,9 +14,9 @@
 
 void    *play_scene(t_env *e)
 {
+    t_ray           ray;
     register size_t x;
     register size_t y;
-    t_ray           ray;
 
     e->start = 1;
     while (e->exit)
@@ -26,8 +26,6 @@ void    *play_scene(t_env *e)
             int id;
             camera(e->scn.cam, &ray, (float)e->mouse.x, (float)e->mouse.y);
             id = check_object(e->scn.obj, &ray);
-//            printf("Pos mouse = x %d ; y = %d\n", e->mouse.x, e->mouse.y);
-//            printf("Befer ID object = %d\n", id);
             if (e->scn.obj[id].det == -1)
             {
                 id = -1;
@@ -35,10 +33,9 @@ void    *play_scene(t_env *e)
             }
             else
                 e->mouse.id = id;
-//            printf("After ID object = %d\n", id);
             continue ;
         }
-        fps_info();
+        fps_info(); //-------------------   FPS
         if (e->gpu)
             OCL_run_raytracing(e, e->img.rend);
         else
@@ -60,7 +57,6 @@ void    *play_scene(t_env *e)
         }
         /* TODO Add filter  */
         SDL_RenderPresent(e->img.rend);
-        usleep(10000);
     }
     return (NULL);
 }

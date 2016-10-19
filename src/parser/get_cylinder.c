@@ -28,7 +28,7 @@ void    get_cylinder(t_obj *obj, char **line)
     if (ft_strlen_tab(line) != 5)
         ft_putstr_err("ERROR: Init. Object.cylinder.nbr.argument", 1);
     obj->pos = get_vec3(line[1]);
-    obj->rotate = get_vec3(line[2]);
+    obj->rotate = vector_normalize(get_vec3(line[2]));
     obj->rgba = get_color(line[3]);
     obj->radius = get_radius(line[4]);
     obj->type = 2;

@@ -2,20 +2,20 @@
 
 float   cylinder(__constant t_obj *obj, t_ray ray)
 {
-    t_evo   evo;
+    float   a;
+    float   b;
+    float   c;
+    float   x;
+    float   y;
 
-    evo.a = ray.b.x * ray.b.x + ray.b.z * ray.b.z;
-    evo.b = 2.0 * ((ray.a.x - obj->pos.x) * ray.b.x
-        + (ray.a.z - obj->pos.z) * ray.b.z);
-    evo.c = (ray.a.x - obj->pos.x) * (ray.a.x - obj->pos.x)
-        + (ray.a.z - obj->pos.z) * (ray.a.z - obj->pos.z)
-        - obj->radius * obj->radius;
-    evo.det = evo.b * evo.b - 4.0 * evo.a * evo.c;
-    if (evo.det > 0)
-    {
-        evo.ta = (-evo.b + sqrt(evo.det)) / (2.0 * evo.a);
-        evo.tb = (-evo.b - sqrt(evo.det)) / (2.0 * evo.a);
-        return (evo.ta > evo.tb) ? evo.tb : evo.ta;
-    }
-    return -1;
+    ray.a -= obj->pos;
+    x = dot(ray.b, obj->rotate);
+    y = dot(ray.a, obj->rotate);
+    a = dot(ray.b, ray.b) - x * x;
+    b = dot(ray.a, ray.b) - x * y;
+    c = b * b - a * (dot(ray.a, ray.a) - obj->radius * obj->radius - y * y);
+    if (c < 0.0f)
+		return -1;
+    c = sqrt(c);
+    return (-b - c > 0) ? -b - c : -b + c;
 }
