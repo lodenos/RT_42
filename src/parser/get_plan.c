@@ -17,8 +17,8 @@ void    get_plan(t_obj *obj, char **line)
     if (ft_strlen_tab(line) != 4)
         ft_putstr_err("ERROR: Init. Object.plan.nbr.argument", 1);
     obj->pos = get_vec3(line[1]);
-    obj->rotate = vector_normalize(get_vec3(line[2]));
-    obj->rgba = get_color(line[3]);
+    obj->rotate = normalize(get_vec3(line[2]));
+    obj->color = get_color(line[3]);
     obj->type = 3;
     obj->end = 1;
 }

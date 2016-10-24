@@ -20,7 +20,7 @@ void    init_keyboard(t_key *key)
     key->key_down = 0;
     key->key_left = 0;
     key->key_lshift = 0;
-    key->key_point = 0;
+    key->key_period = 0;
     key->key_right = 0;
     key->key_s = 0;
     key->key_space = 0;

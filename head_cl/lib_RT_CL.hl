@@ -9,14 +9,6 @@
 
 #pragma OPENCL EXTENSION cl_khr_byte_addressable_store : enable
 
-typedef struct      s_rgba      /* Color                    */
-{
-    unsigned char   red;        /* Red   0 - 255            */
-    unsigned char   green;      /* Green 0 - 255            */
-    unsigned char   blue;       /* Blue  0 - 255            */
-    unsigned char   alpha;      /* Alpha 0 - 255            */
-}                   t_rgba;
-
 typedef struct      s_cam       /* Camera                   */
 {
     float           fov;        /* FOV                      */
@@ -32,10 +24,7 @@ typedef struct      s_ray       /* Ray                      */
     float3          a;          /* Point Start              */
     float3          b;          /* Point reach              */
     size_t          max;        /* Maximun reflexion        */
-    struct s_rgba   rgba;       /* Calor of the ray         */
-    double          red;        /* */
-    double          green;      /* */
-    double          blue;       /* */
+    unsigned int    color;       /* Calor of the ray         */
 }                   t_ray;
 
 typedef struct      s_obj       /* Object                   */
@@ -48,7 +37,7 @@ typedef struct      s_obj       /* Object                   */
     float3          normal;     /* Vector Normal            */
     float3          pos;        /* Position Object          */
     float           radius;     /* radius of the object     */
-    struct s_rgba   rgba;       /* Calors of the object     */
+    unsigned int    color;      /* Calors of the object     */
     float3          rotate;     /* Angle of rotation        */
     size_t          type;       /* Type Object              */
 }                   t_obj;
@@ -61,7 +50,7 @@ typedef struct      s_spt       /**/
     size_t          id;         /**/
     float           light;      /**/
     float3          pos;        /**/
-    struct s_rgba   rgba;       /**/
+    unsigned int    color;      /**/
     float           specular;   /**/
 }                   t_spt;
 

@@ -12,17 +12,27 @@
 
 #include "lib_RT.h"
 
-inline cl_float3    matrix_rotate(register cl_float3 point,
-        register cl_float3 rot)
+inline cl_float3    rotate_x(register cl_float3 point,
+        register float angle)
 {
-    /* Rotate Axe x */
-    point.y = point.y * cosf(rot.x) - point.z * sinf(rot.x);
-    point.z = point.y * sinf(rot.x) + point.z * cosf(rot.x);
-    /* Rotate Axe y */
-    point.x = point.x * cosf(rot.y) + point.z * sinf(rot.y);
-    point.z = point.x * -sinf(rot.y) + point.z * cosf(rot.y);
-    /* Rotate Axe z */
-    point.x = point.x * cosf(rot.z) - point.y * sinf(rot.z);
-    point.y = point.x * sinf(rot.z) + point.y * cosf(rot.z);
+    point.y = point.y * cosf(angle) - point.z * sinf(angle);
+    point.z = point.y * sinf(angle) + point.z * cosf(angle);
+    return (point);
+}
+
+inline cl_float3    rotate_y(register cl_float3 point,
+        register float angle)
+{
+    point.x = point.x * cosf(angle) + point.z * sinf(angle);
+    point.z = point.x * -sinf(angle) + point.z * cosf(angle);
+    return (point);
+}
+
+
+inline cl_float3    rotate_z(register cl_float3 point,
+        register float angle)
+{
+    point.x = point.x * cosf(angle) - point.y * sinf(angle);
+    point.y = point.x * sinf(angle) + point.y * cosf(angle);
     return (point);
 }

@@ -1,6 +1,22 @@
+
 #include "lib_RT_CL.hl"
 
-__kernel void   run_raytracing(__global int *img, __constant t_obj *obj,
+void    get_normal_object(t_obj *obj, t_ray ray)
+{
+    if (obj->type == CONE)
+        return ;
+    else if (obj->type == CYLINDER)
+        obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
+                (dot(ray.b, obj->rotate) * obj->det + dot(ray.a, obj->rotate)));
+    else if (obj->type == PLAN)
+        obj->normal = obj->rotate;
+    else if (obj->type == SPHERE)
+        obj->normal = normalize(obj->collision - obj->pos);
+    else if (obj->type == TORUS)
+        return ;
+}
+
+__kernel void   run_raytracing(__global unsigned int *img, __constant t_obj *obj,
         __global t_scn *scn, __global t_spt *spt)
 {
     size_t  id      = 0;
@@ -10,18 +26,25 @@ __kernel void   run_raytracing(__global int *img, __constant t_obj *obj,
     t_obj   obj_tmp;
     float   det;
 
-
-
     camera(scn->cam, &ray, x, y);
     det = check_object(obj, &ray, &id);
 
     obj_tmp = obj[id];
+
     obj_tmp.collision = ray.a + ray.b * obj_tmp.det;
+
     obj_tmp.det = det;
 
-    ray.rgba = obj_tmp.rgba;
+    get_normal_object(&obj_tmp, ray);
 
-    img[(y * scn->cam.w) + x] = (int)ray.rgba.red << 24 |
-            (int)ray.rgba.green << 16 | (int)ray.rgba.blue << 8 |
-            (int)ray.rgba.alpha;
+
+    if (det >= 0.0f)
+    {
+        ray.color = obj_tmp.color;
+        ray = diffused_light(ray, &spt[0], obj_tmp);
+    }
+    else
+        ray.color = 0x0;
+
+    img[(y * scn->cam.w) + x] = ray.color;
 }

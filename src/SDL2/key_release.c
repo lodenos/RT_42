@@ -22,8 +22,8 @@ void    key_release(t_env *e)
          e->key.key_right = 0;
     else if (e->event.key.keysym.sym == SDLK_LEFT)
        e->key.key_left = 0;
-    else if (e->event.key.keysym.sym == 0)
-        ft_putstr("Key : .\n");
+    else if (e->event.key.keysym.sym == SDLK_PERIOD)
+        e->key.key_period = 0;
     else if (e->event.key.keysym.sym == SDLK_COMMA)
         e->key.key_comma = 0;
     else if (e->event.key.keysym.sym == SDLK_w)

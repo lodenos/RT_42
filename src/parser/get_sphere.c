@@ -28,8 +28,8 @@ void                get_sphere(t_obj *obj, char **line)
     if (ft_strlen_tab(line) != 5)
         ft_putstr_err("ERROR: Init. Object.sphere.nbr.argument", 1);
     obj->pos = get_vec3(line[1]);
-    obj->rotate = get_vec3(line[2]);
-    obj->rgba = get_color(line[3]);
+    obj->rotate = normalize(get_vec3(line[2]));
+    obj->color = get_color(line[3]);
     obj->radius = get_radius(line[4]);
     obj->type = 4;
     obj->end = 1;

@@ -13,11 +13,13 @@ inline float    check_object(constant t_obj *obj, t_ray *ray, size_t *id)
     while (obj[++i].end)
     {
         det = run_object(&obj[i], *ray);
-        if (0 <= det && det <= tmp_det)
+        if (0 < det && det < tmp_det)
         {
             tmp_det = det;
             *id = (size_t)i;
         }
     }
+    if (tmp_det == 20000)
+        return -1;
     return (tmp_det);
 }

@@ -12,21 +12,23 @@
 
 #include "lib_RT.h"
 
-inline size_t   check_object(t_obj *obj, t_ray *ray)
+inline float    check_object(t_obj *obj, register t_ray ray, size_t *id)
 {
-    register int    i;
-    register size_t id;
+    register float  det;
+    register size_t i;
     register float  tmp_det;
 
-    i = -1;
-    id = 0;
+    i = 0;
     tmp_det = 20000;
-    ray->rgba = (t_rgba){0, 0, 0, 255};
-    while (obj[++i].end)
+    while (obj[i].end)
     {
-        run_object(&obj[i], *ray);
-        if (0 <= obj[i].det && obj[i].det <= tmp_det)
-            tmp_det = obj[(id = (size_t)i)].det;
+        det = run_object(obj[i], ray);
+        if (0 < det && det < tmp_det)
+        {
+            tmp_det = det;
+            *id = (size_t)i;
+        }
+        ++i;
     }
-    return (id);
+    return (tmp_det);
 }

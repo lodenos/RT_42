@@ -12,9 +12,9 @@
 
 #include "lib_RT.h"
 
-inline void pixel_put(SDL_Renderer *rend, t_rgba rgba, size_t x, size_t y)
+inline void pixel_put(SDL_Renderer *rend, unsigned int color, size_t x, size_t y)
 {
-    SDL_SetRenderDrawColor(rend, (Uint8)rgba.red, (Uint8)rgba.green,
-            (Uint8)(rgba.blue), (Uint8)rgba.alpha);
+    SDL_SetRenderDrawColor(rend, (Uint8)(color >> 24), (Uint8)(color >> 16),
+            (Uint8)(color >> 8), (Uint8)color);
     SDL_RenderDrawPoint(rend, (int)x, (int)y);
 }

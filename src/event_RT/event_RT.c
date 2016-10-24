@@ -12,6 +12,90 @@
 
 #include "lib_RT.h"
 
+static inline int   move_camera(t_cam *cam, t_key key)
+{
+    int     ev;
+
+    ev = 0;
+    if (key.key_w)
+    {
+        ev = 1;
+        cam->pos.z += 30;
+    }
+    if (key.key_s)
+    {
+        ev = 1;
+        cam->pos.z -= 30;
+    }
+    if (key.key_a)
+    {
+        ev = 1;
+        cam->pos.x -= 30;
+    }
+    if (key.key_d)
+    {
+        ev = 1;
+        cam->pos.x += 30;
+    }
+    if (key.key_space)
+    {
+        ev = 1;
+        cam->pos.y -= 30;
+    }
+    if (key.key_lshift)
+    {
+        ev = 1;
+        cam->pos.y += 30;
+    }
+    return (ev);
+}
+
+static inline int   rotate_camera(t_cam *cam, t_key key)
+{
+    int     ev;
+
+    ev = 0;
+    if (key.key_up)
+    {
+        ev = 1;
+        cam->rotate.x += 0.15f;
+    }
+    else if (key.key_down)
+    {
+        ev = 1;
+        cam->rotate.x += -0.15f;
+    }
+    else if (key.key_left)
+    {
+        ev = 1;
+        cam->rotate.y += -0.15;
+    }
+    else if (key.key_right)
+    {
+        ev = 1;
+        cam->rotate.y += 0.15;
+    }
+    else if (key.key_comma)
+    {
+        ev = 1;
+        cam->rotate.z += -0.15;
+    }
+    else if (key.key_period)
+    {
+        ev = 1;
+        cam->rotate.z += 0.15;
+    }
+    return (ev);
+}
+
+
+
+
+
+
+
+
+
 int     event_RT(t_env *e)
 {
     int     ev;
@@ -22,46 +106,14 @@ int     event_RT(t_env *e)
         ev = 1;
         e->start = 0;
     }
-    if (e->key.key_space)
-    {
-        ev = 1;
-        e->scn.cam.pos.y -= 50;
-        e->scn.cam.view.y -= 50;
-    }
-    if (e->key.key_lshift)
-    {
-        ev = 1;
-        e->scn.cam.pos.y += 50;
-        e->scn.cam.view.y += 50;
-    }
 
 
-//------------------    Move camera
+    if (move_camera(&e->scn.cam, e->key))
+        ev = 1;
+    if (rotate_camera(&e->scn.cam, e->key))
+        ev = 1;
 
-    if (e->key.key_w)
-    {
-        ev = 1;
-        e->scn.cam.pos.z += 50;
-        e->scn.cam.view.z += 50;
-    }
-    if (e->key.key_s)
-    {
-        ev = 1;
-        e->scn.cam.pos.z -= 50;
-        e->scn.cam.view.z -= 50;
-    }
-    if (e->key.key_a)
-    {
-        ev = 1;
-        e->scn.cam.pos.x -= 50;
-        e->scn.cam.view.x -= 50;
-    }
-    if (e->key.key_d)
-    {
-        ev = 1;
-        e->scn.cam.pos.x += 50;
-        e->scn.cam.view.x += 50;
-    }
+
 
 
     if (e->mouse.left)
@@ -73,7 +125,6 @@ int     event_RT(t_env *e)
                     ev = 1;
                     e->scn.obj[e->mouse.id].pos.z += 100;
                 }
-        ft_putstr("LOL left\n");
     }
     return (ev);
 }

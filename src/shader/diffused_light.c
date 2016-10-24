@@ -12,15 +12,20 @@
 
 #include "lib_RT.h"
 
+/* TODO   Corrige Ambient                           */
+/* TODO   Erreur de fusion de la lumiere et objet   */
+
 inline void diffused_light(t_ray *ray, register t_spt spt, register t_obj obj)
 {
-    register cl_float3  l;
-    register double     z;
+    register double z;
 
-    l = vector_normalize(vector_sub(obj.collision, spt.pos));
-    z = -(vector_scalar(l, obj.normal) * spt.diffuse);
-    // TODO   Corrige Ambient 
-    ray->rgba.red = limit_rgba(((ray->rgba.red + spt.rgba.red) / 2) * z);
-    ray->rgba.green = limit_rgba(((ray->rgba.green + spt.rgba.green) / 2) * z);
-    ray->rgba.blue = limit_rgba(((ray->rgba.blue + spt.rgba.blue) / 2) * z);
+    z = -(dot(normalize(sub(obj.collision, spt.pos)), obj.normal) * spt.diffuse);
+    ray->color = (unsigned int)limit_rgba((((unsigned char)(ray->color >> 24) +
+            (unsigned char)(spt.color >> 24)) / 2) * z) << 24 |
+            (unsigned int)limit_rgba((((unsigned char)(ray->color >> 16) +
+            (unsigned char)(spt.color >> 16)) / 2) * z) << 16 |
+            (unsigned int)limit_rgba((((unsigned char)(ray->color >> 8) +
+            (unsigned char)(spt.color >> 8)) / 2) * z) << 8 |
+            (unsigned int)limit_rgba((((unsigned char)ray->color +
+            (unsigned char)spt.color) / 2) * z);
 }

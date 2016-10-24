@@ -48,9 +48,9 @@ void    key_press(t_env *e)
     else if ((e->event.key.keysym.sym == SDLK_LEFT) &&
             (e->event.key.state == SDL_PRESSED))
         e->key.key_left = 1;
-    else if ((e->event.key.keysym.sym == 0) &&
+    else if ((e->event.key.keysym.sym == SDLK_PERIOD) &&
             (e->event.key.state == SDL_PRESSED))
-        ft_putstr("Key : .\n");
+        e->key.key_period = 1;
     else if ((e->event.key.keysym.sym == SDLK_COMMA) &&
             (e->event.key.state == SDL_PRESSED))
         e->key.key_comma = 1;

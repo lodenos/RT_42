@@ -12,36 +12,35 @@
 
 #include "lib_RT.h"
 
-inline void get_normal_object(t_obj *obj, t_ray ray)
+inline void get_normal_object(t_obj *obj, register t_ray ray,
+        register float det)
 {
     if (obj->type == 1)
-        obj->normal = vector_reverse(vector_normalize(vector_sub(obj->pos,
-                vector_sub(obj->collision, vector_mult_x(vector_mult_x(
-                obj->rotate, vector_scalar(ray.b, obj->rotate) * obj->det +
-                vector_scalar(ray.a, obj->rotate)), (1.0 + tanf(obj->angle / 2)
+        obj->normal = reverse(normalize(sub(obj->pos,
+                sub(obj->collision, vector_mult_x(vector_mult_x(
+                obj->rotate, dot(ray.dir, obj->rotate) * det +
+                dot(ray.pos, obj->rotate)), (1.0 + tanf(obj->angle / 2)
                 * tanf(obj->angle / 2)))))));
     else if (obj->type == 2)
-    {
-        obj->normal = vector_reverse(vector_normalize(vector_sub(obj->pos,
-                vector_sub(obj->collision, vector_mult_x(obj->rotate,
-                vector_scalar(ray.b, obj->rotate) * obj->det +
-                vector_scalar(ray.a, obj->rotate))))));
-    }
+        obj->normal = reverse(normalize(sub(obj->pos, sub(obj->collision,
+                vector_mult_x(obj->rotate, dot(ray.dir, obj->rotate) * det +
+                dot(ray.pos, obj->rotate))))));
     else if (obj->type == 3)
-        obj->normal = vector_normalize(obj->rotate);
+        obj->normal = obj->rotate;
     else if (obj->type == 4)
-        obj->normal = vector_normalize(vector_sub(obj->collision, obj->pos));
+        obj->normal = normalize(sub(obj->collision, obj->pos));
 }
 
 void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 {
-    register size_t id;
+    register float  det;
+    size_t  id;
 
-    ray->rgba = (t_rgba){0, 0, 0, 255};
-    id = check_object(obj, ray);
-    if ((int)obj[id].det == -1)
+    ray->color = 0x0;
+    det = check_object(obj, *ray, &id);
+    if (det == -1)
         return ;
-    obj[id].collision = coordinates_collision(ray->a, ray->b, obj[id].det);
-    get_normal_object(&obj[id], *ray);
+    obj[id].collision = coordinates_collision(ray->pos, ray->dir, det);
+    get_normal_object(&obj[id], *ray, det);
     light(e, ray, e->scn.c_diff, id);
 }

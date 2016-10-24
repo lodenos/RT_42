@@ -16,7 +16,7 @@ static inline void  get_xy(t_env *e, char *str)
 {
     register int    i;
     char            **tmp;
- 
+
     i = -1;
     while (str[++i])
         if (str[i] < '0' || str[i] > '9')
@@ -32,10 +32,9 @@ static inline void  get_xy(t_env *e, char *str)
 
 void                get_camera(t_env *e, char **line)
 {
-    if (ft_strlen_tab(line) != 5)
+    if (ft_strlen_tab(line) != 4)
         ft_putstr_err("ERROR: Init. Camera.nbr.argument", 1);
     e->scn.cam.pos = get_vec3(line[1]);
-    e->scn.cam.rotate = get_vec3(line[2]);
-    e->scn.cam.view = get_vec3(line[3]);
-    get_xy(e, line[4]);
+    e->scn.cam.rotate = normalize(get_vec3(line[2]));
+    get_xy(e, line[3]);
 }

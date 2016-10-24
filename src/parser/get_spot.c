@@ -32,7 +32,7 @@ void                get_spot(t_spt *spt, char **line)
     if (ft_strlen_tab(line) != 7)
         ft_putstr_err("ERROR: Init. Spot.nbr.argument", 1);
     spt->pos = get_vec3(line[1]);
-    spt->rgba = get_color(line[2]);
+    spt->color = get_color(line[2]);
     spt->light = get_value_float(line[3]);
     spt->ambient = get_value_float(line[4]);
     spt->specular = get_value_float(line[5]);

@@ -12,23 +12,22 @@
 
 #include "lib_RT.h"
 
-inline void cylinder(register t_obj *obj, register t_ray ray)
+inline float    cylinder(register t_obj obj, register t_ray ray)
 {
-    t_evo   evo;
+    register float  a;
+    register float  b;
+    register float  c;
+    register float  x;
+    register float  y;
 
-    evo.a = ray.b.x * ray.b.x + ray.b.z * ray.b.z;
-    evo.b = 2.0 * ((ray.a.x - obj->pos.x) * ray.b.x
-        + (ray.a.z - obj->pos.z) * ray.b.z);
-    evo.c = (ray.a.x - obj->pos.x) * (ray.a.x - obj->pos.x)
-        + (ray.a.z - obj->pos.z) * (ray.a.z - obj->pos.z)
-        - obj->radius * obj->radius;
-    evo.det = evo.b * evo.b - 4.0 * evo.a * evo.c;
-    if (evo.det > 0)
-    {
-        evo.ta = (-evo.b + sqrt(evo.det)) / (2.0 * evo.a);
-        evo.tb = (-evo.b - sqrt(evo.det)) / (2.0 * evo.a);
-        obj->det = (evo.ta > evo.tb) ? evo.tb : evo.ta;
-    }
-    else
-        obj->det = -1;
+    ray.pos = sub(ray.pos, obj.pos);
+    x = dot(ray.dir, obj.rotate);
+    y = dot(ray.pos, obj.rotate);
+    a = dot(ray.dir, ray.dir) - x * x;
+    b = dot(ray.pos, ray.dir) - x * y;
+    c = b * b - a * (dot(ray.pos, ray.pos) - obj.radius * obj.radius - y * y);
+    if (c < 0.0f)
+        return (-1);
+    c = sqrt(c);
+    return ((-b - c > 0) ? -b - c : -b + c);
 }

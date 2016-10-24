@@ -90,6 +90,7 @@ int                 main(int argc, char **argv)
     t_env           e;
     pthread_t       pt_host;
 
+    ft_putstr("\n");
     get_arg_main(&e, argc, argv);
     get_scene(&e, argv[1]);
     if (e.gpu)
