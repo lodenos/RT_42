@@ -25,8 +25,8 @@ void    create_window(t_env *e, Uint32 flags)
     if (!(e->img.win = SDL_CreateWindow(TITLE, (int)e->img.x, (int)e->img.y,
             (int)e->img.w, (int)e->img.h, flags)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (int *)ft_memalloc(sizeof(int) * e->img.w *
-            e->img.h)))
+    if (!(e->img.img = (unsigned int *)ft_memalloc(sizeof(unsigned int) *
+            e->img.w * e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     e->scn.cam.w = e->img.w;
     e->scn.cam.h = e->img.h;

@@ -38,7 +38,7 @@ void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
         while (++j < resolution)
         {
             camera(e->scn.cam, ray, pos.x, pos.y);
-            run_raytracing(e, e->scn.obj, ray);
+            run_raytracing(e, e->obj, ray);
             pos.x += div;
             red += (double)(ray->color >> 24) ;
             green += (double)(ray->color >> 16);

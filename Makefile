@@ -63,7 +63,6 @@ SRC_NAME = 									\
 			SDL2/init_mouse.c				\
 			SDL2/key_press.c				\
 			SDL2/key_release.c				\
-			SDL2/pixel_put.c				\
 			SDL2/push_to_window.c			\
 			SDL2/window_resize.c			\
 											\

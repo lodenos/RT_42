@@ -26,7 +26,7 @@
 #include <unistd.h>
 
 #define TITLE       "RT"
-#define THREAD      2
+#define THREAD      1
 #define WIDTH       960
 #define HEIGHT      540
 #define CONE        1
@@ -36,13 +36,13 @@
 #define TORUS       5
 
 typedef struct sockaddr_in  sockaddr_in;    /* struct sockaddr_in -> sockaddr_in    */
-typedef struct sockaddr     sockaddr;       /* stwruct sockaddr -> sockaddr          */
+typedef struct sockaddr     sockaddr;       /* stwruct sockaddr -> sockaddr         */
 
 typedef struct              s_img           /* Window & Image SDL                   */
 {
     Uint32                  flags;          /* Flag Window                          */
     size_t                  h;              /* Resolution height y                  */
-    int                     *img;           /* Image buffer OpenCL                  */
+    unsigned int            *img;           /* Image buffer OpenCL                  */
     SDL_Renderer            *rend;          /* Renderer Image                       */
     SDL_Window              *win;           /* Window                               */
     size_t                  w;              /* Resolution width x                   */
@@ -155,28 +155,28 @@ typedef struct              s_mimg          /* Mapping Image x1y1 -> x2y2       
 
 typedef struct              s_scn           /* Struct Scene                         */
 {
-    unsigned int            *c_diff;        /* Struct *color diffuse                */
     struct s_cam            cam;            /* Struct camera                        */
     struct s_mimg           mimg;           /* Struct Mapping Image x1y1 -> x2y2    */
     size_t                  n_obj;          /* Number object                        */
     size_t                  n_spt;          /* Number spotlight                     */
-    struct s_obj            *obj;           /* Struct Object                        */
-    struct s_spt            *spt;           /* Struct Spotlight                     */
 }                           t_scn;
 
 typedef struct              s_env           /* Variable Master                      */
 {
     SDL_Event               event;          /* Event SDL                            */
     _Bool                   exit;           /* Var quit programme                   */
+    unsigned int            *c_diff;        /* Struct *color diffuse                */
     struct s_opcl           cl;             /* Struct OpenCl                        */
     char                    host;           /* Host or not host                     */
     struct s_img            img;            /* Struct Image                         */
     struct s_key            key;            /* Struct Keyboard                      */
     _Bool                   gpu;            /* Use GPU 1 yes 0 no                   */
     struct s_mouse          mouse;          /* Struct mouse                         */
+    struct s_obj            *obj;           /* Struct Object                        */
     struct s_scn            scn;            /* Struct Scene                         */
     char                    slave;          /* slave or no slave                    */
-    int                     start;
+    struct s_spt            *spt;           /* Struct Spotlight                     */
+    _Bool                   start;          /* First event_RT                       */
 }                           t_env;
 
 typedef struct              s_mppng         /* Struct env + mimg for thread mapping */
@@ -233,10 +233,9 @@ unsigned char               limit_rgba(register double x);
 void                        lunch_opencl(t_opcl *cl);
 void                        OCL_run_raytracing(t_env *e, SDL_Renderer *rend);
 cl_float3                   normalize(register cl_float3 vect);
-void                        pixel_put(SDL_Renderer *rend, unsigned int color, size_t x, size_t y);
 float                       plan(register t_obj obj, register t_ray ray);
 void                        *play_scene(t_env *e);
-void                        push_to_window(SDL_Renderer *rend, int *img, size_t w, size_t h);
+void                        push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);
 cl_float3                   reverse(register cl_float3 vect);
 cl_float3                   rotate_x(register cl_float3 point, register float angle);
 cl_float3                   rotate_y(register cl_float3 point, register float angle);

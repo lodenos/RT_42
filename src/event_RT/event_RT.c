@@ -123,7 +123,7 @@ int     event_RT(t_env *e)
                 if (e->mouse.id != -1)
                 {
                     ev = 1;
-                    e->scn.obj[e->mouse.id].pos.z += 100;
+                    e->obj[e->mouse.id].pos.z += 100;
                 }
     }
     return (ev);

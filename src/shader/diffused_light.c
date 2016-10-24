@@ -17,7 +17,7 @@
 
 inline void diffused_light(t_ray *ray, register t_spt spt, register t_obj obj)
 {
-    register double z;
+    register float  z;
 
     z = -(dot(normalize(sub(obj.collision, spt.pos)), obj.normal) * spt.diffuse);
     ray->color = (unsigned int)limit_rgba((((unsigned char)(ray->color >> 24) +

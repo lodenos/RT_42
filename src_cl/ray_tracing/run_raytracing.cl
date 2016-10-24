@@ -1,13 +1,13 @@
 
 #include "lib_RT_CL.hl"
 
-void    get_normal_object(t_obj *obj, t_ray ray)
+void    get_normal_object(t_obj *obj, t_ray ray, float det)
 {
     if (obj->type == CONE)
         return ;
     else if (obj->type == CYLINDER)
         obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
-                (dot(ray.b, obj->rotate) * obj->det + dot(ray.a, obj->rotate)));
+                (dot(ray.dir, obj->rotate) * det + dot(ray.pos, obj->rotate)));
     else if (obj->type == PLAN)
         obj->normal = obj->rotate;
     else if (obj->type == SPHERE)
@@ -31,17 +31,16 @@ __kernel void   run_raytracing(__global unsigned int *img, __constant t_obj *obj
 
     obj_tmp = obj[id];
 
-    obj_tmp.collision = ray.a + ray.b * obj_tmp.det;
+    obj_tmp.collision = ray.pos + ray.dir * det;
 
-    obj_tmp.det = det;
 
-    get_normal_object(&obj_tmp, ray);
+    //get_normal_object(&obj_tmp, ray);
 
 
     if (det >= 0.0f)
     {
         ray.color = obj_tmp.color;
-        ray = diffused_light(ray, &spt[0], obj_tmp);
+    ///    ray = diffused_light(ray, &spt[0], obj_tmp);
     }
     else
         ray.color = 0x0;

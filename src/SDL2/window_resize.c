@@ -22,8 +22,8 @@ void    window_resize(t_env *e)
     if (!(e->img.rend = SDL_CreateRenderer(e->img.win, -1,
                 SDL_RENDERER_SOFTWARE)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (int *)ft_memalloc(sizeof(int) * e->img.w *
-                e->img.h)))
+    if (!(e->img.img = (unsigned int *)ft_memalloc(sizeof(unsigned int) *
+            e->img.w * e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     SDL_SetRenderDrawColor(e->img.rend, 0, 0, 0, 255);
     if (SDL_RenderClear(e->img.rend) != 0)

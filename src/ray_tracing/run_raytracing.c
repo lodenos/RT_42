@@ -42,5 +42,5 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
         return ;
     obj[id].collision = coordinates_collision(ray->pos, ray->dir, det);
     get_normal_object(&obj[id], *ray, det);
-    light(e, ray, e->scn.c_diff, id);
+    light(e, ray, e->c_diff, id);
 }

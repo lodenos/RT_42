@@ -24,8 +24,8 @@ inline void fps_info(void)
 
 	v = (tmp.tv_sec * 1000000 + tmp.tv_usec) -
         (fps.tv_sec * 1000000 + fps.tv_usec);
-	txt = ft_itoa(60000000 / abs(v));
-    ft_putstr("\e[1AFPMN = ");
+	txt = ft_itoa(1000000 / abs(v));
+    ft_putstr("\e[1AFPS = ");
     ft_putendl(txt);
 	free(txt);
 	gettimeofday(&fps, NULL);

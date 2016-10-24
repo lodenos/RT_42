@@ -59,19 +59,19 @@ void                        light(t_env *e, t_ray *ray, unsigned int *c_diff, re
 //-------------------------------------
 
     i = -1;
-    tmp_obj = e->scn.obj[id];
-    while (e->scn.spt[++i].end)
+    tmp_obj = e->obj[id];
+    while (e->spt[++i].end)
     {
-        ray->color = e->scn.obj[id].color;
+        ray->color = e->obj[id].color;
         ray_spot.dir = tmp_obj.collision;
-        ray_spot.pos = e->scn.spt[i].pos;
+        ray_spot.pos = e->spt[i].pos;
         ray_spot.dir = normalize(sub(ray_spot.dir, ray_spot.pos));
         index = 0;
-        det = check_object(e->scn.obj, ray_spot, &index);
+        det = check_object(e->obj, ray_spot, &index);
         if ((det == -1) || (id == index))
         {
-            diffused_light(ray, e->scn.spt[i], tmp_obj);
-            tmp = specular_light(e->scn.spt[i], e->scn.obj[id]);
+            diffused_light(ray, e->spt[i], tmp_obj);
+            tmp = specular_light(e->spt[i], e->obj[id]);
             if (tmp >= z)
             {
                 z = tmp;
@@ -87,7 +87,7 @@ void                        light(t_env *e, t_ray *ray, unsigned int *c_diff, re
         }
         else
         {
-            diffused_light(ray, e->scn.spt[i], tmp_obj);
+            diffused_light(ray, e->spt[i], tmp_obj);
             ray->color = 0x0;
         }
         c_diff[i] = ray->color;

@@ -12,23 +12,26 @@
 
 #include "lib_RT.h"
 
-inline void push_to_window(SDL_Renderer *rend, int *img, size_t w, size_t h)
+inline void push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h)
 {
-    register int    k;
-    register int    x;
-    register int    y;
+    register size_t k;
+    register size_t x;
+    register size_t y;
 
-    x = -1;
-    while (++x < w)
+    x = 0;
+    while (x < w)
     {
-        y = -1;
-        while (++y < h)
+        y = 0;
+        while (y < h)
         {
             k = x + y * w;
             SDL_SetRenderDrawColor(rend, (unsigned char)(img[k] >> 24),
                     (unsigned char)(img[k] >> 16), (unsigned char)(img[k] >> 8),
                     (unsigned char)(img[k]));
             SDL_RenderDrawPoint(rend, x, y);
+            ++y;
         }
+        ++x;
     }
+    SDL_RenderPresent(rend);
 }

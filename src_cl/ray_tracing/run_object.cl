@@ -14,33 +14,33 @@ inline float    run_object(constant t_obj *obj, t_ray ray)
         case CONE :
             return cone(obj, ray);
         case CYLINDER :
-            ray.a -= obj->pos;
-            x = dot(ray.b, obj->rotate);
-            y = dot(ray.a, obj->rotate);
-            a = dot(ray.b, ray.b) - x * x;
-            b = dot(ray.a, ray.b) - x * y;
-            c = b * b - a * (dot(ray.a, ray.a) - obj->radius * obj->radius
+            ray.pos -= obj->pos;
+            x = dot(ray.dir, obj->rotate);
+            y = dot(ray.pos, obj->rotate);
+            a = dot(ray.dir, ray.dir) - x * x;
+            b = dot(ray.pos, ray.dir) - x * y;
+            c = b * b - a * (dot(ray.pos, ray.pos) - obj->radius * obj->radius
                 - y * y);
             if (c < 0.0f)
                 return -1;
             c = sqrt(c);
             return (-b - c > 0) ? -b - c : -b + c;
         case PLAN :
-            if ((a = dot(ray.b, obj->rotate)) < 0.0f)
+            if ((a = dot(ray.dir, obj->rotate)) < 0.0f)
             {
-                if ((a = dot(ray.b, -obj->rotate)) < 0.0f)
+                if ((a = dot(ray.dir, -obj->rotate)) < 0.0f)
                     return -1;
-                if ((b = -(dot(-obj->rotate, ray.a - obj->pos) / a)) < 0.0f)
+                if ((b = -(dot(-obj->rotate, ray.pos - obj->pos) / a)) < 0.0f)
                     return -1;
                 return b;
             }
-            if ((b = -(dot(obj->rotate, ray.a - obj->pos) / a)) < 0.0f)
+            if ((b = -(dot(obj->rotate, ray.pos - obj->pos) / a)) < 0.0f)
                 return -1;
             return b;
         case SPHERE :
-            ray.a -= obj->pos;
-            b = dot(ray.a, ray.b);
-            c = b * b - (dot(ray.a, ray.a) - obj->radius * obj->radius);
+            ray.pos -= obj->pos;
+            b = dot(ray.pos, ray.dir);
+            c = b * b - (dot(ray.pos, ray.pos) - obj->radius * obj->radius);
             if (c < 0.0f)
     	       return -1;
             c = sqrt(c);
