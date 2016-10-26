@@ -71,6 +71,7 @@ SRC_NAME = 									\
 			shader/limit.c					\
 			shader/specular_light.c			\
 			shader/super_sampling.c 		\
+			shader/reflection.c					\
 			vector/coordinates_collision.c	\
 			vector/vector_formula_1.c		\
 			vector/vector_formula_2.c		\

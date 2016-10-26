@@ -48,8 +48,8 @@ __kernel void   run_raytracing(__global unsigned int *img, __constant t_obj *obj
     size_t  resolution  = 1;
     size_t  x           = get_global_id(0);
     size_t  y           = get_global_id(1);
-    float   reflct;
-    t_ray   tmp_ray;
+    /*float   reflct;
+    t_ray   tmp_ray;*/
 
     pos.x = (float)x;
     pos.y = (float)y;
@@ -72,7 +72,7 @@ __kernel void   run_raytracing(__global unsigned int *img, __constant t_obj *obj
             obj_tmp.collision = ray.pos + ray.dir * det;
             get_normal_object(&obj_tmp, ray, det);
 
-            tmp_ray.pos = obj[id].collision;
+            /*tmp_ray.pos = obj[id].collision;
             tmp_ray.dir = reflection(&obj[id], &ray);
             reflct = check_object(obj, &tmp_ray, &id);
             if (reflct != -1)
@@ -87,7 +87,7 @@ __kernel void   run_raytracing(__global unsigned int *img, __constant t_obj *obj
               (unsigned int)0xFF;
 
             }
-            else
+            else*/
               light(id, obj, obj_tmp, &ray, scn, spt);
             red += (float)(((unsigned char)(ray.color >> 24)));
             green += (float)(((unsigned char)(ray.color >> 16)));

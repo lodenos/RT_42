@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lib_RT.h"
+#include <stdio.h>
 
 inline void get_normal_object(t_obj *obj, register t_ray ray,
         register float det)
@@ -32,7 +33,7 @@ inline void get_normal_object(t_obj *obj, register t_ray ray,
     else if (obj->type == TORUS)
         return ;
 }
-
+/*
 void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 {
     register float  det;
@@ -45,4 +46,33 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     obj[id].collision = coordinates_collision(ray->pos, ray->dir, det);
     get_normal_object(&obj[id], *ray, det);
     light(e, ray, e->c_diff, id);
+}
+*/
+void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
+{
+    register float  det;
+    register float  reflct;
+    register t_ray  *tmp_ray;
+
+    size_t  id;
+
+    ray->color = 0x0;
+    det = check_object(obj, *ray, &id);
+    if (det == -1)
+        return ;
+    obj[id].collision = coordinates_collision(ray->pos, ray->dir, det);
+//    ft_putnbr((int)id);
+    get_normal_object(&obj[id], *ray, det);
+    /*bump_mapping(&obj[id]);*/
+    tmp_ray->pos = obj[id].collision;
+    tmp_ray->dir = reflection(&obj[id], ray);
+    reflct = check_object(obj, *tmp_ray, &id);
+    if (reflct != -1)
+    {
+      light(e, tmp_ray, e->c_diff, id);
+      light(e, ray, e->c_diff, id);
+      ray->color = (((ray->color * 0.5) + tmp_ray->color) / (2 * (1 + 0.5)));
+    }
+    else
+      light(e, ray, e->c_diff, id);
 }

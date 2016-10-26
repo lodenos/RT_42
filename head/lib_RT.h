@@ -241,6 +241,9 @@ cl_float3                   reverse(register cl_float3 vect);
 cl_float3                   rotate_x(register cl_float3 point, register float angle);
 cl_float3                   rotate_y(register cl_float3 point, register float angle);
 cl_float3                   rotate_z(register cl_float3 point, register float angle);
+/*****************************/
+cl_float3                   reflection(t_obj *obj, t_ray *ray);
+/****************************/
 float                       run_object(register t_obj obj, register t_ray ray);
 void                        run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 double                      specular_light(register t_spt spt, register t_obj obj);
