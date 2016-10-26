@@ -18,9 +18,9 @@ inline float    run_object(constant t_obj *obj, t_ray ray)
             x = dot(ray.dir, obj->rotate);
             y = dot(ray.pos, obj->rotate);
             a = dot(ray.dir, ray.dir) - x * x;
-            b = dot(ray.pos, ray.dir) - x * y;
-            c = b * b - a * (dot(ray.pos, ray.pos) - obj->radius * obj->radius
-                - y * y);
+            b = dot(ray.dir, ray.dir) - x * y;
+            c = b * b - a * dot(ray.pos, ray.pos) - obj->radius * obj->radius
+                - y * y;
             if (c < 0.0f)
                 return -1;
             c = sqrt(c);

@@ -12,36 +12,10 @@
 
 #include "lib_RT.h"
 
-static inline unsigned int  merge_diffuse(unsigned int *color, size_t n_color)
-{
-    register float          red;
-    register float          green;
-    register float          blue;
-    register unsigned int   tmp_color;
-    register size_t         i;
-
-    red = 0;
-    green = 0;
-    blue = 0;
-    i = 0;
-    while (i < n_color)
-    {
-        red   += (float)((unsigned char)(color[i] >> 24));
-        green += (float)((unsigned char)(color[i] >> 16));
-        blue  += (float)((unsigned char)(color[i] >> 8));
-        ++i;
-    }
-    tmp_color = (unsigned int)(red / n_color) << 24 |
-            (unsigned int)(green / n_color) << 16 |
-            (unsigned int)(blue / n_color) << 8 |
-            (unsigned int)0xFF;
-    return (tmp_color);
-}
-
 // TODO Exeprimental -- Teste, NO Exactly
 // TODO Oui je sais ca fais plus de 25 lignes 'glodenos'->all
 
-void                        light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id)
+void    light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id)
 {
     int             i;
     size_t          index;
@@ -71,12 +45,12 @@ void                        light(t_env *e, t_ray *ray, unsigned int *c_diff, re
         if ((det == -1) || (id == index))
         {
             diffused_light(ray, e->spt[i], tmp_obj);
-            tmp = specular_light(e->spt[i], e->obj[id]);
+/*            tmp = specular_light(e->spt[i], e->obj[id]);
             if (tmp >= z)
             {
                 z = tmp;
                 np = i;
-            }
+            }*/
 /*
             if (e->scn.spt[i].rgba.red > color.red)
                 color.red = limit_rgba(e->scn.spt[i].rgba.red);
@@ -87,12 +61,12 @@ void                        light(t_env *e, t_ray *ray, unsigned int *c_diff, re
         }
         else
         {
-            diffused_light(ray, e->spt[i], tmp_obj);
             ray->color = 0x0;
+            diffused_light(ray, e->spt[i], tmp_obj);
         }
-        c_diff[i] = ray->color;
+/*        c_diff[i] = ray->color;*/
     }
-    ray->color = merge_diffuse(c_diff, e->scn.n_spt);
+/*    ray->color = merge_diffuse(c_diff, e->scn.n_spt);*/
 /*    if (z > 0)
     {
         ray->rgba.red = limit_rgba(ray->rgba.red + color.red * z);

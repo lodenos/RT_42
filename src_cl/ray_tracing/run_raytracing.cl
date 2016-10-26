@@ -1,49 +1,86 @@
 
 #include "lib_RT_CL.hl"
 
-void    get_normal_object(t_obj *obj, t_ray ray, float det)
+static void     get_normal_object(t_obj *obj, t_ray ray, float det)
 {
-    if (obj->type == CONE)
-        return ;
-    else if (obj->type == CYLINDER)
-        obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
-                (dot(ray.dir, obj->rotate) * det + dot(ray.pos, obj->rotate)));
-    else if (obj->type == PLAN)
-        obj->normal = obj->rotate;
-    else if (obj->type == SPHERE)
-        obj->normal = normalize(obj->collision - obj->pos);
-    else if (obj->type == TORUS)
-        return ;
+    switch(obj->type)
+    {
+        case CONE :
+            obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
+                (dot(ray.dir, obj->rotate) * det + dot(ray.pos, obj->rotate)))
+                * ((1.0f + tan(obj->angle / 2) * tan(obj->angle / 2)));
+            return ;
+        case CYLINDER :
+            obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
+                    (dot(ray.dir, obj->rotate) * det +
+                    dot(ray.pos, obj->rotate)));
+            return ;
+        case PLAN :
+            obj->normal = obj->rotate;
+            return ;
+        case SPHERE :
+            obj->normal = normalize(obj->collision - obj->pos);
+            return ;
+        case TORUS :
+            obj->normal = (float3)(0, 0, 0);
+            return ;
+        default:
+            obj->normal = (float3)(0, 0, 0);
+            return ;
+    }
 }
 
 __kernel void   run_raytracing(__global unsigned int *img, __constant t_obj *obj,
-        __global t_scn *scn, __global t_spt *spt)
+        __constant t_scn *scn, __constant t_spt *spt)
 {
-    size_t  id      = 0;
-    t_ray   ray;
-    size_t  x       = get_global_id(0);
-    size_t  y       = get_global_id(1);
-    t_obj   obj_tmp;
+    float   blue        = 0;
     float   det;
+    float   div;
+    float   green       = 0;
+    size_t  i           = 0;
+    size_t  id          = 0;
+    size_t  j;
+    size_t  max;
+    t_obj   obj_tmp;
+    float2  pos;
+    t_ray   ray;
+    float   red         = 0;
+    size_t  resolution  = 1;
+    size_t  x           = get_global_id(0);
+    size_t  y           = get_global_id(1);
 
-    camera(scn->cam, &ray, x, y);
-    det = check_object(obj, &ray, &id);
-
-    obj_tmp = obj[id];
-
-    obj_tmp.collision = ray.pos + ray.dir * det;
-
-
-    //get_normal_object(&obj_tmp, ray);
-
-
-    if (det >= 0.0f)
+    pos.x = (float)x;
+    pos.y = (float)y;
+    div = 1.0f / (float)resolution;
+    max = resolution * resolution;
+    while (i < resolution)
     {
-        ray.color = obj_tmp.color;
-    ///    ray = diffused_light(ray, &spt[0], obj_tmp);
+        j = 0;
+        while (j < resolution)
+        {
+            camera(scn->cam, &ray, pos.x, pos.y);
+            det = check_object(obj, &ray, &id);
+            if (det == -1)
+            {
+                img[(y * scn->cam.w) + x] = 0x0;
+                return ;
+            }
+            obj_tmp = obj[id];
+            obj_tmp.collision = ray.pos + ray.dir * det;
+            get_normal_object(&obj_tmp, ray, det);
+            light(id, obj, obj_tmp, &ray, scn, spt);
+            red += (float)(((unsigned char)(ray.color >> 24)));
+            green += (float)(((unsigned char)(ray.color >> 16)));
+            blue += (float)(((unsigned char)(ray.color >> 8)));
+            pos.x += div;
+            ++j;
+        }
+        pos.x = (float)x;
+        pos.y += div;
+        ++i;
     }
-    else
-        ray.color = 0x0;
-
-    img[(y * scn->cam.w) + x] = ray.color;
+    ray.color = (unsigned int)((unsigned char)(red / (float)max)) << 24 |
+            (unsigned int)((unsigned char)(green / (float)max)) << 16 |
+            (unsigned int)((unsigned char)(blue / (float)max)) << 8 | 0xFF;
+    img[(y * scn->cam.w) + x] = ray.color ;
 }

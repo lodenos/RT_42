@@ -68,7 +68,7 @@ SRC_NAME = 									\
 											\
 			shader/diffused_light.c			\
 			shader/light.c					\
-			shader/limit_rgba.c				\
+			shader/limit.c					\
 			shader/specular_light.c			\
 			shader/super_sampling.c 		\
 			vector/coordinates_collision.c	\

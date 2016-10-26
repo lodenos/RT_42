@@ -159,6 +159,7 @@ typedef struct              s_scn           /* Struct Scene                     
     struct s_mimg           mimg;           /* Struct Mapping Image x1y1 -> x2y2    */
     size_t                  n_obj;          /* Number object                        */
     size_t                  n_spt;          /* Number spotlight                     */
+    size_t                  resolution;     /* Super Sampling Resolution            */
 }                           t_scn;
 
 typedef struct              s_env           /* Variable Master                      */
@@ -229,7 +230,7 @@ void                        init_mouse(t_mouse *mouse);
 void                        key_press(t_env *e);
 void                        key_release(t_env *e);
 void                        light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id);
-unsigned char               limit_rgba(register double x);
+unsigned int                limit(register float x);
 void                        lunch_opencl(t_opcl *cl);
 void                        OCL_run_raytracing(t_env *e, SDL_Renderer *rend);
 cl_float3                   normalize(register cl_float3 vect);

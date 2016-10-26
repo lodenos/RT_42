@@ -68,29 +68,18 @@ typedef struct      s_scn           /* Struct Scene                         */
     struct s_mimg   mimg;           /* Struct Mapping Image x1y1 -> x2y2    */
     size_t          n_obj;          /* Number object                        */
     size_t          n_spt;          /* Number spotlight                     */
+    size_t          resolution;     /* Super Sampling Resolution            */
 }                   t_scn;
 
-
-
-
-
-
-
-void                camera(t_cam cam, t_ray *ray, size_t x, size_t y);
-
-void                light(__global t_scn *scn, t_ray *ray, __global unsigned int *c_diff,
-                        size_t id);
-unsigned char       limit_rgba(float x);
-
-
-t_ray               diffused_light(t_ray ray, __global t_spt *spt,
-                            t_obj obj);
-
-
-float               check_object(constant t_obj *obj, t_ray *ray, size_t *id);
-float               cone(constant t_obj *obj, t_ray ray);
-float               run_object(constant t_obj *obj, t_ray ray);
-
-
+void            camera(t_cam cam, t_ray *ray, float x, float y);
+float           check_object(__constant t_obj *obj, t_ray *ray, size_t *id);
+float           cone(constant t_obj *obj, t_ray ray);
+void            diffused_light(t_ray *ray, __constant t_spt *spt, t_obj obj);
+void            light(size_t id, __constant t_obj *obj, t_obj obj_tmp,
+                        t_ray *ray, __constant t_scn *scn,
+                        __constant t_spt *spt);
+unsigned int    limit(float x);
+float           run_object(__constant t_obj *obj, t_ray ray);
+float           specular_light(__constant t_spt *spt, t_obj obj);
 
 #endif

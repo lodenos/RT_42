@@ -56,13 +56,13 @@ static inline void  write_buffer_opencl(t_env *e)
 {
     cl_int  err;
 
-    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_img, CL_TRUE, 0,
+    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_img, CL_FALSE, 0,
             sizeof(int) * e->img.w * e->img.h, e->img.img, 0, NULL, NULL));
-    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_obj, CL_TRUE, 0,
+    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_obj, CL_FALSE, 0,
             sizeof(t_obj) * e->scn.n_obj, e->obj, 0, NULL, NULL));
-    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_scn, CL_TRUE, 0,
+    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_scn, CL_FALSE, 0,
             sizeof(t_scn), &e->scn, 0, NULL, NULL));
-    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_spt, CL_TRUE, 0,
+    err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_spt, CL_FALSE, 0,
             sizeof(t_spt) * e->scn.n_spt, e->spt, 0, NULL, NULL));
 }
 

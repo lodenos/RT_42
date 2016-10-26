@@ -22,7 +22,6 @@ unsigned int    get_color(char *str)
 {
     register unsigned int   color;
     register int            i;
-    register unsigned char  rgba;
     char                    **tmp;
 
     i = -1;
@@ -33,13 +32,14 @@ unsigned int    get_color(char *str)
     tmp = ft_strsplit(str, '/');
     if (ft_strlen_tab(tmp) != 4)
         ft_putstr_err("ERROR: Init. color.argument", 1);
-    color = ((rgba = (unsigned char)atoi(tmp[0])) > 255) ? ft_err() :
-            color | (unsigned int)rgba << 24;
-    color = ((rgba = (unsigned char)atoi(tmp[0])) > 255) ? ft_err() :
-            color | (unsigned int)rgba << 16;
-    color = ((rgba = (unsigned char)atoi(tmp[0])) > 255) ? ft_err() :
-            color | (unsigned int)rgba << 8;
-    color = ((rgba = (unsigned char)atoi(tmp[0])) > 255) ? ft_err() :
-            color | (unsigned int)rgba;
+    color = 0;
+    color = (atoi(tmp[0]) > 255) ? ft_err() :
+            color | (unsigned int)atoi(tmp[0]) << 24;
+    color = (atoi(tmp[1]) > 255) ? ft_err() :
+            color | (unsigned int)atoi(tmp[1]) << 16;
+    color = (atoi(tmp[2]) > 255) ? ft_err() :
+            color | (unsigned int)atoi(tmp[2]) << 8;
+    color = (atoi(tmp[3]) > 255) ? ft_err() :
+            color | (unsigned int)atoi(tmp[3]);
     return (color);
 }

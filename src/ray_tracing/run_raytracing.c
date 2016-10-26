@@ -15,20 +15,22 @@
 inline void get_normal_object(t_obj *obj, register t_ray ray,
         register float det)
 {
-    if (obj->type == 1)
+    if (obj->type == CONE)
         obj->normal = reverse(normalize(sub(obj->pos,
                 sub(obj->collision, vector_mult_x(vector_mult_x(
                 obj->rotate, dot(ray.dir, obj->rotate) * det +
                 dot(ray.pos, obj->rotate)), (1.0 + tanf(obj->angle / 2)
                 * tanf(obj->angle / 2)))))));
-    else if (obj->type == 2)
+    else if (obj->type == CYLINDER)
         obj->normal = reverse(normalize(sub(obj->pos, sub(obj->collision,
                 vector_mult_x(obj->rotate, dot(ray.dir, obj->rotate) * det +
                 dot(ray.pos, obj->rotate))))));
-    else if (obj->type == 3)
+    else if (obj->type == PLAN)
         obj->normal = obj->rotate;
-    else if (obj->type == 4)
+    else if (obj->type == SPHERE)
         obj->normal = normalize(sub(obj->collision, obj->pos));
+    else if (obj->type == TORUS)
+        return ;
 }
 
 void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)

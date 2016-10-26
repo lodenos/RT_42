@@ -48,6 +48,6 @@ void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
         pos.y += div;
     }
     ray->color = (unsigned int)((red / max)) << 24 |
-                (unsigned int)((green / max)) << 16 |
-                (unsigned int)((blue / max)) << 8 | 0xFF;
+        (unsigned int)((green / max)) << 16 |
+        (unsigned int)((blue / max)) << 8 | 0xFF;
 }

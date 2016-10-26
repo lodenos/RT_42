@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   limit_rgba.c                                       :+:      :+:    :+:   */
+/*   limit.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,11 @@
 
 #include "lib_RT.h"
 
-inline unsigned char    limit_rgba(register double x)
+inline unsigned int limit(register float x)
 {
     if (x > 255)
         return (0xFF);
     else if (x < 0)
         return (0x0);
-    return ((unsigned char)x);
+    return ((unsigned int)x);
 }
