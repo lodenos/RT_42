@@ -35,6 +35,6 @@ void                get_camera(t_env *e, char **line)
     if (ft_strlen_tab(line) != 4)
         ft_putstr_err("ERROR: Init. Camera.nbr.argument", 1);
     e->scn.cam.pos = get_vec3(line[1]);
-    e->scn.cam.rotate = normalize(get_vec3(line[2]));
+    e->scn.cam.rotate = get_vec3(line[2]);
     get_xy(e, line[3]);
 }

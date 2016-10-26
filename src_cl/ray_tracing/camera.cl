@@ -17,4 +17,7 @@ void    camera(t_cam cam, t_ray *ray, float x, float y)
     t = ray->dir.z;
     ray->dir.z = t * cosf(cam.rotate.y) - ray->dir.x * sinf(cam.rotate.y);
     ray->dir.x = t * sinf(cam.rotate.y) + ray->dir.x * cosf(cam.rotate.y);
+    t = ray->dir.x;
+    ray->dir.x = t * cosf(cam.rotate.z) - ray->dir.y * sinf(cam.rotate.z);
+    ray->dir.y = t * sinf(cam.rotate.z) + ray->dir.y * cosf(cam.rotate.z);
 }
