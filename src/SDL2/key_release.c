@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_release.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:50:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/30 04:21:23 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:40:13 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,20 @@ void    key_release(t_env *e)
          e->key.key_right = 0;
     else if (e->event.key.keysym.sym == SDLK_LEFT)
        e->key.key_left = 0;
-    else if (e->event.key.keysym.sym == 0)
-        ft_putstr("Key : .\n");
+    else if (e->event.key.keysym.sym == SDLK_PERIOD)
+        e->key.key_period = 0;
     else if (e->event.key.keysym.sym == SDLK_COMMA)
         e->key.key_comma = 0;
     else if (e->event.key.keysym.sym == SDLK_w)
         e->key.key_w = 0;
+    else if (e->event.key.keysym.sym == SDLK_s)
+        e->key.key_s = 0;
+    else if (e->event.key.keysym.sym == SDLK_SPACE)
+        e->key.key_space = 0;
+    else if (e->event.key.keysym.sym == SDLK_LSHIFT)
+        e->key.key_lshift = 0;
+    else if (e->event.key.keysym.sym == SDLK_d)
+        e->key.key_d = 0;
+    else if (e->event.key.keysym.sym == SDLK_a)
+        e->key.key_a = 0;
 }

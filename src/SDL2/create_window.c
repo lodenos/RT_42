@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:22:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/07 14:11:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/14 13:28:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void    create_window(t_env *e, Uint32 flags)
     if (!(e->img.win = SDL_CreateWindow(TITLE, (int)e->img.x, (int)e->img.y,
             (int)e->img.w, (int)e->img.h, flags)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (int *)ft_memalloc(sizeof(int) * e->img.w *
-            e->img.h)))
+    if (!(e->img.img = (unsigned int *)ft_memalloc(sizeof(unsigned int) *
+            e->img.w * e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     e->scn.cam.w = e->img.w;
     e->scn.cam.h = e->img.h;
@@ -37,5 +37,4 @@ void    create_window(t_env *e, Uint32 flags)
     if (SDL_RenderClear(e->img.rend))
         ft_putstr_err(SDL_GetError(), 1);
     SDL_RenderPresent(e->img.rend);
-    play_scene(e, e->img.rend);
 }

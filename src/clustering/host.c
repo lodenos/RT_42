@@ -12,14 +12,13 @@
 
 #include "lib_RT.h"
 
-static void *slave_connection(int *fds)
+static void *slave_connection(void *fds)
 {
     int     fd;
     char    *tmp;
 
-    fd = *fds;
+    fd = *(int *)fds;
     tmp = ft_memalloc(sizeof(char) * 257);
-
     while (1)
     {
         read(fd, tmp, 256);

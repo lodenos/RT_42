@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:48:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/05 01:17:20 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:40:15 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 static inline void  key_press_sub(t_env *e)
 {
     if (e->event.key.keysym.sym == SDLK_s)
-        ft_putstr("Key : s\n");
+        e->key.key_s = 1;
     else if (e->event.key.keysym.sym == SDLK_d)
-        ft_putstr("Key : d\n");
+        e->key.key_d = 1;
     else if (e->event.key.keysym.sym == SDLK_a)
-        ft_putstr("Key : a\n");
+        e->key.key_a = 1;
     else if (e->event.key.keysym.sym == SDLK_LSHIFT)
-        ft_putstr("Key : left shift\n");
+        e->key.key_lshift = 1;
     else if (e->event.key.keysym.sym == SDLK_SPACE)
-        ft_putstr("Key : space\n");
+        e->key.key_space = 1;
 }
 
 void    key_press(t_env *e)
@@ -48,50 +48,15 @@ void    key_press(t_env *e)
     else if ((e->event.key.keysym.sym == SDLK_LEFT) &&
             (e->event.key.state == SDL_PRESSED))
         e->key.key_left = 1;
-    else if ((e->event.key.keysym.sym == 0) &&
+    else if ((e->event.key.keysym.sym == SDLK_PERIOD) &&
             (e->event.key.state == SDL_PRESSED))
-        ft_putstr("Key : .\n");
+        e->key.key_period = 1;
     else if ((e->event.key.keysym.sym == SDLK_COMMA) &&
             (e->event.key.state == SDL_PRESSED))
         e->key.key_comma = 1;
     else if ((e->event.key.keysym.sym == SDLK_w) &&
             (e->event.key.state == SDL_PRESSED))
         e->key.key_w = 1;
-  /**********************************************************/
-
-    else if (e->event.key.keysym.sym == SDLK_KP_2)
-          sdl_kp_2(e, &e->scn.cam.pos);
-    else if (e->event.key.keysym.sym == SDLK_KP_4)
-          sdl_kp_4(e, &e->scn.cam.pos);
-    else if (e->event.key.keysym.sym == SDLK_KP_6)
-          sdl_kp_6(e, &e->scn.cam.pos);
-    else if (e->event.key.keysym.sym == SDLK_KP_8)
-          sdl_kp_8(e, &e->scn.cam.pos);
-    else if (e->event.key.keysym.sym == SDLK_KP_PLUS)
-          sdl_kp_plus(e, &e->scn.cam.pos);
-    else if (e->event.key.keysym.sym == SDLK_KP_MINUS)
-          sdl_kp_minus(e, &e->scn.cam.pos);/*
-    else if (e->event.type == SDL_MOUSEBUTTONDOWN)
-    {
-        if ((e->event.button.button == SDL_BUTTON_LEFT) && e->scn.obj[id].pos)
-        {
-            if (e->event.key.keysym.sym == SDLK_KP_2)
-                sdl_kp_2(e, &e->scn.obj[id].pos.y);
-            else if (e->event.key.keysym.sym == SDLK_KP_4)
-                sdl_kp_4(e, &e->scn.obj[id].pos.x);
-            else if (e->event.key.keysym.sym == SDLK_KP_6)
-                sdl_kp_6(e, &e->scn.obj[id].pos.x);
-            else if (e->event.key.keysym.sym == SDLK_KP_8)
-                sdl_kp_8(e, &e->scn.obj[id].pos.y);
-            else if (e->event.key.keysym.sym == SDLK_KP_PLUS)
-                sdl_kp_plus(e, &e->scn.obj[id].pos.z);
-            else if (e->event.key.keysym.sym == SDLK_KP_MINUS)
-                sdl_kp_minus(e, &e->scn.obj[id].pos.z);
-          }
-      }*/
-
-  /**********************************************************/
     else
         key_press_sub(e);
-    create_window(e, SDL_WINDOW_RESIZABLE);
 }

@@ -12,26 +12,30 @@
 
 #include "lib_RT.h"
 
-inline void cone(register t_obj *obj, register t_ray ray)
+inline float    cone(register t_obj obj, register t_ray ray)
 {
-    register t_evo  evo;
+    register float  a;
+    register float  b;
+    register float  c;
+    register float  ta;
+    register float  tb;
+    register float  det;
 
-    evo.a = ray.b.x * ray.b.x + ray.b.z *ray.b.z - ray.b.y * ray.b.y *
-        obj->angle;
-    evo.b = 2 * ((ray.a.x - obj->pos.x) * ray.b.x +
-            (ray.a.z - obj->pos.z) * ray.b.z -
-            (ray.a.y - obj->pos.y) * ray.b.y * obj->angle);
-    evo.c = ((ray.a.x - obj->pos.x) * (ray.a.x - obj->pos.x)) +
-            ((ray.a.z - obj->pos.z) * (ray.a.z - obj->pos.z)) -
-            ((ray.a.y - obj->pos.y) * (ray.a.y - obj->pos.y)) * obj->angle  - 
-            obj->radius * obj->radius;
-    evo.det = evo.b * evo.b - 4 * (evo.a * evo.c);
-    if (evo.det >= 0)
+    a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z - ray.dir.y * ray.dir.y *
+            obj.angle;
+    b = 2.0 * ((ray.pos.x - obj.pos.x) * ray.dir.x +
+            (ray.pos.z - obj.pos.z) * ray.dir.z -
+            (ray.pos.y - obj.pos.y) * ray.dir.y * obj.angle);
+    c = ((ray.pos.x - obj.pos.x) * (ray.pos.x - obj.pos.x)) +
+            ((ray.pos.z - obj.pos.z) * (ray.pos.z - obj.pos.z)) -
+            ((ray.pos.y - obj.pos.y) * (ray.pos.y - obj.pos.y)) * obj.angle  -
+            obj.radius * obj.radius;
+    det = b * b - 4.0 * a * c;
+    if (det > 0)
     {
-        evo.ta = (-evo.b + sqrtf(evo.det)) / (2 * evo.a);
-        evo.tb = (-evo.b - sqrtf(evo.det)) / (2 * evo.a);
-        obj->det = (evo.ta > evo.tb) ? evo.tb : evo.ta;
+        ta = (-b + sqrt(det)) / (2.0 * a);
+        tb = (-b - sqrt(det)) / (2.0 * a);
+        return (ta > tb) ? tb : ta;
     }
-    else
-        obj->det = -1;
+    return (-1);
 }

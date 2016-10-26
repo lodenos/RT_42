@@ -1,2 +1,130 @@
-sphere {0 0 500} {0 0 0} {255 0 255} {20}
-spot {0 0 -100} {255 255 255} {100}
+# Color     or  color       is RGB  {red, green, blue}
+# Position  or  position    is XYZ  {X, Y, Z}
+# Rotate    or  rotate      is 360  {X, Y, Z}
+
+.config
+{
+    GPU             off             #or GPU  gpu on | gpu off
+    thread max      8
+    host            127.0.0.1:4297
+    supersampling   x1
+#   format color    HDR
+}
+
+scene
+{
+    ambiance    100
+    specular    100
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 0.0)
+    view        (0.0, 0.0, 1000)
+}
+
+spotlight
+{
+    power       100
+    position    (299, 199, 0)
+    color       0xFFFFFF            # or {255, 255, 255}
+}
+
+spotlight
+{
+    power       100
+    position    (-299, 199, 0)
+    color       0xFFFFFF
+}
+
+spotlight
+{
+    power       100
+    position    (299, -199, 0)
+    color       0xFFFFFF
+}
+
+spotlight
+{
+    power       100
+    position    (-299, -199, 0)
+    color       0xFFFFFF
+}
+
+plan                                # or Plan
+{
+    Position    (0, 0, 500)
+    rotate      (0, 0, -1)
+    color       0xFF0000
+}
+
+Group
+{
+    #texture
+
+    sphere
+    {
+        Position    (0, 0, 400)
+        rotate      (0, 0, 0)
+        color       0xFF0000
+        radius      100
+        #texture     Group
+    }
+
+    sphere
+    {
+        Position    (30, 0, 340)
+        rotate      (0, 0, 0)
+        color       (81, 42, 0)
+        radius      40
+    }
+
+    sphere
+    {
+        Position    (-30, 0, 340)
+        rotate      (0, 0, 0)
+        color       (81, 42, 0)
+        radius      40
+        # texture   name
+    }
+
+    sphere
+    {
+        Position    (0, 50, 330)
+        rotate      (0, 0, 0)
+        color       (81, 42, 0)
+        radius      30
+    }
+
+    sphere
+    {
+        Position    (60, -50, 400)
+        rotate      (0, 0, 0)
+        color       (81, 42, 0)
+        radius      50
+    }
+
+    sphere
+    {
+        Position    (-60, -50, 400)
+        rotate      (0, 0, 0)
+        color       (81, 42, 0)
+        radius      50
+    }
+}
+
+cone
+{
+    Position    (0,       0,      500)
+    rotate      (0,     1,      0)
+    radius      1
+    angle       30
+}
+
+#.texture
+#{
+#    name:   texture/img.jpeg
+#    name2:  texture/img2.png
+#}

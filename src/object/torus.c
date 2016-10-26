@@ -12,11 +12,9 @@
 
 #include "lib_RT.h"
 
-inline void torus(register t_obj *obj, register t_ray ray)
+inline float    torus(register t_obj obj, register t_ray ray)
 {
-    register t_evo  evo;
-
-    (void)evo;
+    (void)obj;
     (void)ray;
-    obj->det = -1;
+    return (-1);
 }

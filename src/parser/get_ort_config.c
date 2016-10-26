@@ -1,22 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   limit_rgba.c                                       :+:      :+:    :+:   */
+/*   get_ort_config.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/28 01:09:13 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 03:57:14 by glodenos         ###   ########.fr       */
+/*   Created: 2016/10/16 21:45:03 by glodenos          #+#    #+#             */
+/*   Updated: 2016/10/16 21:45:05 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "lib_RT.h"
-
-inline unsigned char    limit_rgba(register double x)
-{
-    if (x > 255)
-        return (0xFF);
-    else if (x < 0)
-        return (0x0);
-    return ((unsigned char)x);
-}

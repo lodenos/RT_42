@@ -28,8 +28,8 @@ inline double           specular_light(register t_spt spt, register t_obj obj)
 {
     register cl_float3  l;
 
-    l = vector_normalize(vector_sub(spt.pos, obj.collision));
-    return (power(vector_scalar(vector_reverse(l), vector_add(l,
-    vector_mult_x(vector_mult_x(obj.normal, 2), vector_scalar(
-    vector_reverse(obj.normal), l)))), 28) * spt.specular);
+    l = normalize(sub(spt.pos, obj.collision));
+    return (power(dot(reverse(l), add(l, vector_mult_x(
+            vector_mult_x(obj.normal, 2), dot(reverse(obj.normal), l)))), 50) *
+            spt.specular);
 }

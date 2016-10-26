@@ -12,37 +12,11 @@
 
 #include "lib_RT.h"
 
-static inline t_rgba    merge_diffuse(t_rgba *rgba, size_t n_color)
+// TODO Exeprimental -- Teste, NO Exactly
+// TODO Oui je sais ca fais plus de 25 lignes 'glodenos'->all
+
+void    light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id)
 {
-    register float  red;
-    register float  green;
-    register float  blue;
-    register t_rgba color;
-    register size_t i;
-
-    red = 0;
-    green = 0;
-    blue = 0;
-    i = 0;
-    while (i < n_color)
-    {
-        red += rgba[i].red;
-        green += rgba[i].green;
-        blue += rgba[i].blue;
-        ++i;
-    }
-    color.red = (unsigned char)(red / n_color);
-    color.green = (unsigned char)(green / n_color);
-    color.blue = (unsigned char)(blue / n_color);
-    return (color);
-}
-
-void                    light(t_env *e, t_ray *ray, t_rgba *c_diff,
-        register size_t id)
-{
-    // TODO Exeprimental -- Teste, NO Exactly
-    // TODO Oui je sais ca fais plus de 25 lignes 'glodenos'->all
-
     int             i;
     size_t          index;
     t_ray           ray_spot;
@@ -50,53 +24,53 @@ void                    light(t_env *e, t_ray *ray, t_rgba *c_diff,
 
 //-------------------------------------
 
-    t_rgba          color;
-    color = (t_rgba){0, 0, 0, 255};
-    register double z;
+    unsigned int    color = 0x0;
+    register double z = 0.0;
     register double tmp;
-    int             np;
-    np = 0;
-    z = 0.0;
+    int             np = 0;
+    float           det;
 
 //-------------------------------------
 
     i = -1;
-    tmp_obj = e->scn.obj[id];
-    while (e->scn.spt[++i].end)
+    tmp_obj = e->obj[id];
+    while (e->spt[++i].end)
     {
-        ray->rgba = e->scn.obj[id].rgba;
-        ray_spot.b = tmp_obj.collision;
-        ray_spot.a = e->scn.spt[i].pos;
-        ray_spot.b = vector_normalize(vector_sub(ray_spot.b, ray_spot.a));
-        index = check_object(e->scn.obj, &ray_spot);
-        if (((int)e->scn.obj[index].det == -1) || (id == index))
+        ray->color = e->obj[id].color;
+        ray_spot.dir = tmp_obj.collision;
+        ray_spot.pos = e->spt[i].pos;
+        ray_spot.dir = normalize(sub(ray_spot.dir, ray_spot.pos));
+        index = 0;
+        det = check_object(e->obj, ray_spot, &index);
+        if ((det == -1) || (id == index))
         {
-            diffused_light(ray, e->scn.spt[i], tmp_obj);
-            tmp = specular_light(e->scn.spt[i], e->scn.obj[id]);
+            diffused_light(ray, e->spt[i], tmp_obj);
+/*            tmp = specular_light(e->spt[i], e->obj[id]);
             if (tmp >= z)
             {
                 z = tmp;
                 np = i;
-            }
+            }*/
+/*
             if (e->scn.spt[i].rgba.red > color.red)
                 color.red = limit_rgba(e->scn.spt[i].rgba.red);
             if (e->scn.spt[i].rgba.green > color.green)
                 color.green = limit_rgba(e->scn.spt[i].rgba.green);
             if (e->scn.spt[i].rgba.blue > color.blue)
-                color.blue = limit_rgba(e->scn.spt[i].rgba.blue);
+                color.blue = limit_rgba(e->scn.spt[i].rgba.blue);*/
         }
         else
         {
-            diffused_light(ray, e->scn.spt[i], tmp_obj);
-            ray->rgba = (t_rgba){0, 0, 0, 255};
+            ray->color = 0x0;
+            diffused_light(ray, e->spt[i], tmp_obj);
         }
-        c_diff[i] = ray->rgba;
+/*        c_diff[i] = ray->color;*/
     }
-    ray->rgba = merge_diffuse(c_diff, e->scn.n_spt);
-    if (z > 0)
+/*    ray->color = merge_diffuse(c_diff, e->scn.n_spt);*/
+/*    if (z > 0)
     {
         ray->rgba.red = limit_rgba(ray->rgba.red + color.red * z);
         ray->rgba.green = limit_rgba(ray->rgba.green + color.green * z);
         ray->rgba.blue = limit_rgba(ray->rgba.blue + color.blue * z);
-    }
+    }*/
 }

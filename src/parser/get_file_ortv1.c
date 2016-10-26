@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file_ortv1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 18:03:45 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 22:53:58 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/12 13:54:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ static inline void  get_obj_scene(t_env *e, char *str)
     if (!ft_strcmp(tmp[0], "camera"))
         get_camera(e, tmp);
     else if (!ft_strcmp(tmp[0], "spot"))
-        get_spot(&e->scn.spt[++n_spt], tmp);
+        get_spot(&e->spt[++n_spt], tmp);
     else if (!ft_strcmp(tmp[0], "sphere"))
-        get_sphere(&e->scn.obj[++n_obj], tmp);
+        get_sphere(&e->obj[++n_obj], tmp);
     else if (!ft_strcmp(tmp[0], "cone"))
-        get_cone(&e->scn.obj[++n_obj], tmp);
+        get_cone(&e->obj[++n_obj], tmp);
     else if (!ft_strcmp(tmp[0], "plan"))
-        get_plan(&e->scn.obj[++n_obj], tmp);
+        get_plan(&e->obj[++n_obj], tmp);
     else if (!ft_strcmp(tmp[0], "cylinder"))
-        get_cylinder(&e->scn.obj[++n_obj], tmp);
+        get_cylinder(&e->obj[++n_obj], tmp);
     else if (!ft_strcmp(tmp[0], "torus"))
-        get_torus(&e->scn.obj[++n_obj], tmp);
+        get_torus(&e->obj[++n_obj], tmp);
     free_tab((void **)tmp);
 }
 
@@ -75,16 +75,17 @@ void                get_file_ortv1(t_env *e, char *file)
         ft_putstr_err("The file can not be opened, or no", 1);
     if ((tmp = get_file_raw(fd)) == NULL)
         ft_putstr_err("ERROR File", 1);
+    close(fd);
     swp = ft_strsplit(tmp, '\n');
     get_nbr_obj(e, swp);
-    if (!(e->scn.obj = (t_obj *)ft_memalloc(sizeof(t_obj) * (e->scn.n_obj + 1))))
+    if (!(e->obj = (t_obj *)ft_memalloc(sizeof(t_obj) * (e->scn.n_obj + 1))))
         ft_putstr_err("RT: Malloc error", 1);
-    if (!(e->scn.spt = (t_spt *)ft_memalloc(sizeof(t_spt) * (e->scn.n_spt + 1))))
+    if (!(e->spt = (t_spt *)ft_memalloc(sizeof(t_spt) * (e->scn.n_spt + 1))))
         ft_putstr_err("RT: Malloc error", 1);
     while (swp[++i])
         get_obj_scene(e, swp[i]);
-    e->scn.obj[e->scn.n_obj].end = 0;
-    e->scn.spt[e->scn.n_spt].end = 0;
+    e->obj[e->scn.n_obj].end = 0;
+    e->spt[e->scn.n_spt].end = 0;
     free(tmp);
     free_tab((void **)swp);
 }

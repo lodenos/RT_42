@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/13 15:03:26 by nrandria         ###   ########.fr        #
+#    Updated: 2016/10/18 15:59:48 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ SRC_PATH = src/
 
 SRC_NAME = 									\
 			clustering/host.c				\
+											\
+			event_RT/event_RT.c				\
+			event_RT/fps_info.c				\
 											\
 			move/matrix_rotate.c			\
 											\
@@ -36,8 +39,10 @@ SRC_NAME = 									\
 			parser/get_cylinder.c			\
 			parser/get_file_mlt.c			\
 			parser/get_file_obj.c			\
+			parser/get_file_ort.c			\
 			parser/get_file_ortv1.c			\
 			parser/get_file_raw.c			\
+			parser/get_ort.c				\
 			parser/get_plan.c				\
 			parser/get_scene.c				\
 			parser/get_sphere.c				\
@@ -55,15 +60,15 @@ SRC_NAME = 									\
 			SDL2/create_window.c			\
 			SDL2/event_everything.c			\
 			SDL2/init_keyboard.c			\
+			SDL2/init_mouse.c				\
 			SDL2/key_press.c				\
 			SDL2/key_release.c				\
-			SDL2/pixel_put.c				\
+			SDL2/push_to_window.c			\
 			SDL2/window_resize.c			\
-			SDL2/debug_move.c				\
 											\
 			shader/diffused_light.c			\
 			shader/light.c					\
-			shader/limit_rgba.c				\
+			shader/limit.c					\
 			shader/specular_light.c			\
 			shader/super_sampling.c 		\
 			vector/coordinates_collision.c	\

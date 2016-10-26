@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/11 17:08:30 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:05:30 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static inline void  init_RT(t_env *e)
 {
     init_keyboard(&e->key);
+    init_mouse(&e->mouse);
     e->img.img = NULL;
     e->img.h = HEIGHT;
     e->img.w = WIDTH;
@@ -89,6 +90,7 @@ int                 main(int argc, char **argv)
     t_env           e;
     pthread_t       pt_host;
 
+    ft_putstr("\n");
     get_arg_main(&e, argc, argv);
     get_scene(&e, argv[1]);
     if (e.gpu)
@@ -106,7 +108,8 @@ int                 main(int argc, char **argv)
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);
     create_window(&e, SDL_WINDOW_RESIZABLE);
-    while (e.exit)
-        event_everything(&e);
+    if (pthread_create(&pt_host, NULL, &play_scene, (void *)&e) == -1)
+        ft_putstr_err("ERROR: thread", 1);
+    event_everything(&e);
     return (0);
 }

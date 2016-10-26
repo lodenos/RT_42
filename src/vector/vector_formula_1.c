@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-inline cl_float3    vector_add(register cl_float3 a, register cl_float3 b)
+inline cl_float3    add(register cl_float3 a, register cl_float3 b)
 {
     register cl_float3  vect;
 
@@ -22,19 +22,19 @@ inline cl_float3    vector_add(register cl_float3 a, register cl_float3 b)
     return (vect);
 }
 
-inline cl_float3    vector_normalize(register cl_float3 vect)
+inline cl_float3    normalize(register cl_float3 vect)
 {
     register cl_float3  norm;
     register double     value;
 
-    value = 1 / sqrt(vector_scalar(vect, vect));
+    value = 1 / sqrt(dot(vect, vect));
     norm.x = vect.x * value;
     norm.y = vect.y * value;
     norm.z = vect.z * value;
     return (norm);
 }
 
-inline cl_float3    vector_reverse(register cl_float3 vect)
+inline cl_float3    reverse(register cl_float3 vect)
 {
     register cl_float3  rev;
 
@@ -44,12 +44,12 @@ inline cl_float3    vector_reverse(register cl_float3 vect)
     return (rev);
 }
 
-inline float        vector_scalar(register cl_float3 a, register cl_float3 b)
+inline float        dot(register cl_float3 a, register cl_float3 b)
 {
     return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z));
 }
 
-inline cl_float3    vector_sub(register cl_float3 a, register cl_float3 b)
+inline cl_float3    sub(register cl_float3 a, register cl_float3 b)
 {
     register cl_float3  vector;
 

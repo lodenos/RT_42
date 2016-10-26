@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_keyboard.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 16:38:34 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/29 16:50:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/14 13:30:01 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    init_keyboard(t_key *key)
     key->key_down = 0;
     key->key_left = 0;
     key->key_lshift = 0;
-    key->key_point = 0;
+    key->key_period = 0;
     key->key_right = 0;
     key->key_s = 0;
     key->key_space = 0;

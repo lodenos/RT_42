@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_resize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:54:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/08 02:41:42 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/14 11:12:07 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void    window_resize(t_env *e)
     if (!(e->img.rend = SDL_CreateRenderer(e->img.win, -1,
                 SDL_RENDERER_SOFTWARE)))
         ft_putstr_err(SDL_GetError(), 1);
-    if (!(e->img.img = (int *)ft_memalloc(sizeof(int) * e->img.w *
-                e->img.h)))
+    if (!(e->img.img = (unsigned int *)ft_memalloc(sizeof(unsigned int) *
+            e->img.w * e->img.h)))
         ft_putstr_err("ERROR: malloc error", 1);
     SDL_SetRenderDrawColor(e->img.rend, 0, 0, 0, 255);
     if (SDL_RenderClear(e->img.rend) != 0)
         ft_putstr_err(SDL_GetError(), 1);
     SDL_RenderPresent(e->img.rend);
-    play_scene(e, e->img.rend);
 }

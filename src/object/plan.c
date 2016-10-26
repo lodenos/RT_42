@@ -12,22 +12,20 @@
 
 #include "lib_RT.h"
 
-inline void plan(register t_obj *obj, register t_ray ray)
+inline float    plan(register t_obj obj, register t_ray ray)
 {
-    cl_float3   tmp_v;
-    cl_float3   origine;
-    float       det;
-    float       d;
-    cl_float3   normal;
+    register float  a;
+    register float  b;
 
-    origine.x = 0;
-    origine.y = 0;
-    origine.z = 0;
-
-    tmp_v = vector_sub(obj->pos, origine);
-    normal = vector_normalize(obj->rotate);
-    d = sqrtf(vector_scalar(tmp_v, tmp_v));
-    det = -(normal.x * ray.a.x + normal.y * ray.a.y + normal.z * ray.a.z + d)
-        / (normal.x * ray.b.x + normal.y * ray.b.y + normal.z * ray.b.z);
-    obj->det = (det < 0) ? -1 : det;
+    if ((a = dot(ray.dir, obj.rotate)) < 0.0f)
+    {
+        if ((a = dot(ray.dir, reverse(obj.rotate))) < 0.0f)
+            return (-1);
+        if ((b = -(dot(reverse(obj.rotate), sub(ray.pos, obj.pos)) / a)) < 0.0f)
+            return (-1);
+        return (b);
+    }
+    if ((b = -(dot(obj.rotate, sub(ray.pos, obj.pos)) / a)) < 0.0f)
+        return (-1);
+    return (b);
 }
