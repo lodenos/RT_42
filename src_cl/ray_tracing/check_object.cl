@@ -3,7 +3,7 @@
 
 /*  TODO add worker */
 
-inline float    check_object(__constant t_obj *obj, t_ray *ray, size_t *id)
+inline float    check_object(__constant t_obj *obj, t_ray *ray, size_t *id, size_t mask)
 {
     int     i;
     float   tmp_det;
@@ -14,6 +14,8 @@ inline float    check_object(__constant t_obj *obj, t_ray *ray, size_t *id)
     tmp_det = 20000.0;
     while (obj[++i].end)
     {
+        if (i == mask)
+            continue ;
         det = run_object(&obj[i], *ray);
         if (0 < det && det < tmp_det)
         {

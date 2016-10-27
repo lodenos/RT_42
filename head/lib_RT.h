@@ -79,6 +79,7 @@ typedef struct              s_obj           /* Object                           
     unsigned int            color;          /* Calors of the object                 */
     cl_float3               rotate;         /* Angle of rotation                    */
     size_t                  type;           /* Type Object                          */
+    size_t                  type_bump;      /* Type Bump Mapping                    */
 }                           t_obj;
 
 typedef struct              s_key           /* Keyboard for key repet               */

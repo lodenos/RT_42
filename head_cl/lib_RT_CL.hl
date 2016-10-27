@@ -8,6 +8,8 @@
 #define SPHERE      4
 #define TORUS       5
 
+#define NO_MASK     0xFFFFFFFFFFFFFFFF
+
 #pragma OPENCL EXTENSION cl_khr_byte_addressable_store : enable
 
 
@@ -40,6 +42,7 @@ typedef struct      s_obj           /* Object                               */
     unsigned int    color;          /* Calors of the object                 */
     float3          rotate;         /* Angle of rotation                    */
     size_t          type;           /* Type Object                          */
+    size_t          type_bump;      /* Type Bump Mapping                    */
 }                   t_obj;
 
 typedef struct      s_spt           /* Struct Spotlight                     */
@@ -71,8 +74,9 @@ typedef struct      s_scn           /* Struct Scene                         */
     size_t          resolution;     /* Super Sampling Resolution            */
 }                   t_scn;
 
+void            bump_mapping(t_obj *obj);
 void            camera(t_cam cam, t_ray *ray, float x, float y);
-float           check_object(__constant t_obj *obj, t_ray *ray, size_t *id);
+float           check_object(__constant t_obj *obj, t_ray *ray, size_t *id, size_t mask);
 float           cone(constant t_obj *obj, t_ray ray);
 void            diffused_light(t_ray *ray, __constant t_spt *spt, t_obj obj);
 void            light(size_t id, __constant t_obj *obj, t_obj obj_tmp,
