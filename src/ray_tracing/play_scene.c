@@ -16,6 +16,7 @@
 
 static inline void  *mapping(void *arg)
 {
+    cl_float2       pos;
     t_ray           ray;
     register size_t x;
     register size_t y;
@@ -26,8 +27,9 @@ static inline void  *mapping(void *arg)
         x = ((t_mppng *)arg)->mimg.start_x;
         while (x < ((t_mppng *)arg)->mimg.stop_x)
         {
-            super_sampling(((t_mppng *)arg)->e, &ray,
-                    (cl_float2){(float)x, (float)y}, 1);
+            pos.x = (float)x;
+            pos.y = (float)y;
+            super_sampling(((t_mppng *)arg)->e, &ray, pos, 1);
             ((t_mppng *)arg)->e->img.img[y * ((t_mppng *)arg)->e->scn.cam.w
                     + x] = ray.color;
             ++x;
@@ -73,37 +75,33 @@ static inline void  lunch_thread_mapping(t_env *e)
     }
 }
 
-void    *play_scene(t_env *e)
+void    *play_scene(void *arg)
 {
     register float  det;
     t_ray           ray;
     size_t          id;
 
-    e->start = 1;
-    while (e->exit)
+    ((t_env *)arg)->start = 1;
+    while (((t_env *)arg)->exit)
     {
-        if (event_RT(e) == 0)
+        if (event_RT((t_env *)arg) == 0)
         {
-            camera(e->scn.cam, &ray, (float)e->mouse.x, (float)e->mouse.y);
-            det = check_object(e->obj, ray, &id);
-            if (det == -1)
-                e->mouse.id = -1;
+            camera(((t_env *)arg)->scn.cam, &ray, (float)((t_env *)arg)->mouse.x,
+                    (float)((t_env *)arg)->mouse.y);
+            det = check_object(((t_env *)arg)->obj, ray, &id);
+            if ((int)det == -1)
+                ((t_env *)arg)->mouse.id = -1;
             else
-                e->mouse.id = id;
+                ((t_env *)arg)->mouse.id = (int)id;
             continue ;
         }
         fps_info(); /*----------------------------------------------------------    FPS */
-        if (e->gpu)
-            OCL_run_raytracing(e, e->img.rend);
+        if (((t_env *)arg)->gpu)
+            OCL_run_raytracing((t_env *)arg);
         else
-        {
-            if (!(e->c_diff = (unsigned int *)malloc(sizeof(unsigned int) *
-                    e->scn.n_spt)))
-                ft_putstr_err("ERROR: malloc error", 1);
-            lunch_thread_mapping(e);
-        }
-
-        push_to_window(e->img.rend, e->img.img, e->scn.cam.w, e->scn.cam.h);
+            lunch_thread_mapping((t_env *)arg);
+        push_to_window(((t_env *)arg)->img.rend, ((t_env *)arg)->img.img,
+                ((t_env *)arg)->scn.cam.w, ((t_env *)arg)->scn.cam.h);
     }
     pthread_exit(NULL);
 }

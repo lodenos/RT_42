@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/18 15:59:48 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/28 00:05:16 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,10 +71,10 @@ SRC_NAME = 									\
 			shader/limit.c					\
 			shader/specular_light.c			\
 			shader/super_sampling.c 		\
+											\
 			vector/coordinates_collision.c	\
 			vector/vector_formula_1.c		\
 			vector/vector_formula_2.c		\
-			vector/vector_rotate.c			\
 											\
 			main.c
 
@@ -105,7 +105,6 @@ $(NAME): $(OBJ)
 	@make -C libft
 	@echo "\033[33mProject compilation\033[0m"
 	@$(CC) $(LDFLAGS) $(LDLIBS) $(LIBGRPH) $^ -o $@
-	@sh ProgressBar.sh 0.005
 	@echo "\033[32mCompilation SUCCESS\033[0m"
 
 $(OBJ_PATH)%.o: %.c

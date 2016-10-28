@@ -20,13 +20,13 @@ inline void fps_info(void)
 	int						v;
 
 	txt = NULL;
-	gettimeofday(&tmp, NULL);
-
-	v = (tmp.tv_sec * 1000000 + tmp.tv_usec) -
-        (fps.tv_sec * 1000000 + fps.tv_usec);
+    if (gettimeofday(&tmp, NULL) == -1)
+        ft_putstr_err("ERROR: Crash gettimeofday", 1);
+	v = (int)(tmp.tv_sec * 1000000 + tmp.tv_usec) - (int)(fps.tv_sec * 1000000 + fps.tv_usec);
 	txt = ft_itoa(1000000 / abs(v));
     ft_putstr("\e[1AFPS = ");
     ft_putendl(txt);
 	free(txt);
-	gettimeofday(&fps, NULL);
+    if (gettimeofday(&fps, NULL) == -1)
+        ft_putstr_err("ERROR: Crash gettimeofday", 1);
 }

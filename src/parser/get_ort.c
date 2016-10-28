@@ -14,6 +14,8 @@
 
 void    get_ort(t_env *e, char **str)
 {
+    (void)e;
+    (void)str;
 /*    int     i;
 
     i = -1;

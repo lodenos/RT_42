@@ -40,7 +40,7 @@ static inline void  init_file_opencl(t_opcl *cl)
     tmp = get_file_raw(fd);
     close(fd);
     src = ft_strsplit(tmp, '\n');
-    if ((cl->nbr_src = ft_strlen_tab(src) - 1) < 2)
+    if ((cl->nbr_src = (cl_uint)ft_strlen_tab(src) - 1) < 2)
         ft_putstr_err("ERROR: src Make_CL < 2 args", 1);
     if (!(cl->flags = ft_strdup(src[0])))
         ft_putstr_err("ERROR: malloc", 1);
@@ -58,7 +58,7 @@ static inline void  init_file_opencl(t_opcl *cl)
     free_tab((void **)src);
 }
 
-void    get_arg_main(t_env *e, int argc, char **argv)
+static void         get_arg_main(t_env *e, int argc, char **argv)
 {
     int     i;
 

@@ -19,11 +19,10 @@ static void *slave_connection(void *fds)
 
     fd = *(int *)fds;
     tmp = ft_memalloc(sizeof(char) * 257);
-    while (1)
-    {
-        read(fd, tmp, 256);
-    //    write(fd, "Test server :)  -> \n", 20);
-    }
+
+    read(fd, tmp, 256);
+    write(fd, "Test server :)  -> \n", 20);
+
     ft_putstr("Client quit\n");
     free(tmp);
     close(fd);
@@ -53,12 +52,11 @@ void        *host(void *arg)
     if (listen(fds, 15))
         ft_putstr_err("ERROR: listen", 1);
     size = sizeof(sck_slv);
-    while (1)
-    {
-        fds_slv = accept(fds, (sockaddr*)&slv.sck, (socklen_t *)&size);
-        printf("FD = %d \n", fds_slv);
-        pthread_create(&pthr, NULL, &slave_connection, (void *)&fds_slv);
-    }
+
+    fds_slv = accept(fds, (sockaddr*)&slv.sck, (socklen_t *)&size);
+    printf("FD = %d \n", fds_slv);
+    pthread_create(&pthr, NULL, &slave_connection, (void *)&fds_slv);
+
     close(fds);
     pthread_exit(NULL);
 }

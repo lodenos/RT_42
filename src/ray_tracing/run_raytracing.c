@@ -19,8 +19,8 @@ inline void get_normal_object(t_obj *obj, register t_ray ray,
         obj->normal = reverse(normalize(sub(obj->pos,
                 sub(obj->collision, vector_mult_x(vector_mult_x(
                 obj->rotate, dot(ray.dir, obj->rotate) * det +
-                dot(ray.pos, obj->rotate)), (1.0 + tanf(obj->angle / 2)
-                * tanf(obj->angle / 2)))))));
+                dot(ray.pos, obj->rotate)), (1.0f + tanf(obj->angle / 2.0f)
+                * tanf(obj->angle / 2.0f)))))));
     else if (obj->type == CYLINDER)
         obj->normal = reverse(normalize(sub(obj->pos, sub(obj->collision,
                 vector_mult_x(obj->rotate, dot(ray.dir, obj->rotate) * det +
@@ -36,13 +36,13 @@ inline void get_normal_object(t_obj *obj, register t_ray ray,
 void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 {
     register float  det;
-    size_t  id;
+    size_t          id;
 
     ray->color = 0x0;
     det = check_object(obj, *ray, &id);
-    if (det == -1)
+    if ((int)det == -1)
         return ;
     obj[id].collision = coordinates_collision(ray->pos, ray->dir, det);
     get_normal_object(&obj[id], *ray, det);
-    light(e, ray, e->c_diff, id);
+    light(e, id, ray);
 }

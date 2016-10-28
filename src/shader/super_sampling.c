@@ -14,16 +14,16 @@
 
 void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
 {
-    int     i;
-    int     j;
+    size_t  i;
+    size_t  j;
     float   x;
     double  div;
-    int     max;
+    size_t  max;
     double  red;
     double  green;
     double  blue;
 
-    i = -1;
+    i = 0;
     x = pos.x;
     div = 1.0 / resolution;
     max = resolution * resolution;
@@ -34,8 +34,8 @@ void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
         ft_putstr_err("ERROR: supersampling -> resolution == 0", 1);
     while (++i < resolution)
     {
-        j = -1;
-        while (++j < resolution)
+        j = 0;
+        while (j < resolution)
         {
             camera(e->scn.cam, ray, pos.x, pos.y);
             run_raytracing(e, e->obj, ray);
@@ -43,9 +43,11 @@ void    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
             red += (double)(ray->color >> 24) ;
             green += (double)(ray->color >> 16);
             blue += (double)(ray->color >> 8);
+            ++j;
         }
         pos.x = x;
         pos.y += div;
+        ++i;
     }
     ray->color = (unsigned int)((red / max)) << 24 |
         (unsigned int)((green / max)) << 16 |

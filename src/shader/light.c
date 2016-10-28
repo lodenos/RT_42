@@ -15,7 +15,7 @@
 // TODO Exeprimental -- Teste, NO Exactly
 // TODO Oui je sais ca fais plus de 25 lignes 'glodenos'->all
 
-void    light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id)
+void    light(t_env *e, size_t id, t_ray *ray)
 {
     int             i;
     size_t          index;
@@ -24,11 +24,11 @@ void    light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id)
 
 //-------------------------------------
 
-    unsigned int    color = 0x0;
-    register double z = 0.0;
-    register double tmp;
-    int             np = 0;
-    float           det;
+//    unsigned int    color = 0x0;
+//    register float  z = 0.0;
+//    register float  tmp;
+//    int             np = 0;
+    register float  det;
 
 //-------------------------------------
 
@@ -42,7 +42,7 @@ void    light(t_env *e, t_ray *ray, unsigned int *c_diff, register size_t id)
         ray_spot.dir = normalize(sub(ray_spot.dir, ray_spot.pos));
         index = 0;
         det = check_object(e->obj, ray_spot, &index);
-        if ((det == -1) || (id == index))
+        if (((int)det == -1) || (id == index))
         {
             diffused_light(ray, e->spt[i], tmp_obj);
 /*            tmp = specular_light(e->spt[i], e->obj[id]);
