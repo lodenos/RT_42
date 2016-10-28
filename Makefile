@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/10/28 00:05:16 by glodenos         ###   ########.fr        #
+#    Updated: 2016/10/28 04:25:06 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRC_NAME = 									\
 			SDL2/push_to_window.c			\
 			SDL2/window_resize.c			\
 											\
+			shader/bump_mapping.c			\
 			shader/diffused_light.c			\
 			shader/light.c					\
 			shader/limit.c					\
@@ -89,7 +90,7 @@ NAME 		=	RT
 
 CC 			=	clang
 
-CFLAGS 		=	#-Wall -Wextra -Werror -Ofast #-Weverything -Wno-padded
+CFLAGS 		=	#-Wall -Wextra -Werror -Ofast -Weverything -Wno-padded
 LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))

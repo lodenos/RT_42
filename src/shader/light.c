@@ -15,62 +15,51 @@
 // TODO Exeprimental -- Teste, NO Exactly
 // TODO Oui je sais ca fais plus de 25 lignes 'glodenos'->all
 
-void    light(t_env *e, size_t id, t_ray *ray)
+void    light(t_env *e, size_t id, t_obj obj_tmp, t_ray *ray)
 {
-    int             i;
-    size_t          index;
-    t_ray           ray_spot;
-    t_obj           tmp_obj;
+    size_t  i       = 0;
+    size_t  index;
+    t_ray   ray_spot;
+    float   z       = 0.0f;
+    float   tmp;
+    int     np      = 0;
+    float   det;
+    float   red     = 0;
+    float   green   = 0;
+    float   blue    = 0;
 
-//-------------------------------------
-
-//    unsigned int    color = 0x0;
-//    register float  z = 0.0;
-//    register float  tmp;
-//    int             np = 0;
-    register float  det;
-
-//-------------------------------------
-
-    i = -1;
-    tmp_obj = e->obj[id];
-    while (e->spt[++i].end)
+    while (e->spt[i].end)
     {
-        ray->color = e->obj[id].color;
-        ray_spot.dir = tmp_obj.collision;
-        ray_spot.pos = e->spt[i].pos;
-        ray_spot.dir = normalize(sub(ray_spot.dir, ray_spot.pos));
         index = 0;
-        det = check_object(e->obj, ray_spot, &index);
-        if (((int)det == -1) || (id == index))
+        ray->color = obj_tmp.color;
+        ray_spot.pos = e->spt[i].pos;
+        ray_spot.dir = normalize(sub(obj_tmp.collision, ray_spot.pos));
+        det = check_object(e->obj, ray_spot, &index, NO_MASK);
+        if ((det == -1) || (id == index))
         {
-            diffused_light(ray, e->spt[i], tmp_obj);
-/*            tmp = specular_light(e->spt[i], e->obj[id]);
+            diffused_light(ray, e->spt[i], obj_tmp);
+            tmp = specular_light(e->spt[i], obj_tmp);
             if (tmp >= z)
             {
                 z = tmp;
                 np = i;
-            }*/
-/*
-            if (e->scn.spt[i].rgba.red > color.red)
-                color.red = limit_rgba(e->scn.spt[i].rgba.red);
-            if (e->scn.spt[i].rgba.green > color.green)
-                color.green = limit_rgba(e->scn.spt[i].rgba.green);
-            if (e->scn.spt[i].rgba.blue > color.blue)
-                color.blue = limit_rgba(e->scn.spt[i].rgba.blue);*/
+            }
         }
         else
-        {
             ray->color = 0x0;
-            diffused_light(ray, e->spt[i], tmp_obj);
-        }
-/*        c_diff[i] = ray->color;*/
+        red += (float)(unsigned char)(ray->color >> 24);
+        green += (float)(unsigned char)(ray->color >> 16);
+        blue += (float)(unsigned char)(ray->color >> 8);
+        ++i;
     }
-/*    ray->color = merge_diffuse(c_diff, e->scn.n_spt);*/
-/*    if (z > 0)
-    {
-        ray->rgba.red = limit_rgba(ray->rgba.red + color.red * z);
-        ray->rgba.green = limit_rgba(ray->rgba.green + color.green * z);
-        ray->rgba.blue = limit_rgba(ray->rgba.blue + color.blue * z);
-    }*/
+    ray->color = (unsigned int)(unsigned char)(red / e->scn.n_spt) << 24 |
+            (unsigned int)(unsigned char)(green / e->scn.n_spt) << 16 |
+            (unsigned int)(unsigned char)(blue / e->scn.n_spt) << 8 | 0xFF;
+    if (z > 0.0f)
+        ray->color = limit((float)(unsigned char)(ray->color >> 24) +
+                (float)(unsigned char)(e->spt->color >> 24) * z) << 24 |
+                limit((float)(unsigned char)(ray->color >> 16) +
+                (float)(unsigned char)(e->spt->color >> 16) * z) << 16 |
+                limit((float)(unsigned char)(ray->color >> 8) +
+                (float)(unsigned char)(e->spt->color >> 8) * z) << 8 | 0xFF;
 }

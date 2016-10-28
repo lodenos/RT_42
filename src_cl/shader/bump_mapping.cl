@@ -11,12 +11,9 @@ inline void bump_mapping(t_obj *obj)
             obj->normal -= sin(obj->collision - obj->pos) * 0.1f;
             return ;
         case 2 :
-
-
             if ((int)(obj->collision.x + obj->collision.y + obj->collision.z -
                     obj->pos.x + obj->pos.y + obj->pos.z) % 2)
                 obj->color /= 2;
-
             return ;
         default :
             return ;

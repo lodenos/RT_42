@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/11 12:16:56 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/28 06:38:33 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,40 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 {
     register float  det;
     size_t          id;
+    t_obj           obj_tmp;
+    unsigned int    color;
 
     ray->color = 0x0;
-    det = check_object(obj, *ray, &id);
+    det = check_object(obj, *ray, &id, NO_MASK);
     if ((int)det == -1)
         return ;
-    obj[id].collision = coordinates_collision(ray->pos, ray->dir, det);
-    get_normal_object(&obj[id], *ray, det);
-    light(e, id, ray);
+    obj_tmp = obj[id];
+    obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
+    get_normal_object(&obj_tmp, *ray, det);
+
+//------------------------------------------------------------------------------
+    if (id == 11)
+    {
+
+        ray->pos = obj_tmp.collision;
+        ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
+                dot(obj_tmp.normal, ray->dir)), 2));
+        det = check_object(obj, *ray, &id, 11);
+        if (det == -1)
+            return ;
+        color = ray->color;
+        obj_tmp = obj[id];
+        obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
+        get_normal_object(&obj_tmp, *ray, det);
+        obj_tmp.type_bump = 1;
+//        bump_mapping(&obj_tmp);
+        light(e, id, obj_tmp, ray);
+    }
+    else
+    {
+        obj_tmp.type_bump = 1;
+//        bump_mapping(&obj_tmp);
+        light(e, id, obj_tmp, ray);
+    }
+//------------------------------------------------------------------------------
 }

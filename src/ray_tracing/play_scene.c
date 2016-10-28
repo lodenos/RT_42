@@ -30,8 +30,7 @@ static inline void  *mapping(void *arg)
             pos.x = (float)x;
             pos.y = (float)y;
             super_sampling(((t_mppng *)arg)->e, &ray, pos, 1);
-            ((t_mppng *)arg)->e->img.img[y * ((t_mppng *)arg)->e->scn.cam.w
-                    + x] = ray.color;
+            ((t_mppng *)arg)->e->img.img[y * ((t_mppng *)arg)->e->scn.cam.w + x] = ray.color;
             ++x;
         }
         ++y;
@@ -88,7 +87,7 @@ void    *play_scene(void *arg)
         {
             camera(((t_env *)arg)->scn.cam, &ray, (float)((t_env *)arg)->mouse.x,
                     (float)((t_env *)arg)->mouse.y);
-            det = check_object(((t_env *)arg)->obj, ray, &id);
+            det = check_object(((t_env *)arg)->obj, ray, &id, NO_MASK);
             if ((int)det == -1)
                 ((t_env *)arg)->mouse.id = -1;
             else
