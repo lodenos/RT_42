@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 16:05:30 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/30 11:29:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int                 main(int argc, char **argv)
     t_env           e;
     pthread_t       pt_host;
 
-    ft_putstr("\n");
+//    ft_putstr("\n");
     get_arg_main(&e, argc, argv);
     get_scene(&e, argv[1]);
     if (e.gpu)

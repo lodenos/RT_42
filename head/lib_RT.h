@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/28 06:32:01 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/30 12:55:15 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 
 #define TITLE       "RT"
 #define THREAD      4
-#define WIDTH       960 * 2
-#define HEIGHT      540 * 2
+#define WIDTH       960
+#define HEIGHT      540
 #define CONE        1
 #define CYLINDER    2
 #define PLAN        3
@@ -183,8 +183,8 @@ struct                  s_env           /* Variable Master                      
 {
     SDL_Event           event;          /* Event SDL                            */
     _Bool               exit;           /* Var quit programme                   */
-    unsigned int        *c_diff;        /* Struct *color diffuse                */
     t_opcl              cl;             /* Struct OpenCl                        */
+    _Bool               config;         /* */
     char                host;           /* Host or not host                     */
     t_img               img;            /* Struct Image                         */
     t_key               key;            /* Struct Keyboard                      */
@@ -195,6 +195,7 @@ struct                  s_env           /* Variable Master                      
     char                slave;          /* slave or no slave                    */
     t_spt               *spt;           /* Struct Spotlight                     */
     _Bool               start;          /* First event_RT                       */
+    size_t              thread;         /* Thread max*/ 
 };
 
 struct                  s_mppng         /* Struct env + mimg for thread mapping */
@@ -235,6 +236,15 @@ void                    get_file_ortv1(t_env *e, char *file);
 char                    *get_file_raw(int fd);
 void                    get_normal_object(t_obj *obj, register t_ray ray, register float det);
 void                    get_ort(t_env *e, char **str);
+void                    get_ort_cone(t_env *e, char **str, size_t *i);
+void                    get_ort_config(t_env *e, char **str, size_t *i);
+void                    get_ort_cylinder(t_env *e, char **str, size_t *i);
+void                    get_ort_group(t_env *e, char **str, size_t *i);
+void                    get_ort_plan(t_env *e, char **str, size_t *i);
+void                    get_ort_scene(t_env *e, char **str, size_t *i);
+void                    get_ort_sphere(t_env *e, char **str, size_t *i);
+void                    get_ort_texture(t_env *e, char **str, size_t *i);
+void                    get_ort_torus(t_env *e, char **str, size_t *i);
 void                    get_plan(t_obj *obj, char **line);
 void                    get_scene(t_env *e, char *file);
 void                    get_sphere(t_obj *obj, char **line);

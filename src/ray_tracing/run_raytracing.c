@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/28 06:38:33 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/28 06:50:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     get_normal_object(&obj_tmp, *ray, det);
 
 //------------------------------------------------------------------------------
-    if (id == 11)
+    if (id == 5)
     {
 
         ray->pos = obj_tmp.collision;
         ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
                 dot(obj_tmp.normal, ray->dir)), 2));
-        det = check_object(obj, *ray, &id, 11);
+        det = check_object(obj, *ray, &id, 5);
         if (det == -1)
             return ;
         color = ray->color;
