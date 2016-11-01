@@ -224,6 +224,7 @@ void                    err_cl(cl_int err);
 void                    err_cl_sub(cl_int err);
 void                    event_everything(t_env *e);
 int                     event_RT(t_env *e);
+void                    filtered_b_w(unsigned int *img, size_t resolution);
 void                    filtered_rgb(unsigned int filter, unsigned int *img, size_t resolution);
 void                    fps_info(void);
 void                    get_camera(t_env *e, char **line);
