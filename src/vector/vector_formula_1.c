@@ -25,9 +25,9 @@ inline cl_float3    add(register cl_float3 a, register cl_float3 b)
 inline cl_float3    normalize(register cl_float3 vect)
 {
     register cl_float3  norm;
-    register double     value;
+    register float      value;
 
-    value = 1 / sqrt(dot(vect, vect));
+    value = 1.0f / sqrtf(dot(vect, vect));
     norm.x = vect.x * value;
     norm.y = vect.y * value;
     norm.z = vect.z * value;

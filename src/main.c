@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 16:05:30 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/10/30 11:29:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static inline void  init_file_opencl(t_opcl *cl)
     tmp = get_file_raw(fd);
     close(fd);
     src = ft_strsplit(tmp, '\n');
-    if ((cl->nbr_src = ft_strlen_tab(src) - 1) < 2)
+    if ((cl->nbr_src = (cl_uint)ft_strlen_tab(src) - 1) < 2)
         ft_putstr_err("ERROR: src Make_CL < 2 args", 1);
     if (!(cl->flags = ft_strdup(src[0])))
         ft_putstr_err("ERROR: malloc", 1);
@@ -58,7 +58,7 @@ static inline void  init_file_opencl(t_opcl *cl)
     free_tab((void **)src);
 }
 
-void    get_arg_main(t_env *e, int argc, char **argv)
+static void         get_arg_main(t_env *e, int argc, char **argv)
 {
     int     i;
 
@@ -90,7 +90,7 @@ int                 main(int argc, char **argv)
     t_env           e;
     pthread_t       pt_host;
 
-    ft_putstr("\n");
+//    ft_putstr("\n");
     get_arg_main(&e, argc, argv);
     get_scene(&e, argv[1]);
     if (e.gpu)

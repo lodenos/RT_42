@@ -23,19 +23,19 @@ inline float    cone(register t_obj obj, register t_ray ray)
 
     a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z - ray.dir.y * ray.dir.y *
             obj.angle;
-    b = 2.0 * ((ray.pos.x - obj.pos.x) * ray.dir.x +
+    b = 2.0f * ((ray.pos.x - obj.pos.x) * ray.dir.x +
             (ray.pos.z - obj.pos.z) * ray.dir.z -
             (ray.pos.y - obj.pos.y) * ray.dir.y * obj.angle);
     c = ((ray.pos.x - obj.pos.x) * (ray.pos.x - obj.pos.x)) +
             ((ray.pos.z - obj.pos.z) * (ray.pos.z - obj.pos.z)) -
             ((ray.pos.y - obj.pos.y) * (ray.pos.y - obj.pos.y)) * obj.angle  -
             obj.radius * obj.radius;
-    det = b * b - 4.0 * a * c;
-    if (det > 0)
+    det = b * b - 4.0f * a * c;
+    if (det > 0.0f)
     {
-        ta = (-b + sqrt(det)) / (2.0 * a);
-        tb = (-b - sqrt(det)) / (2.0 * a);
+        ta = (-b + sqrtf(det)) / (2.0f * a);
+        tb = (-b - sqrtf(det)) / (2.0f * a);
         return (ta > tb) ? tb : ta;
     }
-    return (-1);
+    return (-1.0f);
 }

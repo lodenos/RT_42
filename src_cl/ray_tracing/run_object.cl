@@ -22,33 +22,33 @@ inline float    run_object(constant t_obj *obj, t_ray ray)
             c = b * b - a * dot(ray.pos, ray.pos) - obj->radius * obj->radius
                 - y * y;
             if (c < 0.0f)
-                return -1;
+                return -1.0f;
             c = sqrt(c);
             return (-b - c > 0) ? -b - c : -b + c;
         case PLAN :
             if ((a = dot(ray.dir, obj->rotate)) < 0.0f)
             {
                 if ((a = dot(ray.dir, -obj->rotate)) < 0.0f)
-                    return -1;
+                    return -1.0f;
                 if ((b = -(dot(-obj->rotate, ray.pos - obj->pos) / a)) < 0.0f)
-                    return -1;
+                    return -1.0f;
                 return b;
             }
             if ((b = -(dot(obj->rotate, ray.pos - obj->pos) / a)) < 0.0f)
-                return -1;
+                return -1.0f;
             return b;
         case SPHERE :
             ray.pos -= obj->pos;
             b = dot(ray.pos, ray.dir);
             c = b * b - (dot(ray.pos, ray.pos) - obj->radius * obj->radius);
             if (c < 0.0f)
-    	       return -1;
+    	       return -1.0f;
             c = sqrt(c);
             return (-b - c > 0) ? -b - c : -b + c;
         case TORUS :
-            return -1;
+            return -1.0f;
         default :
-            return -1;
+            return -1.0f;
     }
-    return -1;
+    return -1.0f;
 }

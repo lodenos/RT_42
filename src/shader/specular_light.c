@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-static inline double    power(register double x, register int y)
+static inline float power(register float x, register int y)
 {
     register int    i;
     register float  val;
@@ -24,7 +24,7 @@ static inline double    power(register double x, register int y)
     return (val);
 }
 
-inline double           specular_light(register t_spt spt, register t_obj obj)
+float               specular_light(register t_spt spt, register t_obj obj)
 {
     register cl_float3  l;
 

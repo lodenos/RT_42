@@ -102,7 +102,6 @@ $(NAME):
 	@ar rc $(NAME) $(OBJ)
 	@echo "\033[36mIncrease the search speed\033[0m"
 	@ranlib $(NAME)
-	@sh ProgressBar.sh 0.015
 	@echo "\033[32mLibrary Created\033[0m"
 	@echo "\033[33m----------------------------------\033[0m"
 

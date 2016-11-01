@@ -27,7 +27,7 @@ inline float    cylinder(register t_obj obj, register t_ray ray)
     b = dot(ray.pos, ray.dir) - x * y;
     c = b * b - a * (dot(ray.pos, ray.pos) - obj.radius * obj.radius - y * y);
     if (c < 0.0f)
-        return (-1);
-    c = sqrt(c);
-    return ((-b - c > 0) ? -b - c : -b + c);
+        return (-1.0f);
+    c = sqrtf(c);
+    return ((-b - c > 0.0f) ? -b - c : -b + c);
 }
