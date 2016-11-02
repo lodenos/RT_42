@@ -29,7 +29,7 @@ static inline void  *mapping(void *arg)
         {
             pos.x = (float)x;
             pos.y = (float)y;
-            super_sampling(((t_mppng *)arg)->e, &ray, pos, 4);
+            super_sampling(((t_mppng *)arg)->e, &ray, pos, 1);
             ((t_mppng *)arg)->e->img.img[y * ((t_mppng *)arg)->e->scn.cam.w + x] = ray.color;
             ++x;
         }
@@ -99,8 +99,8 @@ void    *play_scene(void *arg)
             OCL_run_raytracing((t_env *)arg);
         else
             lunch_thread_mapping((t_env *)arg);
-        filtered_b_w(((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w );
-        filtered_rgb(0xA98C78FF, ((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
+      //  filtered_b_w(((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w );
+       // filtered_rgb(0xA98C78FF, ((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
         push_to_window(((t_env *)arg)->img.rend, ((t_env *)arg)->img.img,
                 ((t_env *)arg)->scn.cam.w, ((t_env *)arg)->scn.cam.h);
     }

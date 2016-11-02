@@ -53,8 +53,16 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     {
 
         ray->pos = obj_tmp.collision;
+        
+            obj_tmp.type_bump = 1;
+        bump_mapping(&obj_tmp);
+
+
         ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
                 dot(obj_tmp.normal, ray->dir)), 2));
+        
+
+
         det = check_object(obj, *ray, &id, 5);
         if (det == -1)
             return ;
@@ -62,14 +70,15 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
         obj_tmp = obj[id];
         obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
         get_normal_object(&obj_tmp, *ray, det);
-        obj_tmp.type_bump = 1;
-//        bump_mapping(&obj_tmp);
+         obj_tmp.type_bump = 1;
+        bump_mapping(&obj_tmp);
+
         light(e, id, obj_tmp, ray);
     }
     else
     {
         obj_tmp.type_bump = 1;
-//        bump_mapping(&obj_tmp);
+        bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
     }
 //------------------------------------------------------------------------------
