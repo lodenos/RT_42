@@ -31,15 +31,15 @@ inline void bump_mapping(t_obj *obj)
     else if (obj->type_bump == 2)
     {
         tmp = sub(obj->collision, obj->pos);
-        
-        x = (abs((int)tmp.x) / 5) % 2;
-        y = (abs((int)tmp.y) / 5) % 2;
-        z = (abs((int)tmp.z) / 5) % 2;
-
+        x = (abs((int)tmp.x / 5)) % 2;
+        y = (abs((int)tmp.y / 5)) % 2;
+        z = (abs((int)tmp.z / 5)) % 2;
         if (z)
             obj->color = ((x && y) || (!x && !y)) ? 0xFFFFFFFF : 0xFF;
+            
         else 
            obj->color = ((x && y) || (!x && !y)) ? 0xFF : 0xFFFFFFFF;
-
     }
+    //else if (obj->type_bump == 3)
+     //   perlin_noise();
 }

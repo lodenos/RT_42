@@ -70,14 +70,14 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
         obj_tmp = obj[id];
         obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
         get_normal_object(&obj_tmp, *ray, det);
-         obj_tmp.type_bump = 1;
+         obj_tmp.type_bump = 2;
         bump_mapping(&obj_tmp);
 
         light(e, id, obj_tmp, ray);
     }
     else
     {
-        obj_tmp.type_bump = 1;
+        obj_tmp.type_bump = 2;
         bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
     }
