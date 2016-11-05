@@ -45,6 +45,7 @@ typedef struct s_krnl       t_krnl;
 typedef struct s_mimg       t_mimg;
 typedef struct s_mouse      t_mouse;
 typedef struct s_mppng      t_mppng;
+typedef struct s_noise      t_noise;
 typedef struct s_obj        t_obj;
 typedef struct s_opcl       t_opcl;
 typedef struct s_ray        t_ray;
@@ -53,6 +54,14 @@ typedef struct s_slv        t_slv;
 typedef struct sockaddr_in  sockaddr_in;    /* struct sockaddr_in -> sockaddr_in    */
 typedef struct sockaddr     sockaddr;       /* stwruct sockaddr -> sockaddr         */
 typedef struct s_spt        t_spt;
+
+
+struct                  s_noise
+{
+    
+
+};
+
 
 struct                  s_cam           /* Camera                               */
 {
