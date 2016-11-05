@@ -1,0 +1,97 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   perlin_noise.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/03 14:31:16 by opettex-          #+#    #+#             */
+/*   Updated: 2016/11/03 14:31:18 by opettex-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lib_RT.h"
+
+// Generation valeur aleatoire
+double	rand_noise(int t)
+{
+	t = (t<<13) ^ t;
+	t = (t * (t * t * 15731 + 789221) + 1376312589);
+	return (1.0 - (t & 0x7fffffff) / 1073741824.0);00
+}
+
+// Generation du bruit
+double	noise_nd(int *data_set, int dim)
+{
+	int		i;
+	double	r;
+
+	i = 0;
+	r = 0;
+	while (i < dim)
+	{	
+		r = rand_noise(data_set[i] + (int)(r * 85000));
+		++i;
+	}
+	return (r);
+}
+
+//Interpolation lineaire
+double	linear_interpolation(double a, double b, double t)
+{
+	return (a * (1 - x) + b * x);
+}
+
+/* Interpolation cosinusoidale
+ double	cosine_interpolation(double a, double b, double c)
+ {
+ 	double c;
+
+ 	c = (1 - cos(t * 3.1415927)) * .5;
+ 	return ((1. -c) * a + c *b);
+ }
+*/
+
+double	smooth_noise(double x)
+{
+	int integer_x;
+	double fractional_x;
+	double	a;
+	double	b;
+
+	if (x >= 0)
+		integer_x = (int)x;
+	else
+		integer_x = (int)x - 1;
+	fractional_x = x - integer_x;
+	a = noise(integer_x, );
+	b = noise(integer_x + 1);
+
+	return (linear_interpolation(a, b, fractional_x));
+}
+
+
+double	perlin_noise(int octaves, double frequency, double persistence, double x)
+{
+	double	r;
+	double	f;
+	double	amplitude;
+	double	geo_lim;
+	int 	i;
+	int 	translation;
+
+	r = 0;
+	f = frequency;
+	amplitude = 1;
+	i = 0;
+	while (i < octaves)
+	{
+		translation = i * 4096;
+		r += smooth_noise(x * f * translation) * amplitude;
+		amplitude *= persistence;
+		f *= 2;
+		++i;
+	}
+	geo_lim = (1 - persistence) / (1 - amplitude);
+	return (r * geo_lim);
+} 
