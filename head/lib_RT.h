@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/30 12:55:15 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/07 00:06:41 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,23 @@
 #include <SDL2/SDL.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <sys/time.h>
 #include <unistd.h>
 
 #define TITLE       "RT"
-#define THREAD      4
+#define THREAD      8
 #define WIDTH       960
 #define HEIGHT      540
-#define CONE        1
-#define CYLINDER    2
-#define PLAN        3
-#define SPHERE      4
-#define TORUS       5
+#define CONE        2
+#define CYLINDER    4
+#define PLAN        8
+#define SPHERE      16
+#define TORUS       32
+#define TRIANGLE    64
 
 #define NO_MASK     0xFFFFFFFFFFFFFFFF
+
+#define D_TO_RAD    0.01745329251f
 
 typedef struct s_cam        t_cam;
 typedef struct s_env        t_env;
@@ -87,12 +91,19 @@ struct                  s_obj           /* Object                               
 {
     float               angle;          /* Angle                                */
     cl_float3           collision;      /* Point collision ray                  */
+    unsigned int        color;          /* Calors of the object                 */
+    float               diffuse;        /**/
     _Bool               end;            /* 1 -> next ; 0 -x end                 */
+    float               gloss;          /*                                      */
     size_t              id;             /* Id Group                             */
     cl_float3           normal;         /* Vector Normal                        */
-    cl_float3           pos;            /* Position Object                      */
-    float               radius;         /* radius of the object                 */
-    unsigned int        color;          /* Calors of the object                 */
+    cl_float3           pos_a;          /* Position a                           */
+    cl_float3           pos_b;          /* Position b                           */
+    cl_float3           pos_c;          /* Position c                           */
+    cl_float3           radius_a;       /* radius of the object                 */
+    cl_float3           radius_b;       /* radius of the object                 */
+    float               reflexion;      /*                                      */
+    float               refraction;     /*                                      */
     cl_float3           rotate;         /* Angle of rotation                    */
     size_t              type;           /* Type Object                          */
     size_t              type_bump;      /* Type Bump Mapping                    */
@@ -152,14 +163,12 @@ struct                  s_opcl          /* Struct Generic OpenCL                
 
 struct                  s_spt           /* Struct Spotlight                     */
 {
-    float               ambient;        /* Ambient light                        */
-    float               diffuse;        /* Diffused light                       */
+    unsigned int        color;          /* Color light                          */
     _Bool               end;            /* 1 -> next ; 0 -x end                 */
     size_t              id;             /* Id Group                             */
     float               light;          /* Power light                          */
     cl_float3           pos;            /* Position spotlight                   */
-    unsigned int        color;          /* Color light                          */
-    float               specular;       /* Specular light                       */
+
 };
 
 struct                  s_mimg          /* Mapping Image x1y1 -> x2y2           */
@@ -172,19 +181,26 @@ struct                  s_mimg          /* Mapping Image x1y1 -> x2y2           
 
 struct                  s_scn           /* Struct Scene                         */
 {
+    float               ambient;        /* */
     t_cam               cam;            /* Struct camera                        */
     t_mimg              mimg;           /* Struct Mapping Image x1y1 -> x2y2    */
     size_t              n_obj;          /* Number object                        */
     size_t              n_spt;          /* Number spotlight                     */
     size_t              resolution;     /* Super Sampling Resolution            */
+    float               specular;       /* */
 };
 
 struct                  s_env           /* Variable Master                      */
 {
-    SDL_Event           event;          /* Event SDL                            */
-    _Bool               exit;           /* Var quit programme                   */
+    _Bool               camera;         /**/
     t_opcl              cl;             /* Struct OpenCl                        */
     _Bool               config;         /* */
+    SDL_Event           event;          /* Event SDL                            */
+    size_t              elem_gp;        /**/
+    size_t              elem_obj;       /**/
+    size_t              elem_spt;       /**/
+    _Bool               exit;           /* Var quit programme                   */
+    _Bool               group;          /**/
     char                host;           /* Host or not host                     */
     t_img               img;            /* Struct Image                         */
     t_key               key;            /* Struct Keyboard                      */
@@ -192,10 +208,11 @@ struct                  s_env           /* Variable Master                      
     t_mouse             mouse;          /* Struct mouse                         */
     t_obj               *obj;           /* Struct Object                        */
     t_scn               scn;            /* Struct Scene                         */
+    _Bool               scene;          /* */
     char                slave;          /* slave or no slave                    */
     t_spt               *spt;           /* Struct Spotlight                     */
     _Bool               start;          /* First event_RT                       */
-    size_t              thread;         /* Thread max*/ 
+    size_t              thread;         /* Thread max*/
 };
 
 struct                  s_mppng         /* Struct env + mimg for thread mapping */
@@ -227,31 +244,28 @@ int                     event_RT(t_env *e);
 void                    fps_info(void);
 void                    get_camera(t_env *e, char **line);
 unsigned int            get_color(char *str);
-void                    get_cone(t_obj *obj, char **line);
-void                    get_cylinder(t_obj *obj, char **line);
 void                    get_file_mlt(t_env *e, char *file);
 void                    get_file_obj(t_env *e, char *file);
 void                    get_file_ort(t_env *e, char *file);
-void                    get_file_ortv1(t_env *e, char *file);
 char                    *get_file_raw(int fd);
+void                    get_info_angle(t_env *e, char **str, size_t *i);
+void                    get_info_color(unsigned int *color, char *str);
+void                    get_info_diffuse(float *diffuse, char *str);
+void                    get_info_ort(t_env *e, char **str, size_t *i);
+void                    get_info_position(cl_float3 *pos, char *str);
+void                    get_info_radius(cl_float3 *radius, char *str);
+void                    get_info_rotate(cl_float3 *rotate, char *str);
 void                    get_normal_object(t_obj *obj, register t_ray ray, register float det);
 void                    get_ort(t_env *e, char **str);
-void                    get_ort_cone(t_env *e, char **str, size_t *i);
+void                    get_ort_camera(t_env *e, char **str, size_t *i);
 void                    get_ort_config(t_env *e, char **str, size_t *i);
-void                    get_ort_cylinder(t_env *e, char **str, size_t *i);
 void                    get_ort_group(t_env *e, char **str, size_t *i);
-void                    get_ort_plan(t_env *e, char **str, size_t *i);
+void                    get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type);
 void                    get_ort_scene(t_env *e, char **str, size_t *i);
-void                    get_ort_sphere(t_env *e, char **str, size_t *i);
+void                    get_ort_spotlight(t_env *e, char **str, size_t *i);
 void                    get_ort_texture(t_env *e, char **str, size_t *i);
-void                    get_ort_torus(t_env *e, char **str, size_t *i);
-void                    get_plan(t_obj *obj, char **line);
 void                    get_scene(t_env *e, char *file);
-void                    get_sphere(t_obj *obj, char **line);
-void                    get_spot(t_spt *spt, char **line);
 void                    get_src_opencl(t_opcl *cl);
-void                    get_torus(t_obj *obj, char **line);
-cl_float3               get_vec3(char *str);
 void                    *host(void *arg);
 void                    init_keyboard(t_key *key);
 void                    init_mouse(t_mouse *mouse);

@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:05:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 16:41:02 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/03 14:55:08 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ int                 event_RT(t_env *e)
     {
         if (e->mouse.id != -1)
         {
-            if (move(&e->obj[e->mouse.id].pos, e->key))
+            if (move(&e->obj[e->mouse.id].pos_a, e->key))
                 ev = 1;
-            if (rotate(&e->obj[e->mouse.id].pos, e->key))
+            if (rotate(&e->obj[e->mouse.id].pos_a, e->key))
                 ev = 1;
         }
     }

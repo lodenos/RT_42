@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_ort_cylinder.c                                 :+:      :+:    :+:   */
+/*   get_info_angle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/16 21:58:54 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/30 11:43:28 by glodenos         ###   ########.fr       */
+/*   Created: 2016/11/01 14:58:16 by glodenos          #+#    #+#             */
+/*   Updated: 2016/11/02 10:47:54 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    get_ort_cylinder(t_env *e, char **str, size_t *i)
+void    get_info_angle(t_env *e, char **str, size_t *i)
 {
-    (void)e;
-    (void)i;
-    ft_putstr_err("cylinder not attributed", 1);
+    size_t  j;
+
+    j = 0;
+    if (!str[++*i])
+        ft_putstr_err("ERROR: .ort angle -> NULL", 1);
+    while (str[*i][j])
+    {
+        if (str[*i][j] < '0' || str[*i][j] > '9')
+            ft_putstr_err("ERROR: angle value is not digital", 1);
+        ++j;
+    }
+    e->obj[e->elem_obj].angle = ft_atoi(str[*i]) * D_TO_RAD;
 }

@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:50:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/12 13:52:13 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/06 01:26:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-/*  Format suport .obj .mlt .ortv1 .ort  */
+/*  Format suport .obj .mlt .ort  */
 
 void    get_scene(t_env *e, char *file)
 {
@@ -29,8 +29,6 @@ void    get_scene(t_env *e, char *file)
         get_file_obj(e, file);
     else if (!ft_strcmp(tmp[1], "mlt"))
         get_file_mlt(e, file);
-    else if (!ft_strcmp(tmp[1], "ortv1"))
-        get_file_ortv1(e, file);
     else if (!ft_strcmp(tmp[1], "ort"))
         get_file_ort(e, file);
     else
