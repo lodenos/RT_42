@@ -2,149 +2,137 @@ Projet RayTracing
 
 Partie Obligatoire
 
-    - Exopose sans recalcule
+    - Exopose sans recalcule                                        [x] - Fait
 
     - Les Objets
 
-        -   4 Objets simple
-        -   translation des Objets
-        -   Rotation des Objets
+        -   4 Objets simple                                         [x] - Fait
+        -   translation des Objets                                  [x] - Fait
+        -   Rotation des Objets                                     [.] - En Cours ...
 
-    - REM : Rapide Eye Movement
+    - REM : Rapide Eye Movement                                     [x] - Fait
 
     - Lumiere
 
-        -   L'ombre des Objets
-        -   L'ombre multi-spot
-        -   La Brillance
-        -   Le Multi-spot
+        -   L'ombre des Objets                                      [x] - Fait
+        -   L'ombre multi-spot                                      [x] - Fait
+        -   La Brillance                                            [x] - Fait
+        -   Le Multi-spot                                           [x] - Faitß
 
 Partie Optionnelle
 
-    - Fichier de scene
+    - Fichier de scene                                              [x] - Fait
 
-    - Fichier de scene ++
+    - Fichier de scene ++                                           [x] - Fait
 
-    - Lumiere ambiante
+    - Lumiere ambiante                                              [x] - Fait
 
-    - Ambiante ++
+    - Ambiante ++                                                   [x] - Fait
 
     - Objets limites
 
-        -   Decoupe basique d'un Objet en XYZ
-        -   Choix de l'axe de decoupe
-        -   Rotation et Translation de l'Objet decouper
-        -   Decoupe unique a chaque Objet
-        -   Decoupe du Plan
+        -   Decoupe basique d'un Objet en XYZ                       [0]
+        -   Choix de l'axe de decoupe                               [0]
+        -   Rotation et Translation de l'Objet decouper             [0]
+        -   Decoupe unique a chaque Objet                           [0]
+        -   Decoupe du Plan                                         [0]
 
     - Perturbations
 
-        -   Normal  --->    "impression d'avoir des vaguelettes"
-        -   Couleur --->    "Le Damier"
-        -   Couleur --->    "Texture Procedurale"
-        -   Couleur --->    "Bruit de Perlin"
+        -   Normal  --->    "impression d'avoir des vaguelettes"    [x] - Fait
+        -   Couleur --->    "Le Damier"                             [0]
+        -   Couleur --->    "Texture Procedurale"                   [0]
+        -   Couleur --->    "Bruit de Perlin"                       [.] - En Cours ...
 
-    - Lumiere Directe
+    - Lumiere Directe                                               [0]
 
-    - Lumiere Paralelle --->    "Lumiere Directionnel"
+    - Lumiere Paralelle --->    "Lumiere Directionnel"              [0]
 
     - Reflexion & Transparence
     
-        -   Reflexion   --->    "Effet Miroir"
-        -   Change % de reflexion
-        -   La Transparence
-        -   Indice de refraction
-        -   Change le % de transparence
+        -   Reflexion   --->    "Effet Miroir"                      [.] - En Cours ...
+        -   Change % de reflexion                                   [.] - En Cours ...
+        -   La Transparence                                         [0]
+        -   Indice de refraction                                    [0]
+        -   Change le % de transparence                             [0]
 
-    - Ombres de l'Objet Transparent
+    - Ombres de l'Objet Transparent                                 [0]
 
     - Textures I
 
-        -   Applique une texture au moins sur 1 Objet
-        -   Applique une texture sur les 4 Objets de base
-        -   Etire ou Contracte une Texture
-        -   Faire bouge la texture sur l'Objet
-        -   Texture au format jpeg, png, ...
+        -   Applique une texture au moins sur 1 Objet               [0]
+        -   Applique une texture sur les 4 Objets de base           [0]
+        -   Etire ou Contracte une Texture                          [0]
+        -   Faire bouge la texture sur l'Objet                      [0]
+        -   Texture au format jpeg, png, ...                        [0]
 
     - Texture II
 
-        -   La Texture sert a modifier la normal
-        -   La Texture sert a la transparence de l'objet
-        -   La Texture sert a la limite de decoupe de l'Objet
-        -   La Texture sert de diapositive
+        -   La Texture sert a modifier la normal                    [0]
+        -   La Texture sert a la transparence de l'objet            [0]
+        -   La Texture sert a la limite de decoupe de l'Objet       [0]
+        -   La Texture sert de diapositive                          [0]
 
     - Objets Compose
 
-        -   Un Cube
-        -   Un Verre
-        -   Bouge les Objets compose
+        -   Un Cube                                                 [0]
+        -   Un Verre                                                [0]
+        -   Bouge les Objets compose                                [0]
 
     - Objets simpe suplementaire
 
-        -   Une autre primitive
+        -   Une autre primitive                                     [.] - En Cours ...
 
     - Effet visuel classique
 
-        -   Anti-aliasing "Super-sampling"
-        -   Effet Cartoon
-        -   Motion Blur ou Blur
-        -   Filtre sepia ou autre filtre de couleur
-        -   Stereoscopie Simple
+        -   Anti-aliasing "Super-sampling"                          [x] - Fait
+        -   Effet Cartoon                                           [0]
+        -   Motion Blur ou Blur                                     [0]
+        -   Filtre sepia ou autre filtre de couleur                 [x] - Fait
+        -   Stereoscopie Simple                                     [0]
 
     - Effets Technique
 
-        -   Calcule en Cluster
-        -   Calcule multi-tread
-        -   GPU
-        -   Sauvguarde d'une Image dans RT
+        -   Calcule en Cluster                                      [.] - En Cours ...
+        -   Calcule multi-tread                                     [x] - Fait
+        -   GPU                                                     [x] - Fait
+        -   Sauvguarde d'une Image dans RT                          [0]
 
     - Environnement
 
-        -   Interface Sommaire "Bare de Progression"
-        -   Interface Chiade en GTK
-        -   Modiffe les variable de la scene
-        -   Paramettre plusieur rendu
-        -   Ajjoute des Objets dans la scene
+        -   Interface Sommaire "Bare de Progression"                [0]
+        -   Interface Chiade en GTK, ...                            [0]
+        -   Modiffe les variable de la scene                        [0]
+        -   Paramettre plusieur rendu                               [0]
+        -   Ajjoute des Objets dans la scene                        [0]
 
-    - Travaille en Groupe
+    - Travaille en Groupe                                           [0]
 
     - Les Objets Exotique
 
-        -   Cube Troue
-        -   Une Nappe
-        -   Le Tore
-        -   Resolution d'equation
-        -   Fractal
+        -   Cube Troue                                              [0]
+        -   Une Nappe                                               [0]
+        -   Le Tore                                                 [.] - En Cours ...
+        -   Resolution d'equation                                   [0]
+        -   Fractal                                                 [0]
 
     - En vrac
 
-        -   Secance video du RT
-        -   Gestion du Fichier .pov, .3ds, .obj
-        -   Enrelief sur TV 3D ou Oculuse Rift
-        -   Spot non Ponctuel
-        -   Autre "Au choix"
+        -   Secance video du RT                                     [0]
+        -   Gestion du Fichier .pov, .3ds, .obj                     [0]
+        -   Enrelief sur TV 3D ou Oculuse Rift                      [0]
+        -   Spot non Ponctuel                                       [0]
+        -   Autre "Au choix"                                        [0]
 
-    - Ruban de Moebius
+    - Ruban de Moebius                                              [0]
 
-    - Caustics et/ou Global illumination
+    - Caustics et/ou Global illumination                            [0]
 
-    - Rendu Magnifique
+    - Rendu Magnifique                                              [0]
 
+Rapport de bug
 
-
-
-Ce qu'il reste à faire cette semaine "Week 1"
-
-    -   La rotation de tout les objets.                                         |   impératif Master
-    -   REM à faire "Les mouvements de la camera et position dans l'espace"     |   impératif Master
-    -   Fichier de scene propre à RT
-    -   Fichier à gere ".obj" & ".mtl"
-    -   Mettre OpenCL operationnel comme le code en c                           |   impératif OpenCL
-    -   Intégrer le VBO "Vertex Buffer Object"                                  |   impératif OpenCL
-
-Les différents problèmes & bug
-
-    -   Leaks    : 1 leak par resize de la fenêtre                              |   impératif Leaks
+    -   Leaks    : 1 leak par resize de la fenêtre
     -   Problème : La fusion des lumieres speculaire
     -   Problème : La fusion des couleurs des spots sur la lumiere speculaire
     -   Problème : Mauvaise valeur attribué pour la lumiere speculaire
