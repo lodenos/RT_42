@@ -58,6 +58,38 @@ __Partie Optionnelle
 
     - Ombres de l'Objet Transparent
 
+    - Textures I
+
+        -   Applique une texture au moins sur 1 Objet
+        -   Applique une texture sur les 4 Objets de base
+        -   Etire ou Contracte une Texture
+        -   Faire bouge la texture sur l'Objet
+        -   Texture au format jpeg, png, ...
+
+    - Texture II
+
+        -   La Texture sert a modifier la normal
+        -   La Texture sert a la transparence de l'objet
+        -   La Texture sert a la limite de decoupe de l'Objet
+        -   La Texture sert de diapositive
+
+    - Objets Compose
+
+        -   Un Cube
+        -   Un Verre
+        -   Bouge les Objets compose
+
+    - Objets simpe suplementaire
+
+        -   Une autre primitive
+
+    - Effet visuel classique
+
+        -   Anti-aliasing "Super-sampling"
+        -   Effet Cartoon
+        -   Motion Blur ou Blur
+        -   Filtre sepia ou autre filtre de couleur
+        -   Stereoscopie Simple
 
 
 
