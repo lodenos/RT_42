@@ -1,6 +1,6 @@
-__Projet RayTracing
+Projet RayTracing
 
-__Partie Obligatoire
+Partie Obligatoire
 
     - Exopose sans recalcule
 
@@ -19,7 +19,7 @@ __Partie Obligatoire
         -   La Brillance
         -   Le Multi-spot
 
-__Partie Optionnelle
+Partie Optionnelle
 
     - Fichier de scene
 
@@ -91,6 +91,44 @@ __Partie Optionnelle
         -   Filtre sepia ou autre filtre de couleur
         -   Stereoscopie Simple
 
+    - Effets Technique
+
+        -   Calcule en Cluster
+        -   Calcule multi-tread
+        -   GPU
+        -   Sauvguarde d'une Image dans RT
+
+    - Environnement
+
+        -   Interface Sommaire "Bare de Progression"
+        -   Interface Chiade en GTK
+        -   Modiffe les variable de la scene
+        -   Paramettre plusieur rendu
+        -   Ajjoute des Objets dans la scene
+
+    - Travaille en Groupe
+
+    - Les Objets Exotique
+
+        -   Cube Troue
+        -   Une Nappe
+        -   Le Tore
+        -   Resolution d'equation
+        -   Fractal
+
+    - En vrac
+
+        -   Secance video du RT
+        -   Gestion du Fichier .pov, .3ds, .obj
+        -   Enrelief sur TV 3D ou Oculuse Rift
+        -   Spot non Ponctuel
+        -   Autre "Au choix"
+
+    - Ruban de Moebius
+
+    - Caustics et/ou Global illumination
+
+    - Rendu Magnifique
 
 
 
