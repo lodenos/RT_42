@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 00:06:41 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/08 06:34:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@
 #include <unistd.h>
 
 #define TITLE       "RT"
-#define THREAD      8
-#define WIDTH       960
-#define HEIGHT      540
+
 #define CONE        2
 #define CYLINDER    4
 #define PLAN        8
@@ -206,6 +204,7 @@ struct                  s_env           /* Variable Master                      
     t_key               key;            /* Struct Keyboard                      */
     _Bool               gpu;            /* Use GPU 1 yes 0 no                   */
     t_mouse             mouse;          /* Struct mouse                         */
+    size_t              nbr_slv;        /* Number of active slave               */
     t_obj               *obj;           /* Struct Object                        */
     t_scn               scn;            /* Struct Scene                         */
     _Bool               scene;          /* */
@@ -223,8 +222,10 @@ struct                  s_mppng         /* Struct env + mimg for thread mapping 
 
 typedef struct          s_slv           /* struct connexion fd -> socket        */
 {
-    sockaddr_in         sck;            /**/
+    t_env               *e;             /**/
     int                 fds;            /**/
+    pthread_t           pthr;           /**/
+    sockaddr_in         sck;            /**/
 }                       t_slv;
 
 cl_float3               add(register cl_float3 a, register cl_float3 b);
@@ -285,6 +286,7 @@ cl_float3               rotate_y(register cl_float3 point, register float angle)
 cl_float3               rotate_z(register cl_float3 point, register float angle);
 float                   run_object(register t_obj obj, register t_ray ray);
 void                    run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
+void                    *slave(void *arg);
 float                   specular_light(register t_spt spt, register t_obj obj);
 float                   sphere(register t_obj obj, register t_ray ray);
 cl_float3               sub(register cl_float3 a, register cl_float3 b);

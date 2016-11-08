@@ -2,11 +2,12 @@
 #ifndef LIB_RT_CL_HL
 #define LIB_RT_CL_HL
 
-#define CONE        1
-#define CYLINDER    2
-#define PLAN        3
-#define SPHERE      4
-#define TORUS       5
+#define CONE        2
+#define CYLINDER    4
+#define PLAN        8
+#define SPHERE      16
+#define TORUS       32
+#define TRIANGLE    64
 
 #define NO_MASK     0xFFFFFFFFFFFFFFFF
 

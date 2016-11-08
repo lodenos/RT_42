@@ -1,11 +1,7 @@
-# Color     or  color       is RGB  {red, green, blue}
-# Position  or  position    is XYZ  {X, Y, Z}
-# Rotate    or  rotate      is 360  {X, Y, Z}
-
 .config
 {
-    GPU             off
-    thread          8
+    GPU             on
+    thread          4
     supersampling   1
 }
 

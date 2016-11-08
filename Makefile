@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/06 22:11:03 by glodenos         ###   ########.fr        #
+#    Updated: 2016/11/08 05:33:33 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC_PATH = src/
 SRC_NAME = 	main.c										\
 														\
 			clustering/host.c							\
+			clustering/slave.c							\
 														\
 			event_RT/event_RT.c							\
 			event_RT/fps_info.c							\

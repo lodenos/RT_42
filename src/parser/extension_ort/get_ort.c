@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 20:46:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/06 23:41:55 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/07 00:38:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,38 +111,4 @@ void    get_ort(t_env *e, char **str)
     }
     if (!(e->config && e->scene && e->camera))
         ft_putstr_err("ERROR: .config or scene or camera not present", 1);
-
-
-
-
-    i = 0;
-
-
-    printf("OBJ type %zu\n", e->obj[i].type);
-
-    printf("OBJ pos = %f\n", e->obj[i].pos_a.x);
-    printf("OBJ pos = %f\n", e->obj[i].pos_a.y);
-    printf("OBJ pos = %f\n", e->obj[i].pos_a.z);
-
-    printf("OBJ rot = %f\n", e->obj[i].rotate.x);
-    printf("OBJ rot = %f\n", e->obj[i].rotate.y);
-    printf("OBJ rot = %f\n", e->obj[i].rotate.z);
-
-
-    printf("OBJ radius = %f\n", e->obj[i].radius_a.x);
-    printf("OBJ radius = %f\n", e->obj[i].radius_a.y);
-    printf("OBJ radius = %f\n", e->obj[i].radius_a.z);
-
-
-    printf("OBJ color = %X\n", e->obj[i].color);
-
-
-
-
-
-
-
-
-
-
 }

@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/31 14:18:11 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/08 05:39:59 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static inline void  init_RT(t_env *e)
     init_keyboard(&e->key);
     init_mouse(&e->mouse);
     e->img.img = NULL;
-    e->img.h = HEIGHT;
-    e->img.w = WIDTH;
+    e->img.h = e->scn.cam.h;
+    e->img.w = e->scn.cam.w;
     e->img.x = SDL_WINDOWPOS_CENTERED;
     e->img.y = SDL_WINDOWPOS_CENTERED;
     e->img.win = NULL;
@@ -99,17 +99,19 @@ int                 main(int argc, char **argv)
         lunch_opencl(&e.cl);
     }
     if (e.host)
-        if (pthread_create(&pt_host, NULL, &host, NULL) == -1)
+        if (pthread_create(&pt_host, NULL, &host, (void *)&e) == -1)
             ft_putstr_err("ERROR: thread", 1);
     if (e.slave)
-        if (pthread_create(&pt_host, NULL, &host, NULL) == -1)
+        if (pthread_create(&pt_host, NULL, &slave, (void *)&e) == -1)
             ft_putstr_err("ERROR: thread", 1);
-    if (SDL_Init(SDL_INIT_EVERYTHING))
+/*    if (SDL_Init(SDL_INIT_EVERYTHING))
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);
     create_window(&e, SDL_WINDOW_RESIZABLE);
     if (pthread_create(&pt_host, NULL, &play_scene, (void *)&e) == -1)
         ft_putstr_err("ERROR: thread", 1);
-    event_everything(&e);
+    event_everything(&e);*/
+    while (1)
+        ;
     return (0);
 }
