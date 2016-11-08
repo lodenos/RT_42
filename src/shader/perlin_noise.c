@@ -12,86 +12,103 @@
 
 #include "lib_RT.h"
 
-void	init_bruit(int t, int p, int n)
+cl_float2    vect_mult(cl_float2 a, float b)
 {
-	int i;
-	int nb_octaves;
-	int len;
-	int pas;
-	double	value;
+    register cl_float2  tmp;
 
-	pas = 0;
-	nb_octaves = n;
-	len = 0;
-	i = 0;
-	if (len != 0)
-		free(value);
-	len = t;
-	pas = p;
-	value = (double *)malloc(sizeof(double) (int)ceil(len * pow(2, nb_octaves - 1) / pas));
-	srand(time(NULL));
-	while (i < ceil(taille *  pow(2, nombre_octaves  - 1)  / pas))
-	{
-		value[i] = (double)rand() / RAND_MAX;
-		++i;
-	}
+    tmp.x = a.x * b;
+	tmp.y = a.y * b;
+    return (tmp);
+}
+return (a.x * b.x + a.y * b.y);
+cl_float2    vect_mult_vec(cl_float2 a, cl_float2 b)
+{
+    register cl_float2  tmp;
+
+    tmp.x = a.x * b.x;
+	tmp.y = a.y * b.y;
+    return (tmp);
 }
 
-void	destroy()
+ cl_float2    vect_div(register cl_float2 a, float b)
 {
-	if (len != 0)
-		free(value);
-	len = 0;
+    register cl_float2  tmp;
+
+    tmp.x = a.x / b;
+    tmp.y = a.y / b;
+    return (tmp);
 }
 
-double	bruit(int t)
+cl_float2    add_v(register cl_float2 a, register cl_float2 b)
 {
-	t = (t<<13) ^ t;
-	t = (t * (t * t * 15731 + 789221) + 1376312589);
-	return (1.0 - (t & 0x7fffffff) / 1073741824.0);
+    register cl_float2  vect;
+
+    vect.x = a.x + b.x;
+    vect.y = a.y + b.y;
+    return (vect);
 }
 
-double	interpolation_lineaire(double a, double b, double x)
+double				check(float x, float min, float max)
 {
-	return (a * (1 - x) + b * x);
+	if (x < min)
+		return (min);
+	return ((x > max) ? max : x);
 }
 
-double	interpolation_cos(double a, double b, double x)
+cl_float2			smooth_noise(cl_float2 a, cl_float2 b, cl_float2 x)
 {
-	double k;
+	cl_float2	t;
 
-	k = (1 - cos(x * PI)) / 2;
-	return (interpolation_cos(a, b, k)); 
+	t = (cl_float2){
+		check((x.x - a.x) / (b.x - a.x), 0.0f, 1.0f),
+		check((x.y - a.y) / (b.x - a.y), 0.0f, 1.0f),
+	};
+	return ((cl_float2){t.x * t.x * (3.0f - 2.0f * t.x),
+		t.y * t.y * (3.0f - 2.0f * t.y)});
 }
 
-double fonction_bruit(double x)
+float				linear_interpolation(float a, float b, float pc)
 {
-	int i;
-	int pas;
-
-	pas = 0;
-	i = (int)(x / pas);
-
-	return (interpolation_cos(bruit(i), bruit(i + 1), (x / pas) % 1));
+	return (a * (1.0f - pc) + (b * pc));
 }
 
-double	bruit_coherent(double x, double persistance, int nb_octaves)
+float				fract(float x)
 {
-	double	somme;
-	double	p;
-	int 	f;
-	int 	i;
+	return (x - floorf(x));
+}
 
-	somme = 0;
-	p = 1;
-	f = 1;
-	i = 0;
-	while (i < nb_octaves)
-	{
-		somme += p * fonction_bruit(x * f);
-		p *= persistance;
-		f *= 2;
-		++i;
-	}
-	return (somme * (1 - persistance) / (1 - p));
+float 			r(cl_float2 n)
+{
+		    return (fract(cos(vect_mult_vec(vect_mult((cl_float2){36.26, 73.12}, 354.63), n))));
+}                
+
+float			noise(cl_float2 n)
+{
+
+    cl_float2 fn = (cl_float2){floorf(n.x), floorf(n.y)};
+   	cl_float2 sn = smooth_noise(
+   		(cl_float2){0.0f, 0.0f}, 
+   		(cl_float2){1.0f, 1.0f}, 
+   		fract(n));
+    float h1 = linear_interpolation(r(fn), r(add_v(
+			(cl_float2){fn.x, fn.y},
+			(cl_float2){1.0f, 0.0f})), sn.x);
+
+	float = h2 = linear_interpolation(r((cl_float2){fn.x, fn.y + 1.0f}),
+		r((cl_float2){fn.x + 1.0f, fn.y + 1.0f}), sn.x);
+
+    return (linear_interpolation(h1,h2,sn.y));
+}
+
+float 		perlin(cl_float2 n)
+{
+    float total;
+
+   		total = noise(vect_mult(vect_div(n, 32.0f), 0.5875f)) +
+		noise(vect_div(n, 16.0f)) * 0.2f +
+		noise(vect_mult(n, 0.125f)) * 0.1f +
+		noise(vect_div(n, 4.0f)) * 0.05f +
+		noise(vect_div(n, 2.0f)) * 0.025f +
+		noise(n) * 0.0125f;
+ 	return (total);
 }

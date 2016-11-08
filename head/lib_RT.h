@@ -45,7 +45,6 @@ typedef struct s_krnl       t_krnl;
 typedef struct s_mimg       t_mimg;
 typedef struct s_mouse      t_mouse;
 typedef struct s_mppng      t_mppng;
-typedef struct s_noise      t_noise;
 typedef struct s_obj        t_obj;
 typedef struct s_opcl       t_opcl;
 typedef struct s_ray        t_ray;
@@ -54,13 +53,6 @@ typedef struct s_slv        t_slv;
 typedef struct sockaddr_in  sockaddr_in;    /* struct sockaddr_in -> sockaddr_in    */
 typedef struct sockaddr     sockaddr;       /* stwruct sockaddr -> sockaddr         */
 typedef struct s_spt        t_spt;
-
-
-struct                  s_noise
-{
-    
-
-};
 
 
 struct                  s_cam           /* Camera                               */
@@ -289,6 +281,7 @@ void                    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size
 float                   torus(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
-void                    window_resize(t_env *e);
+
+float       perlin(cl_float2 n);
 
 #endif
