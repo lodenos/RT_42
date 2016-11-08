@@ -17,7 +17,7 @@ Partie Obligatoire
         -   L'ombre des Objets                                      [x] - Fait
         -   L'ombre multi-spot                                      [x] - Fait
         -   La Brillance                                            [x] - Fait
-        -   Le Multi-spot                                           [x] - Faitß
+        -   Le Multi-spot                                           [x] - Fait
 
 Partie Optionnelle
 
