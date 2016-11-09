@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/08 05:39:59 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/08 21:14:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ int                 main(int argc, char **argv)
     if (e.slave)
         if (pthread_create(&pt_host, NULL, &slave, (void *)&e) == -1)
             ft_putstr_err("ERROR: thread", 1);
-/*    if (SDL_Init(SDL_INIT_EVERYTHING))
+    if (SDL_Init(SDL_INIT_EVERYTHING))
         ft_putstr_err(SDL_GetError(), 1);
     init_RT(&e);
     create_window(&e, SDL_WINDOW_RESIZABLE);
     if (pthread_create(&pt_host, NULL, &play_scene, (void *)&e) == -1)
         ft_putstr_err("ERROR: thread", 1);
-    event_everything(&e);*/
+    event_everything(&e);
     while (1)
         ;
     return (0);

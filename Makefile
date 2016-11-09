@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/08 05:33:33 by glodenos         ###   ########.fr        #
+#    Updated: 2016/11/08 21:11:11 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,8 @@ SRC_NAME = 	main.c										\
 														\
 			shader/bump_mapping.c						\
 			shader/diffused_light.c						\
+			shader/filtered_black_white.c				\
+			shader/filtered_rgb.c						\
 			shader/light.c								\
 			shader/limit.c								\
 			shader/specular_light.c						\
