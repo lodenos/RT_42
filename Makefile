@@ -86,6 +86,7 @@ SRC_NAME = 	main.c									\
 			shader/light.c							\
 			shader/limit.c							\
 			shader/perlin_noise						\
+			shader/perlin_noise2.c 					\
 			shader/specular_light.c					\
 			shader/super_sampling.c 				\
 													\
@@ -105,7 +106,7 @@ NAME 		=	RT
 CC 			=	clang
 
 CFLAGS 		=	#-Wall -Wextra -Werror -Ofast -Weverything -Wno-padded
-LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
+LIBGRPH 	= $(shell sdl2-config --libs)	$(shell sdl2-config --cflags) -lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
 

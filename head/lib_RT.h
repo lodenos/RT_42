@@ -282,6 +282,10 @@ float                   torus(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
 
-float       perlin(cl_float2 n);
-
+float                   perlin(cl_float2 n);
+float         fract(float x);
+float       dot_vec(cl_float2 a, cl_float2 b);
+float       div_vec(cl_float2 a, cl_float2 b);
+cl_float2   add_vec(cl_float2 a, cl_float2 b);
+cl_float2   fract_2d(cl_float2 v);
 #endif
