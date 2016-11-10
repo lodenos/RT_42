@@ -106,7 +106,7 @@ NAME 		=	RT
 CC 			=	clang
 
 CFLAGS 		=	#-Wall -Wextra -Werror -Ofast -Weverything -Wno-padded
-LIBGRPH 	= $(shell sdl2-config --libs)	$(shell sdl2-config --cflags) -lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
+LIBGRPH 	= $(shell sdl2-config --libs)	$(shell sdl2-config --cflags) -lm -framework OpenGL -framework OpenCL -lpthread
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
 

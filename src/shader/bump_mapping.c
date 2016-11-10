@@ -40,6 +40,4 @@ inline void bump_mapping(t_obj *obj)
         else 
            obj->color = ((x && y) || (!x && !y)) ? 0xFF : 0xFFFFFFFF;
     }
-    else if (obj->type_bump == 3)
-        perlin_noise();
 }

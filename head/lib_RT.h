@@ -212,6 +212,7 @@ typedef struct          s_slv           /* struct connexion fd -> socket        
 }                       t_slv;
 
 cl_float3               add(register cl_float3 a, register cl_float3 b);
+cl_float2   		add_vec(cl_float2 a, cl_float2 b);
 void                    bump_mapping(t_obj *obj);
 void                    camera(register t_cam cam, t_ray *ray, register float x, register float y);
 float                   check_object(t_obj *obj, register t_ray ray, size_t *id, size_t mask);
@@ -220,7 +221,9 @@ cl_float3               coordinates_collision(register cl_float3 a, register cl_
 void                    create_window(t_env *e, Uint32 flags);
 float                   cylinder(register t_obj obj, register t_ray ray);
 void                    diffused_light(t_ray *ray, register t_spt spt, register t_obj obj);
+cl_float2       	div_vec(cl_float2 a, cl_float b);
 float                   dot(register cl_float3 a, register cl_float3 b);
+float       		dot_vec(cl_float2 a, cl_float2 b);
 void                    err_cl(cl_int err);
 void                    err_cl_sub(cl_int err);
 void                    event_everything(t_env *e);
@@ -228,6 +231,8 @@ int                     event_RT(t_env *e);
 void                    filtered_b_w(unsigned int *img, size_t resolution);
 void                    filtered_rgb(unsigned int filter, unsigned int *img, size_t resolution);
 void                    fps_info(void);
+float         		fract(float x);
+cl_float2   		fract_2d(cl_float2 v);
 void                    get_camera(t_env *e, char **line);
 unsigned int            get_color(char *str);
 void                    get_cone(t_obj *obj, char **line);
@@ -265,6 +270,7 @@ unsigned int            limit(register float x);
 void                    lunch_opencl(t_opcl *cl);
 void                    OCL_run_raytracing(t_env *e);
 cl_float3               normalize(register cl_float3 vect);
+float                   perlin(cl_float2 n);
 float                   plan(register t_obj obj, register t_ray ray);
 void                    *play_scene(void *arg);
 void                    push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);
@@ -282,10 +288,4 @@ float                   torus(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
 
-float                   perlin(cl_float2 n);
-float         fract(float x);
-float       dot_vec(cl_float2 a, cl_float2 b);
-float       div_vec(cl_float2 a, cl_float2 b);
-cl_float2   add_vec(cl_float2 a, cl_float2 b);
-cl_float2   fract_2d(cl_float2 v);
 #endif

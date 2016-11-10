@@ -28,32 +28,3 @@ void    filtered_rgb(unsigned int filter, unsigned int *img, size_t resolution)
 		++i;
 	}
 }
-
-void	filtered_b_w(unsigned int *img, size_t resolution)
-{
-	int i;
-	unsigned int tmp;
-	unsigned char r;
-	unsigned char g;
-	unsigned char b;
-
-	i = 0;
-	tmp = 0;
-	
-	while (i < resolution)
-	{
-		tmp = 0;
-		r = (unsigned char)(img[i] >> 24);
-		g = (unsigned char)(img[i] >> 16);
-		b = (unsigned char)(img[i] >> 8); 
-		if (tmp < r)
-			tmp = r;
-		if (tmp < g)
-			tmp = g;
-		if (tmp < b)
-			tmp = b;
-		img[i] = tmp << 24 | tmp << 16 | tmp << 8 | 0xFF; 
-		++i;
-	}
-
-}

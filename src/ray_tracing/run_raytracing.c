@@ -50,8 +50,8 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     get_normal_object(&obj_tmp, *ray, det);
 
 //------------------------------------------------------------------------------
-    if (id == 5)
-    {
+   // if (id == 5)
+   // {
 
         ray->pos = obj_tmp.collision;
         
@@ -72,15 +72,16 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
         obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
         get_normal_object(&obj_tmp, *ray, det);
          obj_tmp.type_bump = 2;
+	obj_tmp.color = tmp;
         bump_mapping(&obj_tmp);
 
         light(e, id, obj_tmp, ray);
-    }
-    else
+   // }
+ /*   else
     {
         obj_tmp.type_bump = 2;
         bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
-    }
+    }*/
 //------------------------------------------------------------------------------
 }
