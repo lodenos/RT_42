@@ -94,7 +94,8 @@ struct                  s_obj           /* Object                               
     cl_float3           pos;            /* Position Object                      */
     float               radius;         /* radius of the object                 */
     unsigned int        color;          /* Calors of the object                 */
-    cl_float3           rotate;         /* Angle of rotation                    */
+    cl_float3           rotate;         /* Angle of rotation */
+    float               total;          /* Perlin result */
     size_t              type;           /* Type Object                          */
     size_t              type_bump;      /* Type Bump Mapping                    */
 };
@@ -270,7 +271,7 @@ unsigned int            limit(register float x);
 void                    lunch_opencl(t_opcl *cl);
 void                    OCL_run_raytracing(t_env *e);
 cl_float3               normalize(register cl_float3 vect);
-float                   perlin(cl_float2 n);
+void                    perlin(cl_float2 n);
 float                   plan(register t_obj obj, register t_ray ray);
 void                    *play_scene(void *arg);
 void                    push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);

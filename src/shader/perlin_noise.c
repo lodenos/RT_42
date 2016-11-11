@@ -63,14 +63,13 @@ float			noise(cl_float2 n)
 	return (linear_interpolation(h1, h2, sn.y));
 }
 
-float 		perlin(cl_float2 n)
+void	perlin(cl_float2 n)
 {
-    float total;
+    t_obj perlin;
 
-   		total = noise(div_vec(n, 32.0f)) * 0.5875f +
+   		perlin.total = noise(div_vec(n, 32.0f)) * 0.5875f +
 		noise(div_vec(n, 16.0f)) * 0.2f +
 		noise(div_vec(n, 4.0f)) * 0.05f +
 		noise(div_vec(n, 2.0f)) * 0.025f +
 		noise(n) * 0.0125f;
- 	return (total);
 }
