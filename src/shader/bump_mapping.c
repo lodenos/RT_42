@@ -14,30 +14,39 @@
 
 inline void bump_mapping(t_obj *obj)
 {
-    cl_float3   tmp;
-    int           x;
-    int           y;
-    int           z;
+	cl_float3   tmp;
+	unsigned int           x;
+	unsigned int           y;
+	unsigned int           z;
 
-    if (obj->type_bump == 0)
-        return ;
-    else if (obj->type_bump == 1)
-    {
-        tmp = sub(obj->collision, obj->pos);
-        obj->normal.x -= sinf(tmp.x) * 0.01f;
-        obj->normal.y -= sinf(tmp.y) * 0.01f;
-        obj->normal.z -= sinf(tmp.z) * 0.01f;
-    }
-    else if (obj->type_bump == 2)
-    {
-        tmp = sub(obj->collision, obj->pos);
-        x = (abs((int)tmp.x / 5)) % 2;
-        y = (abs((int)tmp.y / 5)) % 2;
-        z = (abs((int)tmp.z / 5)) % 2;
-        if (z)
-            obj->color = ((x && y) || (!x && !y)) ? 0xFFFFFFFF : 0xFF;
-            
-        else 
-           obj->color = ((x && y) || (!x && !y)) ? 0xFF : 0xFFFFFFFF;
-    }
+	if (obj->type_bump == 0)
+		return ;
+	else if (obj->type_bump == 1)
+	{
+		tmp = sub(obj->collision, obj->pos);
+		obj->normal.x -= sinf(tmp.x) * 0.01f;
+		obj->normal.y -= sinf(tmp.y) * 0.01f;
+		obj->normal.z -= sinf(tmp.z) * 0.01f;
+	}
+	else if (obj->type_bump == 2)
+	{
+		tmp = obj->collision;
+		x = round(tmp.x * 0.4 + 0.0001);
+		y = round(tmp.y * 0.4 + 0.0001);
+		z = round(tmp.z * 0.4 + 0.0001);
+		if ( z % 2)
+		{
+			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
+				obj->color = 0xFFFFFFFF;
+			else
+				obj->color = 0xFF;
+		} 
+		else
+		{ 
+			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
+				obj->color = 0xFF;
+			else 
+				obj->color = 0xFFFFFFFF;
+		}
+	}
 }

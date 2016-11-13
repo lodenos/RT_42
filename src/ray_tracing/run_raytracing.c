@@ -39,7 +39,6 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     size_t          id;
     t_obj           obj_tmp;
     unsigned int    color;
-    float           tmp;
 
     ray->color = 0x0;
     det = check_object(obj, *ray, &id, NO_MASK);
@@ -50,14 +49,14 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     get_normal_object(&obj_tmp, *ray, det);
 
 //------------------------------------------------------------------------------
-   // if (id == 5)
-   // {
+    if (id == 5)
+    {
 
         ray->pos = obj_tmp.collision;
         
             obj_tmp.type_bump = 1;
-        //bump_mapping(&obj_tmp);
-        tmp = perlin((cl_float2){obj_tmp.pos.x, obj_tmp.pos.y});
+        bump_mapping(&obj_tmp);
+      	//perlin((cl_float3){obj_tmp.pos.x, obj_tmp.pos.y, obj_tmp.pos.z}, obj_tmp);
 
         ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
                 dot(obj_tmp.normal, ray->dir)), 2));
@@ -72,16 +71,15 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
         obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
         get_normal_object(&obj_tmp, *ray, det);
          obj_tmp.type_bump = 2;
-	obj_tmp.color = tmp;
-        bump_mapping(&obj_tmp);
+       bump_mapping(&obj_tmp);
 
         light(e, id, obj_tmp, ray);
-   // }
- /*   else
+    }
+    else
     {
         obj_tmp.type_bump = 2;
         bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
-    }*/
+    }
 //------------------------------------------------------------------------------
 }
