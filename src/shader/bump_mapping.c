@@ -12,6 +12,45 @@
 
 #include "lib_RT.h"
 
+static void	type_damier(t_obj *obj, unsigned int x, unsigned int y, unsigned int z)
+{
+
+    if (obj->type == 1 || obj->type == 4)
+	{
+		if ( z % 2)
+		{
+			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
+				obj->color = obj->color;
+			else
+				obj->color = 0xFF;
+		} 
+		else
+		{ 
+			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
+				obj->color = obj->color;
+			else 
+				obj->color = 0xFF;
+		}
+	}
+	else
+	{
+		if ( z % 2)
+		{
+			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
+				obj->color = obj->color;
+			else
+				obj->color = 0xFF;
+		} 
+		else
+		{ 
+			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
+				obj->color = 0xFF;
+			else 
+				obj->color = obj->color;
+		}
+	}
+}
+
 inline void bump_mapping(t_obj *obj)
 {
 	cl_float3   tmp;
@@ -19,7 +58,7 @@ inline void bump_mapping(t_obj *obj)
 	unsigned int           y;
 	unsigned int           z;
 
-	if (obj->type_bump == 0)
+	if (obj->type_bump == 0)// || obj->type_bump == 2)
 		return ;
 	else if (obj->type_bump == 1)
 	{
@@ -30,23 +69,10 @@ inline void bump_mapping(t_obj *obj)
 	}
 	else if (obj->type_bump == 2)
 	{
-		tmp = obj->collision;
-		x = round(tmp.x * 0.4 + 0.0001);
-		y = round(tmp.y * 0.4 + 0.0001);
-		z = round(tmp.z * 0.4 + 0.0001);
-		if ( z % 2)
-		{
-			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
-				obj->color = 0xFFFFFFFF;
-			else
-				obj->color = 0xFF;
-		} 
-		else
-		{ 
-			if ((x % 2 && y % 2) || (!(x % 2) && !(y % 2))) 
-				obj->color = 0xFF;
-			else 
-				obj->color = 0xFFFFFFFF;
-		}
+		tmp = sub(obj->collision, obj->pos);
+		x = round(tmp.x * 0.1);
+		y = round(tmp.y * 0.1);
+		z = round(tmp.z * 0.1);
+		type_damier(obj, x, y, z);
 	}
 }
