@@ -85,8 +85,8 @@ SRC_NAME = 	main.c									\
 			shader/filtered_r_b.c 					\
 			shader/light.c							\
 			shader/limit.c							\
-			shader/perlin_noise						\
-			shader/perlin_noise2.c 					\
+			shader/algo_perlin.c					\
+			shader/maths_perlin.c 					\
 			shader/specular_light.c					\
 			shader/super_sampling.c 				\
 													\

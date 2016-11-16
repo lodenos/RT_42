@@ -1,0 +1,82 @@
+# Color     or  color       is RGB  {red, green, blue}
+# Position  or  position    is XYZ  {X, Y, Z}
+# Rotate    or  rotate      is 360  {X, Y, Z}
+
+.config
+{
+    GPU             off             #or GPU  gpu on | gpu off
+    thread          8
+    host            127.0.0.1:4297
+    supersampling   x1
+#   format color    HDR
+}
+
+scene
+{
+    ambiance    100
+    specular    100
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 0.0)
+    view        (0.0, 0.0, 1000)
+}
+
+spotlight
+{
+    power       100
+    position    (299, 199, 0)
+    color       0xFFFFFF            # or {255, 255, 255}
+}
+
+spotlight
+{
+    power       100
+    position    (-299, 199, 0)
+    color       0xFFFFFF
+}
+
+spotlight
+{
+    power       100
+    position    (299, -199, 0)
+    color       0xFFFFFF
+}
+
+spotlight
+{
+    power       100
+    position    (-299, -199, 0)
+    color       0xFFFFFF
+}
+
+plan                                # or Plan
+{
+    Position    (0, 0, 500)
+    rotate      (0, 0, -1)
+    color       0xFF0000
+}
+
+Group
+{
+    #texture
+
+    sphere
+    {
+        Position    (0, 0, 400)
+        rotate      (0, 0, 0)
+        color       0xFF0000
+        radius      100
+        #texture     Group
+    }
+
+}
+#.texture
+#{
+#    lol:    texture/lol.png
+#    name:   texture/img.jpeg
+#    name2:  texture/img2.png
+#}
