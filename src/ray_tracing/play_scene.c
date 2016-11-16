@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 02:20:05 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/16 09:50:56 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* TODO Add Filter RGB sepia ... */
 
-static inline void  *mapping(void *arg)
+void                *mapping(void *arg)
 {
     cl_float2       pos;
     t_ray           ray;
@@ -74,7 +74,7 @@ static inline void  lunch_thread_mapping(t_env *e)
     }
 }
 
-void    *play_scene(void *arg)
+void                *play_scene(void *arg)
 {
     register float  det;
     t_ray           ray;

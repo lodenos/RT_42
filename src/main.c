@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/08 21:14:51 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/13 01:35:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ static void         get_arg_main(t_env *e, int argc, char **argv)
 int                 main(int argc, char **argv)
 {
     t_env           e;
-    pthread_t       pt_host;
+    pthread_t       pth;
+    pthread_t       pth_scn;
 
-    ft_putstr("\n");
     get_arg_main(&e, argc, argv);
     get_scene(&e, argv[1]);
     if (e.gpu)
@@ -99,19 +99,23 @@ int                 main(int argc, char **argv)
         lunch_opencl(&e.cl);
     }
     if (e.host)
-        if (pthread_create(&pt_host, NULL, &host, (void *)&e) == -1)
+        if (pthread_create(&pth, NULL, &host, (void *)&e) == -1)
             ft_putstr_err("ERROR: thread", 1);
     if (e.slave)
-        if (pthread_create(&pt_host, NULL, &slave, (void *)&e) == -1)
+    {
+        if (pthread_create(&pth, NULL, &slave, (void *)&e) == -1)
             ft_putstr_err("ERROR: thread", 1);
-    if (SDL_Init(SDL_INIT_EVERYTHING))
-        ft_putstr_err(SDL_GetError(), 1);
-    init_RT(&e);
-    create_window(&e, SDL_WINDOW_RESIZABLE);
-    if (pthread_create(&pt_host, NULL, &play_scene, (void *)&e) == -1)
-        ft_putstr_err("ERROR: thread", 1);
-    event_everything(&e);
-    while (1)
-        ;
+        pthread_join(pth, NULL);
+    }
+    else
+    {
+        if (SDL_Init(SDL_INIT_EVERYTHING))
+            ft_putstr_err(SDL_GetError(), 1);
+        init_RT(&e);
+        create_window(&e, SDL_WINDOW_RESIZABLE);
+        if (pthread_create(&pth_scn, NULL, &play_scene, (void *)&e) == -1)
+            ft_putstr_err("ERROR: thread", 1);
+        event_everything(&e);
+    }
     return (0);
 }

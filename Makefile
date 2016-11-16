@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/08 21:11:11 by glodenos         ###   ########.fr        #
+#    Updated: 2016/11/16 05:37:17 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,12 @@ SRC_PATH = src/
 
 SRC_NAME = 	main.c										\
 														\
-			clustering/host.c							\
-			clustering/slave.c							\
+			clustering/cluster_create_buffer.c			\
+			clustering/cluster_read_buffer.c			\
+			clustering/cluster_write_buffer.c			\
+			clustering/host/host.c						\
+			clustering/host/slave_connection.c			\
+			clustering/slave/slave.c					\
 														\
 			event_RT/event_RT.c							\
 			event_RT/fps_info.c							\
