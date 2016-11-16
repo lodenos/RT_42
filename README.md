@@ -40,9 +40,9 @@ Partie Optionnelle
     - Perturbations
 
         -   Normal  --->    "impression d'avoir des vaguelettes"    [x] - Fait
-        -   Couleur --->    "Le Damier"                             [0]
+        -   Couleur --->    "Le Damier"                             [x] - Fait
         -   Couleur --->    "Texture Procedurale"                   [0]
-        -   Couleur --->    "Bruit de Perlin"                       [.] - En Cours ...
+        -   Couleur --->    "Bruit de Perlin"                       [x] - Fait
 
     - Lumiere Directe                                               [0]
 
