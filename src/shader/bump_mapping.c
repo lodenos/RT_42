@@ -40,7 +40,7 @@ inline void bump_mapping(t_obj *obj)
 	unsigned int           y;
 	unsigned int           z;
 
-	if (obj->type_bump == 0)// || obj->type_bump == 2)
+	if (obj->type_bump == 0)
 		return ;
 	else if (obj->type_bump == 1)
 	{
@@ -58,4 +58,9 @@ inline void bump_mapping(t_obj *obj)
 			x = (unsigned int) round(tmp.x * 0.1);
 		type_damier(obj, x, y, z);
 	}
+    else if (obj->type_bump == 3)
+    {
+        tmp = sub(obj->collision, obj->pos);
+        obj->color *= perlin((cl_float3){tmp.x, tmp.y, tmp.z});
+    }
 }

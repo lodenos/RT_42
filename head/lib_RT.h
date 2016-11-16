@@ -36,6 +36,7 @@
 #define TORUS       5
 
 #define NO_MASK     0xFFFFFFFFFFFFFFFF
+#define SEPIA 0xA98C78FF
 
 typedef struct s_cam        t_cam;
 typedef struct s_env        t_env;
@@ -95,7 +96,7 @@ struct                  s_obj           /* Object                               
     float               radius;         /* radius of the object                 */
     unsigned int        color;          /* Calors of the object                 */
     cl_float3           rotate;         /* Angle of rotation */
-    float               total;          /* Perlin result */
+    float               perlin_result;          /* Perlin result */
     size_t              type;           /* Type Object                          */
     size_t              type_bump;      /* Type Bump Mapping                    */
 };
@@ -197,7 +198,8 @@ struct                  s_env           /* Variable Master                      
     char                slave;          /* slave or no slave                    */
     t_spt               *spt;           /* Struct Spotlight                     */
     _Bool               start;          /* First event_RT                       */
-    size_t              thread;         /* Thread max*/ 
+    size_t              thread;         /* Thread max*/
+    SDL_Surface         *surface;       /* aff perlin_noise                     */
 };
 
 struct                  s_mppng         /* Struct env + mimg for thread mapping */
@@ -211,6 +213,9 @@ typedef struct          s_slv           /* struct connexion fd -> socket        
     sockaddr_in         sck;            /**/
     int                 fds;            /**/
 }                       t_slv;
+
+
+float				max(float x, float min, float max);
 
 cl_float3               add(register cl_float3 a, register cl_float3 b);
 cl_float2   		add_vec(cl_float2 a, cl_float2 b);
@@ -270,8 +275,9 @@ void                    light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
 unsigned int            limit(register float x);
 void                    lunch_opencl(t_opcl *cl);
 void                    OCL_run_raytracing(t_env *e);
+float			noise(cl_float2 n);
 cl_float3               normalize(register cl_float3 vect);
-void                    perlin(cl_float2 n);
+float                   perlin(cl_float2 n);
 float                   plan(register t_obj obj, register t_ray ray);
 void                    *play_scene(void *arg);
 void                    push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);

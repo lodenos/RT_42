@@ -100,7 +100,7 @@ void    *play_scene(void *arg)
         else
             lunch_thread_mapping((t_env *)arg);
         //filtered_b_w(((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w );
-        //filtered_rgb(0xA98C78FF, ((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
+        //filtered_rgb(SEPIA, ((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
         push_to_window(((t_env *)arg)->img.rend, ((t_env *)arg)->img.img,
                 ((t_env *)arg)->scn.cam.w, ((t_env *)arg)->scn.cam.h);
     }

@@ -47,21 +47,15 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     obj_tmp = obj[id];
     obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
     get_normal_object(&obj_tmp, *ray, det);
-
 //------------------------------------------------------------------------------
     if (id == 5)
     {
-
         ray->pos = obj_tmp.collision;
         
-            obj_tmp.type_bump = 1;
+        obj_tmp.type_bump = 3;
         bump_mapping(&obj_tmp);
-      	//perlin((cl_float3){obj_tmp.pos.x, obj_tmp.pos.y, obj_tmp.pos.z}, obj_tmp);
-
         ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
                 dot(obj_tmp.normal, ray->dir)), 2));
-        
-
 
         det = check_object(obj, *ray, &id, 5);
         if (det == -1)
@@ -70,14 +64,14 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
         obj_tmp = obj[id];
         obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
         get_normal_object(&obj_tmp, *ray, det);
-         obj_tmp.type_bump = 2;
+         obj_tmp.type_bump = 3;
        bump_mapping(&obj_tmp);
 
         light(e, id, obj_tmp, ray);
     }
     else
     {
-        obj_tmp.type_bump = 2;
+        obj_tmp.type_bump = 3;
         bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
     }
