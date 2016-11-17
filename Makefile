@@ -80,7 +80,7 @@ SRC_NAME = 	main.c										\
 			shader/bump_mapping.c						\
 			shader/diffused_light.c						\
 			shader/filtered_black_white.c				\
-			shader/filtered_rgb.c						\
+			shader/filtered_RGB.c						\
 			shader/light.c								\
 			shader/limit.c								\
 			shader/specular_light.c						\
