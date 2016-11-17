@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/06 17:10:48 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/03 14:55:44 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ inline float    sphere(register t_obj obj, register t_ray ray)
     register float  b;
     register float  c;
 
-    ray.pos = sub(ray.pos, obj.pos);
+    ray.pos = sub(ray.pos, obj.pos_a);
     b = dot(ray.pos, ray.dir);
-    c = b * b - (dot(ray.pos, ray.pos) - obj.radius * obj.radius);
+    c = b * b - (dot(ray.pos, ray.pos) - obj.radius_a.x * obj.radius_a.x);
     if (c < 0.0f)
        return (-1);
     c = sqrtf(c);

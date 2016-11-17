@@ -21,8 +21,8 @@ inline void camera(register t_cam cam, t_ray *ray, register float x,
 
     cam.fov = 1;
     ray->pos = cam.pos;
-    ray->dir.x = ((float)x * cam.fov - cam.w / 2) / cam.h;
-    ray->dir.y = ((float)y * cam.fov - cam.h / 2) / cam.h;
+    ray->dir.x = (x * cam.fov - cam.w / 2) / cam.h;
+    ray->dir.y = (y * cam.fov - cam.h / 2) / cam.h;
     ray->dir.z = 1.0f;
     ray->dir = normalize(ray->dir);
     t = ray->dir.y;

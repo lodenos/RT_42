@@ -12,13 +12,13 @@ inline float    cone(constant t_obj *obj, t_ray ray)
 
     a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z - ray.dir.y * ray.dir.y *
         obj->angle;
-    b = 2.0 * ((ray.pos.x - obj->pos.x) * ray.dir.x +
-        (ray.pos.z - obj->pos.z) * ray.dir.z -
-        (ray.pos.y - obj->pos.y) * ray.dir.y * obj->angle);
-    c = ((ray.pos.x - obj->pos.x) * (ray.pos.x - obj->pos.x)) +
-        ((ray.pos.z - obj->pos.z) * (ray.pos.z - obj->pos.z)) -
-        ((ray.pos.y - obj->pos.y) * (ray.pos.y - obj->pos.y)) * obj->angle  -
-        obj->radius * obj->radius;
+    b = 2.0 * ((ray.pos.x - obj->pos_a.x) * ray.dir.x +
+        (ray.pos.z - obj->pos_a.z) * ray.dir.z -
+        (ray.pos.y - obj->pos_a.y) * ray.dir.y * obj->angle);
+    c = ((ray.pos.x - obj->pos_a.x) * (ray.pos.x - obj->pos_a.x)) +
+        ((ray.pos.z - obj->pos_a.z) * (ray.pos.z - obj->pos_a.z)) -
+        ((ray.pos.y - obj->pos_a.y) * (ray.pos.y - obj->pos_a.y)) * obj->angle  -
+        obj->radius_a.x * obj->radius_a.x;
     det = b * b - 4.0 * (a * c);
     if (det > 0)
     {

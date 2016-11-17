@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 16:50:38 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 20:30:40 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/07 00:34:50 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ inline void fps_info(void)
 	int						v;
 
 	txt = NULL;
-	gettimeofday(&tmp, NULL);
-
-	v = (tmp.tv_sec * 1000000 + tmp.tv_usec) -
-        (fps.tv_sec * 1000000 + fps.tv_usec);
+    if (gettimeofday(&tmp, NULL) == -1)
+        ft_putstr_err("ERROR: Crash gettimeofday", 1);
+	v = (int)(tmp.tv_sec * 1000000 + tmp.tv_usec) - (int)(fps.tv_sec * 1000000 + fps.tv_usec);
 	txt = ft_itoa(1000000 / abs(v));
     ft_putstr("\e[1AFPS = ");
     ft_putendl(txt);
 	free(txt);
-	gettimeofday(&fps, NULL);
+    if (gettimeofday(&fps, NULL) == -1)
+        ft_putstr_err("ERROR: Crash gettimeofday", 1);
 }

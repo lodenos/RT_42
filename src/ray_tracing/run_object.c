@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_object.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 21:43:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/04 21:58:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/06 23:48:09 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 inline float    run_object(register t_obj obj, register t_ray ray)
 {
-    if (obj.type == 1)
+    if (obj.type == CONE)
         return (cone(obj, ray));
-    else if (obj.type == 2)
+    else if (obj.type == CYLINDER)
         return (cylinder(obj, ray));
-    else if (obj.type == 3)
+    else if (obj.type == PLAN)
         return (plan(obj, ray));
-    else if (obj.type == 4)
+    else if (obj.type == SPHERE)
+        return (sphere(obj, ray));
+    else if (obj.type == TORUS)
+        return (sphere(obj, ray));
+    else if (obj.type == TRIANGLE)
         return (sphere(obj, ray));
     return (-1);
 }

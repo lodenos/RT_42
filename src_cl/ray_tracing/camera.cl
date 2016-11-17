@@ -1,16 +1,14 @@
 
 #include "lib_RT_CL.hl"
 
-void    camera(t_cam cam, t_ray *ray, size_t x, size_t y)
+void    camera(t_cam cam, t_ray *ray, float x, float y)
 {
-    float   FOV;
     float   t;
 
-    FOV = 1;
-
+    cam.fov = 1.0f;
     ray->pos = cam.pos;
-    ray->dir.x = ((float)x * FOV - cam.w / 2) / cam.h;
-    ray->dir.y = ((float)y * FOV - cam.h / 2) / cam.h;
+    ray->dir.x = ((float)x * cam.fov - (float)cam.w / 2.0f) / (float)cam.h;
+    ray->dir.y = ((float)y * cam.fov - (float)cam.h / 2.0f) / (float)cam.h;
     ray->dir.z = 1.0f;
     ray->dir = normalize(ray->dir);
     t = ray->dir.y;
