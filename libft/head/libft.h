@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/26 13:52:02 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/05 02:50:35 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char                *ft_strchr(char const *s, int c);
 char                *ft_strcat(char *dest, char const *src);
 void                ft_strclr(char *s);
 int                 ft_strcmp(char const *s1, char const *s2);
+int                 ft_strcmp_case(char const *s1, char const *s2);
 char                *ft_strcpy(char *dest, char const *src);
 void                ft_strdel(char **as);
 char                *ft_strdup(char const *s);

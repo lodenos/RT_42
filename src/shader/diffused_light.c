@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diffused_light.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 04:50:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/08 02:07:43 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/01 00:13:26 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ inline void diffused_light(t_ray *ray, register t_spt spt, register t_obj obj)
 {
     register float  z;
 
-    z = -(dot(normalize(sub(obj.collision, spt.pos)), obj.normal) * spt.diffuse);
+    obj.diffuse = 1;
+
+    z = -(dot(normalize(sub(obj.collision, spt.pos)), obj.normal) * obj.diffuse);
     ray->color = (unsigned int)limit((((unsigned char)(ray->color >> 24) +
             (unsigned char)(spt.color >> 24)) / 2) * z) << 24 |
             (unsigned int)limit((((unsigned char)(ray->color >> 16) +

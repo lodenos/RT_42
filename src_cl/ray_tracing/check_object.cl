@@ -29,5 +29,5 @@ inline float    check_object(__constant t_obj *obj, t_ray *ray, size_t *id, size
     }
     if (tmp_det == 20000)
         return -1;
-    return (tmp_det);
+    return (tmp_det - 0.001);
 }

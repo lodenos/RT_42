@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/02 06:28:47 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/10 01:57:11 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ static char		*ft_dup_word(char const *s, char c)
 	len = 0;
 	while (s[len] && s[len] != c)
 		len++;
-	word = (char *)malloc(sizeof(char) * len + 1);
+	if (!(word = (char *)ft_memalloc(sizeof(char) * (len + 1))))
+        return (NULL);
 	i = -1;
 	while (++i < len)
 		word[i] = s[i];
-	word[i] = '\0';
 	return (word);
 }
 
@@ -55,7 +55,7 @@ char			**ft_strsplit(char const *s, char c)
 	int			i;
 
 	nb_of_w = ft_nb_of_words(s, c);
-	if (!s || !(tab = (char **)malloc(sizeof(char *) * (nb_of_w + 1))))
+	if (!s || !(tab = (char **)ft_memalloc(sizeof(char *) * (nb_of_w + 1))))
 		return (NULL);
 	i = -1;
 	while (*s)
@@ -67,6 +67,5 @@ char			**ft_strsplit(char const *s, char c)
 		while (*s && *s != c)
 			s++;
 	}
-	tab[++i] = NULL;
 	return (tab);
 }

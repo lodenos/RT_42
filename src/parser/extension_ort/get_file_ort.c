@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 13:47:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/16 21:19:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/06 22:33:19 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,6 @@ void    get_file_ort(t_env *e, char *file)
     swp = filter_parser(tmp);
     convert_param(swp);
     get_ort(e, swp);
-
-    ft_putstr_tab(swp, "\n");
-
     free(tmp);
     free_tab((void **)swp);
 }

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   perlin_noise.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/05 02:11:22 by opettex-          #+#    #+#             */
-/*   Updated: 2016/11/05 02:11:23 by opettex-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "lib_RT.h"
 
 float				max(float x, float min, float max)
@@ -25,10 +13,10 @@ static cl_float2			smooth_noise(cl_float2 a, cl_float2 b, cl_float2 x)
 
 	t = (cl_float2){
 		max((x.x - a.x) / (b.x - a.x), 0.0f, 1.0f),
-		max((x.y - a.y) / (b.x - a.y), 0.0f, 1.0f),
+			max((x.y - a.y) / (b.x - a.y), 0.0f, 1.0f),
 	};
 	return ((cl_float2){t.x * t.x * (3.0f - 2.0f * t.x),
-		t.y * t.y * (3.0f - 2.0f * t.y)});
+			t.y * t.y * (3.0f - 2.0f * t.y)});
 }
 
 static float				linear_interpolation(float a, float b, float pc)
@@ -56,20 +44,20 @@ float			noise(cl_float2 n)
 			(cl_float2){1.0f, 1.0f},
 			fract_2d(n));
 	h1 = linear_interpolation(r(fn), r(add_vec(
-			(cl_float2){fn.x, fn.y},
-			(cl_float2){1.0f, 0.0f})), sn.x);
+					(cl_float2){fn.x, fn.y},
+					(cl_float2){1.0f, 0.0f})), sn.x);
 	h2 = linear_interpolation(r((cl_float2){fn.x, fn.y + 1.0f}),
-		r((cl_float2){fn.x + 1.0f, fn.y + 1.0f}), sn.x);
+			r((cl_float2){fn.x + 1.0f, fn.y + 1.0f}), sn.x);
 	return (linear_interpolation(h1, h2, sn.y));
 }
 
 float perlin(cl_float2 n) {
-    float p;
+	float p;
 
-    p = noise(div_vec(n, 32.0f)) * 0.5875f +
-        noise(div_vec(n, 16.0f)) * 0.2f +
-        noise(div_vec(n, 4.0f)) * 0.05f +
-        noise(div_vec(n, 2.0f)) * 0.025f +
-        noise(n) * 0.0125f;
-    return (p);
+	p = noise(div_vec(n, 32.0f)) * 0.5875f +
+		noise(div_vec(n, 16.0f)) * 0.2f +
+		noise(div_vec(n, 4.0f)) * 0.05f +
+		noise(div_vec(n, 2.0f)) * 0.025f +
+		noise(n) * 0.0125f;
+	return ((p));
 }

@@ -18,6 +18,5 @@ inline float    specular_light(__constant t_spt *spt, t_obj obj)
     float3  l;
 
     l = normalize(spt->pos - obj.collision);
-    return (power(dot(-l, l + obj.normal * 2 * dot(-obj.normal, l) ), 50) *
-            spt->specular);
+    return (power(dot(-l, l + obj.normal * 2 * dot(-obj.normal, l) ), 32) * 1);
 }

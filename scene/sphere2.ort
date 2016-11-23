@@ -1,0 +1,96 @@
+.config
+{
+   GPU             off
+   thread          4
+   supersampling   1
+}
+
+scene
+{
+   ambient     100
+   specular    99
+}
+
+camera
+{
+   resolution  (1920, 1080)
+   position    (0.0, 0.0, 0.0)
+   rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+   power       100
+   position    (299, 199, 0)
+   color       0xFFFFFF
+}
+
+group
+{
+   sphere
+   {
+       position    (0, 0, 400)
+       rotate      (0, 0, 0)
+       color       0xFF0000
+       radius      (100, 0, 0)
+       bump         1
+   }
+
+   sphere
+   {
+       position    (30, 0, 340)
+       rotate      (0, 0, 0)
+       color       (81, 42, 0)
+       radius      (40, 0, 0)
+       bump         2
+   }
+
+   sphere
+   {
+       position    (-30, 0, 340)
+       rotate      (0, 0, 0)
+       color       (81, 42, 0)
+       radius      (40, 0, 0)
+   }
+
+   sphere
+   {
+       position    (0, 50, 330)
+       rotate      (0, 0, 0)
+       color       (81, 42, 0)
+       radius      (30, 0, 0)
+   }
+
+   sphere
+   {
+       position    (60, -50, 400)
+       rotate      (0, 0, 0)
+       color       (81, 42, 0)
+       radius      (50, 0, 0)
+   }
+
+   sphere
+   {
+       position    (-60, -50, 400)
+       rotate      (0, 0, 0)
+       color       (81, 42, 0)
+       radius      (50, 0, 0)
+   }
+}
+
+cone
+{
+   position     (0, 0, 500)
+   rotate       (0, 1, 0)
+   radius       (0, 0, 0)
+   angle        30
+   color        (255, 0, 150)
+   reflexion    1
+}
+
+#.texture
+#{
+#    lol:    texture/lol.png
+#    name:   texture/img.jpeg
+#    name2:  texture/img2.png
+#}
