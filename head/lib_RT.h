@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/16 09:51:30 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/20 21:39:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,5 +310,9 @@ float                   torus(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
 void                    window_resize(t_env *e);
+
+//  New Prototype
+
+char                    *clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
 
 #endif

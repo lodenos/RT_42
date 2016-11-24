@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 14:25:17 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/16 10:39:13 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/20 19:53:52 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 static inline void  exchange_data_of_slave(t_env *e, int fds)
 {
     unsigned int    *img;
+    t_mimg          mimg;
     t_mem           m_img;
     t_mem           m_scn;
     t_mem           m_obj;
@@ -25,20 +26,26 @@ static inline void  exchange_data_of_slave(t_env *e, int fds)
     m_scn = cluster_create_buffer(fds, sizeof(t_scn));
     e->scn = *(t_scn *)cluster_read_buffer(m_scn);
 
+    m_img = cluster_create_buffer(fds, sizeof(t_mimg));
+    mimg = *(t_mimg *)cluster_read_buffer(m_img);
+
     m_obj = cluster_create_buffer(fds, sizeof(t_obj) * (e->scn.n_obj + 1));
     m_spt = cluster_create_buffer(fds, sizeof(t_spt) * (e->scn.n_spt + 1));
 
     e->obj = (t_obj *)cluster_read_buffer(m_obj);
     e->spt = (t_spt *)cluster_read_buffer(m_spt);
 
+
+    //  read de ou a ou il dois calculer
+
+
     m_img = cluster_create_buffer(fds, sizeof(unsigned int) *
             e->scn.cam.h * e->scn.cam.w);
-
-
-
     img = (unsigned int *)ft_memalloc(sizeof(unsigned int) * e->scn.cam.h *
             e->scn.cam.w);
-    img[0] = '@';
+
+    //  lunch calcul
+
 
     cluster_write_buffer(m_img, (void *)img);
 }

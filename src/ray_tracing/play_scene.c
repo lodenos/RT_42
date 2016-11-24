@@ -6,13 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/16 09:50:56 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/16 23:12:05 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
-
-/* TODO Add Filter RGB sepia ... */
 
 void                *mapping(void *arg)
 {
