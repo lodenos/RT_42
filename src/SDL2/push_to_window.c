@@ -28,7 +28,7 @@ inline void push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size
             SDL_SetRenderDrawColor(rend, (unsigned char)(img[k] >> 24),
                     (unsigned char)(img[k] >> 16), (unsigned char)(img[k] >> 8),
                     (unsigned char)(img[k]));
-            SDL_RenderDrawPoint(rend, x, y);
+            SDL_RenderDrawPoint(rend, (int)x, (int)y);
             ++y;
         }
         ++x;

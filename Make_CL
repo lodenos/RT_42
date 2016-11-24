@@ -7,8 +7,8 @@ src_cl/ray_tracing/run_object.cl
 src_cl/ray_tracing/camera.cl
 src_cl/ray_tracing/check_object.cl
 
+src_cl/shader/bump_mapping.cl
 src_cl/shader/diffused_light.cl
 src_cl/shader/light.cl
 src_cl/shader/limit.cl
 src_cl/shader/specular_light.cl
-src_cl/shader/reflection.cl

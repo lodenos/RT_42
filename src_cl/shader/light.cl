@@ -3,7 +3,7 @@
 
 /*  TODO Le merge des couleur des multi-spot    */
 
-void    light(size_t id, __constant t_obj *obj, t_obj obj_tmp, t_ray *ray,
+inline void light(size_t id, __constant t_obj *obj, t_obj obj_tmp, t_ray *ray,
         __constant t_scn *scn,  __constant t_spt *spt)
 {
     size_t  i       = 0;
@@ -23,7 +23,7 @@ void    light(size_t id, __constant t_obj *obj, t_obj obj_tmp, t_ray *ray,
         ray->color = obj_tmp.color;
         ray_spot.pos = spt[i].pos;
         ray_spot.dir = normalize(obj_tmp.collision - ray_spot.pos);
-        det = check_object(obj, &ray_spot, &index);
+        det = check_object(obj, &ray_spot, &index, NO_MASK);
         if ((det == -1) || (id == index))
         {
             diffused_light(ray, &spt[i], obj_tmp);
@@ -45,12 +45,10 @@ void    light(size_t id, __constant t_obj *obj, t_obj obj_tmp, t_ray *ray,
             (unsigned int)(unsigned char)(green / scn->n_spt) << 16 |
             (unsigned int)(unsigned char)(blue / scn->n_spt) << 8 | 0xFF;
     if (z > 0.0f)
-    {
         ray->color = limit((float)(unsigned char)(ray->color >> 24) +
                 (float)(unsigned char)(spt->color >> 24) * z) << 24 |
                 limit((float)(unsigned char)(ray->color >> 16) +
                 (float)(unsigned char)(spt->color >> 16) * z) << 16 |
                 limit((float)(unsigned char)(ray->color >> 8) +
                 (float)(unsigned char)(spt->color >> 8) * z) << 8 | 0xFF;
-    }
 }

@@ -1,0 +1,34 @@
+.config
+{
+    GPU             off
+    thread          8
+    supersampling   1
+}
+
+scene
+{
+    ambient     100
+    specular    100
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+    power       100
+    position    (299, 199, 0)
+    color       0xFFFFFF
+}
+
+sphere
+{
+    position    (0, 0, 502)
+    rotate      (0, 0, -1)
+    color       (0, 255, 0)
+    radius      (100, 0, 0)
+}
