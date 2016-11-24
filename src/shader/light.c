@@ -18,7 +18,7 @@
 void    light(t_env *e, size_t id, t_obj obj_tmp, t_ray *ray)
 {
     size_t  i       = 0;
-    size_t  index;
+    size_t  index   = 0;
     t_ray   ray_spot;
     float   z       = 0.0f;
     float   tmp;
@@ -34,7 +34,7 @@ void    light(t_env *e, size_t id, t_obj obj_tmp, t_ray *ray)
         ray->color = obj_tmp.color;
         ray_spot.pos = e->spt[i].pos;
         ray_spot.dir = normalize(sub(obj_tmp.collision, ray_spot.pos));
-        det = check_object(e->obj, ray_spot, &index, NO_MASK);
+        det = check_object(e->obj, ray_spot, &index, 5);
         if ((det == -1) || (id == index))
         {
             diffused_light(ray, e->spt[i], obj_tmp);
