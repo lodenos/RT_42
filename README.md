@@ -41,7 +41,7 @@ Partie Optionnelle
 
         -   Normal  --->    "impression d'avoir des vaguelettes"    [x] - Fait
         -   Couleur --->    "Le Damier"                             [x] - Fait
-        -   Couleur --->    "Texture Procedurale"                   [0]
+        -   Couleur --->    "Texture Procedurale"                   [x] - Fait
         -   Couleur --->    "Bruit de Perlin"                       [x] - Fait
 
     - Lumiere Directe                                               [0]
@@ -49,12 +49,12 @@ Partie Optionnelle
     - Lumiere Paralelle --->    "Lumiere Directionnel"              [0]
 
     - Reflexion & Transparence
-    
+
         -   Reflexion   --->    "Effet Miroir"                      [.] - En Cours ...
         -   Change % de reflexion                                   [.] - En Cours ...
-        -   La Transparence                                         [0]
-        -   Indice de refraction                                    [0]
-        -   Change le % de transparence                             [0]
+        -   La Transparence                                         [.] - En Cours
+        -   Indice de refraction                                    [.] - En Cours
+        -   Change le % de transparence                             [.] - En Cours
 
     - Ombres de l'Objet Transparent                                 [0]
 
@@ -75,9 +75,9 @@ Partie Optionnelle
 
     - Objets Compose
 
-        -   Un Cube                                                 [0]
-        -   Un Verre                                                [0]
-        -   Bouge les Objets compose                                [0]
+        -   Un Cube                                                 [.] - En Cours
+        -   Un Verre                                                [.] - En Cours
+        -   Bouge les Objets compose                                [.] - En Cours
 
     - Objets simpe suplementaire
 

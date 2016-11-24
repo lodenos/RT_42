@@ -8,7 +8,7 @@
 scene
 {
     ambient     100
-    specular    9
+    specular    100
 }
 
 camera
