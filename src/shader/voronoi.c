@@ -19,8 +19,13 @@ float smooth_voronoi(cl_float2 x)
     cl_float2 f = fract_vec( x );
 
     float res = 0.0;
-    for( int j=-1; j<=1; j++ )
-        for( int i=-1; i<=1; i++ )
+    int j;
+    int i;
+    j = -1;
+    while(j <= 1)
+    {
+        i = -1;
+        while (i <= 1)
         {
             b = ((cl_float2){i, j});
             lol = add_vec(p, b);
@@ -28,6 +33,9 @@ float smooth_voronoi(cl_float2 x)
             float d = dot_vec( r, r );
 
             res += 1.0/pow( d, 8.0 );
+            ++i;
         }
+        ++j;
+    }
     return pow( 1.0/res, 1.0/8.0 );
 }
