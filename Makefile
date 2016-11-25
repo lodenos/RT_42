@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/20 19:55:52 by glodenos         ###   ########.fr        #
+#    Updated: 2016/11/25 21:28:30 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,10 @@ SRC_NAME = 	main.c										\
 			shader/limit.c								\
 			shader/specular_light.c						\
 			shader/super_sampling.c 					\
+														\
+			shader/maths_perlin.c						\
+			shader/perlin.c								\
+			shader/voronoi.c							\
 														\
 			vector/coordinates_collision.c				\
 			vector/vector_formula_1.c					\

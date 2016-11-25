@@ -6,11 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/16 23:12:05 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/24 12:54:47 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
+
+//  Modifier le system d'image double pour la 3D
 
 void                *mapping(void *arg)
 {

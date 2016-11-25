@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/20 21:39:53 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/25 21:33:25 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,5 +314,21 @@ void                    window_resize(t_env *e);
 //  New Prototype
 
 char                    *clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
+cl_float2               add_vec(cl_float2 a, cl_float2 b);
+cl_float2               div_vec(cl_float2 a, cl_float b);
+cl_float2               dot_vec_f(cl_float2 a, cl_float b);
+float                   dot_vec(cl_float2 a, cl_float2 b);
+float                   fract(float x);
+cl_float2               fract_2d(cl_float2 v);
+cl_float2               fract_vec(cl_float2 x);
+cl_float2               sub_vec(cl_float2 a, cl_float2 b);
+cl_float2               sub_vec_lol(cl_float2 a, cl_float b);
+
+float                   max(float x, float min, float max);
+float                   noise(cl_float2 n);
+float                   perlin(cl_float2 n);
+
+cl_float2               random2(cl_float2 c);
+float                   smooth_voronoi(cl_float2 x);
 
 #endif
