@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 04:50:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/14 00:41:47 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/28 00:27:24 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void    *host(void *arg)
     {
         if (!(slv = (t_slv *)ft_memalloc(sizeof(t_slv))))
             ft_putstr_err("ERROR: Host", 1);
-        if ((slv->fds = accept(fds, (sockaddr*)&slv->sck, (socklen_t *)&size)) == -1)
+/*        if ((slv->fds = accept(fds, (sockaddr*)&slv->sck, (socklen_t *)&size)) == -1)
         {
             free(slv);
             continue ;
-        }
+        }*/
         slv->e = (t_env *)arg;
         pthread_create(&slv->pthr, NULL, &slave_connection, (void *)slv);
     }

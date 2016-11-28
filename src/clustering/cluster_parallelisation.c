@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 23:16:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/24 11:47:12 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/28 00:26:00 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void    cluster_finish_contribution(size_t id, char *tab_work, t_img img,
 
 //------------------------------------------------------------------------------
 
-size_t  cluster_get_contribution(char *tab_work)
+size_t  cluster_get_contribution(size_t id, char *tab_work, t_img img,
+            unsigned int *img_work, t_mimg mimg)
 {
-    size_t  id;
 
     id = 0;
     while (tab_work[id] != -1)

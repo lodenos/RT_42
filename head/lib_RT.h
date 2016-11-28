@@ -6,38 +6,49 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/25 21:33:25 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/28 00:24:39 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_RT_H
 #define LIB_RT_H
 
-#include <arpa/inet.h>
+#define WINDOW
+//  #define MAC
+
 #include <libft.h>
-#include <OpenCL/cl.h>
-#include <netdb.h>
-#include <netinet/in.h>
 #include <pthread.h>
 #include <SDL2/SDL.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <sys/time.h>
 #include <unistd.h>
+#include <math.h>
+
+#ifdef  WINDOW
+
+    #include <windows.h>
+    #include <winsock2.h>
+    #include <CL/cl.h>
+
+#elif   MAC
+
+    #include <arpa/inet.h>
+    #include <OpenCL/cl.h>
+    #include <netdb.h>
+    #include <netinet/in.h>
+    #include <sys/socket.h>
+    #include <sys/types.h>
+    #include <sys/time.h>
+
+#endif
 
 #define TITLE       "RT"
-
 #define CONE        2
 #define CYLINDER    4
 #define PLAN        8
 #define SPHERE      16
 #define TORUS       32
 #define TRIANGLE    64
-
-#define NO_MASK     0xFFFFFFFFFFFFFFFF
-
+#define NO_MASK     0xFFFFFFFF
 #define D_TO_RAD    0.01745329251f
-
 #define VALID       "RT_Protocol_Clusturing_GLodenos_"
 #define CONNECT     "RT_Protocol_Clusturing_Slave_OK_"
 
@@ -314,6 +325,9 @@ void                    window_resize(t_env *e);
 //  New Prototype
 
 char                    *clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
+size_t                  cluster_get_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
+void                    cluster_finish_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
+
 cl_float2               add_vec(cl_float2 a, cl_float2 b);
 cl_float2               div_vec(cl_float2 a, cl_float b);
 cl_float2               dot_vec_f(cl_float2 a, cl_float b);
@@ -324,7 +338,7 @@ cl_float2               fract_vec(cl_float2 x);
 cl_float2               sub_vec(cl_float2 a, cl_float2 b);
 cl_float2               sub_vec_lol(cl_float2 a, cl_float b);
 
-float                   max(float x, float min, float max);
+float                   ft_max(float x, float min, float maxi);
 float                   noise(cl_float2 n);
 float                   perlin(cl_float2 n);
 

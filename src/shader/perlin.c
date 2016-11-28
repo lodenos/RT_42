@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 15:16:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/25 21:15:32 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/28 00:07:20 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-float				max(float x, float min, float max)
+float				ft_max(float x, float min, float max)
 {
 	if (x < min)
 		return (min);
@@ -24,8 +24,8 @@ static cl_float2    smooth_noise(cl_float2 a, cl_float2 b, cl_float2 x)
 	cl_float2	t;
 
 	t = (cl_float2){
-		max((x.x - a.x) / (b.x - a.x), 0.0f, 1.0f),
-			max((x.y - a.y) / (b.x - a.y), 0.0f, 1.0f),
+		ft_max((x.x - a.x) / (b.x - a.x), 0.0f, 1.0f),
+			ft_max((x.y - a.y) / (b.x - a.y), 0.0f, 1.0f),
 	};
 	return ((cl_float2){t.x * t.x * (3.0f - 2.0f * t.x),
 			t.y * t.y * (3.0f - 2.0f * t.y)});
