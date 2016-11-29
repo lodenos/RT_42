@@ -6,11 +6,11 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/28 02:26:07 by anonymous        ###   ########.fr        #
+#    Updated: 2016/11/29 01:05:16 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, fclean, clean, re
+.PHONY: all, fclean, clean, re, linux, windows, debug
 
 SRC_PATH = src/
 

@@ -6,29 +6,23 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/28 00:24:39 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/11/29 01:07:45 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_RT_H
 #define LIB_RT_H
 
-#define WINDOW
-//  #define MAC
+#define MAC
+//#define WINDOW
 
 #include <libft.h>
+#include <math.h>
 #include <pthread.h>
 #include <SDL2/SDL.h>
 #include <unistd.h>
-#include <math.h>
 
-#ifdef  WINDOW
-
-    #include <windows.h>
-    #include <winsock2.h>
-    #include <CL/cl.h>
-
-#elif   MAC
+#ifdef  MAC
 
     #include <arpa/inet.h>
     #include <OpenCL/cl.h>
@@ -37,6 +31,14 @@
     #include <sys/socket.h>
     #include <sys/types.h>
     #include <sys/time.h>
+
+#endif
+
+#ifdef  WINDOW
+
+    #include <windows.h>
+    #include <winsock2.h>
+    #include <CL/cl.h>
 
 #endif
 
