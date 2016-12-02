@@ -60,11 +60,18 @@ plan
     color       (0, 255, 250)
 }
 
-ellipsoid
+triangle
 {
-    position      (0, 0, 500)
-    rotate      (0, 0, -1)
-    radius_a    (200, 0, 0)
-    radius_b    (50, 0, 0)
-    color       (255, 0, 0)
+	position_a (-50, 0, 250)
+	position_b (-50, 100, 250)
+	position_c (50, 100, 250)
+	color (255, 0, 0)
+}
+
+triangle
+{
+	position_a (-50, 0, 250)
+	position_b (50, 100, 250)
+	position_c (50, 0, 300)
+	color (255, 0, 0)
 }

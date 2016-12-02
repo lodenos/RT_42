@@ -6,53 +6,41 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/29 01:07:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/01 14:04:37 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_RT_H
+
 #define LIB_RT_H
 
-#define MAC
-//#define WINDOW
-
+#include <arpa/inet.h>
 #include <libft.h>
-#include <math.h>
+#include <OpenCL/cl.h>
+#include <netdb.h>
+#include <netinet/in.h>
 #include <pthread.h>
 #include <SDL2/SDL.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <sys/time.h>
 #include <unistd.h>
 
-#ifdef  MAC
-
-    #include <arpa/inet.h>
-    #include <OpenCL/cl.h>
-    #include <netdb.h>
-    #include <netinet/in.h>
-    #include <sys/socket.h>
-    #include <sys/types.h>
-    #include <sys/time.h>
-
-#endif
-
-#ifdef  WINDOW
-
-    #include <windows.h>
-    #include <winsock2.h>
-    #include <CL/cl.h>
-
-#endif
-
 #define TITLE       "RT"
+#define THREAD      8
+#define WIDTH       960
+#define HEIGHT      540
 #define CONE        2
 #define CYLINDER    4
 #define PLAN        8
 #define SPHERE      16
 #define TORUS       32
 #define TRIANGLE    64
-#define NO_MASK     0xFFFFFFFF
+#define ELLIPSOID   128
+#define NO_MASK     0xFFFFFFFFFFFFFFFF
+
 #define D_TO_RAD    0.01745329251f
-#define VALID       "RT_Protocol_Clusturing_GLodenos_"
-#define CONNECT     "RT_Protocol_Clusturing_Slave_OK_"
+#define ABS(x)		((x) < 0 ? -(x) : (x))
 
 typedef struct s_cam        t_cam;
 typedef struct s_env        t_env;
@@ -70,6 +58,34 @@ typedef struct s_slv        t_slv;
 typedef struct sockaddr_in  sockaddr_in;    /* struct sockaddr_in -> sockaddr_in    */
 typedef struct sockaddr     sockaddr;       /* stwruct sockaddr -> sockaddr         */
 typedef struct s_spt        t_spt;
+typedef struct s_roots		t_roots;
+typedef struct s_equ		t_equ;
+typedef struct s_complex	t_complex;
+
+struct					s_equ
+{
+	double				a;
+	double				b;
+	double				c;
+	double				d;
+	double				e;
+};
+
+struct					s_complex
+{
+	double				r;
+	double				i;
+};
+
+struct					s_roots
+{
+	double				x1;
+	double				x2;
+	double				x3;
+	double				x4;
+	t_complex			complex1;
+	t_complex			complex2;
+};
 
 struct                  s_cam           /* Camera                               */
 {
@@ -102,24 +118,24 @@ struct                  s_ray           /* Ray                                  
 
 struct                  s_obj           /* Object                               */
 {
-    float               angle;          /* Angle                                |   Under-flags 1   */
-    cl_float3           collision;      /* Point collision ray                  |   Under-flags 2   */
-    unsigned int        color;          /* Calors of the object                 |   Under-flags 3   */
-    float               diffuse;        /*                                      |   Under-flags 4   */
-    _Bool               end;            /* 1 -> next ; 0 -x end                 |   Under-flags 5   */
-    float               gloss;          /*                                      |   Under-flags 6   */
-    size_t              id;             /* Id Group                             |   Under-flags 7   */
-    cl_float3           normal;         /* Vector Normal                        |   Under-flags 8   */
-    cl_float3           pos_a;          /* Position a                           |   Under-flags 9   */
-    cl_float3           pos_b;          /* Position b                           |   Under-flags 10  */
-    cl_float3           pos_c;          /* Position c                           |   Under-flags 11  */
-    cl_float3           radius_a;       /* radius of the object                 |   Under-flags 12  */
-    cl_float3           radius_b;       /* radius of the object                 |   Under-flags 13  */
-    float               reflexion;      /*                                      |   Under-flags 14  */
-    float               refraction;     /*                                      |   Under-flags 15  */
-    cl_float3           rotate;         /* Angle of rotation                    |   Under-flags 16  */
-    size_t              type;           /* Type Object                          |   Under-flags 17  */
-    size_t              type_bump;      /* Type Bump Mapping                    |   Under-flags 18  */
+    float               angle;          /* Angle                                */
+    cl_float3           collision;      /* Point collision ray                  */
+    unsigned int        color;          /* Calors of the object                 */
+    float               diffuse;        /**/
+    _Bool               end;            /* 1 -> next ; 0 -x end                 */
+    float               gloss;          /*                                      */
+    size_t              id;             /* Id Group                             */
+    cl_float3           normal;         /* Vector Normal                        */
+    cl_float3           pos_a;          /* Position a                           */
+    cl_float3           pos_b;          /* Position b                           */
+    cl_float3           pos_c;          /* Position c                           */
+    cl_float3           radius_a;       /* radius of the object                 */
+    cl_float3           radius_b;       /* radius of the object                 */
+    float               reflexion;      /*                                      */
+    float               refraction;     /*                                      */
+    cl_float3           rotate;         /* Angle of rotation                    */
+    size_t              type;           /* Type Object                          */
+    size_t              type_bump;      /* Type Bump Mapping                    */
 };
 
 struct                  s_key           /* Keyboard for key repet               */
@@ -194,13 +210,13 @@ struct                  s_mimg          /* Mapping Image x1y1 -> x2y2           
 
 struct                  s_scn           /* Struct Scene                         */
 {
-    float               ambient;        /*                                      | flags 1   */
-    t_cam               cam;            /* Struct camera                        | flags 2   */
-    t_mimg              mimg;           /* Struct Mapping Image x1y1 -> x2y2    | flags 3   */
-    size_t              n_obj;          /* Number object                        | flags 4   */
-    size_t              n_spt;          /* Number spotlight                     | flags 5   */
-    size_t              resolution;     /* Super Sampling Resolution            | flags 6   */
-    float               specular;       /*                                      | flags 7   */
+    float               ambient;        /* */
+    t_cam               cam;            /* Struct camera                        */
+    t_mimg              mimg;           /* Struct Mapping Image x1y1 -> x2y2    */
+    size_t              n_obj;          /* Number object                        */
+    size_t              n_spt;          /* Number spotlight                     */
+    size_t              resolution;     /* Super Sampling Resolution            */
+    float               specular;       /* */
 };
 
 struct                  s_env           /* Variable Master                      */
@@ -219,7 +235,6 @@ struct                  s_env           /* Variable Master                      
     t_key               key;            /* Struct Keyboard                      */
     _Bool               gpu;            /* Use GPU 1 yes 0 no                   */
     t_mouse             mouse;          /* Struct mouse                         */
-    size_t              nbr_slv;        /* Number of active slave               */
     t_obj               *obj;           /* Struct Object                        */
     t_scn               scn;            /* Struct Scene                         */
     _Bool               scene;          /* */
@@ -237,27 +252,14 @@ struct                  s_mppng         /* Struct env + mimg for thread mapping 
 
 typedef struct          s_slv           /* struct connexion fd -> socket        */
 {
-    t_env               *e;             /* Struct env                           */
-    int                 fds;            /* fd Socket                            */
-    pthread_t           pthr;           /* Id Thread                            */
-    float               ping;           /* Ping                                 */
-    sockaddr_in         sck;            /* Struct Socket                        */
-}                       t_slv;
-
-typedef struct          s_mem           /**/
-{
+    sockaddr_in         sck;            /**/
     int                 fds;            /**/
-    size_t              size;           /**/
-}                       t_mem;
-
+}                       t_slv;
 
 cl_float3               add(register cl_float3 a, register cl_float3 b);
 void                    bump_mapping(t_obj *obj);
 void                    camera(register t_cam cam, t_ray *ray, register float x, register float y);
 float                   check_object(t_obj *obj, register t_ray ray, size_t *id, size_t mask);
-t_mem                   cluster_create_buffer(int fds, size_t size);
-void                    *cluster_read_buffer(t_mem mem);
-int                     cluster_write_buffer(t_mem mem, void *data);
 float                   cone(register t_obj obj, register t_ray ray);
 cl_float3               coordinates_collision(register cl_float3 a, register cl_float3 b, register float det);
 void                    create_window(t_env *e, Uint32 flags);
@@ -302,7 +304,7 @@ void                    light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
 unsigned int            limit(register float x);
 void                    lunch_opencl(t_opcl *cl);
 void                    OCL_run_raytracing(t_env *e);
-void                    *mapping(void *arg);
+cl_float3				get_ellipsoid_normale(register t_obj obj, register t_ray ray, register float det);
 cl_float3               normalize(register cl_float3 vect);
 float                   plan(register t_obj obj, register t_ray ray);
 void                    *play_scene(void *arg);
@@ -313,38 +315,22 @@ cl_float3               rotate_y(register cl_float3 point, register float angle)
 cl_float3               rotate_z(register cl_float3 point, register float angle);
 float                   run_object(register t_obj obj, register t_ray ray);
 void                    run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
-void                    *slave(void *arg);
-void                    *slave_connection(void *arg);
 float                   specular_light(register t_spt spt, register t_obj obj);
 float                   sphere(register t_obj obj, register t_ray ray);
+float					triangle(register t_obj obj, register t_ray ray);
 cl_float3               sub(register cl_float3 a, register cl_float3 b);
 void                    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
-float                   torus(register t_obj obj, register t_ray ray);
+double					torus(register t_obj obj, register t_ray ray);
+float					ellipsoid(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
+cl_float3				cross(register cl_float3 a, register cl_float3 b);
+cl_float3				vector_div(register cl_float3 a, register float x);
+struct s_roots			solve_cubic_equ(register double a, register double b,\
+						register double c, register double d);
+struct s_roots			solve_quartic_equation(register double a, register double b,\
+		register double c, register double d, register double e);
+
 void                    window_resize(t_env *e);
-
-//  New Prototype
-
-char                    *clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
-size_t                  cluster_get_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
-void                    cluster_finish_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
-
-cl_float2               add_vec(cl_float2 a, cl_float2 b);
-cl_float2               div_vec(cl_float2 a, cl_float b);
-cl_float2               dot_vec_f(cl_float2 a, cl_float b);
-float                   dot_vec(cl_float2 a, cl_float2 b);
-float                   fract(float x);
-cl_float2               fract_2d(cl_float2 v);
-cl_float2               fract_vec(cl_float2 x);
-cl_float2               sub_vec(cl_float2 a, cl_float2 b);
-cl_float2               sub_vec_lol(cl_float2 a, cl_float b);
-
-float                   ft_max(float x, float min, float maxi);
-float                   noise(cl_float2 n);
-float                   perlin(cl_float2 n);
-
-cl_float2               random2(cl_float2 c);
-float                   smooth_voronoi(cl_float2 x);
 
 #endif

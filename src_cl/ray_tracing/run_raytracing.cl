@@ -7,12 +7,12 @@ static inline void  get_normal_object(t_obj *obj, t_ray ray, float det)
     switch(obj->type)
     {
         case CONE :
-            obj->normal = -normalize(obj->pos_a - obj->collision - obj->rotate *
+            obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
                 (dot(ray.dir, obj->rotate) * det + dot(ray.pos, obj->rotate)))
                 * ((1.0f + tan(obj->angle / 2) * tan(obj->angle / 2)));
             return ;
         case CYLINDER :
-            obj->normal = -normalize(obj->pos_a - obj->collision - obj->rotate *
+            obj->normal = -normalize(obj->pos - obj->collision - obj->rotate *
                     (dot(ray.dir, obj->rotate) * det +
                     dot(ray.pos, obj->rotate)));
             return ;
@@ -20,7 +20,7 @@ static inline void  get_normal_object(t_obj *obj, t_ray ray, float det)
             obj->normal = obj->rotate;
             return ;
         case SPHERE :
-            obj->normal = normalize(obj->collision - obj->pos_a);
+            obj->normal = normalize(obj->collision - obj->pos);
             return ;
         case TORUS :
             obj->normal = (float3)(0, 0, 0);
@@ -76,7 +76,7 @@ __kernel void       run_raytracing(__global unsigned int *img,
 
 //------------------------------------------------------------------------------
 
-            if (obj_tmp.reflexion > 0)
+            if (id == 2)
             {
                 ray.pos = obj_tmp.collision;
                 ray.dir = ray.dir - 2 * dot(obj_tmp.normal, ray.dir) * obj_tmp.normal;
@@ -96,6 +96,7 @@ __kernel void       run_raytracing(__global unsigned int *img,
             }
             else
             {
+                obj_tmp.type_bump = 1;
                 bump_mapping(&obj_tmp);
                 light(id, obj, obj_tmp, &ray, scn, spt);
             }

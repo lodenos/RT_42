@@ -6,23 +6,17 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/29 01:05:16 by glodenos         ###   ########.fr        #
+#    Updated: 2016/11/21 12:30:12 by anespoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, fclean, clean, re, linux, windows, debug
+.PHONY: all, fclean, clean, re
 
 SRC_PATH = src/
 
 SRC_NAME = 	main.c										\
 														\
-			clustering/cluster_create_buffer.c			\
-			clustering/cluster_parallelisation.c		\
-			clustering/cluster_read_buffer.c			\
-			clustering/cluster_write_buffer.c			\
-			clustering/host/host.c						\
-			clustering/host/slave_connection.c			\
-			clustering/slave/slave.c					\
+			clustering/host.c							\
 														\
 			event_RT/event_RT.c							\
 			event_RT/fps_info.c							\
@@ -34,6 +28,8 @@ SRC_NAME = 	main.c										\
 			object/torus.c								\
 			object/cylinder.c							\
 			object/plan.c								\
+			object/triangle.c							\
+			object/ellipsoid.c							\
 														\
 			opencl/err_cl.c								\
 			opencl/err_cl_sub.c							\
@@ -80,24 +76,20 @@ SRC_NAME = 	main.c										\
 														\
 			shader/bump_mapping.c						\
 			shader/diffused_light.c						\
-			shader/filtered_black_white.c				\
-			shader/filtered_rgb.c						\
 			shader/light.c								\
 			shader/limit.c								\
 			shader/specular_light.c						\
 			shader/super_sampling.c 					\
 														\
-			shader/maths_perlin.c						\
-			shader/perlin.c								\
-			shader/voronoi.c							\
-														\
 			vector/coordinates_collision.c				\
 			vector/vector_formula_1.c					\
-			vector/vector_formula_2.c
+			vector/vector_formula_2.c					\
+			vector/cubic_equation.c						\
+			vector/quartic_equation.c
 
 OBJ_PATH	=	obj/
 
-INCLUDE 	= 	-I head -I libft/head
+INCLUDE 	= 	-Ihead -Ilibft/head
 
 LDFLAGS		=	-Llibft
 LDLIBS 		= 	-lft
@@ -116,22 +108,6 @@ OBJ 		=	$(addprefix $(OBJ_PATH),$(notdir $(OBJ_NAME)))
 
 VPATH		=	$(shell find $(SRC_PATH) -type d)
 
-#-------------------------------------------------------------------------------
-
-FLAGS		= 	#-Wall -Wextra -Werror
-
-LIBFT 		=	-L libft -lft
-
-OPENCL_WIN	=	-I "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"	\
-				-L "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64"	\
-				-l OpenCL
-
-SDL2_WIN	=	-I "C:\Development\SDL2-2.0.5\x86_64-w64-mingw32\include"	\
-				-L "C:\Development\SDL2-2.0.5\x86_64-w64-mingw32\lib"		\
-				-lmingw32 -lSDL2main -lSDL2
-
-#-------------------------------------------------------------------------------
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -143,13 +119,6 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)%.o: %.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
-
-linux:
-
-window:
-	@echo "----------------------------------------"
-	@gcc $(FLAGS) $(SRC) $(INCLUDE) $(LIBFT) $(OPENCL_WIN) $(SDL2_WIN) -std=gnu11 -lm -lws2_32
-	@echo "----------------------------------------"
 
 debug:
 	@gcc -g3 -fsanitize=address $(SRC) $(LIBGRPH) $(INCLUDE) $(LDLIBS) $(LDFLAGS)

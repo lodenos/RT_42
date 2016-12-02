@@ -6,15 +6,17 @@
 #    By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#              #
-#    Updated: 2016/11/27 16:21:01 by anonymous        ###   ########.fr        #
+#    Updated: 2016/11/05 02:50:03 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, fclean, clean, re
 
-FLAGS = -Wall -Wextra -Werror #-Weverything -Wno-padded
+FLAGS = -Wall -Wextra -Werror -O3 -ansi -pedantic
 
 NAME = libft.a
+
+CC = clang
 
 SRC = 							\
 		src/free_tab.c			\
@@ -90,32 +92,33 @@ OBJ = $(SRC:src/%.c=%.o)
 
 HEAD = -I ./head
 
+GCC = gcc -Wall -Wextra -Werror
+
 all: $(NAME)
 
 $(NAME):
-	@echo "----------------------------------------"
-	@echo "Compiling libft  ..."
-	@echo "Compiling in .o  ..."
-	@gcc -c $(SRC) $(HEAD) $(FLAGS)
-	@echo "Creating $(NAME) ..."
+	@echo "\033[33m----------------------------------\033[0m"
+	@echo "\033[36mCompiling in .o\033[0m"
+	@$(CC) -c $(SRC) $(HEAD) $(FLAGS)
+	@echo "\033[36mCreating library\033[0m"
 	@ar rc $(NAME) $(OBJ)
-	@echo "Ranlib           ..."
+	@echo "\033[36mIncrease the search speed\033[0m"
 	@ranlib $(NAME)
-	@echo "Library Created  OK"
-	@echo "----------------------------------------"
+	@echo "\033[32mLibrary Created\033[0m"
+	@echo "\033[33m----------------------------------\033[0m"
 
 clean:
-	@echo "----------------------------------------"
-	@echo "Deleting all .o"
+	@echo "\033[33m----------------------------------\033[0m"
+	@echo "\033[31mDeleting all .o\033[31m"
 	@rm -rf $(OBJ)
-	@echo "The folder is clean !"
-	@echo "----------------------------------------"
+	@echo "\033[32mThe folder is clean !\033[32m"
+	@echo "\033[33m----------------------------------\033[0m"
 
 fclean:
-	@echo "----------------------------------------"
-	@echo "Deleting Library.a and all .o"
+	@echo "\033[33m----------------------------------\033[0m"
+	@echo "\033[31mDeleting Library.a and all .o\033[31m"
 	@rm -rf $(NAME) $(OBJ)
-	@echo "The folder is clean"
-	@echo "----------------------------------------"
+	@echo "\033[32mThe folder is clean\033[32m"
+	@echo "\033[33m----------------------------------\033[0m"
 
 re: fclean all

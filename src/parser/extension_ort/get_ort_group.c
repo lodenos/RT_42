@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 21:59:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 02:23:19 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/06 17:47:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void    get_ort_group(t_env *e, char **str, size_t *i)
         ft_putstr_err("ERROR: Group { ?", 1);
     while (str[++*i][0] != '}')
     {
+
+        ft_putendl("lol --->");
         if (!str[*i])
             ft_putstr_err("ERROR: Group -> NULL ?", 1);
         get_info_ort(e, str, i);

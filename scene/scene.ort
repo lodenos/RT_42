@@ -1,14 +1,18 @@
+# Color     or  color       is RGB  {red, green, blue}
+# Position  or  position    is XYZ  {X, Y, Z}
+# Rotate    or  rotate      is 360  {X, Y, Z}
+
 .config
 {
     GPU             off
-    thread          4
+    thread          8
     supersampling   1
 }
 
 scene
 {
     ambient     100
-    specular    100
+    specular    99
 }
 
 camera
@@ -65,6 +69,7 @@ plan
     position    (300, 0, 0)
     rotate      (-1, 0, 0)
     color       (0, 0, 255)
+    reflexion   1
 }
 
 plan
@@ -90,7 +95,6 @@ group
         color       0xFF0000
         radius      (100, 0, 0)
         reflexion   1
-        Bump        1
     }
 
     sphere
@@ -99,7 +103,6 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (40, 0, 0)
-        Bump        2
     }
 
     sphere
@@ -108,7 +111,6 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (40, 0, 0)
-        Bump        3
     }
 
     sphere
@@ -117,7 +119,6 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (30, 0, 0)
-        Bump        4
     }
 
     sphere
