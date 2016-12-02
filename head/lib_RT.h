@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/01 14:04:37 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/02 13:03:09 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 #define TRIANGLE    64
 #define ELLIPSOID   128
 #define NO_MASK     0xFFFFFFFFFFFFFFFF
+#define EPSILON		0.000001
 
 #define D_TO_RAD    0.01745329251f
 #define ABS(x)		((x) < 0 ? -(x) : (x))
