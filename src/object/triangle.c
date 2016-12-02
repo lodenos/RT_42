@@ -6,44 +6,11 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 14:12:41 by anespoul          #+#    #+#             */
-/*   Updated: 2016/11/30 12:09:09 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/02 13:02:23 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
-
-/*inline float		triangle(register t_obj obj, register t_ray ray)
-{
-	register cl_float3	edge0;
-	register cl_float3	edge1;
-	register cl_float3	edge2;
-	register cl_float3	Phit;
-	register cl_float3	c;
-	register float		t;
-
-	obj.rotate = normalize(cross(sub(obj.pos_a, obj.pos_c), sub(obj.pos_b, obj.pos_c)));
-	if (dot(obj.rotate, ray.dir) == 0)
-		return (-1);
-	t = -(dot(obj.rotate, ray.pos) + dot(obj.rotate, obj.pos_b)) \
-		/ dot(obj.rotate, ray.dir);
-	if (t <= 0)
-		return (-1);
-	Phit = add(ray.pos, vector_mult_x(ray.dir, t));
-	edge0 = sub(obj.pos_b, obj.pos_a);
-	edge1 = sub(obj.pos_c, obj.pos_b);
-	edge2 = sub(obj.pos_a, obj.pos_c);
-	c = cross(edge0, sub(Phit, obj.pos_a));
-	if (dot(obj.rotate, c) < 0)
-		return (-1);
-	c = cross(edge1, sub(Phit, obj.pos_b));
-	if (dot(obj.rotate, c) < 0)
-		return (-1);
-	c = cross(edge2, sub(Phit, obj.pos_c));
-	if (dot(obj.rotate, c) < 0)
-		return (-1);
-	printf("%lf\n", t);
-	return (t);
-}*/
 
 inline float		triangle(register t_obj obj, register t_ray ray)
 {
@@ -62,7 +29,7 @@ inline float		triangle(register t_obj obj, register t_ray ray)
 	e2 = sub(obj.pos_c, obj.pos_a);
 	p = cross(ray.dir, e2);
 	det = dot(e1, p);
-	if (det > -0.000001 && det < 0.000001)
+	if (det > -EPSILON && det < EPSILON)
 		return (-1);
 	inv_det = 1.f / det;
 	t = sub(ray.pos, obj.pos_a);
