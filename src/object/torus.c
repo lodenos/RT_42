@@ -6,7 +6,7 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:33 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/01 14:09:46 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/02 13:21:42 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ double			from_zero(register t_roots r)
 	}
 	return (-1);
 }
-
+/*
 inline double	torus(register t_obj obj, register t_ray ray)
 {
 	register t_equ		c;
@@ -80,7 +80,7 @@ inline double	torus(register t_obj obj, register t_ray ray)
 		return (r.x4);
 }
 
-/*
+*/
 inline double	torus(register t_obj obj, register t_ray ray)
 {
 	double	a;
@@ -111,6 +111,11 @@ inline double	torus(register t_obj obj, register t_ray ray)
 //	printf("a = %lf | b = %lf | c = %lf | d = %lf | e = %lf\n", a, b, c, d, e);
 	r = solve_quartic_equation(a / a, b / a, c / a, d / a, e / a);
 //	printf("x1 = %lf | x2 = %lf | x3 = %lf | x4 = %lf\n", r.x1, r.x2, r.x3, r.x4);
+	if (r.x4 < EPSILON)
+		return (-1);
+	else
+		return (r.x4);
+
 	if (r.x1 >= 0 && r.x2 >= 0 && r.x3 >= 0 && r.x4 >= 0)
 	{
 		if (r.x2 > r.x1 > r.x3 > r.x4)
@@ -121,7 +126,7 @@ inline double	torus(register t_obj obj, register t_ray ray)
 	}
 	else
 		return (-1);
-*/
+}
 /*	if (r.x4 < 0)
 		return (-1);
 	if (r.x1 >= 0 && r.x2 >= 0 && r.x3 >= 0 && r.x4 >= 0)
