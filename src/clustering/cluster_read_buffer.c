@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_ort_group.c                                    :+:      :+:    :+:   */
+/*   cluster_read_buffer.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/16 21:59:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 02:23:19 by glodenos         ###   ########.fr       */
+/*   Created: 2016/11/16 05:13:52 by glodenos          #+#    #+#             */
+/*   Updated: 2016/11/16 05:33:03 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    get_ort_group(t_env *e, char **str, size_t *i)
+#define EXIT_CLUSTER_READ_BUFFER    {free(tmp); return (NULL);}
+
+void    *cluster_read_buffer(t_mem mem)
 {
-    e->group = 1;
-    if (!str[++*i])
-        ft_putstr_err("ERROR: Group -> NULL ?", 1);
-    if (str[*i][0] != '{')
-        ft_putstr_err("ERROR: Group { ?", 1);
-    while (str[++*i][0] != '}')
-    {
-        if (!str[*i])
-            ft_putstr_err("ERROR: Group -> NULL ?", 1);
-        get_info_ort(e, str, i);
-    }
+    char    *tmp;
+
+    if (!(tmp = ft_memalloc(sizeof(char) * mem.size)))
+        return (tmp);
+    if (read(mem.fds, tmp, mem.size) == -1)
+        EXIT_CLUSTER_READ_BUFFER
+    return ((void *)tmp);
 }

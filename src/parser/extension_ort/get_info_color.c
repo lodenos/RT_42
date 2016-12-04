@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:16:07 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/06 16:44:03 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/10 01:44:31 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void                get_info_color(unsigned int *color, char *str)
         return (get_color_hexa(color, str));
     if (ft_strlen_tab(tmp) != 3)
         ft_putstr_err("ERROR: Color decimal < 3 || > 3", 1);
-    while (tmp[i][j])
+    while (tmp[i])
     {
         while (tmp[i][j])
         {

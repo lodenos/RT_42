@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/01 14:03:58 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/10/28 04:55:53 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,4 @@ inline cl_float3    vector_mult(register cl_float3 a, register cl_float3 b)
     tmp.y = a.y * b.y;
     tmp.z = a.z * b.z;
     return (tmp);
-}
-
-inline cl_float3	cross(register cl_float3 a, register cl_float3 b)
-{
-	register cl_float3 vec;
-
-	vec.x = a.y * b.z - a.z * b.y;
-	vec.y = a.z * b.x - a.x * b.z;
-	vec.z = a.x * b.y - a.y * b.x;
-	return (vec);
-}
-
-inline cl_float3	vector_div(register cl_float3 a, register float x)
-{
-	register cl_float3 vec;
-
-	vec.x = a.x / x;
-	vec.y = a.y / x;
-	vec.z = a.z / x;
-	return (vec);
 }
