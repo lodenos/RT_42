@@ -87,10 +87,8 @@ group
     {
         position    (0, 0, 400)
         rotate      (0, 0, 0)
-        color       0xFF0000
+        color       (255, 0, 0)
         radius      (100, 0, 0)
-        reflexion   1
-        Bump        1
     }
 
     sphere
@@ -99,6 +97,7 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (40, 0, 0)
+        refraction   1
         Bump        2
     }
 
@@ -143,7 +142,7 @@ cone
     rotate      (0, 1, 0)
     radius      (0, 0, 0)
     angle       30
-
+    refraction   1
 }
 
 #.texture

@@ -8,7 +8,7 @@ Partie Obligatoire
 
         -   4 Objets simple                                         [x] - Fait
         -   translation des Objets                                  [x] - Fait
-        -   Rotation des Objets                                     [.] - En Cours ...
+        -   Rotation des Objets                                     [x] - Fait
 
     - REM : Rapide Eye Movement                                     [x] - Fait
 
@@ -50,46 +50,46 @@ Partie Optionnelle
 
     - Reflexion & Transparence
 
-        -   Reflexion   --->    "Effet Miroir"                      [.] - En Cours ...
-        -   Change % de reflexion                                   [.] - En Cours ...
-        -   La Transparence                                         [.] - En Cours
-        -   Indice de refraction                                    [.] - En Cours
-        -   Change le % de transparence                             [.] - En Cours
+        -   Reflexion   --->    "Effet Miroir"                      [x] - Fait
+        -   Change % de reflexion                                   [x] - Fait
+        -   La Transparence                                         [x] - Fait
+        -   Indice de refraction                                    [x] - Fait
+        -   Change le % de transparence                             [x] - Fait
 
     - Ombres de l'Objet Transparent                                 [0]
 
     - Textures I
 
-        -   Applique une texture au moins sur 1 Objet               [0]
-        -   Applique une texture sur les 4 Objets de base           [0]
-        -   Etire ou Contracte une Texture                          [0]
-        -   Faire bouge la texture sur l'Objet                      [0]
+        -   Applique une texture au moins sur 1 Objet               [x] - Fait
+        -   Applique une texture sur les 4 Objets de base           [x] - Fait
+        -   Etire ou Contracte une Texture                          [x] - Fait
+        -   Faire bouge la texture sur l'Objet                      [x] - Fait
         -   Texture au format jpeg, png, ...                        [0]
 
     - Texture II
 
-        -   La Texture sert a modifier la normal                    [0]
+        -   La Texture sert a modifier la normal                    [x] - Fait
         -   La Texture sert a la transparence de l'objet            [0]
         -   La Texture sert a la limite de decoupe de l'Objet       [0]
         -   La Texture sert de diapositive                          [0]
 
     - Objets Compose
 
-        -   Un Cube                                                 [.] - En Cours
-        -   Un Verre                                                [.] - En Cours
-        -   Bouge les Objets compose                                [.] - En Cours
+        -   Un Cube                                                 [x] - Fait
+        -   Un Verre                                                [x] - Fait
+        -   Bouge les Objets compose                                [x] - Fait
 
     - Objets simpe suplementaire
 
-        -   Une autre primitive                                     [.] - En Cours ...
+        -   Une autre primitive                                     [x] - Fait
 
     - Effet visuel classique
 
         -   Anti-aliasing "Super-sampling"                          [x] - Fait
         -   Effet Cartoon                                           [0]
-        -   Motion Blur ou Blur                                     [0]
+        -   Motion Blur ou Blur                                     [.] - En cours ...
         -   Filtre sepia ou autre filtre de couleur                 [x] - Fait
-        -   Stereoscopie Simple                                     [0]
+        -   Stereoscopie Simple                                     [.] - En cours ...
 
     - Effets Technique
 
@@ -106,13 +106,13 @@ Partie Optionnelle
         -   Paramettre plusieur rendu                               [0]
         -   Ajjoute des Objets dans la scene                        [0]
 
-    - Travaille en Groupe                                           [0]
+    - Travaille en Groupe                                           [x] - Fait
 
     - Les Objets Exotique
 
         -   Cube Troue                                              [0]
         -   Une Nappe                                               [0]
-        -   Le Tore                                                 [.] - En Cours ...
+        -   Le Tore                                                 [x] - Fait
         -   Resolution d'equation                                   [0]
         -   Fractal                                                 [0]
 
@@ -128,7 +128,7 @@ Partie Optionnelle
 
     - Caustics et/ou Global illumination                            [0]
 
-    - Rendu Magnifique                                              [0]
+    - Rendu Magnifique                                              [x] - Fait
 
 Rapport de bug
 
