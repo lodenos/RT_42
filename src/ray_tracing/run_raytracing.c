@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/07 12:52:22 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/07 15:46:02 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     else if (obj_tmp.refraction > 0)
     {
         ray->pos = obj_tmp.collision;
-        ray->dir = rayonRefracte(obj_tmp.normal, ray->dir, 1, 1.5);
+        ray->dir = rayonRefracte(obj_tmp.normal, ray->dir, 1, -1.5);
         det = check_object(obj, *ray, &id, id);
         if (det == -1)
             return ;

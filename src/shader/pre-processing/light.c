@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/07 13:25:32 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/07 15:47:45 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    light(t_env *e, size_t id, t_obj obj_tmp, t_ray *ray)
 
 
 
-        det = check_object(e->obj, ray_spot, &index, 11);
+        det = check_object(e->obj, ray_spot, &index, 5);
 
 
         if ((det == -1) || (id == index))
