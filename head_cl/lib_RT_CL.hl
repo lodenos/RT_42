@@ -1,0 +1,96 @@
+
+#ifndef LIB_RT_CL_HL
+#define LIB_RT_CL_HL
+
+#define CONE        2
+#define CYLINDER    4
+#define PLAN        8
+#define SPHERE      16
+#define TORUS       32
+#define TRIANGLE    64
+
+#define NO_MASK     0xFFFFFFFFFFFFFFFF
+
+#pragma OPENCL EXTENSION cl_khr_byte_addressable_store : enable
+
+
+typedef struct      s_cam           /* Camera                               */
+{
+    float           fov;            /* FOV                                  */
+    size_t          h;              /* Resolution screen view x             */
+    float3          pos;            /* Position canera                      */
+    float3          rotate;         /* Angle of rotation                    */
+    size_t          w;              /* Resolution screen view y             */
+}                   t_cam;
+
+typedef struct      s_ray           /* Ray                                  */
+{
+    float3          pos;            /* Point Start                          */
+    float3          dir;            /* Point reach                          */
+    size_t          max;            /* Maximun reflexion                    */
+    unsigned int    color;          /* Calor of the ray                     */
+}                   t_ray;
+
+typedef struct      s_obj           /* Object                               */
+{
+    float           angle;          /* Angle                                */
+    float3          collision;      /* Point collision ray                  */
+    unsigned int    color;          /* Calors of the object                 */
+    float           diffuse;        /**/
+    _Bool           end;            /* 1 -> next ; 0 -x end                 */
+    float           gloss;          /*                                      */
+    size_t          id;             /* Id Group                             */
+    float3          normal;         /* Vector Normal                        */
+    float3          pos_a;          /* Position a                           */
+    float3          pos_b;          /* Position b                           */
+    float3          pos_c;          /* Position c                           */
+    float3          radius_a;       /* radius of the object                 */
+    float3          radius_b;       /* radius of the object                 */
+    float           reflexion;      /*                                      */
+    float           refraction;     /*                                      */
+    float3          rotate;         /* Angle of rotation                    */
+    size_t          type;           /* Type Object                          */
+    size_t          type_bump;      /* Type Bump Mapping                    */
+}                   t_obj;
+
+typedef struct      s_spt           /* Struct Spotlight                     */
+{
+    unsigned int    color;          /* Color light                          */
+    _Bool           end;            /* 1 -> next ; 0 -x end                 */
+    size_t          id;             /* Id Group                             */
+    float           light;          /* Power light                          */
+    float3          pos;            /* Position spotlight                   */
+}                   t_spt;
+
+typedef struct      s_mimg          /* Mapping Image x1y1 -> x2y2           */
+{
+    size_t          start_x;        /* Pixel image Start x                  */
+    size_t          start_y;        /* Pixel image Start y                  */
+    size_t          stop_x;         /* Pixel image Stop  x                  */
+    size_t          stop_y;         /* Pixel image Stop  y                  */
+}                   t_mimg;
+
+typedef struct      s_scn
+{
+    float           ambient;        /* */
+    struct s_cam    cam;            /* Struct camera                        */
+    struct s_mimg   mimg;           /* Struct Mapping Image x1y1 -> x2y2    */
+    size_t          n_obj;          /* Number object                        */
+    size_t          n_spt;          /* Number spotlight                     */
+    size_t          resolution;     /* Super Sampling Resolution            */
+    float           specular;       /* */
+}                   t_scn;
+
+void            bump_mapping(t_obj *obj);
+void            camera(t_cam cam, t_ray *ray, float x, float y);
+float           check_object(__constant t_obj *obj, t_ray *ray, size_t *id, size_t mask);
+float           cone(constant t_obj *obj, t_ray ray);
+void            diffused_light(t_ray *ray, __constant t_spt *spt, t_obj obj);
+void            light(size_t id, __constant t_obj *obj, t_obj obj_tmp,
+                        t_ray *ray, __constant t_scn *scn,
+                        __constant t_spt *spt);
+unsigned int    limit(float x);
+float           run_object(__constant t_obj *obj, t_ray ray);
+float           specular_light(__constant t_spt *spt, t_obj obj);
+
+#endif

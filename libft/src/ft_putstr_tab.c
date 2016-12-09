@@ -5,21 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/20 16:33:44 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/20 16:43:13 by glodenos         ###   ########.fr       */
+/*   Created: 2016/09/25 20:09:13 by glodenos          #+#    #+#             */
+/*   Updated: 2016/09/25 21:07:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putstr_tab(char **str, char *cut)
+void    ft_putstr_tab(char **str, char *sep)
 {
-    int i;
+    size_t  i;
 
-    i = -1;
-    while (str[++i])
+    i = 0;
+    while (str[i])
     {
         ft_putstr(str[i]);
-        ft_putstr(cut);
+        ft_putstr(sep);
+        ++i;
     }
 }
