@@ -6,32 +6,22 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 16:36:45 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/12 16:53:53 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-cl_float3		get_cylinder_normale(register t_obj *obj, register t_ray ray, float det)
+cl_float3		cyl2(register t_obj *obj, register t_ray ray, float det)
 {
 	register float		m;
-	register cl_float3	a;
-	register cl_float3	p;
 
 	m = dot(ray.dir, obj->rotate) * det + dot(sub(ray.pos, obj->pos_a), obj->rotate);
-	a = add(obj->pos_a, vector_mult_x(obj->rotate, m));
-	p = add(ray.pos, vector_mult_x(ray.dir, det));
-	obj->normal = reverse(normalize(sub(obj->pos_a, sub(obj->collision, \
-						vector_mult_x(obj->rotate, dot(ray.dir, obj->rotate) * \
-							det + dot(ray.pos, obj->rotate))))));
 	if (obj->radius_a.y == 0)
-		return (obj->normal);
+		return (det);
 	if (m > obj->radius_a.y || m < 0)
-	{
-		printf("here\n");
 		return (-1);
-	}
-	return (obj->normal);
+	return (det);
 }
 
 inline float		cylinder(register t_obj obj, register t_ray ray)
@@ -53,8 +43,8 @@ inline float		cylinder(register t_obj obj, register t_ray ray)
 		cyl.d = (-cyl.b + sqrt(det)) / (2 * cyl.a);
 		cyl.e = (-cyl.b - sqrt(det)) / (2 * cyl.a);
 		if (cyl.e < cyl.d)
-			return (cyl.e);
-		return (cyl.d);
+			return (cyl2(obj, ray, cyl.e));
+		return (cyl2(obj, ray, cyl.d));
 	}
 	return (-1);
 }

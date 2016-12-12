@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:26 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 16:45:18 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/12 16:52:50 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 float			cone2(register t_obj obj, register t_ray ray, float det)
 {
 	register float		m;
-	register cl_float3	a;
-	register cl_float3	p;
 
 	m = dot(ray.dir, obj.rotate) * det + dot(sub(ray.pos, obj.pos_a), obj.rotate);
-	a = add(obj.pos_a, vector_mult_x(obj.rotate, m));
-	p = add(ray.pos, vector_mult_x(ray.dir, det));
 	if (obj.radius_a.y == 0)
 		return (det);
 	if (m > obj.radius_a.y || m < 0)
