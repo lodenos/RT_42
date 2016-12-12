@@ -6,36 +6,54 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:26 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/03 14:57:18 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 16:45:18 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline float    cone(register t_obj obj, register t_ray ray)
+float			cone2(register t_obj obj, register t_ray ray, float det)
 {
-    register float  a;
-    register float  b;
-    register float  c;
-    register float  ta;
-    register float  tb;
-    register float  det;
+	register float		m;
+	register cl_float3	a;
+	register cl_float3	p;
 
-    a = ray.dir.x * ray.dir.x + ray.dir.z * ray.dir.z - ray.dir.y * ray.dir.y *
-            obj.angle;
-    b = 2.0f * ((ray.pos.x - obj.pos_a.x) * ray.dir.x +
-            (ray.pos.z - obj.pos_a.z) * ray.dir.z -
-            (ray.pos.y - obj.pos_a.y) * ray.dir.y * obj.angle);
-    c = ((ray.pos.x - obj.pos_a.x) * (ray.pos.x - obj.pos_a.x)) +
-            ((ray.pos.z - obj.pos_a.z) * (ray.pos.z - obj.pos_a.z)) -
-            ((ray.pos.y - obj.pos_a.y) * (ray.pos.y - obj.pos_a.y)) * obj.angle  -
-            obj.radius_a.x * obj.radius_a.x;
-    det = b * b - 4.0f * a * c;
-    if (det > 0.0f)
-    {
-        ta = (-b + sqrtf(det)) / (2.0f * a);
-        tb = (-b - sqrtf(det)) / (2.0f * a);
-        return (ta > tb) ? tb : ta;
-    }
-    return (-1.0f);
+	m = dot(ray.dir, obj.rotate) * det + dot(sub(ray.pos, obj.pos_a), obj.rotate);
+	a = add(obj.pos_a, vector_mult_x(obj.rotate, m));
+	p = add(ray.pos, vector_mult_x(ray.dir, det));
+	if (obj.radius_a.y == 0)
+		return (det);
+	if (m > obj.radius_a.y || m < 0)
+		return (-1);
+	return (det);
+}
+
+
+inline float		cone(register t_obj obj, register t_ray ray)
+{
+	register t_equ	cone;
+	register float	det;
+	register float	a;
+
+	a = tanf(obj.angle / 2.0f) * tanf(obj.angle / 2.0f);
+	obj.rotate = normalize(obj.rotate);
+	cone.a = dot(ray.dir, ray.dir) - (1 + a) * pow(dot(ray.dir, obj.rotate), 2);
+	cone.b = 2 * (dot(ray.dir, sub(ray.pos, obj.pos_a)) - (1 + a) * \
+			dot(ray.dir, obj.rotate) * \
+			dot(sub(ray.pos, obj.pos_a), obj.rotate));
+	cone.c = dot(sub(ray.pos, obj.pos_a), sub(ray.pos, obj.pos_a)) - \
+			(1 + a) * pow(dot(sub(ray.pos, obj.pos_a), obj.rotate), 2);
+	if ((det = cone.b * cone.b - 4.0f * cone.a * cone.c) > 0.0f)
+	{
+		cone.d = (-cone.b + sqrtf(det)) / (2.0f * cone.a);
+		cone.e = (-cone.b - sqrtf(det)) / (2.0f * cone.a);
+		if (cone.d < 0 && cone.e < 0)
+			return (-1);
+		else if (cone.d < 0 && cone.e > 0)
+			return (cone2(obj, ray, cone.e));
+		else if (cone.e < 0 && cone.d > 0)
+			return (cone2(obj, ray, cone.d));
+		return (cone.d > cone.e) ? cone2(obj,ray, cone.e) : cone2(obj, ray, cone.d);
+	}
+	return (-1.0f);
 }
