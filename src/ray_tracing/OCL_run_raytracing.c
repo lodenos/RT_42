@@ -12,11 +12,12 @@
 
 #include "lib_RT.h"
 
-static inline void  create_buffer_opencl(t_env *e)
+static inline void	create_buffer_opencl(t_env *e)
 {
-	static int  i = 1;
+	static int	i;
+	cl_int		err;
 
-	cl_int  err;
+	i = 1;
 	if (i)
 	{
 		i = 0;
@@ -38,7 +39,7 @@ static inline void  create_buffer_opencl(t_env *e)
 	}
 }
 
-static inline void  set_kernel_arg_opencl(t_env *e)
+static inline void	set_kernel_arg_opencl(t_env *e)
 {
 	err_cl(clSetKernelArg(e->cl.krnl.run_raytracing, 0,
 		sizeof(e->cl.krnl.buff_img), &e->cl.krnl.buff_img));
@@ -50,7 +51,7 @@ static inline void  set_kernel_arg_opencl(t_env *e)
 		sizeof(e->cl.krnl.buff_spt), &e->cl.krnl.buff_spt));
 }
 
-static inline void  write_buffer_opencl(t_env *e)
+static inline void	write_buffer_opencl(t_env *e)
 {
 	err_cl(clEnqueueWriteBuffer(e->cl.cmd_que, e->cl.krnl.buff_img, CL_FALSE, 0,
 		sizeof(int) * e->img.w * e->img.h, e->img.img, 0, NULL, NULL));
@@ -62,7 +63,7 @@ static inline void  write_buffer_opencl(t_env *e)
 		sizeof(t_spt) * e->scn.n_spt, e->spt, 0, NULL, NULL));
 }
 
-void 				OCL_run_raytracing(t_env *e)
+void				OCL_run_raytracing(t_env *e)
 {
 	create_buffer_opencl(e);
 	set_kernel_arg_opencl(e);

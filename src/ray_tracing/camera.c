@@ -12,12 +12,10 @@
 
 #include "lib_RT.h"
 
-/* TODO remake FOV*/
-
-inline void camera(register t_cam cam, t_ray *ray, register float x,
-        register float y)
+inline void	camera(register t_cam cam, t_ray *ray, register float x,
+	register float y)
 {
-	float   t;
+	float	t;
 
 	cam.fov = 1;
 	ray->pos = cam.pos;

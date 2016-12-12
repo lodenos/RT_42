@@ -12,7 +12,8 @@
 
 #include "lib_RT.h"
 
-inline float    check_object(t_obj *obj, register t_ray ray, size_t *id, size_t mask)
+inline float	check_object(t_obj *obj, register t_ray ray, size_t *id,
+	size_t mask)
 {
 	register float	det;
 	register size_t	i;
@@ -37,6 +38,6 @@ inline float    check_object(t_obj *obj, register t_ray ray, size_t *id, size_t 
 		++i;
 	}
 	if (tmp_det == 20000)
-		return -1;
+		return (-1);
 	return (tmp_det);
 }

@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-inline float    run_object(register t_obj obj, register t_ray ray)
+inline float	run_object(register t_obj obj, register t_ray ray)
 {
 	if (obj.type == CONE)
 		return (cone(obj, ray));

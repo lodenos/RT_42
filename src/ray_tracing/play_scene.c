@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-void                *mapping(void *arg)
+void				*mapping(void *arg)
 {
 	cl_float2		pos;
 	t_ray			ray;
@@ -37,13 +37,13 @@ void                *mapping(void *arg)
 	pthread_exit(NULL);
 }
 
-static inline void  lunch_thread_mapping(t_env *e)
+static inline void	lunch_thread_mapping(t_env *e)
 {
-	pthread_t	pth[e->thread];
-	size_t		px;
-	size_t		i;
-	t_mppng		arg[e->thread];
-	size_t		tmp;
+	pthread_t		pth[e->thread];
+	size_t			px;
+	size_t			i;
+	t_mppng			arg[e->thread];
+	size_t			tmp;
 
 	tmp = 0;
 	px = e->img.h / e->thread;
@@ -80,8 +80,8 @@ void				*play_scene(void *arg)
 	{
 		if (event_RT((t_env *)arg) == 0)
 		{
-			camera(((t_env *)arg)->scn.cam, &ray, (float)((t_env *)arg)->mouse.x,
-			(float)((t_env *)arg)->mouse.y);
+			camera(((t_env *)arg)->scn.cam, &ray,
+			(float)((t_env *)arg)->mouse.x, (float)((t_env *)arg)->mouse.y);
 			det = check_object(((t_env *)arg)->obj, ray, &id, NO_MASK);
 			if ((int)det == -1)
 				((t_env *)arg)->mouse.id = -1;
