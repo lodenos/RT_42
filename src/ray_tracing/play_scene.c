@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 15:01:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 17:05:37 by nrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void				*play_scene(void *arg)
 			OCL_run_raytracing((t_env *)arg);
 		else
 			lunch_thread_mapping((t_env *)arg);
+		((t_env *)arg)->img.img = stereoscopie(((t_env *)arg)->img.img,
+		((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
 		push_to_window(((t_env *)arg)->img.rend, ((t_env *)arg)->img.img,
 		((t_env *)arg)->scn.cam.w, ((t_env *)arg)->scn.cam.h);
 	}
