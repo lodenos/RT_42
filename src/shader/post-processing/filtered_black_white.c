@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 20:40:27 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:18:36 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:07:52 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void	filtered_black_white(unsigned int *img, size_t resolution)
+void				filtered_black_white(unsigned int *img, size_t resolution)
 {
 	unsigned int	i;
 	unsigned int	tmp;

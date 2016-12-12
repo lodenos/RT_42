@@ -6,13 +6,14 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 01:08:12 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/12 01:12:05 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:10:33 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    sepia(t_ray *ray)
+void	sepia(t_ray *ray)
 {
-
+	if (*ray)
+		return (0);
 }
