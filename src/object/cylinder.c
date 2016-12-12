@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 16:53:53 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/12 16:55:35 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-cl_float3		cyl2(register t_obj *obj, register t_ray ray, float det)
+float		cyl2(register t_obj obj, register t_ray ray, float det)
 {
 	register float		m;
 
