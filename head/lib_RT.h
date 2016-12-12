@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 15:07:33 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 17:02:30 by nrandria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,8 +314,12 @@ float	   				run_object(register t_obj obj, register t_ray ray);
 void					run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 void					*slave(void *arg);
 void					*slave_connection(void *arg);
+unsigned int   			*stereoscopie(unsigned int *img_l, 
+							unsigned int *img_r, size_t resolution);
 float	   				specular_light(register t_spt spt, register t_obj obj);
 float	   				sphere(register t_obj obj, register t_ray ray);
+void					filtered_rgb(unsigned int filter, unsigned int *img, 
+								size_t resolution);
 cl_float3				sub(register cl_float3 a, register cl_float3 b);
 void					super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
 float	   				torus(register t_obj obj, register t_ray ray);
