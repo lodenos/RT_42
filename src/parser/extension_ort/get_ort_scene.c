@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 12:06:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:56:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:45:44 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ void					get_ort_scene(t_env *e, char **str, size_t *i)
 			while (str[*i][j])
 			{
 				if (str[*i][j] < '0' || str[*i][j] > '9')
-					ft_putstr_err("ERROR: scene flags ambient \
-						value is not digital
-					1", 1);
+					ft_putstr_err("ERROR: scene flags ambient value is not digital 1", 1);
 				++j;
 			}
 			if ((int)(e->scn.ambient = (float)atof(str[*i])) < 0 ||
@@ -62,9 +60,7 @@ void					get_ort_scene(t_env *e, char **str, size_t *i)
 			while (str[*i][j])
 			{
 				if (str[*i][j] < '0' || str[*i][j] > '9')
-					ft_putstr_err("ERROR: scene flags specular \
-						value is not digital
-					2", 1);
+					ft_putstr_err("ERROR: scene flags specular value is not digital 2", 1);
 				++j;
 			}
 			if ((int)(e->scn.ambient = (float)atof(str[*i])) < 0 ||

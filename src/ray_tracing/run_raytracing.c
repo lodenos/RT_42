@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/07 15:46:02 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:46:57 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static inline cl_float3	rayon_refracte(cl_float3 normal, cl_float3 incident,
 								float n1, float n2)
 {
-	const float			n;
+	float				n;
 	float				cosi;
 	float				cost;
 	cl_float3			t;

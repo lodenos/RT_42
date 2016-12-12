@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 21:09:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:06:52 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:49:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 cl_float2		random2(cl_float2 c)
 {
-	float		j 
+	float		j;
 	cl_float2	r;
 
 	j = 4906.0 * sin(dot_vec(c,(cl_float2){200.7, 5.8}));

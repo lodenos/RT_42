@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 14:15:00 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 15:07:33 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,156 +192,161 @@ struct					s_mimg
 };
 
 struct					s_scn
+{
 	float				ambient;
-	t_cam	   cam;	   
-	t_mimg	  mimg;
-	size_t	  n_obj;
-	size_t	  n_spt;
-	size_t	  resolution;
-	float	   specular;
+	t_cam	   			cam;
+	t_mimg	  			mimg;
+	size_t	  			n_obj;
+	size_t	  			n_spt;
+	size_t	  			resolution;
+	float	   			specular;
 };
 
-struct	  s_env
-	_Bool	   camera;
-	t_opcl	  cl;
-	_Bool	   config;
-	SDL_Event	   event;
-	size_t	  elem_gp;
-	size_t	  elem_obj;
-	size_t	  elem_spt;
-	_Bool	   exit;
-	_Bool	   group;
-	char	host;
-	t_img	   img;
-	t_key	   key;
-	_Bool	   gpu;
-	t_mouse	 mouse;
-	size_t	  nbr_slv;
-	t_obj	   *obj;
-	t_scn	   scn;
-	_Bool	   scene;
-	char	slave;
-	t_spt	   *spt;
-	_Bool	   start;
-	size_t	  thread;
+struct	  				s_env
+{
+	_Bool	   			camera;
+	t_opcl	  			cl;
+	_Bool	   			config;
+	SDL_Event	   		event;
+	size_t	  			elem_gp;
+	size_t	  			elem_obj;
+	size_t	  			elem_spt;
+	_Bool	   			exit;
+	_Bool	   			group;
+	char				host;
+	t_img	   			img;
+	t_key	   			key;
+	_Bool	   			gpu;
+	t_mouse	 			mouse;
+	size_t	  			nbr_slv;
+	t_obj	   			*obj;
+	t_scn	   			scn;
+	_Bool	   			scene;
+	char				slave;
+	t_spt	   			*spt;
+	_Bool	   			start;
+	size_t	  			thread;
 };
 
-struct	  s_mppng
+struct	  				s_mppng
 {
-	t_env	   *e;
-	t_mimg	  mimg;
+	t_env	   			*e;
+	t_mimg	  			mimg;
 };
 
-typedef struct	  s_slv
+typedef struct	  		s_slv
 {
-	t_env	   *e;
-	int	 fds;
-	pthread_t	   pthr;
-	float	   ping;
-	sockaddr_in	 sck;
-}	   t_slv;
+	t_env	   			*e;
+	int					fds;
+	pthread_t			pthr;
+	float				ping;
+	sockaddr_in			sck;
+}						t_slv;
 
-typedef struct	  s_mem	   /**/
+typedef struct			s_mem
 {
-	int	 fds;	/**/
-	size_t	  size;
-}	   t_mem;
+	int	 				fds;
+	size_t				size;
+}						t_mem;
 
 
-cl_float3	   add(register cl_float3 a, register cl_float3 b);
-void	bump_mapping(t_obj *obj);
-void	camera(register t_cam cam, t_ray *ray, register float x, register float y);
-float	   check_object(t_obj *obj, register t_ray ray, size_t *id, size_t mask);
-t_mem	   cluster_create_buffer(int fds, size_t size);
-void	*cluster_read_buffer(t_mem mem);
-int	 cluster_write_buffer(t_mem mem, void *data);
-float	   cone(register t_obj obj, register t_ray ray);
-cl_float3	   coordinates_collision(register cl_float3 a, register cl_float3 b, register float det);
-void	create_window(t_env *e, Uint32 flags);
-float	   cylinder(register t_obj obj, register t_ray ray);
-void	diffused_light(t_ray *ray, register t_spt spt, register t_obj obj);
-float	   dot(register cl_float3 a, register cl_float3 b);
-void	err_cl(cl_int err);
-void	err_cl_sub(cl_int err);
-void	event_everything(t_env *e);
-int	 event_RT(t_env *e);
-void	fps_info(void);
-void	get_camera(t_env *e, char **line);
-unsigned int	get_color(char *str);
-void	get_file_mlt(t_env *e, char *file);
-void	get_file_obj(t_env *e, char *file);
-void	get_file_ort(t_env *e, char *file);
-char	*get_file_raw(int fd);
-void	get_info_angle(t_env *e, char **str, size_t *i);
-void	get_info_color(unsigned int *color, char *str);
-void	get_info_diffuse(float *diffuse, char *str);
-void	get_info_ort(t_env *e, char **str, size_t *i);
-void	get_info_position(cl_float3 *pos, char *str);
-void	get_info_radius(cl_float3 *radius, char *str);
-void	get_info_rotate(cl_float3 *rotate, char *str);
-void	get_normal_object(t_obj *obj, register t_ray ray, register float det);
-void	get_ort(t_env *e, char **str);
-void	get_ort_camera(t_env *e, char **str, size_t *i);
-void	get_ort_config(t_env *e, char **str, size_t *i);
-void	get_ort_group(t_env *e, char **str, size_t *i);
-void	get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type);
-void	get_ort_scene(t_env *e, char **str, size_t *i);
-void	get_ort_spotlight(t_env *e, char **str, size_t *i);
-void	get_ort_texture(t_env *e, char **str, size_t *i);
-void	get_scene(t_env *e, char *file);
-void	get_src_opencl(t_opcl *cl);
-void	*host(void *arg);
-void	init_keyboard(t_key *key);
-void	init_mouse(t_mouse *mouse);
-void	key_press(t_env *e);
-void	key_release(t_env *e);
-void	light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
-unsigned int	limit(register float x);
-void	lunch_opencl(t_opcl *cl);
-void	OCL_run_raytracing(t_env *e);
-void	*mapping(void *arg);
-cl_float3	   normalize(register cl_float3 vect);
-float	   plan(register t_obj obj, register t_ray ray);
-void	*play_scene(void *arg);
-void	push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);
-cl_float3	   reverse(register cl_float3 vect);
-cl_float3	   rotate_x(register cl_float3 point, register float angle);
-cl_float3	   rotate_y(register cl_float3 point, register float angle);
-cl_float3	   rotate_z(register cl_float3 point, register float angle);
-float	   run_object(register t_obj obj, register t_ray ray);
-void	run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
-void	*slave(void *arg);
-void	*slave_connection(void *arg);
-float	   specular_light(register t_spt spt, register t_obj obj);
-float	   sphere(register t_obj obj, register t_ray ray);
-cl_float3	   sub(register cl_float3 a, register cl_float3 b);
-void	super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
-float	   torus(register t_obj obj, register t_ray ray);
-cl_float3	   vector_mult(register cl_float3 a, register cl_float3 b);
-cl_float3	   vector_mult_x(register cl_float3 vect, register float x);
-void	window_resize(t_env *e);
+cl_float3	   			add(register cl_float3 a, register cl_float3 b);
+void					bump_mapping(t_obj *obj);
+void					camera(register t_cam cam, t_ray *ray, register float x, register float y);
+float	   				check_object(t_obj *obj, register t_ray ray, size_t *id, size_t mask);
+t_mem	   				cluster_create_buffer(int fds, size_t size);
+void					*cluster_read_buffer(t_mem mem);
+int						cluster_write_buffer(t_mem mem, void *data);
+float	   				cone(register t_obj obj, register t_ray ray);
+cl_float3				coordinates_collision(register cl_float3 a, register cl_float3 b, register float det);
+void					create_window(t_env *e, Uint32 flags);
+float	   				cylinder(register t_obj obj, register t_ray ray);
+void					diffused_light(t_ray *ray, register t_spt spt, register t_obj obj);
+float	   				dot(register cl_float3 a, register cl_float3 b);
+void					err_cl(cl_int err);
+void					err_cl_sub(cl_int err);
+void					event_everything(t_env *e);
+int	 					event_rt(t_env *e);
+void					fps_info(void);
+void					get_camera(t_env *e, char **line);
+unsigned int			get_color(char *str);
+void					get_file_mlt(t_env *e, char *file);
+void					get_file_obj(t_env *e, char *file);
+void					get_file_ort(t_env *e, char *file);
+char					*get_file_raw(int fd);
+void					get_info_angle(t_env *e, char **str, size_t *i);
+void					get_info_color(unsigned int *color, char *str);
+void					get_info_diffuse(float *diffuse, char *str);
+void					get_info_ort(t_env *e, char **str, size_t *i);
+void					get_info_position(cl_float3 *pos, char *str);
+void					get_info_radius(cl_float3 *radius, char *str);
+void					get_info_rotate(cl_float3 *rotate, char *str);
+void					get_normal_object(t_obj *obj, register t_ray ray, register float det);
+void					get_ort(t_env *e, char **str);
+void					get_ort_camera(t_env *e, char **str, size_t *i);
+void					get_ort_config(t_env *e, char **str, size_t *i);
+void					get_ort_group(t_env *e, char **str, size_t *i);
+void					get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type);
+void					get_ort_scene(t_env *e, char **str, size_t *i);
+void					get_ort_spotlight(t_env *e, char **str, size_t *i);
+void					get_ort_texture(t_env *e, char **str, size_t *i);
+void					get_scene(t_env *e, char *file);
+void					get_src_opencl(t_opcl *cl);
+void					*host(void *arg);
+void					init_keyboard(t_key *key);
+void					init_mouse(t_mouse *mouse);
+void					key_press(t_env *e);
+void					key_release(t_env *e);
+void					light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
+unsigned int			limit(register float x);
+void					lunch_opencl(t_opcl *cl);
+void					OCL_run_raytracing(t_env *e);
+void					*mapping(void *arg);
+cl_float3				normalize(register cl_float3 vect);
+float	   				plan(register t_obj obj, register t_ray ray);
+void					*play_scene(void *arg);
+void					push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);
+cl_float3	   			reverse(register cl_float3 vect);
+cl_float3	   			rotate_x(register cl_float3 point, register float angle);
+cl_float3	   			rotate_y(register cl_float3 point, register float angle);
+cl_float3	   			rotate_z(register cl_float3 point, register float angle);
+float	   				run_object(register t_obj obj, register t_ray ray);
+void					run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
+void					*slave(void *arg);
+void					*slave_connection(void *arg);
+float	   				specular_light(register t_spt spt, register t_obj obj);
+float	   				sphere(register t_obj obj, register t_ray ray);
+cl_float3				sub(register cl_float3 a, register cl_float3 b);
+void					super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
+float	   				torus(register t_obj obj, register t_ray ray);
+cl_float3	   			vector_mult(register cl_float3 a, register cl_float3 b);
+cl_float3	   			vector_mult_x(register cl_float3 vect, register float x);
+void					window_resize(t_env *e);
 
 //  New Prototype
 
-char	*clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
-size_t	  cluster_get_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
-void	cluster_finish_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
+char					*clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
+size_t	  				cluster_get_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
+void					cluster_finish_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
 
-cl_float2	   add_vec(cl_float2 a, cl_float2 b);
-cl_float2	   div_vec(cl_float2 a, cl_float b);
-cl_float2	   dot_vec_f(cl_float2 a, cl_float b);
-float	   dot_vec(cl_float2 a, cl_float2 b);
-float	   fract(float x);
-cl_float2	   fract_2d(cl_float2 v);
-cl_float2	   fract_vec(cl_float2 x);
-cl_float2	   sub_vec(cl_float2 a, cl_float2 b);
-cl_float2	   sub_vec_lol(cl_float2 a, cl_float b);
+cl_float2	   			add_vec(cl_float2 a, cl_float2 b);
+cl_float2	   			div_vec(cl_float2 a, cl_float b);
+cl_float2	   			dot_vec_f(cl_float2 a, cl_float b);
+float	   				dot_vec(cl_float2 a, cl_float2 b);
+float	   				fract(float x);
+cl_float2	   			fract_2d(cl_float2 v);
+cl_float2	   			fract_vec(cl_float2 x);
+cl_float2	   			sub_vec(cl_float2 a, cl_float2 b);
+cl_float2	   			sub_vec_lol(cl_float2 a, cl_float b);
 
-float	   ft_max(float x, float min, float maxi);
-float	   noise(cl_float2 n);
-float	   perlin(cl_float2 n);
+float	   				ft_max(float x, float min, float maxi);
+float	   				noise(cl_float2 n);
+float	   				perlin(cl_float2 n);
 
-cl_float2	   random2(cl_float2 c);
-float	   smooth_voronoi(cl_float2 x);
+cl_float2	   			random2(cl_float2 c);
+float	   				smooth_voronoi(cl_float2 x);
+
+_Bool					move(cl_float3 *pos, t_key key);
+_Bool					rotate(cl_float3 *rotate, t_key key);
 
 #endif

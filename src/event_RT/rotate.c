@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 15:46:02 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:24:12 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 15:10:59 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	rotate_sub(cl_float3 *rotate, t_key key, _Bool *ev)
 {
-	else if (key.key_comma)
+	if (key.key_comma)
 	{
 		*ev = 1;
 		rotate->z += -0.15;

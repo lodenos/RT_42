@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 14:06:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 15:01:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void				*play_scene(void *arg)
 	((t_env *)arg)->start = 1;
 	while (((t_env *)arg)->exit)
 	{
-		if (event_RT((t_env *)arg) == 0)
+		if (event_rt((t_env *)arg) == 0)
 		{
 			camera(((t_env *)arg)->scn.cam, &ray,
 			(float)((t_env *)arg)->mouse.x, (float)((t_env *)arg)->mouse.y);

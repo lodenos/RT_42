@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/29 01:05:16 by glodenos         ###   ########.fr        #
+#    Updated: 2016/12/12 15:09:12 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,10 @@ SRC_NAME = 	main.c										\
 			clustering/host/slave_connection.c			\
 			clustering/slave/slave.c					\
 														\
-			event_RT/event_RT.c							\
-			event_RT/fps_info.c							\
+			event_rt/event_rt.c							\
+			event_rt/fps_info.c							\
+			event_rt/move.c								\
+			event_rt/rotate.c							\
 														\
 			move/matrix_rotate.c						\
 														\
@@ -78,21 +80,27 @@ SRC_NAME = 	main.c										\
 			SDL2/push_to_window.c						\
 			SDL2/window_resize.c						\
 														\
-			shader/bump_mapping.c						\
-			shader/diffused_light.c						\
-			shader/filtered_black_white.c				\
-			shader/filtered_rgb.c						\
-			shader/light.c								\
-			shader/limit.c								\
-			shader/specular_light.c						\
-			shader/super_sampling.c 					\
-														\
-			shader/maths_perlin.c						\
-			shader/perlin.c								\
-			shader/voronoi.c							\
-														\
-			vector/coordinates_collision.c				\
-			vector/vector_formula_1.c					\
+			shader/effect/limit.c							\
+			shader/effect/maths_perlin.c					\
+			shader/effect/perlin.c							\
+			shader/effect/voronoi.c							\
+															\
+			shader/post-processing/filtered_black_white.c	\
+			shader/post-processing/filtered_rgb.c			\
+			shader/post-processing/sepia.c					\
+			shader/post-processing/super_sampling.c			\
+															\
+			shader/pre-processing/bump_mapping.c			\
+			shader/pre-processing/diffused_light.c			\
+			shader/pre-processing/light.c					\
+			shader/pre-processing/specular_light.c			\
+															\
+			shader/maths_perlin.c							\
+			shader/perlin.c									\
+			shader/voronoi.c								\
+															\
+			vector/coordinates_collision.c					\
+			vector/vector_formula_1.c						\
 			vector/vector_formula_2.c
 
 OBJ_PATH	=	obj/

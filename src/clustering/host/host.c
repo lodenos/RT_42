@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 04:50:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 12:57:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:43:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static void	connect_slave_to_host(void *arg, int fds)
+static void	connect_slave_to_host(void *arg, int fds, int size)
 {
 	t_slv		*slv;
 
@@ -48,7 +48,7 @@ void		*host(void *arg)
 	if (listen(fds, 512))
 		ft_putstr_err("ERROR: listen", 1);
 	while (i)
-		connect_slave_to_host(arg, fds);
+		connect_slave_to_host(arg, fds, size);
 	close(fds);
 	pthread_exit(NULL);
 }

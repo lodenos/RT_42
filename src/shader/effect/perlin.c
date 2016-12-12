@@ -6,7 +6,7 @@
 /*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 12:47:13 by opettex-          #+#    #+#             */
-/*   Updated: 2016/12/12 12:52:41 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/12 14:48:55 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static float	r(cl_float2 n)
 }
 
 float				noise(cl_float2 n)
-
+{
 	cl_float2		fn;
 	cl_float2  		sn;
 	float      		h1;
