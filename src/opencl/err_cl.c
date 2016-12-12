@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:34:49 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:37:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:39:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void  err_cl_ex_d(cl_int err)
+static inline void	err_cl_ex_d(cl_int err)
 {
 	if (err == -52)
 		ft_putstr_err("opencl -52 : CL_INVALID_KERNEL_ARGS", 1);
@@ -40,7 +40,7 @@ static inline void  err_cl_ex_d(cl_int err)
 		err_cl_sub(err);
 }
 
-static inline void  err_cl_ex_c(cl_int err)
+static inline void	err_cl_ex_c(cl_int err)
 {
 	if (err == -41)
 		ft_putstr_err("opencl -41 : CL_INVALID_SAMPLER", 1);
@@ -67,7 +67,7 @@ static inline void  err_cl_ex_c(cl_int err)
 	err_cl_ex_d(err);
 }
 
-static inline void  err_cl_ex_b(cl_int err)
+static inline void	err_cl_ex_b(cl_int err)
 {
 	if (err == -30)
 		ft_putstr_err("opencl -30 : CL_INVALID_VALUE", 1);
@@ -94,7 +94,7 @@ static inline void  err_cl_ex_b(cl_int err)
 	err_cl_ex_c(err);
 }
 
-static inline void  err_cl_ex_a(cl_int err)
+static inline void	err_cl_ex_a(cl_int err)
 {
 	if (err == -11)
 		ft_putstr_err("opencl -11 : CL_BUILD_PROGRAM_FAILURE", 1);
@@ -118,29 +118,29 @@ static inline void  err_cl_ex_a(cl_int err)
 	err_cl_ex_b(err);
 }
 
-void        err_cl(cl_int err)
+void				err_cl(cl_int err)
 {
-    if (err == 0)
-        return ;
-    else if (err == -1)
-        ft_putstr_err("opencl -1 : CL_DEVICE_NOT_FOUND", 1);
-    else if (err == -2)
-        ft_putstr_err("opencl -2 : CL_DEVICE_NOT_AVAILABLE", 1);
-    else if (err == -3)
-        ft_putstr_err("opencl -3 : CL_COMPILER_NOT_AVAILABLE", 1);
-    else if (err == -4)
-        ft_putstr_err("opencl -4 : CL_MEM_OBJECT_ALLOCATION_FAILURE", 1);
-    else if (err == -5)
-        ft_putstr_err("opencl -5 : CL_OUT_OF_RESOURCES", 1);
-    else if (err == -6)
-        ft_putstr_err("opencl -6 : CL_OUT_OF_HOST_MEMORY", 1);
-    else if (err == -7)
-        ft_putstr_err("opencl -7 : CL_PROFILING_INFO_NOT_AVAILABLE", 1);
-    else if (err == -8)
-        ft_putstr_err("opencl -8 : CL_MEM_COPY_OVERLAP", 1);
-    else if (err == -9)
-        ft_putstr_err("opencl -9 : CL_IMAGE_FORMAT_MISMATCH", 1);
-    else if (err == -10)
-        ft_putstr_err("opencl -10 : CL_IMAGE_FORMAT_NOT_SUPPORTED", 1);
-    err_cl_ex_a(err);
+	if (err == 0)
+		return ;
+	else if (err == -1)
+		ft_putstr_err("opencl -1 : CL_DEVICE_NOT_FOUND", 1);
+	else if (err == -2)
+		ft_putstr_err("opencl -2 : CL_DEVICE_NOT_AVAILABLE", 1);
+	else if (err == -3)
+		ft_putstr_err("opencl -3 : CL_COMPILER_NOT_AVAILABLE", 1);
+	else if (err == -4)
+		ft_putstr_err("opencl -4 : CL_MEM_OBJECT_ALLOCATION_FAILURE", 1);
+	else if (err == -5)
+		ft_putstr_err("opencl -5 : CL_OUT_OF_RESOURCES", 1);
+	else if (err == -6)
+		ft_putstr_err("opencl -6 : CL_OUT_OF_HOST_MEMORY", 1);
+	else if (err == -7)
+		ft_putstr_err("opencl -7 : CL_PROFILING_INFO_NOT_AVAILABLE", 1);
+	else if (err == -8)
+		ft_putstr_err("opencl -8 : CL_MEM_COPY_OVERLAP", 1);
+	else if (err == -9)
+		ft_putstr_err("opencl -9 : CL_IMAGE_FORMAT_MISMATCH", 1);
+	else if (err == -10)
+		ft_putstr_err("opencl -10 : CL_IMAGE_FORMAT_NOT_SUPPORTED", 1);
+	err_cl_ex_a(err);
 }

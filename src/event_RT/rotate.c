@@ -6,19 +6,29 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 15:46:02 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 16:29:06 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:24:12 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline _Bool	rotate_sub()
+static inline void	rotate_sub(cl_float3 *rotate, t_key key, _Bool *ev)
 {
+	else if (key.key_comma)
+	{
+		*ev = 1;
+		rotate->z += -0.15;
+	}
+	else if (key.key_period)
+	{
+		*ev = 1;
+		rotate->z += 0.15;
+	}
 }
 
 inline _Bool		rotate(cl_float3 *rotate, t_key key)
 {
-	int	ev;
+	_Bool	ev;
 
 	ev = 0;
 	if (key.key_up)
@@ -41,15 +51,6 @@ inline _Bool		rotate(cl_float3 *rotate, t_key key)
 		ev = 1;
 		rotate->y += 0.15;
 	}
-	else if (key.key_comma)
-	{
-		ev = 1;
-		rotate->z += -0.15;
-	}
-	else if (key.key_period)
-	{
-		ev = 1;
-		rotate->z += 0.15;
-	}
+	rotate_sub(rotate, key, &ev);
 	return (ev);
 }

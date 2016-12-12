@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_src_opencl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/23 00:18:50 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:38:21 by glodenos         ###   ########.fr       */
+/*   Created: 2016/12/12 13:33:41 by glodenos          #+#    #+#             */
+/*   Updated: 2016/12/12 13:34:38 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-void    get_src_opencl(t_opcl *cl)
+void	get_src_opencl(t_opcl *cl)
 {
 	register int	i;
 	register int	fd;

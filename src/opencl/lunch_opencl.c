@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:40:02 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:39:56 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void  create_kernel(cl_program prog, t_krnl *krnl)
+static inline void	create_kernel(cl_program prog, t_krnl *krnl)
 {
 	cl_int	err;
 
@@ -20,7 +20,7 @@ static inline void  create_kernel(cl_program prog, t_krnl *krnl)
 	err_cl(err);
 }
 
-static inline void 	console_log_compilation(cl_program prog, cl_device_id
+static inline void	console_log_compilation(cl_program prog, cl_device_id
 		device_id, cl_program_build_info type)
 {
 	size_t	size;
@@ -33,7 +33,7 @@ static inline void 	console_log_compilation(cl_program prog, cl_device_id
 	ft_putstr_err(str, 1);
 }
 
-void	lunch_opencl(t_opcl *cl)
+void				lunch_opencl(t_opcl *cl)
 {
 	cl_int	err;
 

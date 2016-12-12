@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 14:18:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:35:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:32:09 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void  err_cl_sub_ex(cl_int err)
+static inline void	err_cl_sub_ex(cl_int err)
 {
 	if (err == -1003)
 		ft_putstr_err("opencl -1003 : CL_INVALID_D3D10_RESOURCE_KHR", 1);
@@ -32,7 +32,7 @@ static inline void  err_cl_sub_ex(cl_int err)
 	}
 }
 
-void 				err_cl_sub(cl_int err)
+void				err_cl_sub(cl_int err)
 {
 	if (err == -63)
 		ft_putstr_err("opencl -63 : CL_INVALID_GLOBAL_WORK_SIZE", 1);

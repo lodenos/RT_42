@@ -6,13 +6,28 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:05:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 16:29:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:13:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-int					event_RT(t_env *e)
+static int	event_mouse(t_env *e)
+{
+	int	ev;
+
+	ev = 0;
+	if (e->mouse.id != -1)
+	{
+		if (move(&e->obj[e->mouse.id].pos_a, e->key))
+			ev = 1;
+		if (rotate(&e->obj[e->mouse.id].pos_a, e->key))
+			ev = 1;
+	}
+	return (ev);
+}
+
+int			event_rt(t_env *e)
 {
 	int	ev;
 
@@ -23,15 +38,7 @@ int					event_RT(t_env *e)
 		e->start = 0;
 	}
 	if (e->mouse.left)
-	{
-		if (e->mouse.id != -1)
-		{
-			if (move(&e->obj[e->mouse.id].pos_a, e->key))
-				ev = 1;
-			if (rotate(&e->obj[e->mouse.id].pos_a, e->key))
-				ev = 1;
-		}
-	}
+		ev = event_mouse(e);
 	else
 	{
 		if (move(&e->scn.cam.pos, e->key))

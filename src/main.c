@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 12:42:13 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:27:06 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void	init_RT(t_env *e)
+static inline void	init_rt(t_env *e)
 {
 	init_keyboard(&e->key);
 	init_mouse(&e->mouse);
@@ -110,7 +110,7 @@ int					main(int argc, char **argv)
 	else
 	{
 		if (SDL_Init(SDL_INIT_EVERYTHING))
-   			ft_putstr_err(SDL_GetError(), 1);
+			ft_putstr_err(SDL_GetError(), 1);
 		init_RT(&e);
 		create_window(&e, SDL_WINDOW_RESIZABLE);
 		if (pthread_create(&pth_scn, NULL, &play_scene, (void *)&e) == -1)

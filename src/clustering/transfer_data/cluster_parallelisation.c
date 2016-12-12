@@ -6,15 +6,15 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 23:16:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:15:22 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:06:50 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-char    *clustering_hash_contribution(size_t nbr_elem, size_t nbr_block)
+char	*clustering_hash_contribution(size_t nbr_elem, size_t nbr_block)
 {
-	size_t  size;
+	size_t	size;
 	char	*tab_work;
 
 	if ((nbr_block > nbr_elem) || (nbr_elem == 0) || (nbr_block == 0))
@@ -46,10 +46,9 @@ void	cluster_finish_contribution(size_t id, char *tab_work, t_img img,
 		;
 }
 
-size_t  cluster_get_contribution(size_t id, char *tab_work, t_img img,
+size_t	cluster_get_contribution(size_t id, char *tab_work, t_img img,
 		unsigned int *img_work, t_mimg mimg)
 {
-
 	id = 0;
 	while (tab_work[id] != -1)
 	{
@@ -63,5 +62,6 @@ size_t  cluster_get_contribution(size_t id, char *tab_work, t_img img,
 
 void	cluster_abort_contribution(size_t id, char *tab_work)
 {
-
+	(void)id;
+	(void)tab_work;
 }
