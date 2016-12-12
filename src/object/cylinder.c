@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 16:55:35 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/12 16:56:57 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ float		cyl2(register t_obj obj, register t_ray ray, float det)
 {
 	register float		m;
 
-	m = dot(ray.dir, obj->rotate) * det + dot(sub(ray.pos, obj->pos_a), obj->rotate);
-	if (obj->radius_a.y == 0)
+	m = dot(ray.dir, obj.rotate) * det + dot(sub(ray.pos, obj.pos_a), obj.rotate);
+	if (obj.radius_a.y == 0)
 		return (det);
-	if (m > obj->radius_a.y || m < 0)
+	if (m > obj.radius_a.y || m < 0)
 		return (-1);
 	return (det);
 }
