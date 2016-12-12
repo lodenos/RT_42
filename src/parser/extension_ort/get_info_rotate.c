@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-void 	get_info_rotate(cl_float3 *rotate, char *str)
+void		get_info_rotate(cl_float3 *rotate, char *str)
 {
 	size_t	i;
 	size_t	j;
@@ -29,17 +29,17 @@ void 	get_info_rotate(cl_float3 *rotate, char *str)
 	{
 		j = 0;
 		if (ft_strlen(tmp[i]) > 16)
-		while (tmp[i][j])
-		{
-			if (tmp[i][j] < '0' || tmp[i][j] > '9')
+			while (tmp[i][j])
 			{
-				if (tmp[i][j] == '.' && !k)
-					k = 1;
-				else if (tmp[i][j] != '-')
-					ft_putstr_err("ERROR: ", 1);
+				if (tmp[i][j] < '0' || tmp[i][j] > '9')
+				{
+					if (tmp[i][j] == '.' && !k)
+						k = 1;
+					else if (tmp[i][j] != '-')
+						ft_putstr_err("ERROR: ", 1);
+				}
+				++j;
 			}
-			++j;
-		}
 		++i;
 	}
 	rotate->x = (float)atof(tmp[0]) * D_TO_RAD;

@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-static void     init_ort_obj_info(t_env *e, size_t type)
+static void		init_ort_obj_info(t_env *e, size_t type)
 {
 	e->obj[e->elem_obj].angle = 0.0f;
 	e->obj[e->elem_obj].color = 0x0;
@@ -32,7 +32,7 @@ static void     init_ort_obj_info(t_env *e, size_t type)
 	e->obj[e->elem_obj].type_bump = 0;
 }
 
-void	get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type)
+void			get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type)
 {
 	if (!str[++*i])
 		ft_putstr_err("ERROR: Object -> NULL ?", 1);
@@ -55,7 +55,8 @@ void	get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type)
 			++*i;
 		else if (!ft_strcmp_case(str[*i], "position"))
 			get_info_position(&e->obj[e->elem_obj].pos_a, str[++*i]);
-		else if (!ft_strcmp_case(str[*i], "radius_a") || !ft_strcmp_case(str[*i], "radius"))
+		else if (!ft_strcmp_case(str[*i], "radius_a") || \
+			!ft_strcmp_case(str[*i], "radius"))
 			get_info_radius(&e->obj[e->elem_obj].radius_a, str[++*i]);
 		else if (!ft_strcmp_case(str[*i], "radius_b"))
 			get_info_radius(&e->obj[e->elem_obj].radius_b, str[++*i]);

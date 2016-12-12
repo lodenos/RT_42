@@ -12,16 +12,16 @@
 
 #include "lib_RT.h"
 
-static inline void  init_ort_config(t_env *e)
+static inline void		init_ort_config(t_env *e)
 {
 	e->gpu = 0;
 	e->thread = 1;
 	e->scn.resolution = 1;
 }
 
-void                get_ort_config(t_env *e, char **str, size_t *i)
+void					get_ort_config(t_env *e, char **str, size_t *i)
 {
-	size_t  j;
+	size_t j;
 
 	init_ort_config(e);
 	if (e->config)
@@ -36,9 +36,11 @@ void                get_ort_config(t_env *e, char **str, size_t *i)
 			ft_putstr_err("ERROR: .config incomplete", 1);
 		if (ft_strcmp(str[*i], "GPU") == 0 || ft_strcmp(str[*i], "cpu") == 0)
 		{
-			if (ft_strcmp(str[++*i], "on") == 0 || ft_strcmp(str[*i], "ON") == 0)
+			if (ft_strcmp(str[++*i], "on") == 0 || \
+				ft_strcmp(str[*i], "ON") == 0)
 				e->gpu = 1;
-			else if (ft_strcmp(str[*i], "off") == 0 || ft_strcmp(str[*i], "OFF") == 0)
+			else if (ft_strcmp(str[*i], "off") == 0 || \
+				ft_strcmp(str[*i], "OFF") == 0)
 				e->gpu = 0;
 			else
 				ft_putstr_err("ERROR: .config flags GPU", 1);
@@ -51,7 +53,8 @@ void                get_ort_config(t_env *e, char **str, size_t *i)
 			while (str[*i][j])
 			{
 				if (str[*i][j] < '0' || str[*i][j] > '9')
-					ft_putstr_err("ERROR: .config flags thread value is not digital", 1);
+					ft_putstr_err("ERROR: .config flags thread \
+						value is not digital", 1);
 				++j;
 			}
 			if ((e->thread = (size_t)ft_atoi(str[*i])) < 1)
@@ -67,11 +70,13 @@ void                get_ort_config(t_env *e, char **str, size_t *i)
 			while (str[*i][j])
 			{
 				if (str[*i][j] < '0' || str[*i][j] > '9')
-					ft_putstr_err("ERROR: .config flags supersampling value is not digital", 1);
+					ft_putstr_err("ERROR: .config flags \
+						supersampling value is not digital", 1);
 				++j;
 			}
 			if ((e->scn.resolution = (size_t)ft_atoi(str[*i])) < 1)
-				ft_putstr_err("ERROR: .config flags supersampling value is < 1", 1);
+				ft_putstr_err("ERROR: .config flags \
+					supersampling value is < 1", 1);
 		}
 		else
 			ft_putstr_err("ERROR: .config flags Unknown", 1);

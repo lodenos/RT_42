@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-static inline void  init_ort_camera(t_env *e)
+static inline void		init_ort_camera(t_env *e)
 {
 	e->scn.cam.fov = 1;
 	e->scn.cam.h = 540;
@@ -21,7 +21,7 @@ static inline void  init_ort_camera(t_env *e)
 	e->scn.cam.w = 960;
 }
 
-void				get_ort_camera(t_env *e, char **str, size_t *i)
+void					get_ort_camera(t_env *e, char **str, size_t *i)
 {
 	init_ort_camera(e);
 	if (e->camera)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_ort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cducaffy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/16 20:46:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:59:09 by glodenos         ###   ########.fr       */
+/*   Created: 2016/12/12 13:53:25 by cducaffy          #+#    #+#             */
+/*   Updated: 2016/12/12 13:53:36 by cducaffy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-static inline void  init_ort_parser(t_env *e)
+static inline void		init_ort_parser(t_env *e)
 {
 	e->config = 0;
 	e->group = 0;
@@ -23,9 +23,9 @@ static inline void  init_ort_parser(t_env *e)
 	e->elem_spt = 0;
 }
 
-static inline void  init_spotlight_obj(t_env *e, char **str)
+static inline void		init_spotlight_obj(t_env *e, char **str)
 {
-	size_t  i;
+	size_t i;
 
 	i = 0;
 	e->scn.n_obj = 0;
@@ -56,7 +56,7 @@ static inline void  init_spotlight_obj(t_env *e, char **str)
 		ft_putstr_err("ERROR: malloc", 1);
 }
 
-void 				get_info_ort(t_env *e, char **str, size_t *i)
+void					get_info_ort(t_env *e, char **str, size_t *i)
 {
 	if (!ft_strcmp_case(str[*i], ".config"))
 		get_ort_config(e, str, i);
@@ -95,18 +95,18 @@ void 				get_info_ort(t_env *e, char **str, size_t *i)
 	}
 }
 
-void    get_ort(t_env *e, char **str)
+void					get_ort(t_env *e, char **str)
 {
-    size_t  i;
+	size_t i;
 
-    i = 0;
-    init_spotlight_obj(e, str);
-    init_ort_parser(e);
-    while (str[i])
-    {
-        get_info_ort(e, str, &i);
-        ++i;
-    }
-    if (!(e->config && e->scene && e->camera))
-        ft_putstr_err("ERROR: .config or scene or camera not present", 1);
+	i = 0;
+	init_spotlight_obj(e, str);
+	init_ort_parser(e);
+	while (str[i])
+	{
+		get_info_ort(e, str, &i);
+		++i;
+	}
+	if (!(e->config && e->scene && e->camera))
+		ft_putstr_err("ERROR: .config or scene or camera not present", 1);
 }

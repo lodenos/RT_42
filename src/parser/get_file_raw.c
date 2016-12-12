@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-char    *get_file_raw(int fd)
+char		*get_file_raw(int fd)
 {
 	char	*file;
 	char	*tmp;

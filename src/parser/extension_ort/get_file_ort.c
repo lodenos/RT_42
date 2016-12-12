@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-static inline void  filter_parser_sub(char *str, int *i, int *j, int *k)
+static inline void		filter_parser_sub(char *str, int *i, int *j, int *k)
 {
 	if ((*k == 0) && str[*i] == '\n')
 		str[*i] = ' ';
@@ -28,7 +28,7 @@ static inline void  filter_parser_sub(char *str, int *i, int *j, int *k)
 		str[*i] = 126;
 }
 
-static inline char  **filter_parser(char *str)
+static inline char		**filter_parser(char *str)
 {
 	int	i;
 	int	j;
@@ -56,7 +56,7 @@ static inline char  **filter_parser(char *str)
 	return (ft_strsplit(str, ' '));
 }
 
-static inline void  convert_param_sub(char *str, char *tmp, int *j, int *k)
+static inline void		convert_param_sub(char *str, char *tmp, int *j, int *k)
 {
 	if (str[*j] == '(' || str[*j] == ')')
 		return ;
@@ -70,11 +70,11 @@ static inline void  convert_param_sub(char *str, char *tmp, int *j, int *k)
 	tmp[++*k] = str[*j];
 }
 
-static inline void  convert_param(char **str)
+static inline void		convert_param(char **str)
 {
-	int	 i;
-	int	 j;
-	int	 k;
+	int		i;
+	int		j;
+	int		k;
 	char	*tmp;
 
 	i = -1;
@@ -95,7 +95,7 @@ static inline void  convert_param(char **str)
 	}
 }
 
-void    get_file_ort(t_env *e, char *file)
+void					get_file_ort(t_env *e, char *file)
 {
 	int		i;
 	int		fd;

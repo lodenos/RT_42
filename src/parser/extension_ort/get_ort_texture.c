@@ -12,10 +12,9 @@
 
 #include "lib_RT.h"
 
-void    get_ort_texture(t_env *e, char **str, size_t *i)
+void		get_ort_texture(t_env *e, char **str, size_t *i)
 {
-    (void)e;
-    (void)i;
-
-    ft_putstr_err(".texture not attributed", 1);
+	(void)e;
+	(void)i;
+	ft_putstr_err(".texture not attributed", 1);
 }

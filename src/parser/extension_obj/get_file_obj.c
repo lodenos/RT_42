@@ -12,10 +12,9 @@
 
 #include "lib_RT.h"
 
-void    get_file_obj(t_env *e, char *file)
+void		get_file_obj(t_env *e, char *file)
 {
 	(void)e;
 	(void)file;
-
 	ft_putstr_err("The format is not yet supported", 1);
 }

@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-void    get_info_diffuse(float *diffuse, char *str)
+void		get_info_diffuse(float *diffuse, char *str)
 {
 	size_t	i;
 	int		k;
@@ -20,7 +20,7 @@ void    get_info_diffuse(float *diffuse, char *str)
 	i = 0;
 	k = 0;
 	if (!str)
-	ft_putstr_err("ERROR: .ort == NULL", 1);
+		ft_putstr_err("ERROR: .ort == NULL", 1);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')

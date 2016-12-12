@@ -12,9 +12,7 @@
 
 #include "lib_RT.h"
 
-/*  Format suport .obj .mlt .ort  */
-
-void    get_scene(t_env *e, char *file)
+void		get_scene(t_env *e, char *file)
 {
 	char	**tmp;
 

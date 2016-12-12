@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-void    get_info_angle(t_env *e, char **str, size_t *i)
+void		get_info_angle(t_env *e, char **str, size_t *i)
 {
 	size_t	j;
 

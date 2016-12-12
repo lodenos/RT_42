@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-void    get_info_radius(cl_float3 *radius, char *str)
+void		get_info_radius(cl_float3 *radius, char *str)
 {
 	size_t	i;
 	size_t	j;
@@ -38,7 +38,8 @@ void    get_info_radius(cl_float3 *radius, char *str)
 				if (tmp[i][j] == '.' && !k)
 					k = 1;
 				else if (tmp[i][j] != '-')
-					ft_putstr_err("ERROR: position argument no is digital valide", 1);
+					ft_putstr_err("ERROR: position argument \
+						no is digital valide", 1);
 			}
 			++j;
 		}

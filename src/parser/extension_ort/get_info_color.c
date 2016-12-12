@@ -12,10 +12,10 @@
 
 #include "lib_RT.h"
 
-static inline void  get_color_hexa(unsigned int *color, char *str)
+static inline void		get_color_hexa(unsigned int *color, char *str)
 {
-	size_t  i;
-	size_t  j;
+	size_t i;
+	size_t j;
 
 	*color = 0;
 	if ((i = ft_strlen(str)) > 8 || i < 3)
@@ -28,7 +28,7 @@ static inline void  get_color_hexa(unsigned int *color, char *str)
 		if (str[i] < '0' || str[i] > '9')
 			if (str[i] < 'a' || str[i] > 'f')
 				if (str[i] < 'A' || str[i] > 'F')
-				ft_putstr_err("ERROR: Color no Hexa", 1);
+					ft_putstr_err("ERROR: Color no Hexa", 1);
 		++i;
 	}
 	i = 2;
@@ -44,7 +44,7 @@ static inline void  get_color_hexa(unsigned int *color, char *str)
 	}
 }
 
-void				get_info_color(unsigned int *color, char *str)
+void					get_info_color(unsigned int *color, char *str)
 {
 	size_t			i;
 	size_t			j;

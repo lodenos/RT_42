@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-static inline void  init_ort_spotlight(t_env *e)
+static inline void		init_ort_spotlight(t_env *e)
 {
 	e->spt[e->elem_spt].end = 1;
 	e->spt[e->elem_spt].id = e->elem_gp;
@@ -21,7 +21,7 @@ static inline void  init_ort_spotlight(t_env *e)
 	e->spt[e->elem_spt].color = 0xFFFFFFFF;
 }
 
-void	get_ort_spotlight(t_env *e, char **str, size_t *i)
+void					get_ort_spotlight(t_env *e, char **str, size_t *i)
 {
 	init_ort_spotlight(e);
 	if (!str[*i])

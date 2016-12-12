@@ -12,7 +12,7 @@
 
 #include "lib_RT.h"
 
-void    get_ort_group(t_env *e, char **str, size_t *i)
+void		get_ort_group(t_env *e, char **str, size_t *i)
 {
 	e->group = 1;
 	if (!str[++*i])
@@ -20,9 +20,9 @@ void    get_ort_group(t_env *e, char **str, size_t *i)
 	if (str[*i][0] != '{')
 		ft_putstr_err("ERROR: Group { ?", 1);
 	while (str[++*i][0] != '}')
-    {
-        if (!str[*i])
-            ft_putstr_err("ERROR: Group -> NULL ?", 1);
-        get_info_ort(e, str, i);
-    }
+	{
+		if (!str[*i])
+			ft_putstr_err("ERROR: Group -> NULL ?", 1);
+		get_info_ort(e, str, i);
+	}
 }
