@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/07 15:46:02 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 16:59:35 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,44 @@ static inline cl_float3 rayonRefracte(cl_float3 normal, cl_float3 incident,
 //------------------------------------------------------------------------------
 
 inline void get_normal_object(t_obj *obj, register t_ray ray,
-        register float det)
+		register float det)
 {
-    if (obj->type == CONE)
-        obj->normal = reverse(normalize(sub(obj->pos_a,
-                sub(obj->collision, vector_mult_x(vector_mult_x(
-                obj->rotate, dot(ray.dir, obj->rotate) * det +
-                dot(ray.pos, obj->rotate)), (1.0f + tanf(obj->angle / 2.0f)
-                * tanf(obj->angle / 2.0f)))))));
-    else if (obj->type == CYLINDER)
-        obj->normal = reverse(normalize(sub(obj->pos_a, sub(obj->collision,
-                vector_mult_x(obj->rotate, dot(ray.dir, obj->rotate) * det +
-                dot(ray.pos, obj->rotate))))));
-    else if (obj->type == PLAN)
-        obj->normal = obj->rotate;
-    else if (obj->type == SPHERE)
-        obj->normal = normalize(sub(obj->collision, obj->pos_a));
-    else if (obj->type == TORUS)
-        return ;
+	register float		k;
+	register float		m;
+	register cl_float3	a;
+	register cl_float3	q;
+
+	if (obj->type == CONE)
+		obj->normal = reverse(normalize(sub(obj->pos_a,
+			sub(obj->collision, vector_mult_x(vector_mult_x(
+			obj->rotate, dot(ray.dir, obj->rotate) * det +
+			dot(ray.pos, obj->rotate)), (1.0f + tanf(obj->angle / 2.0f) *
+			tanf(obj->angle / 2.0f)))))));
+	else if (obj->type == CYLINDER)
+		obj->normal = reverse(normalize(sub(obj->pos_a, sub(obj->collision,
+					vector_mult_x(obj->rotate, dot(ray.dir, obj->rotate) * det +
+					dot(ray.pos, obj->rotate))))));
+	else if (obj->type == PLAN)
+		obj->normal = obj->rotate;
+	else if (obj->type == TRIANGLE)
+		obj->normal = normalize(cross(sub(obj->pos_b, obj->pos_a), sub(obj->pos_c, obj->pos_a)));
+	else if (obj->type == SPHERE)
+		obj->normal = normalize(sub(obj->collision, obj->pos_a));
+	else if (obj->type == ELLIPSOID)
+		obj->normal = normalize(get_ellipsoid_normale(obj, det));
+	else if (obj->type == TORUS)
+	{
+		k = dot(sub(obj->collision, obj->pos_a), ray.dir);
+		a = sub(obj->collision, vector_mult_x(ray.dir, k));
+		m = sqrt(pow(obj->radius_b.x, 2.0f) - (k * k));
+		obj->normal = normalize(sub(sub(obj->collision, a), vector_mult_x(sub(obj->pos_a, a), (m / (obj->radius_a.x + m)))));
+
+
+/*		a = (cl_float3){obj->collision.x, obj->collision.y, 0.0f};
+		q = vector_mult_x(a, obj->radius_a.x / sqrt(pow(obj->collision.x, 2) + pow(obj->collision.y, 2)));
+		obj->normal = normalize(sub(obj->collision, q));
+*/	}
+	return ;
 }
 
 void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
