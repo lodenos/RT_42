@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_ort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cducaffy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: cducaffy <cducaffy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 13:53:25 by cducaffy          #+#    #+#             */
-/*   Updated: 2016/12/12 13:53:36 by cducaffy         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:42:26 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ void					get_info_ort(t_env *e, char **str, size_t *i)
 		get_ort_obj_info(e, str, i, TRIANGLE);
 	else if (!ft_strcmp_case(str[*i], "group"))
 	{
+		++e->elem_gp;
 		if (e->group)
 			ft_putstr_err("ERROR: Group 1 level possible", 1);
 		get_ort_group(e, str, i);
-		++e->elem_gp;
 	}
 	else if (!ft_strcmp_case(str[*i], "spotlight"))
 		get_ort_spotlight(e, str, i);
@@ -106,6 +106,7 @@ void					get_ort(t_env *e, char **str)
 	{
 		get_info_ort(e, str, &i);
 		++i;
+		++e->elem_gp;
 	}
 	if (!(e->config && e->scene && e->camera))
 		ft_putstr_err("ERROR: .config or scene or camera not present", 1);

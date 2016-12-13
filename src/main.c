@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 14:41:27 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:55:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int					main(int argc, char **argv)
 	pthread_t		pth;
 	pthread_t		pth_scn;
 
+	if (argc == 1)
+		ft_putstr_err("Usage - map.ort", 1);
 	get_arg_main(&e, argc, argv);
 	get_scene(&e, argv[1]);
 	if (e.gpu)

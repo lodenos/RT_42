@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 17:02:30 by nrandria         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:07:42 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@
 #define D_TO_RAD 0.01745329251f
 #define VALID "RT_Protocol_Clusturing_GLodenos_"
 #define CONNECT "RT_Protocol_Clusturing_Slave_OK_"
+#define FILTERED_RGB 1
+#define FILTERED_SEPIA 2
+#define FILTERED_BLACK_WHITE 3
+#define STEREOSCOPIE 4
 
 typedef struct s_cam		t_cam;
 typedef struct s_env		t_env;
@@ -200,6 +204,9 @@ struct					s_scn
 	size_t	  			n_spt;
 	size_t	  			resolution;
 	float	   			specular;
+
+	unsigned int		color;
+	size_t				filter;
 };
 
 struct	  				s_env
@@ -314,11 +321,11 @@ float	   				run_object(register t_obj obj, register t_ray ray);
 void					run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 void					*slave(void *arg);
 void					*slave_connection(void *arg);
-unsigned int   			*stereoscopie(unsigned int *img_l, 
+unsigned int   			*stereoscopie(unsigned int *img_l,
 							unsigned int *img_r, size_t resolution);
 float	   				specular_light(register t_spt spt, register t_obj obj);
 float	   				sphere(register t_obj obj, register t_ray ray);
-void					filtered_rgb(unsigned int filter, unsigned int *img, 
+void					filtered_rgb(unsigned int filter, unsigned int *img,
 								size_t resolution);
 cl_float3				sub(register cl_float3 a, register cl_float3 b);
 void					super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
@@ -352,5 +359,7 @@ float	   				smooth_voronoi(cl_float2 x);
 
 _Bool					move(cl_float3 *pos, t_key key);
 _Bool					rotate(cl_float3 *rotate, t_key key);
+void 					sepia(unsigned int *img, size_t resolution);
+void					filtered_black_white(unsigned int *img, size_t resolution);
 
 #endif

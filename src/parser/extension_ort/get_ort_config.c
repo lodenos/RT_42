@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 21:45:03 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:53:22 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:27:17 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static inline void		init_ort_config(t_env *e)
 	e->gpu = 0;
 	e->thread = 1;
 	e->scn.resolution = 1;
+	e->scn.filter = 0;
 }
 
 void					get_ort_config(t_env *e, char **str, size_t *i)
@@ -78,6 +79,18 @@ void					get_ort_config(t_env *e, char **str, size_t *i)
 				ft_putstr_err("ERROR: .config flags \
 					supersampling value is < 1", 1);
 		}
+		else if (ft_strcmp(str[*i], "filtered_rgb") == 0)
+		{
+			++*i;
+			e->scn.filter = FILTERED_RGB;
+			get_info_color(&e->scn.color, str[++*i]);
+		}
+		else if (ft_strcmp(str[*i], "filtered_sepia") == 0)
+			e->scn.filter = FILTERED_SEPIA;
+		else if (ft_strcmp(str[*i], "stereoscopie") == 0)
+			e->scn.filter = STEREOSCOPIE;
+		else if (ft_strcmp(str[*i], "filtered_black_white") == 0)
+			e->scn.filter = FILTERED_BLACK_WHITE;
 		else
 			ft_putstr_err("ERROR: .config flags Unknown", 1);
 	}

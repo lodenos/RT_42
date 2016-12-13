@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 17:05:37 by nrandria         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:07:07 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void				*mapping(void *arg)
 		{
 			pos.x = (float)x;
 			pos.y = (float)y;
-			super_sampling(((t_mppng *)arg)->e, &ray, pos, 1);
+			super_sampling(((t_mppng *)arg)->e, &ray, pos,
+				((t_mppng *)arg)->e->scn.resolution);
 			((t_mppng *)arg)->e->img.img[y * ((t_mppng *)arg)->e->scn.cam.w +
 				x] = ray.color;
 			++x;
@@ -94,8 +95,24 @@ void				*play_scene(void *arg)
 			OCL_run_raytracing((t_env *)arg);
 		else
 			lunch_thread_mapping((t_env *)arg);
-		((t_env *)arg)->img.img = stereoscopie(((t_env *)arg)->img.img,
-		((t_env *)arg)->img.img, ((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
+
+//------------------------------------------------------------------------------
+
+		if (((t_env *)arg)->scn.filter == FILTERED_RGB)
+			filtered_rgb(((t_env *)arg)->scn.color, ((t_env *)arg)->img.img,
+				((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
+		else if (((t_env *)arg)->scn.filter == FILTERED_SEPIA)
+			sepia(((t_env *)arg)->img.img, ((t_env *)arg)->img.h
+				* ((t_env *)arg)->img.w);
+		else if (((t_env *)arg)->scn.filter == FILTERED_BLACK_WHITE)
+			filtered_black_white(((t_env *)arg)->img.img, ((t_env *)arg)->img.h
+				* ((t_env *)arg)->img.w);
+		else if (((t_env *)arg)->scn.filter == STEREOSCOPIE)
+			((t_env *)arg)->img.img = stereoscopie(((t_env *)arg)->img.img,
+				((t_env *)arg)->img.img, ((t_env *)arg)->img.h *
+				((t_env *)arg)->img.w);
+
+//-----------------------------------------------------------------------------
 		push_to_window(((t_env *)arg)->img.rend, ((t_env *)arg)->img.img,
 		((t_env *)arg)->scn.cam.w, ((t_env *)arg)->scn.cam.h);
 	}

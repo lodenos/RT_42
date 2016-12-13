@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_RT.c                                         :+:      :+:    :+:   */
+/*   event_rt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:05:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 15:04:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 16:52:28 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,23 @@
 static int	event_mouse(t_env *e)
 {
 	int	ev;
+	int i;
 
+	i = 0;
 	ev = 0;
 	if (e->mouse.id != -1)
 	{
-		if (move(&e->obj[e->mouse.id].pos_a, e->key))
-			ev = 1;
-		if (rotate(&e->obj[e->mouse.id].pos_a, e->key))
-			ev = 1;
+		while (e->obj[i].end)
+        {
+            if(e->obj[e->mouse.id].id == e->obj[i].id)
+            {
+                if (move(&e->obj[i].pos_a, e->key))
+                    ev = 1;
+                if (rotate(&e->obj[i].pos_a, e->key))
+                    ev = 1;
+            }
+        	++i;
+		}
 	}
 	return (ev);
 }

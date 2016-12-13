@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/12/12 15:25:14 by glodenos         ###   ########.fr        #
+#    Updated: 2016/12/13 15:26:49 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRC_NAME = 	main.c										\
 			shader/post-processing/filtered_black_white.c	\
 			shader/post-processing/filtered_rgb.c			\
 			shader/post-processing/sepia.c					\
+			shader/post-processing/stereoscopie.c			\
 			shader/post-processing/super_sampling.c			\
 															\
 			shader/pre-processing/bump_mapping.c			\
