@@ -6,17 +6,18 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/11/16 05:37:17 by glodenos         ###   ########.fr        #
+#    Updated: 2016/11/29 01:05:16 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all, fclean, clean, re
+.PHONY: all, fclean, clean, re, linux, windows, debug
 
 SRC_PATH = src/
 
 SRC_NAME = 	main.c										\
 														\
 			clustering/cluster_create_buffer.c			\
+			clustering/cluster_parallelisation.c		\
 			clustering/cluster_read_buffer.c			\
 			clustering/cluster_write_buffer.c			\
 			clustering/host/host.c						\
@@ -80,14 +81,16 @@ SRC_NAME = 	main.c										\
 			shader/bump_mapping.c						\
 			shader/diffused_light.c						\
 			shader/filtered_black_white.c				\
-			shader/algo_perlin.c				\
-			shader/maths_perlin.c				\
 			shader/filtered_rgb.c						\
 			shader/light.c								\
 			shader/limit.c								\
 			shader/specular_light.c						\
 			shader/super_sampling.c 					\
-			shader/voronoi.c                            \
+														\
+			shader/procedurale_txt.c             	    \
+			shader/maths_perlin.c						\
+			shader/perlin.c								\
+			shader/voronoi.c							\
 														\
 			vector/coordinates_collision.c				\
 			vector/vector_formula_1.c					\
@@ -95,7 +98,7 @@ SRC_NAME = 	main.c										\
 
 OBJ_PATH	=	obj/
 
-INCLUDE 	= 	-Ihead -Ilibft/head
+INCLUDE 	= 	-I head -I libft/head
 
 LDFLAGS		=	-Llibft
 LDLIBS 		= 	-lft
@@ -105,7 +108,7 @@ NAME 		=	RT
 CC 			=	clang
 
 CFLAGS 		=	#-Wall -Wextra -Werror -Ofast -Weverything -Wno-padded
-LIBGRPH 	=  	$(shell sdl2-config --libs) $(shell sdl2-config --cflags) -lm -framework OpenGL -framework OpenCL -lpthread
+LIBGRPH 	= 	$(shell sdl2-config --libs) $(shell sdl2-config --cflags) -lm -framework OpenGL -framework OpenCL -lpthread
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
 
@@ -113,6 +116,22 @@ SRC 		=	$(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ 		=	$(addprefix $(OBJ_PATH),$(notdir $(OBJ_NAME)))
 
 VPATH		=	$(shell find $(SRC_PATH) -type d)
+
+#-------------------------------------------------------------------------------
+
+FLAGS		= 	#-Wall -Wextra -Werror
+
+LIBFT 		=	-L libft -lft
+
+OPENCL_WIN	=	-I "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"	\
+				-L "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64"	\
+				-l OpenCL
+
+SDL2_WIN	=	-I "C:\Development\SDL2-2.0.5\x86_64-w64-mingw32\include"	\
+				-L "C:\Development\SDL2-2.0.5\x86_64-w64-mingw32\lib"		\
+				-lmingw32 -lSDL2main -lSDL2
+
+#-------------------------------------------------------------------------------
 
 all: $(NAME)
 
@@ -125,6 +144,13 @@ $(NAME): $(OBJ)
 $(OBJ_PATH)%.o: %.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+
+linux:
+
+window:
+	@echo "----------------------------------------"
+	@gcc $(FLAGS) $(SRC) $(INCLUDE) $(LIBFT) $(OPENCL_WIN) $(SDL2_WIN) -std=gnu11 -lm -lws2_32
+	@echo "----------------------------------------"
 
 debug:
 	@gcc -g3 -fsanitize=address $(SRC) $(LIBGRPH) $(INCLUDE) $(LDLIBS) $(LDFLAGS)

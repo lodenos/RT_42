@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:28:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/17 16:15:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/28 00:23:22 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ void    event_everything(t_env *e)
             else if (e->event.button.button == SDL_BUTTON_RIGHT)
                 e->mouse.right = 0;
         }
-        usleep(10000);
+    //    usleep(10000);
     }
 }

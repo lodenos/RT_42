@@ -12,131 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0834207c-dc4a-455f-b414-e20c2d9e7b79" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CMakeLists.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ProgressBar.sh" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/draw_perlin.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/filtered_r_b.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_camera.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_color.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_cone.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_cylinder.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_file_ortv1.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_ort_cone.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_ort_cylinder.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_ort_plan.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_ort_sphere.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_ort_torus.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_plan.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_sphere.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_spot.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_torus.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/get_vec3.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/perlin_noise.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/obj/perlin_noise2.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/cone.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/cylinder.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/cylindre.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/plan.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene.obj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene2.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene3.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene4.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene5.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/scene_simple.ort" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scene/sphere.ortv1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/clustering/host.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/clustering/slave.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_cone.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_cylinder.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_plan.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_sphere.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_torus.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_camera.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_color.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_cone.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_cylinder.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_file_ortv1.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_plan.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_scene.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_sphere.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_spot.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_torus.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/parser/extension_ortv1/get_vec3.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/shader/bois_effect.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/shader/filtered_r_b.c" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/shader/gaussien_blur.c" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RT" afterPath="$PROJECT_DIR$/RT" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libft/ft_strsplit.o" afterPath="$PROJECT_DIR$/libft/ft_strsplit.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libft/libft.a" afterPath="$PROJECT_DIR$/libft/libft.a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/OCL_run_raytracing.o" afterPath="$PROJECT_DIR$/obj/OCL_run_raytracing.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/bump_mapping.o" afterPath="$PROJECT_DIR$/obj/bump_mapping.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/check_object.o" afterPath="$PROJECT_DIR$/obj/check_object.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/cone.o" afterPath="$PROJECT_DIR$/obj/cone.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/create_window.o" afterPath="$PROJECT_DIR$/obj/create_window.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/cylinder.o" afterPath="$PROJECT_DIR$/obj/cylinder.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/diffused_light.o" afterPath="$PROJECT_DIR$/obj/diffused_light.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/event_RT.o" afterPath="$PROJECT_DIR$/obj/event_RT.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/event_everything.o" afterPath="$PROJECT_DIR$/obj/event_everything.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/filtered_RGB.o" afterPath="$PROJECT_DIR$/obj/filtered_RGB.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/fps_info.o" afterPath="$PROJECT_DIR$/obj/fps_info.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/get_file_ort.o" afterPath="$PROJECT_DIR$/obj/get_file_ort.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/get_ort.o" afterPath="$PROJECT_DIR$/obj/get_ort.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/get_ort_config.o" afterPath="$PROJECT_DIR$/obj/get_ort_config.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/get_ort_group.o" afterPath="$PROJECT_DIR$/obj/get_ort_group.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/get_ort_scene.o" afterPath="$PROJECT_DIR$/obj/get_ort_scene.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/get_scene.o" afterPath="$PROJECT_DIR$/obj/get_scene.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/host.o" afterPath="$PROJECT_DIR$/obj/host.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/key_press.o" afterPath="$PROJECT_DIR$/obj/key_press.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/key_release.o" afterPath="$PROJECT_DIR$/obj/key_release.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/light.o" afterPath="$PROJECT_DIR$/obj/light.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/main.o" afterPath="$PROJECT_DIR$/obj/main.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/maths_perlin.o" afterPath="$PROJECT_DIR$/obj/maths_perlin.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/plan.o" afterPath="$PROJECT_DIR$/obj/plan.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/play_scene.o" afterPath="$PROJECT_DIR$/obj/play_scene.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/run_object.o" afterPath="$PROJECT_DIR$/obj/run_object.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/run_raytracing.o" afterPath="$PROJECT_DIR$/obj/run_raytracing.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/specular_light.o" afterPath="$PROJECT_DIR$/obj/specular_light.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/sphere.o" afterPath="$PROJECT_DIR$/obj/sphere.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/super_sampling.o" afterPath="$PROJECT_DIR$/obj/super_sampling.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/window_resize.o" afterPath="$PROJECT_DIR$/obj/window_resize.o" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rt_filter.iml" afterPath="$PROJECT_DIR$/.idea/rt_filter.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/obj/voronoi.o" afterPath="$PROJECT_DIR$/obj/voronoi.o" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Makefile" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/head/lib_RT.h" afterPath="$PROJECT_DIR$/head/lib_RT.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/head_cl/lib_RT_CL.hl" afterPath="$PROJECT_DIR$/head_cl/lib_RT_CL.hl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libft/Makefile" afterPath="$PROJECT_DIR$/libft/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libft/head/libft.h" afterPath="$PROJECT_DIR$/libft/head/libft.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libft/src/ft_strsplit.c" afterPath="$PROJECT_DIR$/libft/src/ft_strsplit.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scene/scene.ort" afterPath="$PROJECT_DIR$/scene/scene.ort" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/event_RT/event_RT.c" afterPath="$PROJECT_DIR$/src/event_RT/event_RT.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/event_RT/fps_info.c" afterPath="$PROJECT_DIR$/src/event_RT/fps_info.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.c" afterPath="$PROJECT_DIR$/src/main.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/cone.c" afterPath="$PROJECT_DIR$/src/object/cone.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/cylinder.c" afterPath="$PROJECT_DIR$/src/object/cylinder.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/plan.c" afterPath="$PROJECT_DIR$/src/object/plan.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/sphere.c" afterPath="$PROJECT_DIR$/src/object/sphere.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_file_ort.c" afterPath="$PROJECT_DIR$/src/parser/extension_ort/get_file_ort.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort.c" afterPath="$PROJECT_DIR$/src/parser/extension_ort/get_ort.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_config.c" afterPath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_config.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_group.c" afterPath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_group.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_scene.c" afterPath="$PROJECT_DIR$/src/parser/extension_ort/get_ort_scene.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ray_tracing/play_scene.c" afterPath="$PROJECT_DIR$/src/ray_tracing/play_scene.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ray_tracing/run_object.c" afterPath="$PROJECT_DIR$/src/ray_tracing/run_object.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ray_tracing/run_raytracing.c" afterPath="$PROJECT_DIR$/src/ray_tracing/run_raytracing.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shader/algo_perlin.c" afterPath="$PROJECT_DIR$/src/shader/algo_perlin.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shader/bump_mapping.c" afterPath="$PROJECT_DIR$/src/shader/bump_mapping.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shader/diffused_light.c" afterPath="$PROJECT_DIR$/src/shader/diffused_light.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shader/filtered_RGB.c" afterPath="$PROJECT_DIR$/src/shader/filtered_RGB.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shader/maths_perlin.c" afterPath="$PROJECT_DIR$/src/shader/maths_perlin.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/shader/specular_light.c" afterPath="$PROJECT_DIR$/src/shader/specular_light.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_cl/object/cone.cl" afterPath="$PROJECT_DIR$/src_cl/object/cone.cl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_cl/ray_tracing/check_object.cl" afterPath="$PROJECT_DIR$/src_cl/ray_tracing/check_object.cl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_cl/ray_tracing/run_object.cl" afterPath="$PROJECT_DIR$/src_cl/ray_tracing/run_object.cl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_cl/ray_tracing/run_raytracing.cl" afterPath="$PROJECT_DIR$/src_cl/ray_tracing/run_raytracing.cl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_cl/shader/bump_mapping.cl" afterPath="$PROJECT_DIR$/src_cl/shader/bump_mapping.cl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src_cl/shader/specular_light.cl" afterPath="$PROJECT_DIR$/src_cl/shader/specular_light.cl" />
     </list>
     <ignored path="rt_filter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -159,8 +37,28 @@
       <file leaf-file-name="voronoi.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shader/voronoi.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="33" />
+            <state relative-caret-position="180">
+              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="algo_perlin.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shader/algo_perlin.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="maths_perlin.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/shader/maths_perlin.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -176,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run_raytracing.c" pinned="false" current-in-tab="true">
+      <file leaf-file-name="run_raytracing.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ray_tracing/run_raytracing.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+            <state relative-caret-position="567">
+              <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -190,7 +88,7 @@
         <entry file="file://$PROJECT_DIR$/Makefile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
-              <caret line="92" column="53" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
+              <caret line="92" column="52" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -223,11 +121,11 @@
         <option value="$PROJECT_DIR$/src/shader/marbre.c" />
         <option value="$PROJECT_DIR$/Makefile" />
         <option value="$PROJECT_DIR$/src/shader/maths_perlin.c" />
-        <option value="$PROJECT_DIR$/src/ray_tracing/run_raytracing.c" />
-        <option value="$PROJECT_DIR$/src/shader/voronoi.c" />
         <option value="$PROJECT_DIR$/src/shader/algo_perlin.c" />
         <option value="$PROJECT_DIR$/src/shader/bump_mapping.c" />
         <option value="$PROJECT_DIR$/head/lib_RT.h" />
+        <option value="$PROJECT_DIR$/src/ray_tracing/run_raytracing.c" />
+        <option value="$PROJECT_DIR$/src/shader/voronoi.c" />
       </list>
     </option>
   </component>
@@ -358,7 +256,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/REMODIF_WOLF/Wolf3d" />
+    <property name="last_opened_file_path" value="$USER_HOME$/REMODIF_WOLF/Wolf3d_test_textures" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/opettex/rt_perlin2d/src/object/cylinder.c" />
   </component>
   <component name="RunManager" selected="Application.Build All">
@@ -551,16 +449,16 @@
       <workItem from="1479329848577" duration="677000" />
       <workItem from="1479331196521" duration="102000" />
       <workItem from="1479332842028" duration="43920000" />
-      <workItem from="1479934266030" duration="171000" />
+      <workItem from="1479934266030" duration="4283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65396000" />
+    <option name="totallyTimeSpent" value="69508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27561557" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -568,7 +466,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.50277996" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.49722" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.49722" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -622,6 +520,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -637,6 +536,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -798,13 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shader/algo_perlin.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="68" column="32" selection-start-line="68" selection-start-column="32" selection-end-line="68" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -813,13 +706,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shader/marbre.c" />
-    <entry file="file://$PROJECT_DIR$/src/shader/maths_perlin.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/head/lib_RT.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -831,15 +717,7 @@
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="92" column="53" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shader/voronoi.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="33" />
+          <caret line="92" column="52" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -854,8 +732,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ray_tracing/run_raytracing.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+        <state relative-caret-position="567">
+          <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shader/voronoi.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shader/algo_perlin.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shader/maths_perlin.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding />
         </state>
       </provider>

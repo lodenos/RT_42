@@ -6,11 +6,30 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 00:08:10 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/07 15:46:02 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
+
+static inline cl_float3 rayonRefracte(cl_float3 normal, cl_float3 incident,
+        float n1, float n2)
+{
+    const float n = (n1 / n2) * sin(n1 / n2);
+    cl_float3 inv;
+
+    inv = reverse(incident);
+    float cosI = dot(normal, inv);
+    float cosT = sqrt(1 - n * n *(1 - (cosI * cosI)));
+    cl_float3 T;
+    if(cosI > 0)
+        T = add(vector_mult_x(normal, (cosI * n - cosT)), vector_mult_x(incident, n));
+    else
+        T = add(vector_mult_x(normal, (cosI * n + cosT)),vector_mult_x(incident, n));
+    return (T);
+}
+
+//------------------------------------------------------------------------------
 
 inline void get_normal_object(t_obj *obj, register t_ray ray,
         register float det)
@@ -40,6 +59,8 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
     t_obj           obj_tmp;
     unsigned int    color;
 
+    int             i = 0;
+
     ray->color = 0x0;
     det = check_object(obj, *ray, &id, NO_MASK);
     if ((int)det == -1)
@@ -52,23 +73,63 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 
     if (obj_tmp.reflexion > 0)
     {
+        while (i < 5)
+        {
+            ray->pos = obj_tmp.collision;
+            ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
+                    dot(obj_tmp.normal, ray->dir)), 2));
+            det = check_object(obj, *ray, &id, id);
+            if (det == -1)
+                return ;
+            det += 0.01;
+            color = ray->color;
+            obj_tmp = obj[id];
+            obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
+            get_normal_object(&obj_tmp, *ray, det);
+            bump_mapping(&obj_tmp);
+            light(e, id, obj_tmp, ray);
+            if (obj_tmp.reflexion == 0)
+                return ;
+            ++i;
+        }
+
+        if (obj_tmp.reflexion > 0)
+            ray->color = 0x0;
+    }
+
+//------------------------------------------------------------------------------
+
+    else if (obj_tmp.refraction > 0)
+    {
         ray->pos = obj_tmp.collision;
-        ray->dir = sub(ray->dir, vector_mult_x(vector_mult_x(obj_tmp.normal,
-                dot(obj_tmp.normal, ray->dir)), 2));
-        det = check_object(obj, *ray, &id, 5);
+        ray->dir = rayonRefracte(obj_tmp.normal, ray->dir, 1, -1.5);
+        det = check_object(obj, *ray, &id, id);
         if (det == -1)
             return ;
-        color = ray->color;
+        det += 0.01;
         obj_tmp = obj[id];
         obj_tmp.collision = coordinates_collision(ray->pos, ray->dir, det);
+        ray->color = (unsigned int)limit((unsigned char)(ray->color >> 24) +
+            (unsigned char)(ray->color >> 24) / 2) << 24 |
+            (unsigned int)limit((unsigned char)(ray->color >> 16) +
+            (unsigned char)(ray->color >> 16) / 2) << 16 |
+            (unsigned int)limit((unsigned char)(ray->color >> 8) +
+            (unsigned char)(ray->color >> 8) / 2) << 8 |
+            (unsigned int)limit((unsigned char)(ray->color) +
+            (unsigned char)(ray->color)/ 2);
+
+        color = ray->color;
         get_normal_object(&obj_tmp, *ray, det);
         bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
     }
+
+//------------------------------------------------------------------------------
+
     else
     {
-        obj_tmp.type_bump = 4;
-	    bump_mapping(&obj_tmp);
+        obj_tmp.type_bump = 7;
+        bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
     }
 }

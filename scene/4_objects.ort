@@ -1,0 +1,80 @@
+.config
+{
+    GPU             off
+    thread          4
+    supersampling   1
+}
+
+scene
+{
+	diffused	100
+    ambient     100
+    specular    100
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+    power       100
+    position    (-299, -199, 0)
+    colOr       0xFFFFFF
+}
+
+plan
+{
+    position    (0, 0, 500)
+    rotate      (0, 0, -1)
+    color       (255, 255, 0)
+}
+
+plan
+{
+    position    (300, 0, 0)
+    rotate      (-1, 0, 0)
+    color       (0, 0, 255)
+}
+
+plan
+{
+    position    (0, 200, 0)
+    rotate      (0, -1, 0)
+    color       (0, 255, 0)
+}
+
+plan
+{
+    position    (0, -200, 0)
+    rotate      (0, 1, 0)
+    color       (200, 160, 80)
+}
+
+sphere
+{
+    position    (0, 0, 400)
+    rotate      (0, 0, 0)
+    color       (255, 0, 0)
+    radius      (100, 0, 0)
+    refraction   1
+}
+
+cone
+{
+    position    (1, 2, 500)
+    rotate      (0, 1, 0)
+    radius      (0, 0, 0)
+    angle       30
+}
+
+cylinder
+{
+    position    (0, 2, 500)
+    rotate      (0, 1, 0)
+    radius      (0, 0, 0)
+    angle       30
+}

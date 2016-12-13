@@ -8,7 +8,7 @@
 scene
 {
     ambient     100
-    specular    99
+    specular    100
 }
 
 camera
@@ -65,7 +65,6 @@ plan
     position    (300, 0, 0)
     rotate      (-1, 0, 0)
     color       (0, 0, 255)
-    reflexion   1
 }
 
 plan
@@ -88,9 +87,9 @@ group
     {
         position    (0, 0, 400)
         rotate      (0, 0, 0)
-        color       0xFF0000
+        color       (255, 0, 0)
         radius      (100, 0, 0)
-        reflexion   1
+        refraction   1
     }
 
     sphere
@@ -99,6 +98,7 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (40, 0, 0)
+        Bump        2
     }
 
     sphere
@@ -107,6 +107,7 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (40, 0, 0)
+        Bump        3
     }
 
     sphere
@@ -115,6 +116,7 @@ group
         rotate      (0, 0, 0)
         color       (81, 42, 0)
         radius      (30, 0, 0)
+        Bump        4
     }
 
     sphere
@@ -140,7 +142,6 @@ cone
     rotate      (0, 1, 0)
     radius      (0, 0, 0)
     angle       30
-
 }
 
 #.texture

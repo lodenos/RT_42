@@ -6,38 +6,51 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/16 09:51:30 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/29 01:07:45 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_RT_H
 #define LIB_RT_H
 
-#include <arpa/inet.h>
+#define MAC
+//#define WINDOW
+
 #include <libft.h>
-#include <OpenCL/cl.h>
-#include <netdb.h>
-#include <netinet/in.h>
+#include <math.h>
 #include <pthread.h>
 #include <SDL2/SDL.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <sys/time.h>
 #include <unistd.h>
 
-#define TITLE       "RT"
+#ifdef  MAC
 
+    #include <arpa/inet.h>
+    #include <OpenCL/cl.h>
+    #include <netdb.h>
+    #include <netinet/in.h>
+    #include <sys/socket.h>
+    #include <sys/types.h>
+    #include <sys/time.h>
+
+#endif
+
+#ifdef  WINDOW
+
+    #include <windows.h>
+    #include <winsock2.h>
+    #include <CL/cl.h>
+
+#endif
+
+#define TITLE       "RT"
 #define CONE        2
 #define CYLINDER    4
 #define PLAN        8
 #define SPHERE      16
 #define TORUS       32
 #define TRIANGLE    64
-
-#define NO_MASK     0xFFFFFFFFFFFFFFFF
-
+#define NO_MASK     0xFFFFFFFF
 #define D_TO_RAD    0.01745329251f
-
 #define VALID       "RT_Protocol_Clusturing_GLodenos_"
 #define CONNECT     "RT_Protocol_Clusturing_Slave_OK_"
 
@@ -239,7 +252,6 @@ typedef struct          s_mem           /**/
 
 
 cl_float3               add(register cl_float3 a, register cl_float3 b);
-cl_float2		        add_vec(cl_float2 a, cl_float2 b);
 void                    bump_mapping(t_obj *obj);
 void                    camera(register t_cam cam, t_ray *ray, register float x, register float y);
 float                   check_object(t_obj *obj, register t_ray ray, size_t *id, size_t mask);
@@ -249,18 +261,13 @@ int                     cluster_write_buffer(t_mem mem, void *data);
 float                   cone(register t_obj obj, register t_ray ray);
 cl_float3               coordinates_collision(register cl_float3 a, register cl_float3 b, register float det);
 void                    create_window(t_env *e, Uint32 flags);
-cl_float2		        div_vec(cl_float2 a, cl_float b);
 float                   cylinder(register t_obj obj, register t_ray ray);
 void                    diffused_light(t_ray *ray, register t_spt spt, register t_obj obj);
-float			        dot_vec(cl_float2 a, cl_float2 b);
 float                   dot(register cl_float3 a, register cl_float3 b);
 void                    err_cl(cl_int err);
 void                    err_cl_sub(cl_int err);
 void                    event_everything(t_env *e);
 int                     event_RT(t_env *e);
-float         		    fract(float x);
-cl_float2		        fract_2d(cl_float2 v);
-cl_float2               fract_vec(cl_float2 x);
 void                    fps_info(void);
 void                    get_camera(t_env *e, char **line);
 unsigned int            get_color(char *str);
@@ -293,11 +300,11 @@ void                    key_press(t_env *e);
 void                    key_release(t_env *e);
 void                    light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
 unsigned int            limit(register float x);
+float                   line(float pos,float size,float seed);
 void                    lunch_opencl(t_opcl *cl);
 void                    OCL_run_raytracing(t_env *e);
 void                    *mapping(void *arg);
 cl_float3               normalize(register cl_float3 vect);
-float			        perlin(cl_float2);
 float                   plan(register t_obj obj, register t_ray ray);
 void                    *play_scene(void *arg);
 void                    push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w, size_t h);
@@ -309,17 +316,37 @@ float                   run_object(register t_obj obj, register t_ray ray);
 void                    run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 void                    *slave(void *arg);
 void                    *slave_connection(void *arg);
-float                   smooth_voronoi(cl_float2 x);
 float                   specular_light(register t_spt spt, register t_obj obj);
 float                   sphere(register t_obj obj, register t_ray ray);
 cl_float3               sub(register cl_float3 a, register cl_float3 b);
-cl_float2               sub_vec(cl_float2 a, cl_float2 b);
-cl_float2               sub_vec_lol(cl_float2 a, cl_float b);
 void                    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
 float                   torus(register t_obj obj, register t_ray ray);
+float                   varazslat(cl_float2 position, float time);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
-float                   smooth_voronoi(cl_float2 x);
 void                    window_resize(t_env *e);
+
+//  New Prototype
+
+char                    *clustering_hash_contribution(size_t nbr_elem, size_t nbr_block);
+size_t                  cluster_get_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
+void                    cluster_finish_contribution(size_t id, char *tab_work, t_img img, unsigned int *img_work, t_mimg mimg);
+
+cl_float2               add_vec(cl_float2 a, cl_float2 b);
+cl_float2               div_vec(cl_float2 a, cl_float b);
+cl_float2               dot_vec_f(cl_float2 a, cl_float b);
+float                   dot_vec(cl_float2 a, cl_float2 b);
+float                   fract(float x);
+cl_float2               fract_2d(cl_float2 v);
+cl_float2               fract_vec(cl_float2 x);
+cl_float2               sub_vec(cl_float2 a, cl_float2 b);
+cl_float2               sub_vec_lol(cl_float2 a, cl_float b);
+
+float                   ft_max(float x, float min, float maxi);
+float                   noise(cl_float2 n);
+float                   perlin(cl_float2 n);
+
+cl_float2               random2(cl_float2 c);
+float                   smooth_voronoi(cl_float2 x);
 
 #endif

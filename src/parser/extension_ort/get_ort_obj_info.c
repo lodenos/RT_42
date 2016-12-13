@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:37:43 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 00:33:26 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/07 12:26:41 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void            get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type)
         else if (!ft_strcmp_case(str[*i], "reflexion"))
             e->obj[e->elem_obj].reflexion = ft_atoi(str[++*i]);
         else if (!ft_strcmp_case(str[*i], "refraction"))
-            ++*i;
+            e->obj[e->elem_obj].refraction = ft_atoi(str[++*i]);
         else if (!ft_strcmp_case(str[*i], "rotate"))
             get_info_position(&e->obj[e->elem_obj].rotate, str[++*i]);
         else

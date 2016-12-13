@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 16:50:38 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 00:34:50 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/11/28 00:19:31 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline void fps_info(void)
 {
-    static struct timeval   fps;
+/*    static struct timeval   fps;
 	struct timeval			tmp;
 	char					*txt;
 	int						v;
@@ -28,5 +28,5 @@ inline void fps_info(void)
     ft_putendl(txt);
 	free(txt);
     if (gettimeofday(&fps, NULL) == -1)
-        ft_putstr_err("ERROR: Crash gettimeofday", 1);
+        ft_putstr_err("ERROR: Crash gettimeofday", 1);*/
 }
