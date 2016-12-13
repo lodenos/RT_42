@@ -6,13 +6,13 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:30:27 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/09 11:57:29 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline float	plan(register t_obj obj, register t_ray ray)
+inline float		plan(register t_obj obj, register t_ray ray)
 {
 	register float	a;
 	register float	b;
@@ -21,8 +21,8 @@ inline float	plan(register t_obj obj, register t_ray ray)
 	{
 		if ((a = dot(ray.dir, reverse(obj.rotate))) < 0.0f)
 			return (-1);
-		if ((b = -(dot(reverse(obj.rotate), sub(ray.pos, obj.pos_a)) / a)) <
-				0.0f)
+		if ((b = -(dot(reverse(obj.rotate), sub(ray.pos, obj.pos_a)) / a)) \
+				< 0.0f)
 			return (-1);
 		return (b);
 	}
