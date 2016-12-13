@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 12:10:46 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/13 15:10:15 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,7 @@ cl_float3				cross(register cl_float3 a, register cl_float3 b);
 float                   cylinder(register t_obj obj, register t_ray ray);
 void                    diffused_light(t_ray *ray, register t_spt spt, register t_obj obj);
 float                   dot(register cl_float3 a, register cl_float3 b);
+float					ellipsoid(register t_obj obj, register t_ray ray);
 void                    err_cl(cl_int err);
 void                    err_cl_sub(cl_int err);
 void                    event_everything(t_env *e);
@@ -349,12 +350,14 @@ void                    run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 void                    *slave(void *arg);
 void                    *slave_connection(void *arg);
 struct s_roots			solve_cubic_equation(register double a, register double b, register double c, register double d);
+struct s_roots			solve_quadratic_equation(register double a, register double b, register double c);
 struct s_roots			solve_quartic_equation(register double a, register double b, register double c, register double d, register double e);
 float                   specular_light(register t_spt spt, register t_obj obj);
 float                   sphere(register t_obj obj, register t_ray ray);
 cl_float3               sub(register cl_float3 a, register cl_float3 b);
 void                    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
 double                  torus(register t_obj obj, register t_ray ray);
+float					triangle(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
 cl_float3				vector_div(register cl_float3 a, register float x);
