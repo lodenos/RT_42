@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stereoscopie.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrandria <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 09:50:11 by nrandria          #+#    #+#             */
-/*   Updated: 2016/12/12 17:04:43 by nrandria         ###   ########.fr       */
+/*   Updated: 2016/12/13 17:04:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ unsigned int	*stereoscopie(unsigned int *img_l,
 	k = 0;
 	ft_memcpy((void *)left, (void *)img_l, resolution * 4);
 	ft_memcpy((void *)right, (void *)img_r, resolution * 4);
-	filtered_rgb(0xFF000000, left, resolution);
-	filtered_rgb(0x00FFFF00, right, resolution);
+	filtered_rgb(0xFF0000FF, left, resolution);
+	filtered_rgb(0x00FFFFFF, right, resolution);
 	if (!(img = (unsigned int *)ft_memalloc(sizeof(unsigned int) * resolution)))
 		ft_putstr_err("ERROR malloc", 1);
 	while (k < resolution)

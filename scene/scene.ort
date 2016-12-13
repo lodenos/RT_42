@@ -3,7 +3,7 @@
     GPU             off
     thread          4
     supersampling   1
-	filtered_rgb 	color	(20, 255, 0)
+	stereoscopie
 }
 
 scene
