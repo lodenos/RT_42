@@ -6,21 +6,28 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 16:56:57 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/13 17:08:45 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-float		cyl2(register t_obj obj, register t_ray ray, float det)
+float		cyl2(register t_obj obj, register t_ray ray, float det, float det2)
 {
 	register float		m;
+	register float		a;
 
 	m = dot(ray.dir, obj.rotate) * det + dot(sub(ray.pos, obj.pos_a), obj.rotate);
+	a = dot(ray.dir, obj.rotate) * det2 + dot(sub(ray.pos, obj.pos_a), obj.rotate);
 	if (obj.radius_a.y == 0)
 		return (det);
 	if (m > obj.radius_a.y || m < 0)
-		return (-1);
+	{
+		if (a > obj.radius_a.y || a < 0)
+			return (-1);
+		else
+			return (det2);
+	}
 	return (det);
 }
 
@@ -43,8 +50,8 @@ inline float		cylinder(register t_obj obj, register t_ray ray)
 		cyl.d = (-cyl.b + sqrt(det)) / (2 * cyl.a);
 		cyl.e = (-cyl.b - sqrt(det)) / (2 * cyl.a);
 		if (cyl.e < cyl.d)
-			return (cyl2(obj, ray, cyl.e));
-		return (cyl2(obj, ray, cyl.d));
+			return (cyl2(obj, ray, cyl.e, cyl.d));
+		return (cyl2(obj, ray, cyl.d, cyl.e));
 	}
 	return (-1);
 }
