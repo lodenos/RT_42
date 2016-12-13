@@ -6,7 +6,7 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 12:20:16 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/02 15:25:07 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/13 12:11:34 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ struct s_roots			three_roots_real(register double a, register double b,\
 	return (roots);
 }
 
-struct s_roots			solve_cubic_equ(register double a, register double b,\
+struct s_roots			solve_cubic_equation(register double a, register double b,\
 		register double c, register double d)
 {
 	register double				f;

@@ -6,7 +6,7 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 12:16:45 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/03 18:51:26 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/13 12:11:49 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ struct s_roots	solve_quartic_equation(register double a, register double b,\
 	g = d + (b * b * b / 8.0f) - (b * c / 2.0f);
 	h = e - (3.0f * b * b * b * b / 256.0f) + (b * b * c / 16.0f) - \
 		(b * d / 4.0f);
-	roots = solve_cubic_equ(1.0f, f / 2.0f, (f * f - 4.0f * h) / 16.0f, \
+	roots = solve_cubic_equation(1.0f, f / 2.0f, (f * f - 4.0f * h) / 16.0f, \
 			-(g * g) / 64.0f);
 //	printf("here %lf | %lf | %lf\n", roots.x1, roots.x2, roots.x3);
 	if (roots.x4 == 1)
