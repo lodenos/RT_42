@@ -1,0 +1,53 @@
+.config
+{
+    GPU             off
+    thread          8
+    supersampling   12
+}
+
+scene
+{
+    ambient     100
+    specular    100
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+    power       100
+    position    (0, 0, -1000)
+    color       0xFFFFFF
+}
+
+ellipsoid
+{
+    position      (0, 0, 300)
+    rotate      (0, 0, 1)
+    radius_a    (200, 100, 50)
+    radius_b    (50, 0, 0)
+    color       (255, 0, 0)
+}
+
+ellipsoid
+{
+    position      (250, 0, 300)
+    rotate      (0, 0, -1)
+    radius_a    (50, 200, 50)
+    radius_b    (50, 0, 0)
+    color       (255, 255, 0)
+}
+
+ellipsoid
+{
+    position      (0, 150, 300)
+    rotate      (0, 0, -1)
+    radius_a    (50, 50, 300)
+    radius_b    (50, 0, 0)
+    color       (255, 0, 255)
+}

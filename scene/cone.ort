@@ -1,0 +1,46 @@
+# Color     or  color       is RGB  {red, green, blue}
+# Position  or  position    is XYZ  {X, Y, Z}
+# Rotate    or  rotate      is 360  {X, Y, Z}
+
+.config
+{
+    GPU             off
+    thread          8
+    supersampling   1
+}
+
+scene
+{
+    ambient     100
+    specular    99
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+    power       100
+    PosiTIon    (-299, 199, 0)
+    color       0xFFFFFF
+}
+
+cone
+{
+    position    (1, 2, 500)
+    rotate      (1, -11, 1)
+    radius      (0, 200, 0)
+    angle       30
+	color		(0, 255, 0)
+}
+
+#.texture
+#{
+#    lol:    texture/lol.png
+#    name:   texture/img.jpeg
+#    name2:  texture/img2.png
+#}

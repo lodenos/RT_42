@@ -1,0 +1,170 @@
+.config
+{
+    GPU             off
+    thread          8
+    supersampling   12
+}
+
+scene
+{
+    ambient     100
+    specular    100
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+    power       100
+    position    (200, 200, 100)
+    color       0xFFFFFF
+}
+
+plan
+{
+    position    (0, 0, 700)
+    rotate      (0, 0, -1)
+    color       (255, 255, 0)
+}
+
+plan
+{
+    position    (0, 200, 0)
+    rotate      (0, -1, 0)
+    color       (255, 0, 0)
+}
+
+plan
+{
+    position    (0, -200, 700)
+    rotate      (0, 1, 0)
+    color       (0, 255, 0)
+}
+
+plan
+{
+    position    (400, 0, 700)
+    rotate      (-1, 0, 0)
+    color       (255, 0, 250)
+}
+
+plan
+{
+    position    (-400, 0, 700)
+    rotate      (1, 0, 0)
+    color       (0, 255, 250)
+}
+
+triangle
+{
+	position_a	(-50, -50, 300)
+	position_b	(-50, 50, 300)
+	position_c	(50, 50, 300)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(-50, -50, 300)
+	position_b	(50, 50, 300)
+	position_c	(50, -50, 300)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(-50, -50, 300)
+	position_b	(-50, 50, 300)
+	position_c	(-50, -50, 400)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(-50, 50, 300)
+	position_b	(-50, 50, 400)
+	position_c	(-50, -50, 400)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(50, -50, 300)
+	position_c	(50, -50, 400)
+	position_b	(50, 50, 300)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(50, 50, 300)
+	position_c	(50, -50, 400)
+	position_b	(50, 50, 400)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(-50, 50, 300)
+	position_b	(-50, 50, 400)
+	position_c	(50, 50, 300)
+	color	(25, 255, 125)
+}
+
+triangle
+{
+	position_a	(50, 50, 300)
+	position_b	(-50, 50, 400)
+	position_c	(50, 50, 400)
+	color	(25, 255, 125)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
