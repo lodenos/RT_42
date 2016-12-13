@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/29 01:07:45 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 12:10:46 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,13 @@
 #define SPHERE      16
 #define TORUS       32
 #define TRIANGLE    64
+#define ELLIPSOID	128
 #define NO_MASK     0xFFFFFFFF
 #define D_TO_RAD    0.01745329251f
+#define EPSILON		0.000001
 #define VALID       "RT_Protocol_Clusturing_GLodenos_"
 #define CONNECT     "RT_Protocol_Clusturing_Slave_OK_"
+#define ABS(x)		((x) < 0 ? -(x) : (x))
 
 typedef struct s_cam        t_cam;
 typedef struct s_env        t_env;
@@ -70,6 +73,34 @@ typedef struct s_slv        t_slv;
 typedef struct sockaddr_in  sockaddr_in;    /* struct sockaddr_in -> sockaddr_in    */
 typedef struct sockaddr     sockaddr;       /* stwruct sockaddr -> sockaddr         */
 typedef struct s_spt        t_spt;
+typedef struct s_roots		t_roots;
+typedef struct s_complex	t_complex;
+typedef struct s_equ		t_equ;
+
+struct					s_equ
+{
+	double				a;
+	double				b;
+	double				c;
+	double				d;
+	double				e;
+};
+
+struct					s_complex
+{
+	double				r;
+	double				i;
+};
+
+struct					s_roots
+{
+	double				x1;
+	double				x2;
+	double				x3;
+	double				x4;
+	t_complex			complex1;
+	t_complex			complex2;
+};
 
 struct                  s_cam           /* Camera                               */
 {
@@ -261,6 +292,7 @@ int                     cluster_write_buffer(t_mem mem, void *data);
 float                   cone(register t_obj obj, register t_ray ray);
 cl_float3               coordinates_collision(register cl_float3 a, register cl_float3 b, register float det);
 void                    create_window(t_env *e, Uint32 flags);
+cl_float3				cross(register cl_float3 a, register cl_float3 b);
 float                   cylinder(register t_obj obj, register t_ray ray);
 void                    diffused_light(t_ray *ray, register t_spt spt, register t_obj obj);
 float                   dot(register cl_float3 a, register cl_float3 b);
@@ -271,6 +303,7 @@ int                     event_RT(t_env *e);
 void                    fps_info(void);
 void                    get_camera(t_env *e, char **line);
 unsigned int            get_color(char *str);
+cl_float3				get_ellipsoid_normale(register t_obj *obj, register float det);
 void                    get_file_mlt(t_env *e, char *file);
 void                    get_file_obj(t_env *e, char *file);
 void                    get_file_ort(t_env *e, char *file);
@@ -315,13 +348,17 @@ float                   run_object(register t_obj obj, register t_ray ray);
 void                    run_raytracing(t_env *e, t_obj *obj, t_ray *ray);
 void                    *slave(void *arg);
 void                    *slave_connection(void *arg);
+struct s_roots			solve_cubic_equation(register double a, register double b, register double c, register double d);
+struct s_roots			solve_quartic_equation(register double a, register double b, register double c, register double d, register double e);
 float                   specular_light(register t_spt spt, register t_obj obj);
 float                   sphere(register t_obj obj, register t_ray ray);
 cl_float3               sub(register cl_float3 a, register cl_float3 b);
 void                    super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
-float                   torus(register t_obj obj, register t_ray ray);
+double                  torus(register t_obj obj, register t_ray ray);
 cl_float3               vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3               vector_mult_x(register cl_float3 vect, register float x);
+cl_float3				vector_div(register cl_float3 a, register float x);
+float					vector_len(register cl_float3 a);
 void                    window_resize(t_env *e);
 
 //  New Prototype
