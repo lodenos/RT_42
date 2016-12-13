@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/12/13 12:03:36 by anespoul         ###   ########.fr        #
+#    Updated: 2016/12/13 15:11:28 by anespoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,8 @@ SRC_NAME = 	main.c										\
 			vector/vector_formula_1.c					\
 			vector/vector_formula_2.c					\
 			vector/quartic_equation.c					\
-			vector/cubic_equation.c
+			vector/cubic_equation.c						\
+			vector/quadratic_equation.c
 
 OBJ_PATH	=	obj/
 
