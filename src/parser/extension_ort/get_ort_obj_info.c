@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:37:43 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/07 12:26:41 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 12:22:32 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,13 @@ void            get_ort_obj_info(t_env *e, char **str, size_t *i, size_t type)
             get_info_diffuse(&e->obj[e->elem_obj].diffuse, str[++*i]);
         else if (!ft_strcmp_case(str[*i], "gloss"))
             ++*i;
-        else if (!ft_strcmp_case(str[*i], "position"))
+        else if (!ft_strcmp_case(str[*i], "position") || !ft_strcmp_case(str[*i], "position_a"))
             get_info_position(&e->obj[e->elem_obj].pos_a, str[++*i]);
-        else if (!ft_strcmp_case(str[*i], "radius_a") || !ft_strcmp_case(str[*i], "radius"))
+		else if (!ft_strcmp_case(str[*i], "position_b"))
+			get_info_position(&e->obj[e->elem_obj].pos_b, str[++*i]);
+		else if (!ft_strcmp_case(str[*i], "position_c"))
+			get_info_position(&e->obj[e->elem_obj].pos_c, str[++*i]);
+		else if (!ft_strcmp_case(str[*i], "radius_a") || !ft_strcmp_case(str[*i], "radius"))
             get_info_radius(&e->obj[e->elem_obj].radius_a, str[++*i]);
         else if (!ft_strcmp_case(str[*i], "radius_b"))
             get_info_radius(&e->obj[e->elem_obj].radius_b, str[++*i]);

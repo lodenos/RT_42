@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 20:46:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/07 00:38:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 12:19:58 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ static inline void  init_spotlight_obj(t_env *e, char **str)
             ++e->scn.n_obj;
         else if (!ft_strcmp_case(str[i], "torus"))
             ++e->scn.n_obj;
+		else if (!ft_strcmp_case(str[i], "ellipsoid"))
+			++e->scn.n_obj;
+		else if (!ft_strcmp_case(str[i], "triangle"))
+			++e->scn.n_obj;
         ++i;
     }
     if (!(e->scn.n_obj && e->scn.n_spt))
@@ -80,6 +84,8 @@ void    get_info_ort(t_env *e, char **str, size_t *i)
         get_ort_obj_info(e, str, i, TORUS);
     else if (!ft_strcmp_case(str[*i], "triangle"))
         get_ort_obj_info(e, str, i, TRIANGLE);
+	else if (!ft_strcmp_case(str[*i], "ellipsoid"))
+		get_ort_obj_info(e, str, i, ELLIPSOID);
     else if (!ft_strcmp_case(str[*i], "group"))
     {
         if (e->group)
