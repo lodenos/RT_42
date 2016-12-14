@@ -3,58 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   vector_formula_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:49 by glodenos          #+#    #+#             */
-/*   Updated: 2016/10/06 20:41:53 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/12 13:41:40 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline cl_float3    add(register cl_float3 a, register cl_float3 b)
+inline cl_float3	add(register cl_float3 a, register cl_float3 b)
 {
-    register cl_float3  vect;
+	register cl_float3	vect;
 
-    vect.x = a.x + b.x;
-    vect.y = a.y + b.y;
-    vect.z = a.z + b.z;
-    return (vect);
+	vect.x = a.x + b.x;
+	vect.y = a.y + b.y;
+	vect.z = a.z + b.z;
+	return (vect);
 }
 
-inline cl_float3    normalize(register cl_float3 vect)
+inline cl_float3	normalize(register cl_float3 vect)
 {
-    register cl_float3  norm;
-    register float      value;
+	register cl_float3	norm;
+	register float		value;
 
-    value = 1.0f / sqrtf(dot(vect, vect));
-    norm.x = vect.x * value;
-    norm.y = vect.y * value;
-    norm.z = vect.z * value;
-    return (norm);
+	value = 1.0f / sqrtf(dot(vect, vect));
+	norm.x = vect.x * value;
+	norm.y = vect.y * value;
+	norm.z = vect.z * value;
+	return (norm);
 }
 
-inline cl_float3    reverse(register cl_float3 vect)
+inline cl_float3	reverse(register cl_float3 vect)
 {
-    register cl_float3  rev;
+	register cl_float3	rev;
 
-    rev.x = -vect.x;
-    rev.y = -vect.y;
-    rev.z = -vect.z;
-    return (rev);
+	rev.x = -vect.x;
+	rev.y = -vect.y;
+	rev.z = -vect.z;
+	return (rev);
 }
 
-inline float        dot(register cl_float3 a, register cl_float3 b)
+inline float		dot(register cl_float3 a, register cl_float3 b)
 {
-    return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z));
+	return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z));
 }
 
-inline cl_float3    sub(register cl_float3 a, register cl_float3 b)
+inline cl_float3	sub(register cl_float3 a, register cl_float3 b)
 {
-    register cl_float3  vector;
+	register cl_float3	vector;
 
-    vector.x = a.x - b.x;
-    vector.y = a.y - b.y;
-    vector.z = a.z - b.z;
-    return (vector);
+	vector.x = a.x - b.x;
+	vector.y = a.y - b.y;
+	vector.z = a.z - b.z;
+	return (vector);
 }

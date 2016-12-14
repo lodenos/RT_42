@@ -1,0 +1,38 @@
+# Color     or  color       is RGB  {red, green, blue}
+# Position  or  position    is XYZ  {X, Y, Z}
+# Rotate    or  rotate      is 360  {X, Y, Z}
+
+.config
+{
+    GPU             off
+    thread          8
+    supersampling   1
+}
+
+scene
+{
+    ambient     100
+    specular    99
+}
+
+camera
+{
+    resolution  (1920, 1080)
+    position    (0.0, 0.0, 0.0)
+    rotate      (0.0, 0.0, 1.0)
+}
+
+spotlight
+{
+    power       100
+    position    (299, 199, 0)
+    color       0xFFFFFF
+}
+
+sphere
+{
+	position    (100, 0, 400)
+	rotate      (0, 0, 0)
+	color       (255, 0, 0)
+	radius_a      (200, 0, 0)
+}

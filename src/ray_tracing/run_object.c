@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 21:43:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/06 23:48:09 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/13 12:31:37 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ inline float    run_object(register t_obj obj, register t_ray ray)
     else if (obj.type == SPHERE)
         return (sphere(obj, ray));
     else if (obj.type == TORUS)
-        return (sphere(obj, ray));
+        return (torus(obj, ray));
     else if (obj.type == TRIANGLE)
-        return (sphere(obj, ray));
-    return (-1);
+        return (triangle(obj, ray));
+    else if (obj.type == ELLIPSOID)
+		return (ellipsoid(obj, ray));
+	return (-1);
 }
