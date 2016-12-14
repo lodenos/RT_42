@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 04:15:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:29:19 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/14 11:46:22 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,14 @@ static void	type_damier(t_obj *obj, unsigned int x, unsigned int y,
 	}
 }
 
-inline void	bump_mapping(t_obj *obj)
+void		bump_mapping_sub(t_obj *obj)
 {
 	cl_float3		tmp;
 	unsigned int	x;
 	unsigned int	y;
 	unsigned int	z;
-	if (obj->type_bump == 0)
-		return ;
-	else if (obj->type_bump == 1)
-	{
-		tmp = sub(obj->collision, obj->pos_a);
-		obj->normal.x -= sinf(tmp.x) * 0.01f;
-		obj->normal.y -= sinf(tmp.y) * 0.01f;
-		obj->normal.z -= sinf(tmp.z) * 0.01f;
-	}
-	else if (obj->type_bump == 2)
+
+	if (obj->type_bump == 2)
 	{
 		tmp = sub(obj->collision, obj->pos_a);
 		y = (unsigned int)round(tmp.y * 0.1);
@@ -68,4 +60,21 @@ inline void	bump_mapping(t_obj *obj)
 		tmp = obj->collision;
 		obj->color *= smooth_voronoi((cl_float2){tmp.x, tmp.y});
 	}
+}
+
+inline void	bump_mapping(t_obj *obj)
+{
+	cl_float3		tmp;
+
+	if (obj->type_bump == 0)
+		return ;
+	else if (obj->type_bump == 1)
+	{
+		tmp = sub(obj->collision, obj->pos_a);
+		obj->normal.x -= sinf(tmp.x) * 0.01f;
+		obj->normal.y -= sinf(tmp.y) * 0.01f;
+		obj->normal.z -= sinf(tmp.z) * 0.01f;
+	}
+	else
+		bump_mapping_sub(obj);
 }
