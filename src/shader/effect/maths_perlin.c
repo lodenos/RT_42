@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 21:19:09 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:01:44 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:19:50 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,9 @@ float		dot_vec(cl_float2 a, cl_float2 b)
 	return (a.x * b.x + a.y * b.y);
 }
 
-float		fract(float x)
+float		ft_max(float x, float min, float max)
 {
-	return (x - floorf(x));
-}
-
-cl_float2	fract_2d(cl_float2 v)
-{
-	cl_float2	ret;
-
-	ret.x = fract(v.x);
-	ret.y = fract(v.y);
-	return (ret);
-}
-
-cl_float2	fract_vec(cl_float2 x)
-{
-	return ((cl_float2){x.x - floorf(x.x), x.y - floorf(x.y)});
-}
-
-cl_float2	sub_vec(cl_float2 a, cl_float2 b)
-{
-	return ((cl_float2){a.x - b.x, a.y - b.y});
-}
-
-cl_float2	sub_vec_lol(cl_float2 a, cl_float b)
-{
-	return ((cl_float2){a.x - b, a.y - b});
+	if (x < min)
+		return (min);
+	return ((x > max) ? max : x);
 }

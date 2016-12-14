@@ -6,18 +6,11 @@
 /*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 12:47:13 by opettex-          #+#    #+#             */
-/*   Updated: 2016/12/12 14:48:55 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:25:05 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
-
-float				ft_max(float x, float min, float max)
-{
-	if (x < min)
-		return (min);
-	return ((x > max) ? max : x);
-}
 
 static cl_float2	smooth_noise(cl_float2 a, cl_float2 b, cl_float2 x)
 {
@@ -36,16 +29,16 @@ static float		linear_interpolation(float a, float b, float pc)
 	return (a * (1.0f - pc) + (b * pc));
 }
 
-static float	r(cl_float2 n)
+static float		r(cl_float2 n)
 {
-    return (fract(cosf(dot_vec(n, (cl_float2){36.26f, 73.12f})) * 354.63f));
+	return (fract(cosf(dot_vec(n, (cl_float2){36.26f, 73.12f})) * 354.63f));
 }
 
 float				noise(cl_float2 n)
 {
 	cl_float2		fn;
-	cl_float2  		sn;
-	float      		h1;
+	cl_float2		sn;
+	float			h1;
 	float			h2;
 
 	fn = (cl_float2){floorf(n.x), floorf(n.y)};
