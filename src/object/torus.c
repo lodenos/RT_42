@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   torus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:33 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 12:19:17 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/14 10:19:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
 
-inline double	torus(register t_obj obj, register t_ray ray)
+inline float	torus(register t_obj obj, register t_ray ray)
 {
 	register t_equ		c;
 	register t_equ		a;

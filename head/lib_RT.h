@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 16:07:42 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 10:27:43 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,17 @@
 #define SPHERE 16
 #define TORUS 32
 #define TRIANGLE 64
+#define ELLIPSOID 128
 #define NO_MASK 0xFFFFFFFF
 #define D_TO_RAD 0.01745329251f
+#define EPSILON 0.000001
 #define VALID "RT_Protocol_Clusturing_GLodenos_"
 #define CONNECT "RT_Protocol_Clusturing_Slave_OK_"
 #define FILTERED_RGB 1
 #define FILTERED_SEPIA 2
 #define FILTERED_BLACK_WHITE 3
 #define STEREOSCOPIE 4
+#define ABS(x) ((x) < 0 ? -(x) : (x))
 
 typedef struct s_cam		t_cam;
 typedef struct s_env		t_env;
@@ -74,6 +77,34 @@ typedef struct s_slv		t_slv;
 typedef struct sockaddr_in	sockaddr_in;
 typedef struct sockaddr		sockaddr;
 typedef struct s_spt		t_spt;
+typedef struct s_roots		t_roots;
+typedef struct s_complex	t_complex;
+typedef struct s_equ		t_equ;
+
+struct					s_equ
+{
+	double				a;
+	double				b;
+	double				c;
+	double				d;
+	double				e;
+};
+
+struct					s_complex
+{
+	double				r;
+	double				i;
+};
+
+struct					s_roots
+{
+	double				x1;
+	double				x2;
+	double				x3;
+	double				x4;
+	t_complex			complex1;
+	t_complex			complex2;
+};
 
 struct					s_cam
 {
@@ -361,5 +392,17 @@ _Bool					move(cl_float3 *pos, t_key key);
 _Bool					rotate(cl_float3 *rotate, t_key key);
 void 					sepia(unsigned int *img, size_t resolution);
 void					filtered_black_white(unsigned int *img, size_t resolution);
+cl_float2               random2(cl_float2 c);
+float                   smooth_voronoi(cl_float2 x);
+float					ellipsoid(register t_obj obj, register t_ray ray);
+float					triangle(register t_obj obj, register t_ray ray);
+
+struct s_roots	solve_quartic_equation(register double a, register double b,\
+		register double c, register double d, register double e);
+float		ellipsoid(register t_obj obj, register t_ray ray);
+cl_float3	get_ellipsoid_normale(register t_obj *obj, register float det);
+cl_float3	cross(register cl_float3 a, register cl_float3 b);
+struct s_roots			solve_cubic_equation(register double a, register double b,\
+		register double c, register double d);
 
 #endif
