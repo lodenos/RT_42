@@ -68,3 +68,21 @@ cl_float2   sub_vec_lol(cl_float2 a, cl_float b)
 {
 	return ((cl_float2){a.x - b, a.y - b});
 }
+
+cl_float2       dot_vec2(cl_float2 a, cl_float2 b)
+{
+    cl_float2 ret;
+
+    ret.x = a.x * b.x;
+    ret.y = a.y * b.y;
+    return ((cl_float2){ret.x, ret.y});
+}
+
+cl_float2       dot_vec_f2(cl_float2 a, cl_float b)
+{
+    cl_float2 ret;
+
+    ret.x = a.x * b;
+    ret.y = a.y * b;
+    return (ret);
+}

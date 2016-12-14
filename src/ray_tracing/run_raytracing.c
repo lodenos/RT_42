@@ -128,7 +128,7 @@ void        run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 
     else
     {
-        obj_tmp.type_bump = 7;
+        obj_tmp.type_bump = 4;
         bump_mapping(&obj_tmp);
         light(e, id, obj_tmp, ray);
     }

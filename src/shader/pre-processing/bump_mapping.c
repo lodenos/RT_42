@@ -86,4 +86,9 @@ inline void     bump_mapping(t_obj *obj)
         obj->color += line(tmp.x + (time(NULL) * 0.1),10.,272.);
         obj->color *= line(tmp.x + (time(NULL) * 0.1),10.,272.);
     }
+    else if (obj->type_bump == 8)
+    {
+        tmp = obj->collision;
+        obj->color *= txt1((cl_float2){tmp.x, tmp.y});
+    }
 }
