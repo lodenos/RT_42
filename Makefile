@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/12/14 14:23:00 by anespoul         ###   ########.fr        #
+#    Updated: 2016/12/14 15:09:05 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,10 +68,12 @@ SRC_NAME = 	main.c										\
 														\
 			ray_tracing/camera.c						\
 			ray_tracing/check_object.c					\
-			ray_tracing/OCL_run_raytracing.c			\
+			ray_tracing/ocl_run_raytracing.c			\
 			ray_tracing/play_scene.c					\
 			ray_tracing/run_object.c					\
 			ray_tracing/run_raytracing.c				\
+			ray_tracing/refraction.c					\
+			ray_tracing/reflexion.c						\
 														\
 			SDL2/create_window.c						\
 			SDL2/event_everything.c						\

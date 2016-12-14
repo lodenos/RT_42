@@ -2,8 +2,8 @@
 {
     GPU             off
     thread          4
-    supersampling   1
-	stereoscopie
+    supersampling   4
+	filtered_black_white
 }
 
 scene

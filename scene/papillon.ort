@@ -1,8 +1,8 @@
 .config
 {
     GPU             off
-    thread          8
-    supersampling   12
+    thread          4
+    supersampling  	1
 }
 
 scene

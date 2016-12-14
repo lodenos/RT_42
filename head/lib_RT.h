@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 14:31:11 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/14 15:10:46 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -359,7 +359,7 @@ void					key_release(t_env *e);
 void					light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
 unsigned int			limit(register float x);
 void					lunch_opencl(t_opcl *cl);
-void					OCL_run_raytracing(t_env *e);
+void					ocl_run_raytracing(t_env *e);
 void					*mapping(void *arg);
 cl_float3				normalize(register cl_float3 vect);
 float	   				plan(register t_obj obj, register t_ray ray);
@@ -418,11 +418,17 @@ float                   smooth_voronoi(cl_float2 x);
 float					ellipsoid(register t_obj obj, register t_ray ray);
 float					triangle(register t_obj obj, register t_ray ray);
 
-struct s_roots	solve_quartic_equation(register t_equ q);
-float		ellipsoid(register t_obj obj, register t_ray ray);
-cl_float3	get_ellipsoid_normale(register t_obj *obj, register float det);
-cl_float3	cross(register cl_float3 a, register cl_float3 b);
-struct s_roots			solve_cubic_equation(register double a, register double b,\
-		register double c, register double d);
+t_roots					solve_quartic_equation(register t_equ q);
+float					ellipsoid(register t_obj obj, register t_ray ray);
+cl_float3				get_ellipsoid_normale(register t_obj *obj, register float det);
+cl_float3				cross(register cl_float3 a, register cl_float3 b);
+t_roots					solve_cubic_equation(register double a, register double b,
+								register double c, register double d);
+
+void					refraction(t_env *e, t_ray *ray, t_obj obj_tmp, size_t id);
+void					reflexion(t_env *e, t_ray *ray, t_obj obj_tmp, size_t id);
+cl_float3				rayon_refracte(cl_float3 normal, cl_float3 incident, float n1, float n2);
+void					get_normal_object_sub(t_obj *obj, register t_ray ray, register float det);
+void					get_normal_object(t_obj *obj, register t_ray ray, register float det);
 
 #endif
