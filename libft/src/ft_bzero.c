@@ -6,14 +6,14 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2100/01/01 00:00:00 by glodenos          #+#    #+#             */
-/*   Updated: 2016/09/25 20:23:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 11:58:34 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-    while (n)
-        ((char *)s)[--n] = '\0';
+	while (n)
+		((char *)s)[--n] = '\0';
 }
