@@ -6,30 +6,30 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 12:06:51 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/14 10:46:00 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-inline cl_float3    vector_mult_x(register cl_float3 vect, register float x)
+inline cl_float3	vector_mult_x(register cl_float3 vect, register float x)
 {
-    register cl_float3  v;
+	register cl_float3	v;
 
-    v.x = vect.x * x;
-    v.y = vect.y * x;
-    v.z = vect.z * x;
-    return (v);
+	v.x = vect.x * x;
+	v.y = vect.y * x;
+	v.z = vect.z * x;
+	return (v);
 }
 
-inline cl_float3    vector_mult(register cl_float3 a, register cl_float3 b)
+inline cl_float3	vector_mult(register cl_float3 a, register cl_float3 b)
 {
-    register cl_float3  tmp;
+	register cl_float3	tmp;
 
-    tmp.x = a.x * b.x;
-    tmp.y = a.y * b.y;
-    tmp.z = a.z * b.z;
-    return (tmp);
+	tmp.x = a.x * b.x;
+	tmp.y = a.y * b.y;
+	tmp.z = a.z * b.z;
+	return (tmp);
 }
 
 inline cl_float3	cross(register cl_float3 a, register cl_float3 b)
@@ -52,7 +52,7 @@ inline cl_float3	vector_div(register cl_float3 a, register float x)
 	return (vec);
 }
 
-inline float	vector_len(register cl_float3 a)
+inline float		vector_len(register cl_float3 a)
 {
 	register float len;
 
