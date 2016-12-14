@@ -6,19 +6,22 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:46 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 17:08:45 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/14 11:34:08 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
 
-float		cyl2(register t_obj obj, register t_ray ray, float det, float det2)
+float				cyl2(register t_obj obj, register t_ray ray, \
+		register float det, register float det2)
 {
 	register float		m;
 	register float		a;
 
-	m = dot(ray.dir, obj.rotate) * det + dot(sub(ray.pos, obj.pos_a), obj.rotate);
-	a = dot(ray.dir, obj.rotate) * det2 + dot(sub(ray.pos, obj.pos_a), obj.rotate);
+	m = dot(ray.dir, obj.rotate) * det + \
+		dot(sub(ray.pos, obj.pos_a), obj.rotate);
+	a = dot(ray.dir, obj.rotate) * det2 + \
+		dot(sub(ray.pos, obj.pos_a), obj.rotate);
 	if (obj.radius_a.y == 0)
 		return (det);
 	if (m > obj.radius_a.y || m < 0)
@@ -39,8 +42,9 @@ inline float		cylinder(register t_obj obj, register t_ray ray)
 	obj.rotate = normalize(obj.rotate);
 	cyl.a = dot(ray.dir, ray.dir) - dot(ray.dir, obj.rotate) * \
 		dot(ray.dir, obj.rotate);
-	cyl.b = 2 * (dot(ray.dir, sub(ray.pos, obj.pos_a)) - dot(ray.dir, obj.rotate) \
-			* dot(sub(ray.pos, obj.pos_a), obj.rotate));
+	cyl.b = 2 * (dot(ray.dir, sub(ray.pos, obj.pos_a)) - \
+			dot(ray.dir, obj.rotate) * \
+			dot(sub(ray.pos, obj.pos_a), obj.rotate));
 	cyl.c = dot(sub(ray.pos, obj.pos_a), sub(ray.pos, obj.pos_a)) - \
 		pow(dot(sub(ray.pos, obj.pos_a), obj.rotate), 2) - \
 		obj.radius_a.x * obj.radius_a.x;

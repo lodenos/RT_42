@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:33 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:19:43 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 11:33:51 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,23 @@ inline float	torus(register t_obj obj, register t_ray ray)
 	a.e = dot(sub(ray.pos, obj.pos_a), obj.rotate);			//q
 
 	c.a = a.a * a.a;
-	c.b = 4 * a.a * a.b;
+	c.b = (4 * a.a * a.b) / c.a;
 
-	c.c = 4 * pow(a.a, 2) + 2 * a.a * a.c - 2 * (pow(obj.radius_a.x, 2) + \
+	c.c = (4 * pow(a.a, 2) + 2 * a.a * a.c - 2 * (pow(obj.radius_a.x, 2) + \
 		pow(obj.radius_b.x, 2)) * a.a + 4 * pow(obj.radius_a.x, 2) * \
-		(a.d * a.d);
+		(a.d * a.d)) / c.a;
 
 
-	c.d = 4 * a.b * a.c - 4 * (pow(obj.radius_a.x, 2) + pow(obj.radius_b.x, 2)) * a.b + \
-		8 * pow(obj.radius_a.x, 2) * a.d * a.e;
+	c.d = (4 * a.b * a.c - 4 * (pow(obj.radius_a.x, 2) + pow(obj.radius_b.x, 2)) * a.b + \
+		8 * pow(obj.radius_a.x, 2) * a.d * a.e) / c.a;
 
 
-	c.e = pow(a.c, 2) - 2 * (pow(obj.radius_a.x, 2) + pow(obj.radius_b.x, 2)) * a.c \
+	c.e = (pow(a.c, 2) - 2 * (pow(obj.radius_a.x, 2) + pow(obj.radius_b.x, 2)) * a.c \
 		+ 4 * pow(obj.radius_a.x, 2) * pow(a.e, 2) + \
-		pow((pow(obj.radius_a.x, 2) - pow(obj.radius_b.x, 2)), 2);
+		pow((pow(obj.radius_a.x, 2) - pow(obj.radius_b.x, 2)), 2)) / c.a;
+	c.a = c.a / c.a;
 
-
-	r = solve_quartic_equation(c.a / c.a, c.b / c.a, c.c / c.a, c.d / c.a, c.e / c.a);
+	r = solve_quartic_equation(c);
 //	printf("x1 = %lf | x2 = %lf | x3 = %lf | x4 = %lf\n", r.x1, r.x2, r.x3, r.x4);
 	if (r.x4 < 0)
 		return (-1);
