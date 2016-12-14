@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:27:43 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:31:11 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,27 @@ typedef struct s_spt		t_spt;
 typedef struct s_roots		t_roots;
 typedef struct s_complex	t_complex;
 typedef struct s_equ		t_equ;
+typedef struct s_ssamp		t_ssamp;
+typedef struct s_voronoi	t_voronoi;
+
+struct					s_voronoi
+{
+	cl_float2			lol;
+	cl_float2			b;
+	cl_float2			p;
+	cl_float2			f;
+	cl_float2			r;
+};
+
+struct					s_ssamp
+{
+	size_t				i;
+	size_t				j;
+	float				x;
+	float				div;
+	size_t				max;
+	cl_float3			rgb;
+};
 
 struct					s_equ
 {
@@ -397,8 +418,7 @@ float                   smooth_voronoi(cl_float2 x);
 float					ellipsoid(register t_obj obj, register t_ray ray);
 float					triangle(register t_obj obj, register t_ray ray);
 
-struct s_roots	solve_quartic_equation(register double a, register double b,\
-		register double c, register double d, register double e);
+struct s_roots	solve_quartic_equation(register t_equ q);
 float		ellipsoid(register t_obj obj, register t_ray ray);
 cl_float3	get_ellipsoid_normale(register t_obj *obj, register float det);
 cl_float3	cross(register cl_float3 a, register cl_float3 b);
