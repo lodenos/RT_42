@@ -12,20 +12,14 @@
 
 #include "lib_RT.h"
 
-void		get_info_radius(cl_float3 *radius, char *str)
+static void		get_info_radius_sub(char **tmp)
 {
 	size_t	i;
 	size_t	j;
 	_Bool	k;
-	char	**tmp;
 
 	i = 0;
 	k = 0;
-	if (!str)
-		ft_putstr_err("ERROR: .ort == NULL", 1);
-	tmp = ft_strsplit(str, '/');
-	if (ft_strlen_tab(tmp) != 3)
-		ft_putstr_err("ERROR: radius nbr argument != 3", 1);
 	while (tmp[i])
 	{
 		j = 0;
@@ -45,6 +39,18 @@ void		get_info_radius(cl_float3 *radius, char *str)
 		}
 		++i;
 	}
+}
+
+void			get_info_radius(cl_float3 *radius, char *str)
+{
+	char	**tmp;
+
+	if (!str)
+		ft_putstr_err("ERROR: .ort == NULL", 1);
+	tmp = ft_strsplit(str, '/');
+	if (ft_strlen_tab(tmp) != 3)
+		ft_putstr_err("ERROR: radius nbr argument != 3", 1);
+	get_info_radius_sub(tmp);
 	radius->x = (float)atof(tmp[0]);
 	radius->y = (float)atof(tmp[1]);
 	radius->z = (float)atof(tmp[2]);

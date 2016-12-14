@@ -12,15 +12,26 @@
 
 #include "lib_RT.h"
 
-static inline void		init_ort_parser(t_env *e)
+static	void			init_spotlight_obj_sub(t_env *e, char *str)
 {
-	e->config = 0;
-	e->group = 0;
-	e->scene = 0;
-	e->camera = 0;
-	e->elem_gp = 0;
-	e->elem_obj = 0;
-	e->elem_spt = 0;
+	if (!ft_strcmp_case(str, "spotlight"))
+		++e->scn.n_spt;
+	else if (!ft_strcmp_case(str, "cone"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "cylinder"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "plan"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "sphere"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "spotlight"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "torus"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "triangle"))
+		++e->scn.n_obj;
+	else if (!ft_strcmp_case(str, "ellipsoid"))
+		++e->scn.n_obj;
 }
 
 static inline void		init_spotlight_obj(t_env *e, char **str)
@@ -32,24 +43,7 @@ static inline void		init_spotlight_obj(t_env *e, char **str)
 	e->scn.n_spt = 0;
 	while (str[i])
 	{
-		if (!ft_strcmp_case(str[i], "spotlight"))
-			++e->scn.n_spt;
-		else if (!ft_strcmp_case(str[i], "cone"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "cylinder"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "plan"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "sphere"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "spotlight"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "torus"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "triangle"))
-			++e->scn.n_obj;
-		else if (!ft_strcmp_case(str[i], "ellipsoid"))
-			++e->scn.n_obj;
+		init_spotlight_obj_sub(e, str[i]);
 		++i;
 	}
 	if (!(e->scn.n_obj && e->scn.n_spt))
@@ -58,6 +52,25 @@ static inline void		init_spotlight_obj(t_env *e, char **str)
 		ft_putstr_err("ERROR: malloc", 1);
 	if (!(e->spt = (t_spt *)ft_memalloc(sizeof(t_spt) * (e->scn.n_spt + 1))))
 		ft_putstr_err("ERROR: malloc", 1);
+}
+
+static void				get_info_ort_sub(t_env *e, char **str, size_t *i)
+{
+	if (!ft_strcmp_case(str[*i], "group"))
+	{
+		++e->elem_gp;
+		if (e->group)
+			ft_putstr_err("ERROR: Group 1 level possible", 1);
+		get_ort_group(e, str, i);
+	}
+	else if (!ft_strcmp_case(str[*i], "spotlight"))
+		get_ort_spotlight(e, str, i);
+	else
+	{
+		ft_putstr("Value == ");
+		ft_putendl(str[*i]);
+		ft_putstr_err("Unknown keyword", 1);
+	}
 }
 
 void					get_info_ort(t_env *e, char **str, size_t *i)
@@ -84,21 +97,8 @@ void					get_info_ort(t_env *e, char **str, size_t *i)
 		get_ort_obj_info(e, str, i, TRIANGLE);
 	else if (!ft_strcmp_case(str[*i], "ellipsoid"))
 		get_ort_obj_info(e, str, i, ELLIPSOID);
-	else if (!ft_strcmp_case(str[*i], "group"))
-	{
-		++e->elem_gp;
-		if (e->group)
-			ft_putstr_err("ERROR: Group 1 level possible", 1);
-		get_ort_group(e, str, i);
-	}
-	else if (!ft_strcmp_case(str[*i], "spotlight"))
-		get_ort_spotlight(e, str, i);
 	else
-	{
-		ft_putstr("Value == ");
-		ft_putendl(str[*i]);
-		ft_putstr_err("Unknown keyword", 1);
-	}
+		get_info_ort_sub(e, str, i);
 }
 
 void					get_ort(t_env *e, char **str)

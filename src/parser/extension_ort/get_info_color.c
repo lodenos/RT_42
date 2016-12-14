@@ -12,6 +12,16 @@
 
 #include "lib_RT.h"
 
+static void				get_color_hexa_sub(unsigned int *color, char c)
+{
+	if (c >= 'a' && c <= 'f')
+		*color = *color * 10 + 10 + 'a' - c;
+	else if (c >= 'A' && c <= 'F')
+		*color = *color * 10 + 10 + 'A' - c;
+	else
+		*color = *color * 10 + c - 30;
+}
+
 static inline void		get_color_hexa(unsigned int *color, char *str)
 {
 	size_t i;
@@ -34,14 +44,24 @@ static inline void		get_color_hexa(unsigned int *color, char *str)
 	i = 2;
 	while (str[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'f')
-			*color = *color * 10 + 10 + 'a' - str[i];
-		else if (str[i] >= 'A' && str[i] <= 'F')
-			*color = *color * 10 + 10 + 'A' - str[i];
-		else
-			*color = *color * 10 + str[i] - 30;
+		get_color_hexa_sub(color, str[i]);
 		++i;
 	}
+}
+
+static void				get_info_color_sub(unsigned int value, \
+	unsigned int *color, char **str)
+{
+	if ((value = (unsigned int)ft_atoi(str[0])) > 255)
+		ft_putstr_err("ERROR: Color red > 255", 1);
+	*color = *color | value << 24;
+	if ((value = (unsigned int)ft_atoi(str[1])) > 255)
+		ft_putstr_err("ERROR: Color red > 255", 1);
+	*color = *color | value << 16;
+	if ((value = (unsigned int)ft_atoi(str[2])) > 255)
+		ft_putstr_err("ERROR: Color red > 255", 1);
+	*color = *color | value << 8 | 0xFF;
+	free_tab((void **)str);
 }
 
 void					get_info_color(unsigned int *color, char *str)
@@ -70,14 +90,5 @@ void					get_info_color(unsigned int *color, char *str)
 		}
 		++i;
 	}
-	if ((value = (unsigned int)ft_atoi(tmp[0])) > 255)
-		ft_putstr_err("ERROR: Color red > 255", 1);
-	*color = *color | value << 24;
-	if ((value = (unsigned int)ft_atoi(tmp[1])) > 255)
-		ft_putstr_err("ERROR: Color red > 255", 1);
-	*color = *color | value << 16;
-	if ((value = (unsigned int)ft_atoi(tmp[2])) > 255)
-		ft_putstr_err("ERROR: Color red > 255", 1);
-	*color = *color | value << 8 | 0xFF;
-	free_tab((void **)tmp);
+	get_info_color_sub(value, color, tmp);
 }

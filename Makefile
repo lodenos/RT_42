@@ -59,12 +59,14 @@ SRC_NAME = 	main.c										\
 			parser/extension_ort/get_info_rotate.c		\
 			parser/extension_ort/get_ort_camera.c		\
 			parser/extension_ort/get_ort_config.c		\
+			parser/extension_ort/get_ort_config_sub.c	\
 			parser/extension_ort/get_ort_group.c		\
 			parser/extension_ort/get_ort_obj_info.c		\
 			parser/extension_ort/get_ort_scene.c		\
 			parser/extension_ort/get_ort_spotlight.c	\
 			parser/extension_ort/get_ort_texture.c		\
 			parser/extension_ort/get_ort.c				\
+			parser/extension_ort/get_ort_sub.c			\
 														\
 			ray_tracing/camera.c						\
 			ray_tracing/check_object.c					\

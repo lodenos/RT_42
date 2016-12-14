@@ -431,4 +431,7 @@ cl_float3				rayon_refracte(cl_float3 normal, cl_float3 incident, float n1, floa
 void					get_normal_object_sub(t_obj *obj, register t_ray ray, register float det);
 void					get_normal_object(t_obj *obj, register t_ray ray, register float det);
 
+void					init_ort_parser(t_env *e);
+void					get_ort_config_sub(t_env *e, char **str, size_t *i);
+
 #endif
