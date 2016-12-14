@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:05:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:18:31 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 19:05:40 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ static int	event_mouse(t_env *e)
 	if (e->mouse.id != -1)
 	{
 		while (e->obj[i].end)
-        {
-            if(e->obj[e->mouse.id].id == e->obj[i].id)
-            {
-                if (move(&e->obj[i].pos_a, e->key))
-                    ev = 1;
-                if (rotate(&e->obj[i].pos_a, e->key))
-                    ev = 1;
-            }
-        	++i;
+		{
+			if (e->obj[e->mouse.id].id == e->obj[i].id)
+			{
+				if (move(&e->obj[i].pos_a, e->key))
+					ev = 1;
+				if (rotate(&e->obj[i].pos_a, e->key))
+					ev = 1;
+			}
+			++i;
 		}
 	}
 	return (ev);

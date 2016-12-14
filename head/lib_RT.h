@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 15:10:46 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 19:10:55 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,8 +358,10 @@ void					key_press(t_env *e);
 void					key_release(t_env *e);
 void					light(t_env *e, size_t id, t_obj tmp_obj, t_ray *ray);
 unsigned int			limit(register float x);
+float					line(float pos,float size,float seed);
 void					lunch_opencl(t_opcl *cl);
 void					ocl_run_raytracing(t_env *e);
+float					mosaic(cl_float2 x);
 void					*mapping(void *arg);
 cl_float3				normalize(register cl_float3 vect);
 float	   				plan(register t_obj obj, register t_ray ray);
@@ -382,6 +384,7 @@ void					filtered_rgb(unsigned int filter, unsigned int *img,
 cl_float3				sub(register cl_float3 a, register cl_float3 b);
 void					super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution);
 float	   				torus(register t_obj obj, register t_ray ray);
+float					varazslat(cl_float2 position, float time);
 cl_float3	   			vector_mult(register cl_float3 a, register cl_float3 b);
 cl_float3	   			vector_mult_x(register cl_float3 vect, register float x);
 void					window_resize(t_env *e);

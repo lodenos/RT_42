@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 04:15:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 11:46:22 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/14 19:03:22 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,34 @@ static void	type_damier(t_obj *obj, unsigned int x, unsigned int y,
 			obj->color = obj->color;
 		else
 			obj->color = 0xFF;
+	}
+}
+
+void		bump_mapping_sub2(t_obj *obj)
+{
+	cl_float3	tmp;
+
+	if (obj->type_bump == 5)
+	{
+		tmp = sub(obj->collision, obj->pos_a);
+		obj->color *= varazslat((cl_float2){tmp.x, tmp.y}, time(NULL));
+	}
+	else if (obj->type_bump == 6)
+	{
+		tmp = obj->collision;
+		obj->color *= line(tmp.y + (time(NULL) * 0.1), 10., 272.);
+		obj->color += line(tmp.y + (time(NULL) * 0.1), 10., 272.);
+	}
+	else if (obj->type_bump == 7)
+	{
+		tmp = obj->collision;
+		obj->color += line(tmp.x + (time(NULL) * 0.1), 10., 272.);
+		obj->color *= line(tmp.x + (time(NULL) * 0.1), 10., 272.);
+	}
+	else if (obj->type_bump == 8)
+	{
+		tmp = obj->collision;
+		obj->color *= mosaic((cl_float2){tmp.x, tmp.y});
 	}
 }
 
@@ -76,5 +104,8 @@ inline void	bump_mapping(t_obj *obj)
 		obj->normal.z -= sinf(tmp.z) * 0.01f;
 	}
 	else
+	{
 		bump_mapping_sub(obj);
+		bump_mapping_sub2(obj);
+	}
 }
