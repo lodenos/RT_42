@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/12/14 10:26:09 by glodenos         ###   ########.fr        #
+#    Updated: 2016/12/14 14:23:00 by anespoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ SRC_NAME = 	main.c										\
 														\
 			shader/effect/limit.c							\
 			shader/effect/maths_perlin.c					\
+			shader/effect/maths_perlin2.c					\
 			shader/effect/perlin.c							\
 			shader/effect/voronoi.c							\
 															\
