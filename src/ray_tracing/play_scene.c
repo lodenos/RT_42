@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 16:07:07 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 10:57:24 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ static inline void	lunch_thread_mapping(t_env *e)
 {
 	pthread_t		pth[e->thread];
 	size_t			px;
-	size_t			i;
+	int				i;
 	t_mppng			arg[e->thread];
 	size_t			tmp;
 
 	tmp = 0;
 	px = e->img.h / e->thread;
-	i = 0;
-	while (i < e->thread)
+	i = -1;
+	while (++i < e->thread)
 	{
 		arg[i].e = e;
 		arg[i].mimg.start_x = 0;
@@ -59,15 +59,33 @@ static inline void	lunch_thread_mapping(t_env *e)
 		arg[i].mimg.stop_y = tmp;
 		if (pthread_create(&pth[i], NULL, &mapping, (void *)&arg[i]) == -1)
 			ft_putstr_err("ERROR: thread", 1);
-		++i;
 	}
-	i = 0;
-	while (i < e->thread)
-	{
+	i = -1;
+	while (++i < e->thread)
 		if (pthread_join(pth[i], NULL) == -1)
 			ft_putstr_err("ERROR: thread", 1);
-		++i;
-	}
+}
+
+static inline void	play_scene_sub(void *arg)
+{
+	fps_info();
+	if (((t_env *)arg)->gpu)
+		ocl_run_raytracing((t_env *)arg);
+	else
+		lunch_thread_mapping((t_env *)arg);
+	if (((t_env *)arg)->scn.filter == FILTERED_RGB)
+		filtered_rgb(((t_env *)arg)->scn.color, ((t_env *)arg)->img.img,
+			((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
+	else if (((t_env *)arg)->scn.filter == FILTERED_SEPIA)
+		sepia(((t_env *)arg)->img.img, ((t_env *)arg)->img.h
+			* ((t_env *)arg)->img.w);
+	else if (((t_env *)arg)->scn.filter == FILTERED_BLACK_WHITE)
+		filtered_black_white(((t_env *)arg)->img.img, ((t_env *)arg)->img.h
+			* ((t_env *)arg)->img.w);
+	else if (((t_env *)arg)->scn.filter == STEREOSCOPIE)
+		((t_env *)arg)->img.img = stereoscopie(((t_env *)arg)->img.img,
+			((t_env *)arg)->img.img, ((t_env *)arg)->img.h *
+			((t_env *)arg)->img.w);
 }
 
 void				*play_scene(void *arg)
@@ -90,29 +108,7 @@ void				*play_scene(void *arg)
 				((t_env *)arg)->mouse.id = (int)id;
 			continue ;
 		}
-		fps_info();
-		if (((t_env *)arg)->gpu)
-			OCL_run_raytracing((t_env *)arg);
-		else
-			lunch_thread_mapping((t_env *)arg);
-
-//------------------------------------------------------------------------------
-
-		if (((t_env *)arg)->scn.filter == FILTERED_RGB)
-			filtered_rgb(((t_env *)arg)->scn.color, ((t_env *)arg)->img.img,
-				((t_env *)arg)->img.h * ((t_env *)arg)->img.w);
-		else if (((t_env *)arg)->scn.filter == FILTERED_SEPIA)
-			sepia(((t_env *)arg)->img.img, ((t_env *)arg)->img.h
-				* ((t_env *)arg)->img.w);
-		else if (((t_env *)arg)->scn.filter == FILTERED_BLACK_WHITE)
-			filtered_black_white(((t_env *)arg)->img.img, ((t_env *)arg)->img.h
-				* ((t_env *)arg)->img.w);
-		else if (((t_env *)arg)->scn.filter == STEREOSCOPIE)
-			((t_env *)arg)->img.img = stereoscopie(((t_env *)arg)->img.img,
-				((t_env *)arg)->img.img, ((t_env *)arg)->img.h *
-				((t_env *)arg)->img.w);
-
-//-----------------------------------------------------------------------------
+		play_scene_sub(arg);
 		push_to_window(((t_env *)arg)->img.rend, ((t_env *)arg)->img.img,
 		((t_env *)arg)->scn.cam.w, ((t_env *)arg)->scn.cam.h);
 	}

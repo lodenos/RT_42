@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   OCL_run_raytracing.c                               :+:      :+:    :+:   */
+/*   ocl_run_raytracing.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 13:05:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 14:04:05 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 10:47:37 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static inline void	write_buffer_opencl(t_env *e)
 		sizeof(t_spt) * e->scn.n_spt, e->spt, 0, NULL, NULL));
 }
 
-void				OCL_run_raytracing(t_env *e)
+void				ocl_run_raytracing(t_env *e)
 {
 	create_buffer_opencl(e);
 	set_kernel_arg_opencl(e);
