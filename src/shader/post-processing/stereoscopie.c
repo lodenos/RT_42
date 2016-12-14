@@ -6,7 +6,7 @@
 /*   By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 09:50:11 by nrandria          #+#    #+#             */
-/*   Updated: 2016/12/13 17:04:43 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 14:05:28 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ unsigned int	*stereoscopie(unsigned int *img_l,
 	unsigned int	*left;
 	unsigned int	*right;
 	unsigned int	*img;
-	int				i;
-	int				j;
-	int				k;
+	cl_float3		a;
 
 	if (!(left = (unsigned int *)ft_memalloc(sizeof(unsigned int) *
 					resolution)))
@@ -28,17 +26,17 @@ unsigned int	*stereoscopie(unsigned int *img_l,
 	if (!(right = (unsigned int *)ft_memalloc(sizeof(unsigned int) *
 					resolution)))
 		ft_putstr_err("ERROR malloc", 1);
-	i = 1;
-	j = 10;
-	k = 0;
+	a.x = 1;
+	a.y = 10;
+	a.z = 0;
 	ft_memcpy((void *)left, (void *)img_l, resolution * 4);
 	ft_memcpy((void *)right, (void *)img_r, resolution * 4);
 	filtered_rgb(0xFF0000FF, left, resolution);
 	filtered_rgb(0x00FFFFFF, right, resolution);
 	if (!(img = (unsigned int *)ft_memalloc(sizeof(unsigned int) * resolution)))
 		ft_putstr_err("ERROR malloc", 1);
-	while (k < resolution)
-		img[k++] = left[i++] + right[j++];
+	while (a.z < resolution)
+		img[(int)a.z++] = left[(int)a.x++] + right[(int)a.y++];
 	free(left);
 	free(right);
 	return (img);

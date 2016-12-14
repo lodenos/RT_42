@@ -6,15 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 01:08:12 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 17:03:56 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 12:45:38 by anespoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_RT.h"
-
-/*
- *	0x704214FF
- */
 
 void	sepia(unsigned int *img, size_t resolution)
 {
