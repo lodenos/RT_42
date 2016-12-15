@@ -1,0 +1,153 @@
+.config
+{
+	GPU				off
+	thread			4
+	supersampling	1
+}
+
+scene
+{
+	ambient			100
+	specular		100
+}
+
+camera
+{
+	resolution		(1060, 720)
+    position		(200, 900, 0)
+	rotate			(1, 0, 0)
+}
+
+spotlight
+{
+	power			100
+	position		(100, 100, -200)
+	color			(255, 255, 255)
+}
+
+spotlight
+{
+	power			100
+	position		(-100, 100, -200)
+	color			(255, 255, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(-2, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(-1, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(0, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(1, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(2, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(1, -2, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(1, -1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(1, 0, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(1, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(1, 2, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(0, 1, -2)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(0, 1, -1)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(0, 1, 0)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(0, 1, 1)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
+
+cylinder
+{
+	position	(0, 0, 900)
+	rotate		(0, 1, 2)
+	radius		(20, 0, 0)
+	color		(0, 0, 255)
+}
