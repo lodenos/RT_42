@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:28:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:20:45 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 15:59:21 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void				event_everything(t_env *e)
 		if (e->event.type == SDL_KEYUP)
 			key_release(e);
 		if (e->event.window.event == SDL_WINDOWEVENT_CLOSE)
-			e->exit = 0;
+			exit(0);
 		if (e->event.window.event == SDL_WINDOWEVENT_MOVED)
 			SDL_GetWindowPosition(e->img.win, (int *)&e->img.x,
 				(int *)&e->img.y);

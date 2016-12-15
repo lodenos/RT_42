@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:48:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:21:15 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 15:59:46 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static inline void	key_press_sub(t_env *e)
 void				key_press(t_env *e)
 {
 	if (e->event.key.keysym.sym == SDLK_ESCAPE)
-		e->exit = 0;
+		exit(0);
 	else if (e->event.key.keysym.sym == SDLK_F1)
 		create_window(e, SDL_WINDOW_SHOWN);
 	else if (e->event.key.keysym.sym == SDLK_F2)

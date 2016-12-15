@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 21:45:03 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:28:12 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 16:07:37 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void				get_ort_config_thread(t_env *e, char **str, size_t *i)
 				value is not digital", 1);
 		++j;
 	}
-	if ((e->thread = (size_t)ft_atoi(str[*i])) < 1)
-		ft_putstr_err("ERROR: .config flags thread value is < 1", 1);
+	if ((e->thread = (size_t)ft_atoi(str[*i])) < 1 || e->thread > 128)
+		ft_putstr_err("ERROR: .config flags thread value is < 1 || > 128", 1);
 }
 
 static void				get_ort_config_supersampling(t_env *e,
