@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 04:50:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 14:43:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/14 22:57:10 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	connect_slave_to_host(void *arg, int fds, int size)
 
 	if (!(slv = (t_slv *)ft_memalloc(sizeof(t_slv))))
 		ft_putstr_err("ERROR: Host", 1);
-	if ((slv->fds = accept(fds, (sockaddr*)&slv->sck, (socklen_t *)&size))
+	if ((slv->fds = accept(fds, (sockaddr*)&slv->sck, (int *)&size))
 			== -1)
 	{
 		free(slv);

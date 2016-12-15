@@ -5,7 +5,7 @@
 .config
 {
     GPU             off
-    thread          8
+    thread          4
     supersampling   1
 }
 

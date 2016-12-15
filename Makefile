@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/12/14 15:09:05 by glodenos         ###   ########.fr        #
+#    Updated: 2016/12/14 23:08:48 by anonymous        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,103 +14,104 @@
 
 SRC_PATH = src/
 
-SRC_NAME = 	main.c										\
-														\
-			clustering/cluster_create_buffer.c			\
-			clustering/cluster_parallelisation.c		\
-			clustering/cluster_read_buffer.c			\
-			clustering/cluster_write_buffer.c			\
-			clustering/host/host.c						\
-			clustering/host/slave_connection.c			\
-			clustering/slave/slave.c					\
-														\
-			event_rt/event_rt.c							\
-			event_rt/fps_info.c							\
-			event_rt/move.c								\
-			event_rt/rotate.c							\
-														\
-			move/matrix_rotate.c						\
-														\
-			object/sphere.c								\
-			object/cone.c								\
-			object/torus.c								\
-			object/cylinder.c							\
-			object/plan.c								\
-			object/triangle.c							\
-			object/ellipsoid.c							\
-														\
-			opencl/err_cl.c								\
-			opencl/err_cl_sub.c							\
-			opencl/get_src_opencl.c						\
-			opencl/lunch_opencl.c						\
-														\
-			parser/get_file_raw.c						\
-			parser/get_scene.c							\
-														\
-			parser/extension_obj/get_file_mlt.c			\
-			parser/extension_obj/get_file_obj.c			\
-														\
-			parser/extension_ort/get_file_ort.c			\
-			parser/extension_ort/get_info_angle.c		\
-			parser/extension_ort/get_info_color.c		\
-			parser/extension_ort/get_info_diffuse.c		\
-			parser/extension_ort/get_info_position.c	\
-			parser/extension_ort/get_info_radius.c		\
-			parser/extension_ort/get_info_rotate.c		\
-			parser/extension_ort/get_ort_camera.c		\
-			parser/extension_ort/get_ort_config.c		\
-			parser/extension_ort/get_ort_config_sub.c	\
-			parser/extension_ort/get_ort_group.c		\
-			parser/extension_ort/get_ort_obj_info.c		\
-			parser/extension_ort/get_ort_scene.c		\
-			parser/extension_ort/get_ort_spotlight.c	\
-			parser/extension_ort/get_ort_texture.c		\
-			parser/extension_ort/get_ort.c				\
-			parser/extension_ort/get_ort_sub.c			\
-														\
-			ray_tracing/camera.c						\
-			ray_tracing/check_object.c					\
-			ray_tracing/ocl_run_raytracing.c			\
-			ray_tracing/play_scene.c					\
-			ray_tracing/run_object.c					\
-			ray_tracing/run_raytracing.c				\
-			ray_tracing/refraction.c					\
-			ray_tracing/reflexion.c						\
-														\
-			SDL2/create_window.c						\
-			SDL2/event_everything.c						\
-			SDL2/init_keyboard.c						\
-			SDL2/init_mouse.c							\
-			SDL2/key_press.c							\
-			SDL2/key_release.c							\
-			SDL2/push_to_window.c						\
-			SDL2/window_resize.c						\
-														\
-			shader/effect/limit.c							\
-			shader/effect/maths_perlin.c					\
-			shader/effect/maths_perlin2.c					\
-			shader/effect/perlin.c							\
-			shader/effect/voronoi.c							\
-															\
-			shader/post-processing/filtered_black_white.c	\
-			shader/post-processing/filtered_rgb.c			\
-			shader/post-processing/sepia.c					\
-			shader/post-processing/stereoscopie.c			\
-			shader/post-processing/super_sampling.c			\
-															\
-			shader/pre-processing/bump_mapping.c			\
-			shader/pre-processing/diffused_light.c			\
-			shader/pre-processing/light.c					\
-			shader/pre-processing/specular_light.c			\
-															\
-			shader/maths_perlin.c							\
-			shader/perlin.c									\
-			shader/voronoi.c								\
-															\
-			vector/coordinates_collision.c					\
-			vector/vector_formula_1.c						\
-			vector/vector_formula_2.c						\
-			vector/quartic_equation.c						\
+SRC_NAME = 	main.c												\
+																\
+			clustering/host/host.c								\
+			clustering/host/slave_connection.c					\
+																\
+			clustering/slave/slave.c							\
+																\
+			clustering/transfer_data/cluster_create_buffer.c	\
+			clustering/transfer_data/cluster_parallelisation.c	\
+			clustering/transfer_data/cluster_read_buffer.c		\
+			clustering/transfer_data/cluster_write_buffer.c		\
+																\
+			event_rt/event_rt.c									\
+			event_rt/fps_info.c									\
+			event_rt/move.c										\
+			event_rt/rotate.c									\
+																\
+			move/matrix_rotate.c								\
+																\
+			object/sphere.c										\
+			object/cone.c										\
+			object/torus.c										\
+			object/cylinder.c									\
+			object/plan.c										\
+			object/triangle.c									\
+			object/ellipsoid.c									\
+																\
+			opencl/err_cl.c										\
+			opencl/err_cl_sub.c									\
+			opencl/get_src_opencl.c								\
+			opencl/lunch_opencl.c								\
+																\
+			parser/get_file_raw.c								\
+			parser/get_scene.c									\
+																\
+			parser/extension_obj/get_file_mlt.c					\
+			parser/extension_obj/get_file_obj.c					\
+																\
+			parser/extension_ort/get_file_ort.c					\
+			parser/extension_ort/get_info_angle.c				\
+			parser/extension_ort/get_info_color.c				\
+			parser/extension_ort/get_info_diffuse.c				\
+			parser/extension_ort/get_info_position.c			\
+			parser/extension_ort/get_info_radius.c				\
+			parser/extension_ort/get_info_rotate.c				\
+			parser/extension_ort/get_ort_camera.c				\
+			parser/extension_ort/get_ort_config.c				\
+			parser/extension_ort/get_ort_config_sub.c			\
+			parser/extension_ort/get_ort_group.c				\
+			parser/extension_ort/get_ort_obj_info.c				\
+			parser/extension_ort/get_ort_scene.c				\
+			parser/extension_ort/get_ort_spotlight.c			\
+			parser/extension_ort/get_ort_texture.c				\
+			parser/extension_ort/get_ort.c						\
+			parser/extension_ort/get_ort_sub.c					\
+																\
+			ray_tracing/camera.c								\
+			ray_tracing/check_object.c							\
+			ray_tracing/ocl_run_raytracing.c					\
+			ray_tracing/play_scene.c							\
+			ray_tracing/run_object.c							\
+			ray_tracing/run_raytracing.c						\
+			ray_tracing/refraction.c							\
+			ray_tracing/reflexion.c								\
+																\
+			SDL2/create_window.c								\
+			SDL2/event_everything.c								\
+			SDL2/init_keyboard.c								\
+			SDL2/init_mouse.c									\
+			SDL2/key_press.c									\
+			SDL2/key_release.c									\
+			SDL2/push_to_window.c								\
+			SDL2/window_resize.c								\
+																\
+			shader/effect/limit.c								\
+			shader/effect/maths_perlin.c						\
+			shader/effect/maths_perlin2.c						\
+			shader/effect/mosaic.c								\
+			shader/effect/perlin.c								\
+			shader/effect/procedurale_txt.c						\
+			shader/effect/voronoi.c								\
+																\
+			shader/post-processing/filtered_black_white.c		\
+			shader/post-processing/filtered_rgb.c				\
+			shader/post-processing/sepia.c						\
+			shader/post-processing/stereoscopie.c				\
+			shader/post-processing/super_sampling.c				\
+																\
+			shader/pre-processing/bump_mapping.c				\
+			shader/pre-processing/diffused_light.c				\
+			shader/pre-processing/light.c						\
+			shader/pre-processing/specular_light.c				\
+																\
+																\
+			vector/coordinates_collision.c						\
+			vector/vector_formula_1.c							\
+			vector/vector_formula_2.c							\
+			vector/quartic_equation.c							\
 			vector/cubic_equation.c
 
 OBJ_PATH	=	obj/
@@ -141,12 +142,14 @@ FLAGS		= 	#-Wall -Wextra -Werror
 LIBFT 		=	-L libft -lft
 
 OPENCL_WIN	=	-I "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\include"	\
-				-L "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\x64"	\
+				-L "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\lib\Win32"	\
 				-l OpenCL
 
-SDL2_WIN	=	-I "C:\Development\SDL2-2.0.5\x86_64-w64-mingw32\include"	\
-				-L "C:\Development\SDL2-2.0.5\x86_64-w64-mingw32\lib"		\
+SDL2_WIN	=	-I "C:\Development\SDL2-2.0.5\i686-w64-mingw32\include"	\
+				-L "C:\Development\SDL2-2.0.5\i686-w64-mingw32\lib"		\
 				-lmingw32 -lSDL2main -lSDL2
+
+WINSOCK		=	-lws2_32
 
 #-------------------------------------------------------------------------------
 
@@ -164,7 +167,7 @@ $(OBJ_PATH)%.o: %.c
 
 linux:
 
-window:
+windows:
 	@echo "----------------------------------------"
 	@gcc $(FLAGS) $(SRC) $(INCLUDE) $(LIBFT) $(OPENCL_WIN) $(SDL2_WIN) -std=gnu11 -lm -lws2_32
 	@echo "----------------------------------------"

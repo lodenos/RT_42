@@ -2,7 +2,7 @@
 {
     GPU             off
     thread          4
-    supersampling   4
+    supersampling   1
 	filtered_black_white
 }
 
@@ -15,36 +15,36 @@ scene
 camera
 {
     resolution  (1920, 1080)
-    position    (0.0, 0.0, 0.0)
-    rotate      (0.0, 0.0, 1.0)
+    position    (0, 0, 0)
+    rotate      (0, 0, 0)
 }
 
 spotlight
 {
     power       100
     position    (299, 199, 0)
-    color       0xFFFFFF
+    color       (255, 255, 255)
 }
 
 spotlight
 {
     power       100
     PosiTIon    (-299, 199, 0)
-    color       0xFFFFFF
+    color       (255, 255, 255)
 }
 
 spotlight
 {
     power       100
     position    (299, -199, 0)
-    colOr       0xFFFFFF
+    colOr       (255, 255, 255)
 }
 
 spotlight
 {
     power       100
     position    (-299, -199, 0)
-    colOr       0xFFFFFF
+    colOr       (255, 255, 255)
 }
 
 plan
