@@ -6,11 +6,11 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:04:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 14:30:36 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:31:11 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	refraction(t_env *e, t_ray *ray, t_obj obj_tmp, size_t id)
 {

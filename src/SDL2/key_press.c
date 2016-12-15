@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:48:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:24:25 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:21:15 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void	key_press_sub(t_env *e)
 {

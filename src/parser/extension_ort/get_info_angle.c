@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:58:16 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:46:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:26:29 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void		get_info_angle(t_env *e, char **str, size_t *i)
 {

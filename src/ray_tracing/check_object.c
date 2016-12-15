@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 21:01:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:51:59 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:30:25 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline float	check_object(t_obj *obj, register t_ray ray, size_t *id,
 		size_t mask)

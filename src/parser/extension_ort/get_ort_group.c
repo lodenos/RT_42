@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 21:59:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:53:49 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:28:34 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void		get_ort_group(t_env *e, char **str, size_t *i)
 {

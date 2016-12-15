@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 13:05:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:47:37 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:30:37 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void	create_buffer_opencl(t_env *e)
 {

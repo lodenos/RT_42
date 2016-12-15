@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 05:13:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:06:17 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:23:17 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 int	cluster_write_buffer(t_mem mem, void *data)
 {

@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 20:39:20 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:09:37 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:33:30 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	filtered_rgb(unsigned int filter, unsigned int *img, size_t resolution)
 {

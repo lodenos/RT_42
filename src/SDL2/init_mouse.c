@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 13:35:07 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 12:52:50 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:21:04 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	init_mouse(t_mouse *mouse)
 {

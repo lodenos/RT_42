@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 15:32:54 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 15:10:11 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:23:49 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline _Bool	move_sub(_Bool ev, cl_float3 *pos, t_key key)
 {

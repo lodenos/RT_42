@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:26 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 11:32:28 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:24:51 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 float				cone2(register t_obj obj, register t_ray ray, \
 		register float det, register float det2)

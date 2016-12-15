@@ -6,11 +6,11 @@
 /*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 18:15:10 by opettex-          #+#    #+#             */
-/*   Updated: 2016/12/14 18:55:32 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:32:19 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 cl_float2		dot_vec2(cl_float2 a, cl_float2 b)
 {

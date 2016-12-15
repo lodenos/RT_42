@@ -6,11 +6,11 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 12:20:16 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/14 11:37:52 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:35:07 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 struct s_roots			one_root_is_real(register double a, register double b,\
 		register double c, register double d)

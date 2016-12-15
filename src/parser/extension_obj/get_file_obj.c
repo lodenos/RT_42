@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 18:01:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:16:21 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:26:08 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void		get_file_obj(t_env *e, char *file)
 {

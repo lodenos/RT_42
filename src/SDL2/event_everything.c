@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:28:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:27:22 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:20:45 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void	event_everything_sub(t_env *e)
 {

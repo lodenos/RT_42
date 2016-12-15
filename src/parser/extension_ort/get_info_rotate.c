@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 19:07:15 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:51:04 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:27:33 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static void		get_info_rotate_sub(char **tmp)
 {

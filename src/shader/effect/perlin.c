@@ -6,11 +6,11 @@
 /*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 12:47:13 by opettex-          #+#    #+#             */
-/*   Updated: 2016/12/14 14:25:05 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:32:28 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static cl_float2	smooth_noise(cl_float2 a, cl_float2 b, cl_float2 x)
 {

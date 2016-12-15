@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 14:25:17 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/20 19:53:52 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:22:31 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 #define FT_EXIT_SLAVE   {free(tmp); close(fds); pthread_exit(NULL);}
 

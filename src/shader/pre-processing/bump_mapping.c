@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 04:15:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 19:03:22 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:34:14 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static void	type_damier(t_obj *obj, unsigned int x, unsigned int y,
 		unsigned int z)

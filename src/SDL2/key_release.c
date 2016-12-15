@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/29 13:50:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 12:58:19 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:21:24 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	key_release(t_env *e)
 {

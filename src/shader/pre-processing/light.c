@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 12:45:25 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:34:32 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	light_sub(cl_float3 rgb, t_env *e, t_ray *ray, float z)
 {

@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 21:08:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 14:10:36 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:34:03 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	super_sampling_sub(t_env *e, t_ray *ray, cl_float2 pos, cl_float3 *rgb)
 {

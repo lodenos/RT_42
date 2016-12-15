@@ -6,11 +6,11 @@
 /*   By: anespoul <anespoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 16:14:44 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/14 10:37:10 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:25:08 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 cl_float3	get_ellipsoid_normale(register t_obj *obj, register float det)
 {

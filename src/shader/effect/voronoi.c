@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 21:09:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 14:30:59 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:32:52 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 cl_float2		random2(cl_float2 c)
 {

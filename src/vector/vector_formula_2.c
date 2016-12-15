@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:46:00 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:35:56 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline cl_float3	vector_mult_x(register cl_float3 vect, register float x)
 {

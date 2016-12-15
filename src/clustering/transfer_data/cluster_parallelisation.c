@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 23:16:18 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:06:50 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:22:58 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 char	*clustering_hash_contribution(size_t nbr_elem, size_t nbr_block)
 {

@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:06:30 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 14:00:40 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:30:12 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline void	camera(register t_cam cam, t_ray *ray, register float x,
 	register float y)

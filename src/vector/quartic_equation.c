@@ -6,11 +6,11 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 12:16:45 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/14 11:06:19 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:35:27 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 struct s_roots	get_complex_roots(register t_roots r, register double a,\
 		register double b, register double g)

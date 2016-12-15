@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 19:03:34 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:31:38 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline cl_float3	rayon_refracte(cl_float3 normal, cl_float3 incident,
 		float n1, float n2)

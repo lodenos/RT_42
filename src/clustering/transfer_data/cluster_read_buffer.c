@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 05:13:52 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:16:07 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:23:07 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 #define EXIT_CLUSTER_READ_BUFFER    {free(tmp); return (NULL);}
 

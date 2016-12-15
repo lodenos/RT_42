@@ -6,11 +6,11 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 14:12:41 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/02 13:32:08 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:25:44 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline float		triangle(register t_obj obj, register t_ray ray)
 {

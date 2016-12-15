@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 19:54:12 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:59:29 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:29:41 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 char		*get_file_raw(int fd)
 {

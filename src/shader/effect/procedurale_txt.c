@@ -6,11 +6,11 @@
 /*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 18:09:47 by opettex-          #+#    #+#             */
-/*   Updated: 2016/12/14 18:48:34 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:32:36 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static float	mod(float x, float a)
 {

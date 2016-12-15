@@ -6,11 +6,11 @@
 /*   By: glodenos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 18:24:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:12:28 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:24:32 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline cl_float3	rotate_x(register cl_float3 point,
 		register float angle)

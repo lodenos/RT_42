@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 15:46:02 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 15:10:59 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:23:57 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void	rotate_sub(cl_float3 *rotate, t_key key, _Bool *ev)
 {

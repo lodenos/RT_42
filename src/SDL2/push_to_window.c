@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/17 11:47:37 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:22:46 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:21:33 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline void	push_to_window(SDL_Renderer *rend, unsigned int *img, size_t w,
 		size_t h)

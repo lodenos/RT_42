@@ -6,11 +6,11 @@
 /*   By: cducaffy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 11:50:52 by cducaffy          #+#    #+#             */
-/*   Updated: 2016/12/14 11:50:55 by cducaffy         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:29:19 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void		init_ort_parser(t_env *e)
 {

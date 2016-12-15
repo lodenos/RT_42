@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 13:47:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:45:29 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:26:18 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void		filter_parser_sub(char *str, int *i, int *j, int *k)
 {

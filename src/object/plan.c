@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 21:51:55 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 11:57:29 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:25:16 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline float		plan(register t_obj obj, register t_ray ray)
 {

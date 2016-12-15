@@ -6,11 +6,11 @@
 /*   By: cducaffy <cducaffy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 13:53:25 by cducaffy          #+#    #+#             */
-/*   Updated: 2016/12/14 10:32:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:27:44 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static	void			init_spotlight_obj_sub(t_env *e, char *str)
 {

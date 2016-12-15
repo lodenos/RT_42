@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 22:46:49 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:41:40 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:35:36 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline cl_float3	add(register cl_float3 a, register cl_float3 b)
 {

@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 21:43:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:59:19 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:31:22 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 inline float	run_object(register t_obj obj, register t_ray ray)
 {

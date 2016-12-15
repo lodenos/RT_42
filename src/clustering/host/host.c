@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 04:50:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 22:57:10 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/12/15 13:22:01 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static void	connect_slave_to_host(void *arg, int fds, int size)
 {

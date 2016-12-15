@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 11:31:53 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:57:12 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:29:09 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void		init_ort_spotlight(t_env *e)
 {

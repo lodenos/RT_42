@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 21:45:03 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/13 16:27:17 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:28:12 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void		init_ort_config(t_env *e, char **str, size_t *i)
 {

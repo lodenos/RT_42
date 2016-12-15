@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/14 00:36:27 by glodenos          #+#    #+#             */
-/*   Updated: 2016/11/24 12:10:15 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:22:12 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 #define FT_EXIT_SLAVE_CONNECTION    {--((t_slv *)arg)->e->nbr_slv;  \
                                     free(tmp);                      \

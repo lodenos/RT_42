@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:22:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 15:22:14 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:20:36 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void	create_window(t_env *e, Uint32 flags)
 {

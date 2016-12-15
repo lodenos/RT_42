@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 12:06:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 14:45:44 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:28:58 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void		init_ort_scene(t_env *e)
 {

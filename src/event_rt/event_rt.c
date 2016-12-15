@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 11:05:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 19:05:40 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:23:31 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static int	event_mouse(t_env *e)
 {

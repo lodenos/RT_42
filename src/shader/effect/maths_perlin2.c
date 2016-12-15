@@ -6,11 +6,11 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 14:15:06 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/14 14:16:50 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:32:10 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 float		fract(float x)
 {

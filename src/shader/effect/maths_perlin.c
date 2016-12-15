@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 21:19:09 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 14:19:50 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:32:02 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 cl_float2	add_vec(cl_float2 a, cl_float2 b)
 {

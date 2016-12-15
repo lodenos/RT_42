@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 17:31:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:48:32 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:27:00 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void		get_info_diffuse(float *diffuse, char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 22:00:45 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/09 13:49:57 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:27:21 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static void		get_info_radius_sub(char **tmp)
 {

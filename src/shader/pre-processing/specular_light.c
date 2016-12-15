@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 05:01:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:41:40 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:34:42 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline float	power(register float x, register int y)
 {

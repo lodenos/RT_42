@@ -6,11 +6,11 @@
 /*   By: anespoul <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/13 15:03:47 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/13 15:09:55 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:35:18 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 struct s_roots		solve_quadratic_equation(register double a, \
 		register double b, register double c)

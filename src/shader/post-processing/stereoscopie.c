@@ -6,11 +6,11 @@
 /*   By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 09:50:11 by nrandria          #+#    #+#             */
-/*   Updated: 2016/12/14 14:05:28 by anespoul         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:33:51 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 unsigned int	*stereoscopie(unsigned int *img_l,
 							unsigned int *img_r, size_t resolution)

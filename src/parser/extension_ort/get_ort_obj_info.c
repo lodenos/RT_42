@@ -6,11 +6,11 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:37:43 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/14 10:39:24 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:28:47 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static void		init_ort_obj_info(t_env *e, size_t type)
 {

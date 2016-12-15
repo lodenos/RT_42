@@ -6,11 +6,11 @@
 /*   By: cducaffy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 13:33:55 by cducaffy          #+#    #+#             */
-/*   Updated: 2016/12/14 13:33:57 by cducaffy         ###   ########.fr       */
+/*   Updated: 2016/12/15 13:28:23 by opettex-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 void					get_ort_config_sub(t_env *e, char **str, size_t *i)
 {
