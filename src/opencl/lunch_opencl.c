@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:30:24 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 13:39:56 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:57:22 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static inline void	create_kernel(cl_program prog, t_krnl *krnl)
 	err_cl(err);
 }
 
-static inline void	console_log_compilation(cl_program prog, cl_device_id
-		device_id, cl_program_build_info type)
+static inline void	console_log_compilation(cl_program prog,
+		cl_device_id device_id, cl_program_build_info type)
 {
 	size_t	size;
 	char	*str;

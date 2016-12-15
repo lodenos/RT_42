@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 23:29:47 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:30:46 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:26:12 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static inline void	lunch_thread_mapping(t_env *e)
 	tmp = 0;
 	px = e->img.h / e->thread;
 	i = -1;
-	while (++i < e->thread)
+	while (++i < (int)e->thread)
 	{
 		arg[i].e = e;
 		arg[i].mimg.start_x = 0;
@@ -61,7 +61,7 @@ static inline void	lunch_thread_mapping(t_env *e)
 			ft_putstr_err("ERROR: thread", 1);
 	}
 	i = -1;
-	while (++i < e->thread)
+	while (++i < (int)e->thread)
 		if (pthread_join(pth[i], NULL) == -1)
 			ft_putstr_err("ERROR: thread", 1);
 }

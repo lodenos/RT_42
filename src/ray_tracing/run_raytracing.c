@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 00:22:41 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:31:38 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:51:35 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ inline void			get_normal_object_sub(t_obj *obj, register t_ray ray,
 	register float		k;
 	register float		m;
 	register cl_float3	a;
-	register cl_float3	q;
 
+	(void)det;
 	k = dot(sub(obj->collision, obj->pos_a), ray.dir);
 	a = sub(obj->collision, vector_mult_x(ray.dir, k));
 	m = sqrt(pow(obj->radius_b.x, 2.0f) - (k * k));
@@ -80,7 +80,6 @@ void				run_raytracing(t_env *e, t_obj *obj, t_ray *ray)
 	register float	det;
 	size_t			id;
 	t_obj			obj_tmp;
-	unsigned int	color;
 	int				i;
 
 	i = 0;

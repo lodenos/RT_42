@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:16:07 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:26:40 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:56:48 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void				get_color_hexa_sub(unsigned int *color, char c)
 static inline void		get_color_hexa(unsigned int *color, char *str)
 {
 	size_t i;
-	size_t j;
 
 	*color = 0;
 	if ((i = ft_strlen(str)) > 8 || i < 3)
@@ -69,7 +68,6 @@ void					get_info_color(unsigned int *color, char *str)
 	size_t			i;
 	size_t			j;
 	char			**tmp;
-	unsigned int	value;
 
 	i = 0;
 	j = 0;
@@ -90,5 +88,5 @@ void					get_info_color(unsigned int *color, char *str)
 		}
 		++i;
 	}
-	get_info_color_sub(value, color, tmp);
+	get_info_color_sub(0, color, tmp);
 }

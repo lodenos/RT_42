@@ -1,6 +1,6 @@
 .config
 {
-    GPU             off
+    GPU             on
     thread          4
     supersampling   1
 	filtered_black_white

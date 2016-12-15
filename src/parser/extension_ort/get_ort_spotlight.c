@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 11:31:53 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:29:09 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:22:49 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline void		init_ort_spotlight(t_env *e)
 	e->spt[e->elem_spt].end = 1;
 	e->spt[e->elem_spt].id = e->elem_gp;
 	e->spt[e->elem_spt].light = 1;
-	e->spt[e->elem_spt].pos = (cl_float3){0, 0, 0};
+	e->spt[e->elem_spt].pos = (cl_float3){{0, 0, 0}};
 	e->spt[e->elem_spt].color = 0xFFFFFFFF;
 }
 

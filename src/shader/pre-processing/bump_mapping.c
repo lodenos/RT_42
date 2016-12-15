@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/28 04:15:23 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:34:14 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:36:38 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		bump_mapping_sub2(t_obj *obj)
 	if (obj->type_bump == 5)
 	{
 		tmp = sub(obj->collision, obj->pos_a);
-		obj->color *= varazslat((cl_float2){tmp.x, tmp.y}, time(NULL));
+		obj->color *= varazslat((cl_float2){{tmp.x, tmp.y}}, time(NULL));
 	}
 	else if (obj->type_bump == 6)
 	{
@@ -58,7 +58,7 @@ void		bump_mapping_sub2(t_obj *obj)
 	else if (obj->type_bump == 8)
 	{
 		tmp = obj->collision;
-		obj->color *= mosaic((cl_float2){tmp.x, tmp.y});
+		obj->color *= mosaic((cl_float2){{tmp.x, tmp.y}});
 	}
 }
 
@@ -69,6 +69,7 @@ void		bump_mapping_sub(t_obj *obj)
 	unsigned int	y;
 	unsigned int	z;
 
+	x = 0;
 	if (obj->type_bump == 2)
 	{
 		tmp = sub(obj->collision, obj->pos_a);
@@ -81,12 +82,12 @@ void		bump_mapping_sub(t_obj *obj)
 	else if (obj->type_bump == 3)
 	{
 		tmp = obj->collision;
-		obj->color *= perlin((cl_float2){tmp.x, tmp.y});
+		obj->color *= perlin((cl_float2){{tmp.x, tmp.y}});
 	}
 	else if (obj->type_bump == 4)
 	{
 		tmp = obj->collision;
-		obj->color *= smooth_voronoi((cl_float2){tmp.x, tmp.y});
+		obj->color *= smooth_voronoi((cl_float2){{tmp.x, tmp.y}});
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 21:09:21 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:32:52 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:33:36 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ cl_float2		random2(cl_float2 c)
 	float		j;
 	cl_float2	r;
 
-	j = 4906.0 * sin(dot_vec(c, (cl_float2){200.7, 5.8}));
+	j = 4906.0 * sin(dot_vec(c, (cl_float2){{200.7, 5.8}}));
 	r.x = fract(512.0 * j);
 	j *= 0.125;
 	r.y = fract(512.0 * j);
@@ -35,13 +35,13 @@ float			smooth_voronoi(cl_float2 x)
 	j = -1;
 	res = 0.0;
 	v.f = fract_vec(x);
-	v.p = (cl_float2){floor(x.x), floor(x.y)};
+	v.p = (cl_float2){{floor(x.x), floor(x.y)}};
 	while (j <= 1)
 	{
 		i = -1;
 		while (i <= 1)
 		{
-			v.b = ((cl_float2){i, j});
+			v.b = ((cl_float2){{i, j}});
 			v.lol = add_vec(v.p, v.b);
 			v.r = add_vec(sub_vec(v.b, v.f), random2(v.lol));
 			d = dot_vec(v.r, v.r);

@@ -6,7 +6,7 @@
 /*   By: opettex- <opettex-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 18:15:10 by opettex-          #+#    #+#             */
-/*   Updated: 2016/12/15 13:32:19 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:30:10 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ cl_float2		dot_vec2(cl_float2 a, cl_float2 b)
 
 	ret.x = a.x * b.x;
 	ret.y = a.y * b.y;
-	return ((cl_float2){ret.x, ret.y});
+	return ((cl_float2){{ret.x, ret.y}});
 }
 
 cl_float2		dot_vec_f2(cl_float2 a, cl_float b)
@@ -45,7 +45,7 @@ float			mosaic(cl_float2 x)
 
 	b = 3.0f - 2.0f;
 	f = fract_2d(x);
-	p = (cl_float2){floorf(x.x), floorf(x.y)};
+	p = (cl_float2){{floorf(x.x), floorf(x.y)}};
 	ret.x = f.x * f.x;
 	ret.y = f.y * f.y;
 	f = dot_vec2(dot_vec2(f, ret), dot_vec_f2(f, b));

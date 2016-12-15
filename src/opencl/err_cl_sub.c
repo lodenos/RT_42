@@ -6,22 +6,24 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 14:18:10 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/12 14:44:40 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:58:41 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_RT.h"
+#include "lib_rt.h"
 
 static inline void	err_cl_sub_ex(cl_int err)
 {
 	if (err == -1003)
 		ft_putstr_err("opencl -1003 : CL_INVALID_D3D10_RESOURCE_KHR", 1);
 	else if (err == -1004)
-		ft_putstr_err("opencl -1004 : CL_D3D10_RESOURCE_ALREADY_ACQUIRED_KHR", 1);
+		ft_putstr_err("opencl -1004 : CL_D3D10_RESOURCE_ALREADY_ACQUIRED_KHR",
+				1);
 	else if (err == -1005)
 		ft_putstr_err("opencl -1005 : CL_D3D10_RESOURCE_NOT_ACQUIRED_KHR", 1);
 	else if (err == -9999)
-		ft_putstr_err("opencl -9999 : NVidia : Illegal read or write to a buffer", 1);
+		ft_putstr_err("opencl -9999 : NVidia Illegal read or write to a buffer",
+				1);
 	else
 	{
 		ft_putstr("opencl ");
@@ -49,7 +51,8 @@ void				err_cl_sub(cl_int err)
 	else if (err == -70)
 		ft_putstr_err("opencl -70 : CL_INVALID_DEVICE_QUEUE", 1);
 	else if (err == -1000)
-		ft_putstr_err("opencl -1000 : CL_INVALID_GL_SHAREGROUP_REFERENCE_KHR", 1);
+		ft_putstr_err("opencl -1000 : CL_INVALID_GL_SHAREGROUP_REFERENCE_KHR",
+				1);
 	else if (err == -1001)
 		ft_putstr_err("opencl -1001 : No valid ICDs found", 1);
 	else if (err == -1002)

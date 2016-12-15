@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 19:58:58 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:20:23 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 15:12:46 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,14 @@ static inline void	init_rt(t_env *e)
 
 static inline void	init_file_opencl(t_opcl *cl)
 {
-	int		i;
-	int		fd;
+	int		fd_i[2];
 	char	*tmp;
 	char	**src;
 
-	i = 0;
-	if ((fd = open("Make_CL", O_RDONLY)) == -1)
+	fd_i[1] = 0;
+	if ((fd_i[0] = open("Make_CL", O_RDONLY)) == -1)
 		ft_putstr_err("ERROR: Make_CL not found", 1);
-	tmp = get_file_raw(fd);
-	close(fd);
+	tmp = get_file_raw(fd_i[0]);
 	src = ft_strsplit(tmp, '\n');
 	if ((cl->nbr_src = (cl_uint)ft_strlen_tab(src) - 1) < 2)
 		ft_putstr_err("ERROR: src Make_CL < 2 args", 1);
@@ -51,8 +49,8 @@ static inline void	init_file_opencl(t_opcl *cl)
 		ft_putstr_err("ERROR: malloc", 1);
 	if (!(cl->src = (char **)ft_memalloc(sizeof(char *) * (cl->nbr_src + 1))))
 		ft_putstr_err("ERROR: malloc", 1);
-	while (src[++i] != NULL)
-		if (!(cl->file[i - 1] = ft_strdup(src[i])))
+	while (src[++fd_i[1]] != NULL)
+		if (!(cl->file[fd_i[1] - 1] = ft_strdup(src[fd_i[1]])))
 			ft_putstr_err("ERROR: malloc", 1);
 	free(tmp);
 	free_tab((void **)src);
@@ -85,11 +83,22 @@ static void			get_arg_main(t_env *e, int argc, char **argv)
 	}
 }
 
+void				main_lunch_rt(t_env *e)
+{
+	pthread_t		pth_scn;
+
+	if (SDL_Init(SDL_INIT_EVERYTHING))
+		ft_putstr_err(SDL_GetError(), 1);
+	init_rt(e);
+	create_window(e, SDL_WINDOW_RESIZABLE);
+	if (pthread_create(&pth_scn, NULL, &play_scene, (void *)e) == -1)
+		ft_putstr_err("ERROR: thread", 1);
+	event_everything(e);
+}
+
 int					main(int argc, char **argv)
 {
 	t_env			e;
-	pthread_t		pth;
-	pthread_t		pth_scn;
 
 	if (argc == 1)
 		ft_putstr_err("Usage - map.ort", 1);
@@ -100,24 +109,6 @@ int					main(int argc, char **argv)
 		init_file_opencl(&e.cl);
 		lunch_opencl(&e.cl);
 	}
-	if (e.host)
-		if (pthread_create(&pth, NULL, &host, (void *)&e) == -1)
-			ft_putstr_err("ERROR: thread", 1);
-	if (e.slave)
-	{
-		if (pthread_create(&pth, NULL, &slave, (void *)&e) == -1)
-			ft_putstr_err("ERROR: thread", 1);
-		pthread_join(pth, NULL);
-	}
-	else
-	{
-		if (SDL_Init(SDL_INIT_EVERYTHING))
-			ft_putstr_err(SDL_GetError(), 1);
-		init_rt(&e);
-		create_window(&e, SDL_WINDOW_RESIZABLE);
-		if (pthread_create(&pth_scn, NULL, &play_scene, (void *)&e) == -1)
-			ft_putstr_err("ERROR: thread", 1);
-		event_everything(&e);
-	}
+	main_lunch_rt(&e);
 	return (0);
 }

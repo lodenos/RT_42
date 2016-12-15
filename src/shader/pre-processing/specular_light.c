@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 05:01:11 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:34:42 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:55:22 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ float				specular_light(register t_spt spt, register t_obj obj)
 
 	l = normalize(sub(spt.pos, obj.collision));
 	return (power(dot(reverse(l), add(l, vector_mult_x(
-			vector_mult_x(obj.normal, 2), dot(reverse(obj.normal), l)))), 80));
+			vector_mult_x(obj.normal, 2), dot(reverse(obj.normal), l)))),
+				200) * 0.5);
 }

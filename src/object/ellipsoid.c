@@ -6,7 +6,7 @@
 /*   By: anespoul <anespoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 16:14:44 by anespoul          #+#    #+#             */
-/*   Updated: 2016/12/15 13:25:08 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:11:04 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 cl_float3	get_ellipsoid_normale(register t_obj *obj, register float det)
 {
+	(void)det;
 	obj->normal = sub(obj->collision, obj->pos_a);
 	obj->normal.x = 2.0f * obj->normal.x / (obj->radius_a.x * obj->radius_a.x);
 	obj->normal.y = 2.0f * obj->normal.y / (obj->radius_a.y * obj->radius_a.y);

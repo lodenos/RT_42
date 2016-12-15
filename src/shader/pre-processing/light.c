@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/23 03:50:04 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:34:32 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:54:31 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	light(t_env *e, size_t id, t_obj obj_tmp, t_ray *ray)
 	cl_float3	math;
 
 	i = 0;
-	rgb = (cl_float3){0.0f, 0.0f, 0.0f};
-	math = (cl_float3){0.0f, 0.0f, 0.0f};
+	rgb = (cl_float3){{0.0f, 0.0f, 0.0f}};
+	math = (cl_float3){{0.0f, 0.0f, 0.0f}};
 	while (e->spt[i].end)
 	{
 		index = 0;

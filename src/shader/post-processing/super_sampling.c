@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/11 21:08:14 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:34:03 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:35:08 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	super_sampling(t_env *e, t_ray *ray, cl_float2 pos, size_t resolution)
 	s.x = pos.x;
 	s.div = 1.0 / resolution;
 	s.max = resolution * resolution;
-	s.rgb = (cl_float3){0, 0, 0};
+	s.rgb = (cl_float3){{0, 0, 0}};
 	if (resolution == 0)
 		ft_putstr_err("ERROR: supersampling -> resolution == 0", 1);
 	while (s.i < resolution)

@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/31 15:04:32 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:27:54 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:20:13 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static inline void		init_ort_camera(t_env *e)
 {
 	e->scn.cam.fov = 1;
 	e->scn.cam.h = 540;
-	e->scn.cam.pos = (cl_float3){0, 0, 0};
-	e->scn.cam.rotate = (cl_float3){0, 0, 0};
+	e->scn.cam.pos = (cl_float3){{0, 0, 0}};
+	e->scn.cam.rotate = (cl_float3){{0, 0, 0}};
 	e->scn.cam.w = 960;
 }
 

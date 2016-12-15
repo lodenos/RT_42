@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 12:06:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:28:58 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:22:23 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void					get_ort_scene(t_env *e, char **str, size_t *i)
 {
 	size_t j;
 
+	j = 0;
 	init_ort_scene(e);
 	if (e->scene)
 		ft_putstr_err("ERROR: scene is already initialized", 1);

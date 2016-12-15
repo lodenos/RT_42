@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 20:02:05 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 14:00:22 by glodenos         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:48:14 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,15 +286,6 @@ struct					s_mppng
 	t_mimg				mimg;
 };
 
-struct					s_slv
-{
-	t_env				*e;
-	int					fds;
-	pthread_t			pthr;
-	float				ping;
-	sockaddr_in			sck;
-};
-
 struct					s_mem
 {
 	int					fds;
@@ -307,9 +298,6 @@ void					camera(register t_cam cam, t_ray *ray, register float x,
 								register float y);
 float					check_object(t_obj *obj, register t_ray ray, size_t *id,
 								size_t mask);
-t_mem					cluster_create_buffer(int fds, size_t size);
-void					*cluster_read_buffer(t_mem mem);
-int						cluster_write_buffer(t_mem mem, void *data);
 float					cone(register t_obj obj, register t_ray ray);
 cl_float3				coordinates_collision(register cl_float3 a,
 								register cl_float3 b, register float det);

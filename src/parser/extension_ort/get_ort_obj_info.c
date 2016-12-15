@@ -6,7 +6,7 @@
 /*   By: glodenos <glodenos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:37:43 by glodenos          #+#    #+#             */
-/*   Updated: 2016/12/15 13:28:47 by opettex-         ###   ########.fr       */
+/*   Updated: 2016/12/15 14:21:51 by glodenos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static void		init_ort_obj_info(t_env *e, size_t type)
 	e->obj[e->elem_obj].end = 1;
 	e->obj[e->elem_obj].gloss = 0.0f;
 	e->obj[e->elem_obj].id = e->elem_gp;
-	e->obj[e->elem_obj].pos_a = (cl_float3){0.0f, 0.0f, 0.0f};
-	e->obj[e->elem_obj].pos_b = (cl_float3){0.0f, 0.0f, 0.0f};
-	e->obj[e->elem_obj].pos_c = (cl_float3){0.0f, 0.0f, 0.0f};
-	e->obj[e->elem_obj].radius_a = (cl_float3){0.0f, 0.0f, 0.0f};
-	e->obj[e->elem_obj].radius_b = (cl_float3){0.0f, 0.0f, 0.0f};
+	e->obj[e->elem_obj].pos_a = (cl_float3){{0.0f, 0.0f, 0.0f}};
+	e->obj[e->elem_obj].pos_b = (cl_float3){{0.0f, 0.0f, 0.0f}};
+	e->obj[e->elem_obj].pos_c = (cl_float3){{0.0f, 0.0f, 0.0f}};
+	e->obj[e->elem_obj].radius_a = (cl_float3){{0.0f, 0.0f, 0.0f}};
+	e->obj[e->elem_obj].radius_b = (cl_float3){{0.0f, 0.0f, 0.0f}};
 	e->obj[e->elem_obj].reflexion = 0.0f;
 	e->obj[e->elem_obj].refraction = 0.0f;
-	e->obj[e->elem_obj].rotate = (cl_float3){0.0f, 0.0f, 0.0f};
+	e->obj[e->elem_obj].rotate = (cl_float3){{0.0f, 0.0f, 0.0f}};
 	e->obj[e->elem_obj].type = type;
 	e->obj[e->elem_obj].type_bump = 0;
 }

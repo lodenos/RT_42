@@ -6,7 +6,7 @@
 #    By: nrandria <nrandria@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 11:23:48 by nrandria          #+#    #+#              #
-#    Updated: 2016/12/14 23:08:48 by anonymous        ###   ########.fr        #
+#    Updated: 2016/12/15 14:25:32 by glodenos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,6 @@
 SRC_PATH = src/
 
 SRC_NAME = 	main.c												\
-																\
-			clustering/host/host.c								\
-			clustering/host/slave_connection.c					\
-																\
-			clustering/slave/slave.c							\
-																\
-			clustering/transfer_data/cluster_create_buffer.c	\
-			clustering/transfer_data/cluster_parallelisation.c	\
-			clustering/transfer_data/cluster_read_buffer.c		\
-			clustering/transfer_data/cluster_write_buffer.c		\
 																\
 			event_rt/event_rt.c									\
 			event_rt/fps_info.c									\
@@ -125,7 +115,7 @@ NAME 		=	RT
 
 CC 			=	clang
 
-CFLAGS 		=	#-Wall -Wextra -Werror -Ofast -Weverything -Wno-padded
+CFLAGS 		=	-Wall -Wextra -Werror #-Ofast -Weverything -Wno-padded
 LIBGRPH 	= 	-lm -framework OpenGL -framework SDL2 -framework OpenCL -lpthread
 
 OBJ_NAME 	=	$(addsuffix .o, $(basename $(SRC_NAME)))
@@ -158,7 +148,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C libft
 	@echo "\033[33mProject compilation\033[0m"
-	@$(CC) $(LDFLAGS) $(LDLIBS) $(LIBGRPH) $^ -o $@
+	@$(CC) $(LDFLAGS) $(LDLIBS) $(LIBGRPH) $^ -o $@ -std=gnu11
 	@echo "\033[32mCompilation SUCCESS\033[0m"
 
 $(OBJ_PATH)%.o: %.c
